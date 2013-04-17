@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Chapter 2. Planning Your Installation</title>
+    <link rel="stylesheet" href="gettingStarted.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="start" href="index.html" title="Oracle NoSQL Database Administrator's Guide" />
+    <link rel="up" href="index.html" title="Oracle NoSQL Database Administrator's Guide" />
+    <link rel="prev" href="admin-console.html" title="The Admin Console" />
+    <link rel="next" href="store-config.html" title="Determine the Store's Configuration" />
+  </head>
+  <body>
+    <div xmlns="" class="navheader">
+      <div class="libver">
+        <p>Library Version 11.2.2.0</p>
+      </div>
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">Chapter 2. Planning Your Installation</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="admin-console.html">Prev</a> </td>
+          <th width="60%" align="center"> </th>
+          <td width="20%" align="right"> <a accesskey="n" href="store-config.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="chapter" lang="en" xml:lang="en">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title"><a id="installplanning"></a>Chapter 2. Planning Your Installation</h2>
+          </div>
+        </div>
+      </div>
+      <div class="toc">
+        <p>
+          <b>Table of Contents</b>
+        </p>
+        <dl>
+          <dt>
+            <span class="sect1">
+              <a href="installplanning.html#store-requirements">Identify Store Size and Throughput Requirements</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect2">
+                  <a href="installplanning.html#est-record-size">Estimating the Record Size</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="installplanning.html#est-workload">Estimating the Workload</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="installplanning.html#est-latency">Estimate the Store's Permissible Average Latency</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="sect1">
+              <a href="store-config.html">Determine the Store's Configuration</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect2">
+                  <a href="store-config.html#num-rep-group">Identify the Target Number of Shards</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="store-config.html#num-partitions">Identify the Number of Partitions</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="store-config.html#rep-factor">Identify your Replication Factor</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="store-config.html#num-nodes">Identify the Total Number of Nodes</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <span class="sect1">
+              <a href="select-cache-strategy.html">Determining the Per-Node Cache Size</a>
+            </span>
+          </dt>
+          <dd>
+            <dl>
+              <dt>
+                <span class="sect2">
+                  <a href="select-cache-strategy.html#cache-size-advice">Sizing Advice</a>
+                </span>
+              </dt>
+              <dt>
+                <span class="sect2">
+                  <a href="select-cache-strategy.html#cache-size-numbers">Arriving at Sizing Numbers</a>
+                </span>
+              </dt>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+      <p>
+      To successfully deploy a KVStore requires analyzing the workload you
+      place on the store, and determining how many hardware resources
+      are required to support that workload. Once you have performed this
+      analysis, you can then determine how you should deploy the KVStore
+      across those resources.
+  </p>
+      <p>
+      The overall process for planning the installation of your store
+      involves these steps:
+  </p>
+      <div class="itemizedlist">
+        <ul type="disc">
+          <li>
+            <p>
+              Gather the store size and throughput requirements
+          </p>
+          </li>
+          <li>
+            <p>
+              Determine the store's configuration. This involves
+              identifying the total number of nodes your store requires,
+              the number of partitions your store uses, the
+              number of shards, and the Replication Factor in
+              use by your store.
+          </p>
+          </li>
+          <li>
+            <p>
+              Determine the cache size that you should use for your nodes.
+          </p>
+          </li>
+        </ul>
+      </div>
+      <p>
+      Once you have performed each of the above steps, you should test your
+      installation under a simulated load, refining the configuration as is
+      necessary, before placing your store into a production environment.
+  </p>
+      <p>
+      The following sections more fully describe these steps.
+  </p>
+      <div class="sect1" lang="en" xml:lang="en">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title" style="clear: both"><a id="store-requirements"></a>Identify Store Size and Throughput Requirements</h2>
+            </div>
+          </div>
+        </div>
+        <div class="toc">
+          <dl>
+            <dt>
+              <span class="sect2">
+                <a href="installplanning.html#est-record-size">Estimating the Record Size</a>
+              </span>
+            </dt>
+            <dt>
+              <span class="sect2">
+                <a href="installplanning.html#est-workload">Estimating the Workload</a>
+              </span>
+            </dt>
+            <dt>
+              <span class="sect2">
+                <a href="installplanning.html#est-latency">Estimate the Store's Permissible Average Latency</a>
+              </span>
+            </dt>
+          </dl>
+        </div>
+        <p>
+          Before you can plan your store's installation, you must have some
+          understanding of the store's contents, as well as the
+          performance characteristics that your application requires from the store.
+      </p>
+        <div class="itemizedlist">
+          <ul type="disc">
+            <li>
+              <p>
+                  The number and size of the keys and data items that are placed in the store.
+              </p>
+            </li>
+            <li>
+              <p>
+                  Roughly the maximum number of put and get operations that are
+                  performed per unit of time.
+              </p>
+            </li>
+            <li>
+              <p>
+                  The maximum permissible latency for each store operation.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <p>
+          These topics are discussed in the following sections.
+      </p>
+        <div class="sect2" lang="en" xml:lang="en">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h3 class="title"><a id="est-record-size"></a>Estimating the Record Size</h3>
+              </div>
+            </div>
+          </div>
+          <p>
+                Your KVStore contains some number of key-value pairs. The number
+                and size of the key-value pairs contained by your store 
+                determine how much disk storage your store requires. It
+                also defines how large an in-memory cache is required
+                for each physical machine used to support the store. 
+           </p>
+          <p>
+                The key portion of each key-value comprises some
+                combination of <span class="emphasis"><em>major</em></span> and
+                <span class="emphasis"><em>minor</em></span> key components. Taken together,
+                these look something like a path to a file in a file
+                system. Like any file system path, keys can be very short
+                or very long. Records that use a large number of long key
+                components obviously require more storage resources than
+                do records with a small number of short key components.
+          </p>
+          <p>
+              Similarly, the amount of data associated with each key (that is,
+              the <span class="emphasis"><em>value</em></span> portion of each key-value pair)
+              also affects how much storage capacity your store
+              requires. 
+          </p>
+          <p>
+              Finally, the number of records to be placed in your store
+              also drives your storage capacity.
+          </p>
+          <p>
+              Ultimately, prior to an actual production deployment, there
+              is only one way for you to estimate your store's storage
+              requirements: ask the people who are designing and building
+              the application that the store is meant to support. Schema
+              design is an important part of designing an Oracle NoSQL Database
+              application, so your engineering team should be able to
+              describe the size of the keys as well as the size of the
+              data items in use by the store.  They should also have an
+              idea of how many key-value pairs the store contains, and
+              they should be able to advise you on how much disk storage
+              you need for each node based on how they designed their keys
+              and values, as well as how many partitions you want to use. 
+          </p>
+        </div>
+        <div class="sect2" lang="en" xml:lang="en">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h3 class="title"><a id="est-workload"></a>Estimating the Workload</h3>
+              </div>
+            </div>
+          </div>
+          <p>
+              In order to determine how to deploy your store, you must
+              determine how many operations per second your store is
+              expected to support.  Estimate:
+          </p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                      How many read operations your store must handle per
+                      second.
+                  </p>
+              </li>
+              <li>
+                <p>
+                        How many updates per second your store must
+                        support. This estimate must include all possible
+                        variants of put operations to existing keys.
+                  </p>
+              </li>
+              <li>
+                <p>
+                        How many record creations per second your store must
+                        support. This estimate must include all possible
+                        variants of put operations on new keys.
+                  </p>
+              </li>
+              <li>
+                <p>
+                        How many record deletions per second your store must
+                        support. This estimate must include all possible
+                        variants of delete operations.
+                  </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+              If your application uses the multi-key operations
+              (<code class="methodname">KVStore.execute()</code>,
+              <code class="methodname">multiGet()</code>, or
+              <code class="methodname">multiDelete()</code>), then approximate the
+              key-value pairs actually involved in each such multi-key
+              operation to arrive at the necessary throughput numbers. 
+          </p>
+          <p>
+              Ultimately, the throughput requirements you identify must be
+              well matched to the I/O capacity available with the disk
+              storage system in use by your nodes, as well as the amount of
+              memory available at each node. 
+          </p>
+          <p>
+              It may be necessary for you to consult with your engineering
+              team and/or the business plan driving the development and
+              deployment of your Oracle NoSQL Database application in order to obtain these
+              estimates.
+          </p>
+        </div>
+        <div class="sect2" lang="en" xml:lang="en">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h3 class="title"><a id="est-latency"></a>Estimate the Store's Permissible Average Latency</h3>
+              </div>
+            </div>
+          </div>
+          <p>
+              Latency is the measure of the time it takes your store to perform any
+			  given operation. You need to determine the average permissible latency 
+			  for all possible store operations: reads, creates, updates, and deletes.  
+			  The average latency for each of these is determined primarily by:
+          </p>
+          <div class="itemizedlist">
+            <ul type="disc">
+              <li>
+                <p>
+                      How long it takes your disk I/O system to perform
+                      reads and writes.
+                  </p>
+              </li>
+              <li>
+                <p>
+                      How much memory is available to the node (the more
+                      memory you have, the more data you can cache
+                      in memory, thereby avoiding expensive disk I/O).
+                  </p>
+              </li>
+              <li>
+                <p>
+                      Your application's data access patterns (the more
+                      your store's operations cluster on records, the more
+                      efficient the store is at servicing store
+                      operations from the in-memory cache). 
+                  </p>
+              </li>
+            </ul>
+          </div>
+          <p>
+              Note that if your read latency requirements are less than 10ms,
+              then the typical hard disk available on the market today is
+              not sufficient on its own. To achieve latencies of less
+              than 10ms, you must make sure there is enough physical memory
+              on each node so that an appropriate fraction of your read
+              requests can be serviced from the in-memory cache. How much
+              physical memory your nodes require is affected in part
+              by how well your read requests cluster on records. The more
+              your read requests tend to access the same records, the
+              smaller your cache needs to be.
+          </p>
+          <p>
+              Also, version-based write operations may require disk access
+              to read the version number. The KVStore caches version
+              numbers whenever possible to minimize this source of disk
+              reads. Nevertheless, if your version-based write operations
+              do not cluster well, then you may require a larger in-memory
+              cache in order to achieve your latency requirements.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="admin-console.html">Prev</a> </td>
+          <td width="20%" align="center"> </td>
+          <td width="40%" align="right"> <a accesskey="n" href="store-config.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">The Admin Console </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> Determine the Store's Configuration</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

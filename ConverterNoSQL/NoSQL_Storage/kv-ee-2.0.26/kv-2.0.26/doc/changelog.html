@@ -1,0 +1,570 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- Note: RELEASE_VERSION and DATE are set by ant -->
+
+<head>
+  <title>The Oracle NoSQL Database (Release 11gR2.2.0.26 Enterprise Edition) Change Log</title>
+  <meta name="description"
+        content="Oracle NoSQL Database: A Distributed Key-Value Store.">
+  <meta name="keywords"
+        content="distributed,database,key,value,nosql,bigdata,transaction,transactions,java">
+</head>
+<body bgcolor="white">
+
+<h2 align="center">Oracle NoSQL Database Change Log
+</h2>
+<p align="center">Release 11gR2.2.0.26 Enterprise Edition</p>
+
+Oracle NoSQL Database 2.0 has moved to Admin version 2. This is an on-disk
+format change which affects internal data stored by the Admin services. The
+change is forward compatible in that Admin services deployed using 2.0 can read
+data created by older releases. The change is not backwards compatible in that
+Admin services which have been deployed with the new release cannot be
+restarted using older NoSQL releases.
+<p>
+See the section
+on <a href="http://docs.oracle.com/cd/NOSQL/html/AdminGuide/deploymentupdate.html">
+Updating an Existing Oracle NoSQL Database Deployment</a> in the Admin
+Guide.
+<!-- ============================================================ -->
+<hr>
+<h3 align="center"><u>Changes in 11gR2.2.0.26 Enterprise Edition</u></h3>
+
+<!-- ========================================================= -->
+<h3><a name="Features">New Features:</a></h3>
+<ol>
+
+<li>
+This release adds the capability to remove an Admin service replica.
+If you have deployed more than one Admin, you can remove one of them
+using the following command:
+<blockquote>
+<pre>
+plan remove-admin -admin &lt;adminId&gt;
+</pre>
+</blockquote>
+<p>
+You cannot remove the sole Admin if only one Admin instance is
+configured.
+</p><p>
+For availability and durability reasons, it is highly recommended that
+you maintain at least three Admin instances at all times.  For that
+reason, if you try to remove an Admin when the removal would result in
+there being fewer than three, the command will fail unless you give
+the <i>-force</i> flag.
+</p><p>
+If you try to remove the Admin that is currently the master,
+mastership will transfer to another Admin.  The plan will be
+interrupted, and subsequently can be re-executed on the new master
+Admin.  To re-execute the interrupted plan, you would use this command:
+</p>
+<blockquote>
+<pre>
+plan execute -id &lt;planId&gt;
+</pre>
+</blockquote>
+</li><br>
+
+<li>
+The Admin CLI verify has an added check to verify that the Replication
+Nodes hosted on a single Storage Node have memory settings that fit
+within the Storage Node's memory budget. This guards against mistakes
+that may occur if the system adminstrator overrides defaults and
+manually sets Replication Node heap sizes.[#21727]
+</li><br>
+
+<li>
+The Admin CLI verify command now labels any verification issues as
+violations or notes. Violations are of greater importance, and the
+system administrator should determine how to adjust the system to
+address the problem. Notes are warnings, and are of lesser
+importance. [#21950]
+</li><br>
+
+</ol>
+
+<h3><a name="BugFixes">Bug fixes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+
+<li>
+Several corrections were made to latency statistics. These corrections apply
+to the service-side statistics in the Admin console, CLI <code>show perf</code>
+command, .perf files and .csv files, as well as the client-side statistics
+returned by KVStore.getStats. However, corrections to the 95% and 99% values do
+not apply to the client-side statistics, since these values do not appear in
+the client-side API.
+  <ul>
+      <li>The definition of latency has been corrected for the "multi"
+      operation requests (multiGet, multiDelete, execute, etc).  These are
+      labeled "multi" in the <code>Op Type</code> column where latency
+      information is displayed.  The previous definition was "latency in
+      milliseconds per <em>operation</em>" while the new definition is "latency
+      in milliseconds per <em>request</em>".  In other words, for a "multi"
+      operation request, latency now applies to the entire request rather than
+      to each operation.  For "single" operation requests, the definition of
+      latency has not changed.
+      </li>
+      <li>To go along with the change above, a new column containing the number
+      of requests in the sample has been added to all latency information
+      displays: <code>TotalReq</code>.  This is also available for client-side
+      statictics using the new <code>OperationMetrics.getTotalRequests</code>
+      method.  For "multi" operation requests, the total number of requests is
+      normally smaller than the total number of operations (the
+      <code>TotalOps</code> column).  For "single" operation requests, the
+      total number of requests and operations are equal.
+      </li>
+      <li>Improved the consistency of the values reported in each sample so
+      that, for example, the minimum latency is always less than the maximum
+      latency.  However, note that statistics are collected without
+      synchronization to avoid impacting performance, and for small sample
+      sizes the values in a sample are not always accurate or self-consistent.
+      </li>
+      <li>Fixed a bug that caused the 95% and 99% values to show the maximum
+      latency recorded (within 1000 ms), rather than the lowest 95% or 99% as
+      intended.  This bug only applied to the "multi" operation requests.
+      </li>
+      <li>Fixed a bug that caused the 95% and 99% values to sometimes
+      mistakenly appear as -1.  These values should only appear as -1 when
+      there were no operations in the sample with a latency below 1000 ms.
+      </li>
+  </ul>
+[#21763]
+</li><br>
+
+<li>
+Modified the Administration Process to allocate ports from within a port range
+if one is specified by the <i>-servicerange</i> argument to
+the <i>makebootconfig</i> utility. If the argument is not specified the
+Administration Process will use any available port. Please see
+the <a href="http://docs.oracle.com/cd/NOSQL/html/AdminGuide/"> Admin Guide</a>
+for details regarding the configuration of ports used by Oracle NoSQL
+Database.  [#21962]
+</li><br>
+
+<li>
+Modified the replication node to handle the unlikely case that the locally
+stored topology is missing. A missing topology results in a
+java.lang.NullPointerException being thrown in the TopologyManager and will
+prevent the replication node from starting. [#22015]
+</li><br>
+
+<li>
+Replication Node memory calculations are more robust for Storage Nodes
+that host multiple Replication Nodes. In previous releases, using the
+plan change-params command to reduce the capacity parameter for a
+Storage Node which hosts multiple Replication Nodes could result in an
+over aggressive increase in RN heap, which would make the Replication
+Nodes fail at startup. The problem would be fixed when a topology was
+rebalanced, but until that time, the Replication Nodes were
+unavailable. The default memory sizing calculation now factors in the
+number of RNs resident on a Storage Node, and adjusts RN heap sizes as
+Replication Nodes are relocated by the deploy-topology
+command. [#21942]
+</li><br>
+
+<li>
+Fixed a bug that could cause a NullPointerException, such as the one below,
+during RN start-up.  The exception would appear in the RN log and the RN would
+fail to start.  The conditions under which this problem occurred include
+partition migration between shards along with multiple abnormal RN shutdowns.
+If this bug is encountered, it can be corrected by upgrading to the current
+release, and no data loss will occur.
+<pre>
+Exception in thread "main" com.sleepycat.je.EnvironmentFailureException: (JE
+5.0.XX) ...  last LSN=.../... LOG_INTEGRITY: Log information is incorrect,
+problem is likely persistent. Environment is invalid and must be closed.
+    at com.sleepycat.je.recovery.RecoveryManager.traceAndThrowException(RecoveryManager.java:2793)
+    at com.sleepycat.je.recovery.RecoveryManager.undoLNs(RecoveryManager.java:1097)
+    at com.sleepycat.je.recovery.RecoveryManager.buildTree(RecoveryManager.java:587)
+    at com.sleepycat.je.recovery.RecoveryManager.recover(RecoveryManager.java:198)
+    at com.sleepycat.je.dbi.EnvironmentImpl.finishInit(EnvironmentImpl.java:610)
+    at com.sleepycat.je.dbi.DbEnvPool.getEnvironment(DbEnvPool.java:208)
+    at com.sleepycat.je.Environment.makeEnvironmentImpl(Environment.java:246)
+    at com.sleepycat.je.Environment.<init>(Environment.java:227)
+    at com.sleepycat.je.Environment.<init>(Environment.java:170)
+    ...
+Caused by: java.lang.NullPointerException
+    at com.sleepycat.je.log.entry.LNLogEntry.postFetchInit(LNLogEntry.java:406)
+    at com.sleepycat.je.txn.TxnChain.<init>(TxnChain.java:133)
+    at com.sleepycat.je.txn.TxnChain.<init>(TxnChain.java:84)
+    at com.sleepycat.je.recovery.RollbackTracker$RollbackPeriod.getChain(RollbackTracker.java:1004)
+    at com.sleepycat.je.recovery.RollbackTracker$Scanner.rollback(RollbackTracker.java:477)
+    at com.sleepycat.je.recovery.RecoveryManager.undoLNs(RecoveryManager.java:1026)
+    ... 10 more
+</pre>
+[#22052]
+</li><br>
+
+<li>
+Fixed a bug that causes excess memory to be used in the storage engine cache on
+an RN, which could result in poor performance as a result of cache eviction and
+additional I/O.  The problem occurred only when the
+<code>KVStore.storeIterator</code> or <code>KVStore.storeKeysIterator</code>
+method was used.  [#21973]
+</li><br>
+
+</ol>
+
+<!-- ========================================================= -->
+<h3><a name="General">Performance and other General Changes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+
+<li>
+The replicas in a shard now dynamically configure the JE property 
+<i>RepParams.REPLAY_MAX_OPEN_DB_HANDLES</i> which controls the size of the cache
+used to hold database handles during replication. The cache size is determined
+dynamically based upon the number of partitions currently hosted by the
+shard. This improved cache sizing can result in better write performance for
+shards hosting large numbers of partitions. [#21967]
+</li><br>
+
+<li>
+The names of the client and server JAR files no longer include release
+version numbers.  The files are now called:
+<blockquote>
+<pre>
+lib/kvstore.jar
+lib/kvclient.jar
+</pre>
+</blockquote>
+<p>
+This change should reduce the amount of work needed to switch to a new
+release because the names of JAR files will no longer change between
+releases.  Note that the name of the installation directory continues to
+include the release version number. [#22034]
+</li><br>
+
+<li>
+A SEVERE level message is now logged and an admin alert is fired when the
+storage engine's average log cleaner (disk reclamation) backlog increases over
+time.  An example of the message text is below.
+<pre>
+121215 13:48:57:480 SEVERE [...] Average cleaner backlog has grown from 0.0 to
+6.4. If the cleaner continues to be unable to make progress, the JE cache size
+and/or number of cleaner threads are probably too small. If this is not
+corrected, eventually all available disk space will be used.
+</pre>
+For more information on setting the cache size appropriately to avoid such
+problems, see "Determining the Per-Node Cache Size" in the Administrator's
+Guide.
+[#21111]
+</li><br>
+
+<li>
+The storage engine's log cleaner will now delete files in the latter portion of
+the log, even when the application is not performing any write operations.
+Previously, files were prohibited from being deleted in the portion of the log
+after the last application write.  When a log cleaner backlog was present (for
+example, when the cache had been configured too small, relative to the data set
+size and write rate), this could cause the cleaner to operate continuously
+without being able to delete files or make forward progress.  [#21069]
+</li><br>
+
+<li>
+NoSQL DB 2.0.23 introduced a performance regression over R1.2.23. The 
+kvstore client library and Replication Node consumed a greater
+percentage of system cpu time. This regression has been fixed. [#22096]
+</li><br>
+</ol>
+
+<!-- ============================================================ -->
+<hr>
+<h3 align="center"><u>Changes in 11gR2.2.0.23</u></h3>
+
+<!-- ========================================================= -->
+<h3><a name="Features">New Features:</a></h3>
+<ol>
+<li>
+This release provides the ability to add storage nodes to the system
+after it has been deployed. The system will rebalance and redistribute
+the data onto the new nodes without stopping operations. See Chapter
+6, of the Admin
+Guide, <a href="AdminGuide/managing-topology.html">Determining
+your Store's Configuration</a>, for more details.
+<li>
+A new <code>oracle.kv.lob</code> package provides operations that can
+be used to read and write Large Objects (LOBs) such as audio and video
+files. As a general rule, any object larger than 1 MB is a good
+candidate for representation as a LOB. The LOB API permits access to
+large values without having to materialize the value in its entirety
+by providing streaming APIs for reading and writing these objects.
+<li>
+A C API has been added. The implementation uses Java JNI and requires
+a Java virtual machine to run on the client. It is available as a
+separate download.
+<li>
+Added a new remove-storagenode plan. This command will
+remove a storage node which is not hosting any NoSQL Database components
+from the system's topology. Two examples of when this might be useful
+are:
+<blockquote>
+A storage node was incorrectly configured, and cannot be deployed.<br>
+A storage node was once part of a NoSQL Database, but all components have
+been migrated from it using the migrate-storagenode command, and the
+storage node should be decommissioned.
+</blockquote>
+[#20530]
+</li>
+<li>
+Added the ability to specify additional physical configuration
+information about storage nodes including:
+<ul>
+  <li>Capacity - the number of RepNodes the SN may host</li>
+  <li>Number of CPUs</li>
+  <li>Amount of memory to use</li>
+  <li>Specific directory paths (mount points) to use for RepNodes</li>
+</ul>
+This information is used by the system to make more intelligent
+choices about resource allocation and consumption.  The administration
+documentation discusses how these parameters are set and used.
+[#20951]
+</li>
+<li>Added Avro support.  The value of a kv pair can now be stored in Avro
+binary format.  An Avro schema is defined for each type of data stored.  The
+Avro schema is used to efficiently and compactly serialize the data, to
+guarantee that the data conforms to the schema, and to perform automatic
+evolution of the data as the schema changes over time.  Bindings are supplied
+that allow representing Avro data as a POJO (Plain Old Java Object), a JSON
+object, or a generic Map-like data structure. For more information, see
+<a href="GettingStartedGuide/avroschemas.html">Chapter 7 - Avro Schemas</a> and
+<a href="GettingStartedGuide/avrobindings.html">Chapter 8 - Avro Bindings</a>
+in the <i>Getting Started Guide</i>. The <code>oracle.kv.avro</code> package is
+described in the Javadoc.  The use of the Avro format is strongly
+recommended.  NoSQL DB will leverage Avro in the future to provide additional
+features and capabilities.  [#21213]
+</li>
+<li>Added Avro support for the Hadoop <code>KVInputFormat</code> classes.
+A new <code>oracle.kv.hadoop.KVAvroInputFormat</code> class returns Avro
+<code>IndexedRecord</code>s to the caller. When this class is  used in
+conjunction with Oracle Loader for Hadoop, it is possible to read data
+directly from NoSQL Database using OLH without using an interim Map-Reduce
+job to store data in HDFS. [#21157]
+</li>
+<li>Added a feature which allows Oracle Database External Tables to be
+used to access Oracle NoSQL Database records. There is more
+information in javadoc for the
+<a href="javadoc/index.html?oracle/kv/exttab/package-summary.html">
+<code>oracle.kv.exttab</code></a> package and an "cookbook" example in the
+<a href="examples/index.html?externaltables/package-summary.html">
+<code>examples/externaltables</code></a> directory. [#20981]
+Javadoc</a>
+</li>
+</ol>
+<!-- ========================================================= -->
+<h3><a name="API">API Changes:</a></h3>
+<ol>
+</ol>
+<!-- ========================================================= -->
+<h3><a name="General">Performance and other General Changes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+<li>
+The following new methods:
+<ul>
+<li><code>KVStoreConfig.setOpenTimeout()</code></li>
+<li><code>KVStoreConfig.getOpenTimeout()</code></li>
+<li><code>KVStoreConfig.setReadTimeout()</code></li>
+<li><code>KVStoreConfig.getReadTimeout()</code></li>
+</ul>
+have been added to allow clients to configure the socket timeouts used to make
+client requests. Please review the javadoc for details.
+<p>
+R1 installations must ensure that the software on the storage nodes has
+been upgraded as described in the upgrade documentation
+accompanying this release before using the above APIs on the client.
+[#20997]
+</li>
+
+<li>
+New service parameters have been added to control the backlog
+associated with sockets created by NoSQL Database. These are
+controllable for the Rep Node and Storage Nodes' Monitor, Admin, and
+Registry Handler interfaces. The parameters
+are <code>rnRHSOBacklog</code> (default
+1024), <code>rnMonitorSOBacklog</code> (default 0), rnAdminSOBacklog
+(default 0), <code>rnAdminSOBacklog</code> (default 0),
+<code>snAdminSOBacklog</code> (default
+0), <code>snMonitorSOBacklog</code> (default 0), and
+<code>snRegistrySOBacklog</code> (default 1024).
+[#21322]
+</li>
+
+<li>
+  Previously, calling <code>Key.isPrefix</code> with an argument containing
+  a smaller major or minor path than the target Key object caused an
+  IndexOutOfBoundsException in certain cases.  This has been fixed.
+</li>
+<li>
+The <code>KeyRange()</code> constructor now checks that the start
+<code>Key</code> is less than the end <code>Key</code> if both are specified,
+otherwise an <code>IllegalArgumentException</code> is thrown.
+<code>KeyRange</code> also has <code>toString()</code> and
+<code>fromString()</code> methods for encoding and decoding
+<code>KeyRange</code> instances, similar to the same methods in
+<code>Key</code>. [#21470]
+</li>
+</ol>
+<!-- ========================================================= -->
+<h3><a name="Utilities">Utility Changes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+<li>
+Many new commands have been added to the CLI. See
+<a href="AdminGuide/cli_command_reference.html">
+    Appendix A - Command Line Interface (CLI) Command Reference
+</a> of the <i>Administrator's Guide</i>
+for details.
+<li>
+The Admin Console is now for monitoring only.
+<li>
+Administration CLI commands have been changed so that component ids
+match the ids used in the topology display. Previously Datacenters,
+Storage Nodes, Admin instances and Replication Nodes were identified
+only by number. For example, the syntax to add Storage Node 17 to a
+Storage Node pool, or to show the parameters for a given Replication Node was:
+<blockquote>
+<pre>
+joinPool myStorageNodePool 17
+show repnode-params 5,3
+</pre>
+</blockquote>
+Datacenters can now be expressed as # or dc#<br>
+Admin instances can now be expressed as # or admin#<br>
+Storage Nodes can now be expressed as # or sn#<br>
+Replication Nodes can now be expressed as groupNum,nodeNum, or rgX-rnY<br>
+<p>
+The commands shown above are still valid, but can also be expressed as:
+<blockquote>
+<pre>
+joinPool myStorageNodePool sn17
+show repnode-params rg5-rn3
+</pre>
+</blockquote>
+[#21099]
+</li>
+</ol>
+
+<!-- ========================================================= -->
+<h3><a name="IandI">Documentation, Installation and
+    Integration:</a></h3>
+<!-- ========================================================= -->
+
+<ol>
+<li>
+ The javadoc for the <code>Key.createKey</code> methods has been improved to
+ warn that List instances passed as parameters are owned by the Key object
+ after calling the method.  To avoid unpredictable results, they must not be
+ modified.  [#20530]
+</li><br>
+</ol>
+
+<!-- ============================================================ -->
+<hr>
+<h3 align="center"><u>Changes in 11gR2.1.2.123</u></h3>
+
+<!-- ========================================================= -->
+<h3><a name="BugFixes">Bug fixes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+<li>
+  Previously, executing a change-repnode-params plan in order to
+  change Replication Node parameters for a node other than the one
+  running the Admin service would fail. This operation will now
+  succeed. [#20901]
+</li><br>
+<li>
+  A deploy-storage-node plan which ran into problems when attempting
+  to deploy a new storage node would leave the problematic SN in the
+  store. This would require that the user either take manual action to
+  remove the bad SN, or fix the problem and retry the plan. For
+  convenience, the deploy-storage-node plan will now clean up if it
+  runs into errors, and will not leave the failed SN behind. [#20530]
+</li><br>
+</ol>
+
+<!-- ========================================================= -->
+<h3><a name="General">Performance and other General Changes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+<li>
+  The command line interface's <code>snapshot create</code> command
+  has been made significantly faster. Previously, it could take
+  minutes if executed on a store with a large amount of data.  This
+  should be reduced to seconds. [#20772]
+</li>
+
+</ol>
+
+<!-- ========================================================= -->
+<h3><a name="Utilities">Utility Changes:</a></h3>
+<!-- ========================================================= -->
+<ol>
+<li>
+The two scripts for starting kvlite and executing control commands,
+<code>bin/run-kvlite.sh</code> and <code>bin/kvctl</code>, have been replaced
+by a <code>java -jar lib/kvstore-M.N.P.jar</code> command.  This provides portability
+to all Java platforms, including Windows.  The two scripts are deprecated, but
+will be supported for at least one release cycle.
+<p>
+The translation from the old script commands to the new -jar commands is as
+follows:</p>
+<table border="1">
+    <tr><th>Old script command</th><th>New -jar command</th></tr>
+    <tr>
+        <td><code>bin/run-kvlite.sh args...</code></td>
+        <td><code>java -jar lib/kvstore-M.N.P.jar kvlite args...</code></td>
+    </tr>
+    <tr>
+        <td><code>bin/kvctl command args...</code></td>
+        <td><code>java -jar lib/kvstore-M.N.P.jar command args...</code></td>
+    </tr>
+</table>
+<p>
+There are a few differences to be aware of between the old and new commands.
+<ul>
+    <li><p><code>nohup</code>, if desired, must be explicitly specified.  In
+    the <code>bin/kvctl</code> script, nohup was added automatically for the
+    <code>start</code> and <code>restart</code> commands.  To specify the
+    equivalent command, use:</p>
+    <p><code>nohup java -jar lib/kvstore-M.N.P.jar start args... &gt; /dev/null &lt;
+    /dev/null 2&lt;&amp;1 &amp;</code></p>
+    </li>
+    <li><p>The logging configuration file for kvlite is now specified using
+    standard Java syntax.  Previously, the
+    <code>examples/logging.properties</code> configuration file was added
+    automatically when passing <code>-logging</code> to the
+    <code>run-kvlite.sh</code> script.  The new equivalent is:</p>
+    <p><code>java -Djava.util.logging.config.file=examples/logging.properties
+    -jar lib/kvstore-M.N.P.jar kvlite args...</code></p>
+    </li>
+    <li><p>Previously, the <code>-host</code> argument defaulted to
+    the local machine name (via the <code>`hostname`</code> command) when
+    running the <code>kvctl</code> script.  Now, for all control commands, no
+    default hostname is used and the <code>-host</code> argument must be
+    specified explicitly.  This change was made for two reasons: 1)
+    consistency, since the port and other arguments have no default value for
+    control commands, and 2) safety, since specifying an explicit hostname
+    guards against accidental errors.</p>
+    </li>
+    <li><p>Previously, the <code>-host</code> argument defaulted to
+    <code>localhost</code> when running the <code>run-kvlite.sh</code> script.
+    Now, the default is the local machine name rather than (literally)
+    <code>localhost</code>.  Note that the kvlite command, unlike the control
+    commands, has default values for all arguments.  This is because the kvlite
+    command is designed for ease-of-use during development on a single machine.
+    kvlite should not be used in production or for performance testing.</p>
+    </li>
+    <li><p>Previously, running <code>java -jar lib/kvstore-M.N.P.jar</code>, with or
+    without arguments, printed the product version.  Now, if no arguments are
+    specified, a usage message is printed.  To print the version, use the
+    version command:</p>
+    <p><code>java -jar lib/kvstore-M.N.P.jar version</code></p>
+    </li>
+</ul>
+</li></br>
+</ol>
+
+</body>
+</html>

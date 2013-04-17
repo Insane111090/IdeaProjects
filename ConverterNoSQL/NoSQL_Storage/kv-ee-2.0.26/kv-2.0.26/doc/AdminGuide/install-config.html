@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Installation Configuration</title>
+    <link rel="stylesheet" href="gettingStarted.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="start" href="index.html" title="Oracle NoSQL Database Administrator's Guide" />
+    <link rel="up" href="installation.html" title="Chapter 4. Installing Oracle NoSQL Database" />
+    <link rel="prev" href="install.html" title="Installation" />
+    <link rel="next" href="configure.html" title="Chapter 5. Configuring the KVStore" />
+  </head>
+  <body>
+    <div xmlns="" class="navheader">
+      <div class="libver">
+        <p>Library Version 11.2.2.0</p>
+      </div>
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">Installation Configuration</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="install.html">Prev</a> </td>
+          <th width="60%" align="center">Chapter 4. Installing Oracle NoSQL Database</th>
+          <td width="20%" align="right"> <a accesskey="n" href="configure.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both"><a id="install-config"></a>Installation Configuration</h2>
+          </div>
+        </div>
+      </div>
+      <p>
+            Before you configure Oracle NoSQL Database, you should determine the following
+            parameters for each Storage Node in the store:
+        </p>
+      <div class="orderedlist">
+        <ol type="1">
+          <li>
+            <p>
+                    Where the KVROOT directory should reside.  There should
+                    be enough disk space on each node to hold the data to
+                    be stored in your Oracle NoSQL Database store.  It is best if the
+                    KVROOT is the same local directory path on each node
+                    (but not a shared or NFS mounted directory).  The
+                    examples in this book assume that the KVROOT
+                    directory already exists.
+                </p>
+          </li>
+          <li>
+            <p>
+                    The TCP/IP port on which Oracle NoSQL Database should be contacted.  This port
+                    should be free (unused) on each node.  It is sometimes
+                    referred to as the <span class="emphasis"><em>registry port</em></span>.
+                    The examples in this book use port 5000.
+                </p>
+          </li>
+          <li>
+            <p>
+                    The port on which the Oracle NoSQL Database web-based Admin Console
+                    is contacted.  This port only needs to be free
+                    on the node which runs the
+                    administration process.  The examples in
+                    this book use port 5001.
+                </p>
+            <p>
+                    Note that the administration process can be replicated
+                    across multiple nodes, and so the port needs to be
+                    available on all the machines where it runs. In
+                    this way, if the administration process fails on one
+                    machine, it can continue to use the http web service on
+                    a different machine.  Note that you can actually use a
+                    different port for each node that runs an
+                    administration process, but for the sake of simplicity
+                    we recommend you be consistent.
+                </p>
+          </li>
+          <li>
+            <p>
+                    A range of free ports which the Replication Nodes use to
+                    communicate among themselves. These ports must be
+                    sequential and there must be at least as many as there
+                    are Replication Nodes running on each Storage Node in
+                    your store. The port range is specified as
+                    "startPort,endPort".  "5010,5020" is used by the
+                    examples in this book.
+                </p>
+          </li>
+          <li>
+            <p>
+                    A second range of free ports that may be used by a
+                    Storage Node or a Replication Node when exporting RMI
+                    based services. Specifying this range is optional, and
+                    by default any available port may be used when
+                    exporting Storage or Replication Node services. The
+                    format of the value string is "startPort,endPort".
+                    This parameter is useful when there is a firewall
+                    between the clients and the nodes that comprise the
+                    store and the firewall is being used to restrict access
+                    to specific ports. See the section on Setting Store
+                    Parameters for more information about the
+                    servicePortRange.
+                </p>
+          </li>
+          <li>
+            <p>
+                    The total number of Replication Nodes a Storage
+                    Node can support. Capacity is an optional
+                    parameter. Capacity can be set to values greater
+                    than 1 when the Storage Node has sufficient
+                    disk, cpu, and memory to support multiple
+                    Replication Nodes. This value defaults to "1". "1"
+                    is used as capacity by the examples in this book.
+                </p>
+          </li>
+          <li>
+            <p>
+                    The total number of processors on the machine available to
+                    the Replication Nodes. It is used to coordinate the use of
+                    processors across Replication Nodes. If the value is 0, the
+                    system will attempt to query the Storage Node to determine
+                    the number of processors on the machine. This value
+                    defaults to "0". "0" numCPUs is used by the 
+                    examples in this book.
+                </p>
+          </li>
+          <li>
+            <p>
+                    The total number of megabytes of memory that is
+                    available in the machine. It is used to guide the
+                    specification of the Replication Node's heap and
+                    cache sizes. This calculation becomes more
+                    critical if a Storage Node hosts multiple
+                    Replication Nodes, and must allocate memory
+                    between these processes. If the value is 0, the
+                    store will attempt to determine the amount of
+                    memory on the machine, but that value is only
+                    available when the JVM used is the Oracle Hotspot
+                    JVM. The default value is "0". "0" is used by the
+                    examples in this book.
+                </p>
+          </li>
+        </ol>
+      </div>
+      <p>
+            Once you have determined this information, configure the
+            installation:
+        </p>
+      <div class="orderedlist">
+        <ol type="1">
+          <li>
+            <p>
+                    Create the initial "boot config" configuration file
+                    using the <code class="literal">makebootconfig</code> utility.
+                    You should do this on each Oracle NoSQL Database node.  You only need
+                    to specify the -admin option (the Admin Console
+                    port) on the node which hosts the initial Oracle NoSQL Database
+                    administration processes. (At a later point in this
+                    installation procedure, you deploy additional
+                    administration processes.)
+                </p>
+            <p>
+                    To create the "boot config" file, issue the following commands:
+                </p>
+            <pre class="programlisting">&gt; mkdir -p KVROOT     (if it does not already exist)
+&gt; java -jar KVHOME/lib/kvstore.jar makebootconfig -root KVROOT \
+                                                  -port 5000 \
+                                                  -admin 5001 \
+                                                  -host &lt;hostname&gt; \
+                                                  -harange 5010,5020 \
+                                                  -capacity 1 \
+                                                  -num_cpus 0 \
+                                                  -memory_mb 0</pre>
+          </li>
+          <li>
+            <p>
+                    Start the Oracle NoSQL Database Storage Node Agent (SNA) on each of the
+                    Oracle NoSQL Database nodes.  The SNA manages the
+                    Oracle NoSQL Database processes on each node.  You can use the
+                    <code class="literal">start</code> utility for this:
+                </p>
+            <pre class="programlisting">nohup java -jar KVHOME/lib/kvstore.jar start -root KVROOT&amp;</pre>
+          </li>
+          <li>
+            <p>
+                    Verify that the Oracle NoSQL Database processes are running using the
+                    <code class="literal">jps -m</code> command:
+                </p>
+            <pre class="programlisting">&gt; jps -m
+29400 ManagedService -root /tmp -class Admin -service
+BootstrapAdmin.13250 -config config.xml
+29394 StorageNodeAgentImpl -root /tmp -config config.xml</pre>
+          </li>
+          <li>
+            <p>
+                    Ensure that the Oracle NoSQL Database client library can contact the
+                    Oracle NoSQL Database Storage Node Agent (SNA) by using the
+                    <code class="literal">ping</code> command:
+                </p>
+            <pre class="programlisting">&gt; java -jar KVHOME/lib/kvstore.jar ping -port 5000 -host node01</pre>
+            <p>
+                    If SNA is running, you see the following
+                    output:
+                </p>
+            <pre class="programlisting">SNA at hostname: node01, registry port: 5000 is not registered.
+No further information is available</pre>
+            <p>
+                    This message is not an error, but instead it is telling
+                    you that only the SN process is running on the local
+                    host.  Once Oracle NoSQL Database is fully configured, the ping option
+                    has more to say.
+                </p>
+            <p>
+                    If the SNA cannot be contacted, you see this
+                    instead:
+                </p>
+            <pre class="programlisting">Could not connect to registry at node01:5000
+Connection refused to host: node01; nested exception is:
+java.net.ConnectException: Connection refused</pre>
+          </li>
+        </ol>
+      </div>
+      <p>
+            If the Storage Nodes do not start up, you can look through the
+            adminboot and snaboot logs in the KVROOT directory in order to
+            identify the problem.
+        </p>
+      <p>
+            You can also use the -host option to check an SNA on a remote
+            host:
+        </p>
+      <pre class="programlisting">&gt; java -jar KVHOME/lib/kvstore.jar ping -port 5000 -host node02
+SNA at hostname: node02, registry port: 5000 is not registered.  No
+further information is available </pre>
+      <p>
+            Assuming the Storage Nodes have all started successfully, you
+            can configure the KVStore. This is described in
+            the next chapter.
+        </p>
+      <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <h3 class="title">Note</h3>
+        <p>
+                For best results, you should configure your nodes such that
+                the SNA starts automatically when your node boots up. How
+                this is done is a function of how your operating system is
+                designed, and so is beyond the scope of this manual. See
+                your operating system documentation for information on
+                automatic application launch at bootup.
+            </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="install.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="installation.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="configure.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">Installation </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> Chapter 5. Configuring the KVStore</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+  <title>Oracle NoSQL Database Release Notes</title>
+</head>
+
+<body>
+
+<div class="docMain">
+<center>
+<h1>Oracle NoSQL Database 11g R2<br>
+Release Notes</h1>
+</center>
+
+<!-- Note: RELEASE_VERSION and DATE are set by ant -->
+<p class="releaseInfo">Release 11gR2.2.0.26 Enterprise Edition, 2013-01-28 12:19:21 UTC</p>
+
+<h2><a name="overview">Overview</a></h2>
+<p>
+Oracle NoSQL Database is a distributed key-value store capable of scaling
+horizontally to handle large amounts of data.
+</p>
+<p>
+This is release 11gR2.2.0.26 Enterprise Edition of Oracle NoSQL Database.
+<!-- late release will contain a changelog
+  A complete and
+  detailed list of changes can be found in <a href="changelog.html">the
+  change log page</a>.<br> -->
+</p>
+<h3>Differences Between Release 1.0 and Release 2.0</h3>
+<p>
+This release of the product includes many important changes for both store
+administrators and developers. This section briefly highlights those
+changes. For a complete listing of all the changes made to Oracle NoSQL
+Database for this release (including all bug fixes) see the
+<a href="changelog.html">change log</a>.
+</p>
+<p>
+    This release of Oracle NoSQL Database comes in two distributions:
+    Community Edition (CE) and Enterprise Edition (EE). The CE version is
+    open source. It ships with source code and is released under the Affero
+    General Public License (aGPL v3).
+</p>
+<p>
+    The EE version does not include source code and it ships with an Oracle
+    license. The EE version also includes two features not found in the CE
+    version: SNMP support for monitoring the store, and Oracle External
+    Tables support.
+</p>
+
+
+<p>
+<i>System administrators</i> need to be aware of the following changes to the
+product:
+</p>
+<ul>
+    <li>
+        <p>
+            Where in Release 1.0 the term 'replication group' was used, now
+            the term 'shard' is used.
+    </li>
+    <li>
+        <p>
+            The size of the store can now grow. In the previous release,
+            the resources available to the store were fixed at installation
+            time.  In this release, new Storage Nodes can be added to the
+            store.
+         </p>
+         <p>
+            The act of adding new Storage Nodes to your store, and then
+            growing it so that Replication Nodes are added, is considered a
+            part of store topology management.
+         </p>
+         <p>
+            For more information, see
+	    <a href="AdminGuide/managing-topology.html">Determining
+	      your Store's Configuration</a>.
+         </p>
+    </li>
+    <li>
+        <p>
+            This release of the product adds the ability to monitor the
+            store using either the Simple Network Management Protocol
+            (SNMP) or the Java Management Extensions (JMX). For information
+            on how to enable monitoring using these interfaces, see
+            <a href="AdminGuide/standardized-monitoring.html">
+                Standardized Monitoring Interfaces
+            </a> in the <i>Oracle NoSQL Database Administrator's Guide</i>.
+            For information on what you can monitor using JMX, see
+            the
+            <a href="javadoc/oracle/kv/mgmt/jmx/package-summary.html">
+                oracle.kv.mgmt.jmx package</a>.
+            For information on what you can monitor using SNMP, see
+            the <a href="../lib/nosql.mib">nosql.mib</a> file.
+        </p>
+        <p>
+            Note that SNMP support can only be found in the EE
+            distribution.
+        </p>
+    </li>
+    <li>
+        <p>
+            In Release 1.0, it was possible to use the Admin Console (an
+            HTML-based graphical user interface) to configure the store.
+            With this release of the product, you can only use the Admin
+            Console to monitor the store. Now, you use the command line
+            interface exclusively to administer and configure the store.
+        </p>
+    </li>
+    <li>
+        <p>
+            The Command Line Interface used to configure and monitor the
+            store has changed, resulting in a large number of syntactical
+            changes to CLI commands. Any CLI scripts written for Oracle
+            NoSQL Database Release 1 will therefore have to be revised
+            before they can be used with this release of the product.
+        </p>
+    </li>
+    <li>
+        <p>
+            It was strongly recommended for Oracle NoSQL Database Release 1
+            that Storage Nodes be configured with one and only Replication
+            Nodes. This was because the physical characteristics of the
+            Storage Node were not factored into decisions about store
+            layout. In Release 2, Storage Node characteristics and shard
+            availability are used to guide store layout. Consequently, a
+            single Storage Node can now effectively host multiple
+            Replication Nodes if it has sufficient resources.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release adds support for the Avro data format. The usage
+            of this format is mostly of concern to developers, however Avro
+            support requires that Avro schema (which is specified using
+            JSON) be added and maintained in the store. While the writing
+            of the Avro schemas should by performed by a development team,
+            the management of the schema in the store is of concern to the
+            store administrator.
+        </p>
+        <p>
+            For information on how to add and manage schema in the store,
+            see <a href="AdminGuide/provideschema.html">Managing Avro Schema</a> in the
+            <i>Oracle NoSQL Database Administrator's Guide</i>.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release adds support for Oracle external tables, which allows
+            data contained in the NoSQL store to be read into Oracle
+            Database. This is a read-only mechanism.
+        </p>
+        <p>
+            See the
+            <a href="javadoc/oracle/kv/exttab/package-summary.html">
+                oracle.kv.exttab package summary</a>
+            for more information.
+         </p>
+        <p>
+            Note that external tables support can only be found in the EE
+            distribution.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release provides version 3 of the Admin and version 2 of
+            the Replication Node components. This results in on-disk format
+            changes which affect internal data stored by these components.
+            The changes are forward compatible in that new version
+            components can read data created by old version components, but
+            old version components cannot read data created by new
+            components. Because of this, after upgrade to Release 2, the
+            system administrator cannot revert the store to Release 1.
+        </p>
+    </li>
+</ul>
+
+<p>
+<i>Developers</i> need to be aware of the following changes to the
+product:
+</p>
+<ul>
+    <li>
+        <p>
+            This release adds support for the Avro data format. In Release
+            1.0, developers were responsible for the serialization
+            mechanism used to place data in the value portion of a store's
+            record. Now, you can use Avro to perform this function, which
+            provides an extremely compact, schema-based binary data format.
+            The usage of Avro requires you to define a schema (using JSON)
+            for the data contained in a record's value.
+        </p>
+        <p>
+            To support planned future features of the product, it is
+            <i>strongly</i> recommended to use the Avro data format
+            wherever possible.
+        </p>
+        <p>
+            For information on creating Avro schemas, see Chapter 7 in the
+            <i>Getting Started Guide</i>,
+            <a href="GettingStartedGuide/avroschemas.html">Avro Schemas</a>.
+            For information on serializing/deserializing values that use
+            the Avro data format, see Chapter 8 in the <i>Getting Started
+                Guide</i>,
+            <a href="GettingStartedGuide/avrobindings.html">Avro Bindings</a>.
+        </p>
+    </li>
+    <li>
+        <p>
+            The Avro support provided in this release also brings with it
+            a JSON binding for storing schema-based JSON data. This is of
+            interest to developers who want to integrate Oracle NoSQL
+            Database with existing JSON-based data sources and systems.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release adds support for large objects. Large object (LOB)
+            support allows you to stream data directly to and from
+            the store without materializing the data. This is useful for
+            situations where the size of data items might threaten to
+            disrupt your Java Virtual Machine's Garbage Collection
+            performance.
+        </p>
+        <p>
+            LOB support requires you to use a specific API for
+            reading/writing/deleting records in the store. It also requires
+            you to identify LOB records using keys with a specific suffix.
+        </p>
+        <p>
+            For more information on LOB support, see
+            <a href="GettingStartedGuide/lob.html">Using Large Objects</a>
+            in the Oracle NoSQL Database Getting Started Guide.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release provides a C API for developing NoSQL DB clients.
+            The C API makes use of the Java Native Interface, and as such
+            requires the presence of a Java Virtual Machine in order to
+            run.
+        </p>
+        <p>
+            The C API is described in the
+            <i>Oracle NoSQL Database C API Reference Guide</i> which is available as a separate download.
+        </p>
+    </li>
+    <li>
+        <p>
+            This release adds support for Oracle external tables, which allows
+            data contained in the NoSQL store to be read into Oracle
+            Database. This is a read-only mechanism.
+        </p>
+        <p>
+            See the
+            <a href="javadoc/oracle/kv/exttab/package-summary.html">
+                oracle.kv.exttab package summary
+            </a> for more information.
+         </p>
+        <p>
+            Note that external tables support can only be found in the EE
+            distribution.
+        </p>
+    </li>
+</ul>
+
+<h3>Known Issues</h3>
+<p>
+In the Community Edition, the build.xml file is known to not work properly for building from source.
+</p>
+<font size="1">Copyright (c) 1996, 2013 Oracle and/or its affiliates.  All rights reserved.</font>
+</div>
+<!-- end docMain -->
+</body>
+</html>

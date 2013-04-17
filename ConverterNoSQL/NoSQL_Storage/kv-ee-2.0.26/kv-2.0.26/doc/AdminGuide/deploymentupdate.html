@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Updating an Existing Oracle NoSQL Database Deployment</title>
+    <link rel="stylesheet" href="gettingStarted.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="start" href="index.html" title="Oracle NoSQL Database Administrator's Guide" />
+    <link rel="up" href="procedures.html" title="Chapter 7. Administrative Procedures" />
+    <link rel="prev" href="removestore.html" title="Removing an Oracle NoSQL Database Deployment" />
+    <link rel="next" href="fixhaportrange.html" title="Fixing Incorrect Storage Node HA Port Ranges" />
+  </head>
+  <body>
+    <div xmlns="" class="navheader">
+      <div class="libver">
+        <p>Library Version 11.2.2.0</p>
+      </div>
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">Updating an Existing Oracle NoSQL Database Deployment</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="removestore.html">Prev</a> </td>
+          <th width="60%" align="center">Chapter 7. Administrative Procedures</th>
+          <td width="20%" align="right"> <a accesskey="n" href="fixhaportrange.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both"><a id="deploymentupdate"></a>Updating an Existing Oracle NoSQL Database Deployment</h2>
+          </div>
+        </div>
+      </div>
+      <p>
+            This section describes how to update your Oracle NoSQL Database deployment
+            should Oracle release a software update.
+        </p>
+      <p>
+            When Oracle NoSQL Database is first installed, it is placed in a KVHOME
+            directory, which may be per-machine, or optionally be shared by
+            multiple Storage Nodes (that is, via NFS). Here, we call this
+            existing KVHOME location, <code class="literal">OLD_KVHOME</code>.
+        </p>
+      <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <h3 class="title">Note</h3>
+        <p>
+                It is useful for installations to adopt a convention for
+                KVHOME that includes the release number. Always use a
+                KVHOME location such as
+                <code class="literal">/var/kv/kv-M.N.O</code>, where
+                <code class="literal">M.N.O</code> are the release.major.minor
+                numbers. This can be easily achieved by simply
+                unzip/untaring the distribution into a common directory
+                (/var/kv in this example). 
+            </p>
+      </div>
+      <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+        <h3 class="title">Note</h3>
+        <p>
+                Installing new software requires that each node be restarted.
+                Oracle NoSQL Database is a replicated system, so to avoid excessive failover events it
+                is recommended that any node that is running as a MASTER be
+                restarted after all those marked REPLICA. This command tells
+                you which nodes are MASTER and REPLICA: 
+            </p>
+        <pre class="programlisting">java -jar KVHOME/lib/kvstore.jar ping -host &lt;hostname&gt; \
+-port &lt;port&gt;</pre>
+        <p>
+                Use the host and registry port for any active node in the
+                store. 
+            </p>
+      </div>
+      <p>
+            To upgrade to new software, for each node (machine) in the system
+            do the following steps. These steps should be done serially to minimize
+            possible performance impact: 
+        </p>
+      <div class="orderedlist">
+        <ol type="1">
+          <li>
+            <p>
+                    Place the updated software in a new KVHOME directory —
+                    referred to here as NEW_KVHOME. If nodes share this
+                    directory using NFS, this only needs to be done once for
+                    each shared directory 
+                </p>
+          </li>
+          <li>
+            <p>
+                    If you have configured the node to automatically start the
+                    Storage Node Agent on reboot using /etc/init.d, Upstart, or
+                    some other mechanism (for example, using 
+                    <code class="literal">nohup java -jar KVHOME/lib/kvstore.jar start -root &lt;kvroot&gt; ...&amp;</code> ),
+                    first modify that script to point to NEW_KVHOME. 
+                </p>
+          </li>
+          <li>
+            <p>
+                    For each KVROOT (usually, once per node):
+                </p>
+            <div class="orderedlist">
+              <ol type="a">
+                <li>
+                  <p>
+                            Stop the Storage Node using the old code:
+                        </p>
+                  <pre class="programlisting">java -jar OLD_KVHOME/lib/kvstore.jar stop -root &lt;kvroot&gt; \
+[-config &lt;configfile&gt;]</pre>
+                </li>
+                <li>
+                  <p>
+                            Restart the Storage Node using the new code:
+                        </p>
+                  <pre class="programlisting">nohup java -jar NEW_KVHOME/lib/kvstore.jar start -root &lt;kvroot&gt; \
+[-config &lt;configfile&gt;]&amp; </pre>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <p>
+                    Make sure that any administrative scripts or other files
+                    that reference OLD_KVHOME have been changed.
+                </p>
+          </li>
+        </ol>
+      </div>
+      <p>
+            Once you are done, OLD_KVHOME can be removed.
+        </p>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="removestore.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="procedures.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="fixhaportrange.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">Removing an Oracle NoSQL Database Deployment </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> Fixing Incorrect Storage Node HA Port Ranges</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Determining the Per-Node Cache Size</title>
+    <link rel="stylesheet" href="gettingStarted.css" type="text/css" />
+    <meta name="generator" content="DocBook XSL Stylesheets V1.73.2" />
+    <link rel="start" href="index.html" title="Oracle NoSQL Database Administrator's Guide" />
+    <link rel="up" href="installplanning.html" title="Chapter 2. Planning Your Installation" />
+    <link rel="prev" href="store-config.html" title="Determine the Store's Configuration" />
+    <link rel="next" href="plans.html" title="Chapter 3. Plans" />
+  </head>
+  <body>
+    <div xmlns="" class="navheader">
+      <div class="libver">
+        <p>Library Version 11.2.2.0</p>
+      </div>
+      <table width="100%" summary="Navigation header">
+        <tr>
+          <th colspan="3" align="center">Determining the Per-Node Cache Size</th>
+        </tr>
+        <tr>
+          <td width="20%" align="left"><a accesskey="p" href="store-config.html">Prev</a> </td>
+          <th width="60%" align="center">Chapter 2. Planning Your Installation</th>
+          <td width="20%" align="right"> <a accesskey="n" href="plans.html">Next</a></td>
+        </tr>
+      </table>
+      <hr />
+    </div>
+    <div class="sect1" lang="en" xml:lang="en">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both"><a id="select-cache-strategy"></a>Determining the Per-Node Cache Size</h2>
+          </div>
+        </div>
+      </div>
+      <div class="toc">
+        <dl>
+          <dt>
+            <span class="sect2">
+              <a href="select-cache-strategy.html#cache-size-advice">Sizing Advice</a>
+            </span>
+          </dt>
+          <dt>
+            <span class="sect2">
+              <a href="select-cache-strategy.html#cache-size-numbers">Arriving at Sizing Numbers</a>
+            </span>
+          </dt>
+        </dl>
+      </div>
+      <p>
+          Sizing your in-memory cache correctly is an important part of
+          meeting your store's performance goals. Disk I/O is an expensive
+          operation from a performance point of view; the more operations
+          you can service from cache, the better your store's performance
+          is going to be. 
+      </p>
+      <p>
+          There are several disk cache strategies that you can use, each of
+          which is appropriate for different workloads. However, Oracle NoSQL Database was
+          designed for applications that cannot place all their data in
+          memory, so this release of the product describes a caching
+          strategy that is appropriate for that class of workload.
+      </p>
+      <p>
+          Before continuing, it is worth noting that there are two caches
+          that we are concerned with:
+      </p>
+      <div class="itemizedlist">
+        <ul type="disc">
+          <li>
+            <p>
+                  JE cache size. The underlying storage engine used by
+                  Oracle NoSQL Database is Berkeley DB Java Edition (JE). JE provides 
+                  an in-memory cache. For the most part, this is the cache
+                  size that you most need to think about, because it is the
+                  one that you have the most control over.
+              </p>
+          </li>
+          <li>
+            <p>
+                  The file system (FS) cache. Modern operating systems
+                  attempt to improve their I/O subsystem performance
+                  by providing a cache, or buffer, that is dedicated to
+                  disk I/O. By using the FS cache, read operations can be
+                  performed very quickly if the reads can be satisfied by
+                  data that is stored there.
+              </p>
+          </li>
+        </ul>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title"><a id="cache-size-advice"></a>Sizing Advice</h3>
+            </div>
+          </div>
+        </div>
+        <p>
+              JE uses a Btree to organize the data that it stores. Btrees
+              provide a tree-like data organization structure that allows
+              for rapid information lookup. These structures consist of
+              interior nodes (INs) and leaf nodes (LNs). INs are used to
+              navigate to data. LNs are where the data is actually stored
+              in the Btree.
+          </p>
+        <p>
+              Because of the very large data sets that an Oracle NoSQL Database
+              application is expected to use, it is unlikely that you can
+              place even a small fraction of your data into JE's in-memory
+              cache. Therefore, the best strategy is to size the cache such
+              that it is large enough to hold most, if not all, of your
+              database's INs, and leave the rest of your node's memory
+              available for system overhead (negligible) and the FS cache.
+          </p>
+        <p>
+              You cannot control whether INs or LNs are being served out of the
+              FS cache, so sizing the JE cache to be large enough for your INs
+              is simply sizing advice. Both INs and LNs can take advantage of
+              the FS cache. Because INs and LNs do not have Java object
+              overhead when present in the FS cache (as they would when using
+              the JE cache), they can make more effective use of the FS cache
+              memory than the JE cache memory.
+          </p>
+        <p>
+              Of course, in order for this strategy to be truly effective, your
+              data access patterns should not be completely random. Some subset
+              of your key-value pairs must be favored over others in order to
+              achieve a useful cache hit rate. For applications where the
+              access patterns are not random, the high file system cache hit
+              rates on LNs and INs can increase throughput and decrease average
+              read latency.  Also, larger file system caches, when properly
+              tuned, can help reduce the number of stalls during sequential
+              writes to the log files, thus decreasing write latency. Large
+              caches also permit more of the writes to be done asynchronously,
+              thus improving throughput. 
+          </p>
+        <p>
+              Assuming a reasonable amount of clustering in your data access
+              patterns, your disk subsystem should be capable of delivering
+              roughly the following throughput if you size your cache
+              as described here:
+          </p>
+        <pre class="programlisting">((readOps/Sec + createOps/Sec + updateOps/Sec + deleteOps/Sec) *
+(1-cache hit fraction))/nReplicationNodes =&gt; throughput in IOPs/sec </pre>
+        <p>
+                The above rough calculation assumes that each create,
+                update, and delete operation results in a random I/O
+                operation. Due to the log structured nature of the
+                underlying storage system, this is not typically the case
+                and application-level write operations result in batched
+                sequential synchronous write operations. So the above rough
+                calculation may overstate the IOPs requirements, but it
+                does provide a good conservative number for estimation
+                purposes.
+            </p>
+        <p>
+                For example, if a KVStore with two shards and a
+                replication factor of 3 (for a total of six replication
+                nodes) needs to deliver an aggregate 2000 ops/sec (summing
+                all read, create, update and delete operations), and a 50%
+                cache hit ratio is expected, then the I/O subsystem on each
+                replication node should be able to deliver: 
+            </p>
+        <pre class="programlisting">((2000 ops/sec) * (1 - 0.5)) / 6 nodes = 166 IOPs/sec </pre>
+        <p>
+                This is roughly in the range of what a single spindle disk
+                subsystem can provide. For higher throughput, a
+                multi-spindle I/O subsystem may be more appropriate.
+                Another option is to increase the number of shards and
+				therefore the number of replication nodes and therefore disks,
+				thus spreading out the I/O load. 
+            </p>
+      </div>
+      <div class="sect2" lang="en" xml:lang="en">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title"><a id="cache-size-numbers"></a>Arriving at Sizing Numbers</h3>
+            </div>
+          </div>
+        </div>
+        <p>
+              In order to identify an appropriate JE cache size for your Big
+              Data application, use the
+              <code class="classname">com.sleepycat.je.util.DbCacheSize</code>
+              utility. This utility requires you to provide the number of
+              records and the size of your keys. You can also optionally
+              provide other information, such as your expected data size.
+              The utility then provides a short table of information. The
+              number you want is provided in the <code class="literal">Cache Size</code>
+              column, and in the <code class="literal">Minimum, internal nodes only</code>
+              row.
+          </p>
+        <p>
+              For example, to determine the JE cache size for an
+              environment consisting of 100 million records, with an
+              average key size of 12 bytes, and an average value size of
+              1000 bytes, invoke <code class="classname">DbCacheSize</code>
+              as follows:
+          </p>
+        <pre class="programlisting">java -d64 -XX:+UseCompressedOops -jar je.jar DbCacheSize \
+-key 12 -data 1000 -records 100000000
+
+=== Environment Cache Overhead ===
+
+3,156,253 minimum bytes
+
+To account for JE daemon operation and record locks,
+a significantly larger amount is needed in practice.
+
+=== Database Cache Size ===
+
+ Minimum Bytes    Maximum Bytes   Description
+---------------  ---------------  -----------
+  2,888,145,968    3,469,963,312  Internal nodes only
+107,499,427,952  108,081,245,296  Internal nodes and leaf nodes
+
+=== Internal Node Usage by Btree Level ===
+
+ Minimum Bytes    Maximum Bytes      Nodes    Level
+---------------  ---------------  ----------  -----
+  2,849,439,456    3,424,720,608   1,123,596    1
+     38,275,968       44,739,456      12,624    2
+        427,512          499,704         141    3
+          3,032            3,544           1    4              </pre>
+        <p>
+               The numbers you want are in the 
+               <code class="literal">Database Cache Size</code> section of the output. In the
+               <code class="literal">Minimum Bytes</code> column, there are two
+               numbers: One for internal nodes only, and one for internal
+               nodes plus leaf nodes. What this means is that the
+               absolutely minimum cache size you should use for a dataset
+               of this size is 2.9 GB. However, that stores only your
+               internal database structure; the cache is not large
+               enough to hold any data.
+           </p>
+        <p>
+               The second number in the output represents the minimum cache
+               size required to hold your entire database, including all
+               data. At 107.5 GB, it is highly unlikely that you
+               have machines with that much RAM. Which means that you now
+               have to make some decisions about your data. Namely, you
+               have to decide how large your <span class="emphasis"><em>working
+                   set</em></span> is. Your working set is the data that
+               your application accesses so frequently that it is worth
+               placing it in the in-memory cache. How large your working set
+               has to be is determined by the nature of your application.
+               Hopefully your working set is small enough to fit into the
+               amount of RAM available to your node machines, as this 
+               provides you the best read throughput by avoiding a lot of
+               disk I/O.
+           </p>
+        <pre class="programlisting">java -d64 -XX:+UseCompressedOops -jar je.jar DbCacheSize \
+-key 12 -data 1000 -records 10000000
+
+=== Environment Cache Overhead ===
+
+3,156,253 minimum bytes
+
+To account for JE daemon operation and record locks,
+a significantly larger amount is needed in practice.
+
+=== Database Cache Size ===
+
+ Minimum Bytes    Maximum Bytes   Description
+---------------  ---------------  -----------
+    288,816,824      346,998,968  Internal nodes only
+ 10,749,982,264   10,808,164,408  Internal nodes and leaf nodes
+
+=== Internal Node Usage by Btree Level ===
+
+ Minimum Bytes    Maximum Bytes      Nodes    Level
+---------------  ---------------  ----------  -----
+    284,944,960      342,473,280     112,360    1
+      3,826,384        4,472,528       1,262    2
+         42,448           49,616          14    3
+          3,032            3,544           1    4
+          </pre>
+        <p>
+                 Not surprisingly, our cache sizes are now approximately 10%
+                 of what they were for our entire data set size (because we
+                 decided that our working set is about 10% of our entire data
+                 set size). That is, our working set can be placed in a cache
+                 that is about 10.8 GB in size. This should be easily possible
+                 for modern commodity hardware.
+             </p>
+        <p>
+              For more information on using the <code class="literal">DbCacheSize</code>
+              utility, see this Javadoc page:
+              <a class="ulink" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/util/DbCacheSize.html" target="_top">http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/util/DbCacheSize.html</a>.
+              Note that in order to use this utility, you must add the
+              <code class="literal">&lt;KVHOME&gt;/lib/je.jar</code> file to your Java classpath.
+               &lt;KVHOME&gt; represents the directory where you placed the Oracle NoSQL Database
+               package files.
+          </p>
+        <p>
+              Having used <code class="classname">DbCacheSize</code>
+              to obtain a targeted cache size value, you need to
+              find out how big your Java heap must be in order to
+              support it. To do this, use the
+              <code class="literal">KVS Node Heap Shaping and Sizing</code>
+              spreadsheet. Plug the number you obtained from
+              <code class="classname">DbCacheSize</code> into cell 8B of the
+              spreadsheet. Cell 29B then shows you how large to make
+              the Java heap size.
+          </p>
+        <p>
+                Your file system cache is whatever memory is left
+                over on your node after you subtract system overhead and the
+                Java heap size.
+          </p>
+        <p>
+              You can find the <code class="literal">KVS Node Heap Shaping and
+                  Sizing</code> spreadsheet in your Oracle NoSQL Database distribution
+              here: <code class="literal">&lt;KVHOME&gt;/doc/misc/MemoryConfigPlanning.xls</code>
+          </p>
+      </div>
+    </div>
+    <div class="navfooter">
+      <hr />
+      <table width="100%" summary="Navigation footer">
+        <tr>
+          <td width="40%" align="left"><a accesskey="p" href="store-config.html">Prev</a> </td>
+          <td width="20%" align="center">
+            <a accesskey="u" href="installplanning.html">Up</a>
+          </td>
+          <td width="40%" align="right"> <a accesskey="n" href="plans.html">Next</a></td>
+        </tr>
+        <tr>
+          <td width="40%" align="left" valign="top">Determine the Store's Configuration </td>
+          <td width="20%" align="center">
+            <a accesskey="h" href="index.html">Home</a>
+          </td>
+          <td width="40%" align="right" valign="top"> Chapter 3. Plans</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
