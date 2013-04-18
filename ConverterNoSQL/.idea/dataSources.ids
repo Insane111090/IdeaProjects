@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="Oracle" version="Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production&#xa;With the Partitioning, Oracle Label Security, OLAP, Data Mining,&#xa;Oracle Database Vault and Real Application Testing options" jdbc-version="11.2" driver-name="Oracle JDBC driver" driver-version="11.2.0.3.0" uuid="ef5a602b-af06-4517-90c2-1876099436f0">
+    <extra-name-characters>$#</extra-name-characters>
+    <identifier-quote-string>&quot;</identifier-quote-string>
+    <synchronize>true</synchronize>
+    <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+    <jdbc-url>jdbc:oracle:thin:@oracle11.avalon.ru:1521:orcl</jdbc-url>
+    <user-name>olgbel</user-name>
+    <user-password>dfc5dfc6dfcddfc8dfcfdfc6</user-password>
+    <schema-pattern>*.ANDGAVR</schema-pattern>
+    <default-schemas>*.ANDGAVR</default-schemas>
+    <default-dialect>Oracle</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/avro.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/kvclient.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/kvstore-ee.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/miglayout-4.0.jar!/</url>
+      </library>
+      <library>
+        <url>jar://$PROJECT_DIR$/.idea/Lib/ojdbc6-11.2.0.3.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>

@@ -6,7 +6,6 @@ package RDBMS;
  * Time: 15:42
  * To change this template use File | Settings | File Templates.
  */
-import com.intellij.ui.table.JBTable;
 
 import java.awt.event.ActionEvent;
 import java.sql.*;
@@ -24,7 +23,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener
 {
 
     static JPanel tableFieldsPanel = new Util.MigPanel("fillx, flowy");
-    static final JTable fieldsTable = new JBTable(new TableModel());
+    static final JTable fieldsTable = new JTable(new TableModel());
     static JLabel showMajorKey = new JLabel();
     static JLabel showMinorKey = new JLabel();
     static JLabel showValue = new JLabel();

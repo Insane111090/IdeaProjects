@@ -6,8 +6,7 @@ package RDBMS;
  * Time: 14:24
  * To change this template use File | Settings | File Templates.
  */
-import com.intellij.ui.components.JBList;
-import com.intellij.ui.components.JBScrollPane;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,9 +33,9 @@ public class MainWindow
      */
     static public JTextField connectedUrlTxt = new JTextField();
     static final ConnectionRDBMSConfigDialog connectionSetupDialog = new ConnectionRDBMSConfigDialog();
-    static JList listOfTables = new JBList();//List of result tables from Database
-    static JScrollPane scrollPaneonTableList = new JBScrollPane();
-    static JScrollPane scrollPaneonDescTab = new JBScrollPane();
+    static JList listOfTables = new JList();//List of result tables from Database
+    static JScrollPane scrollPaneonTableList = new JScrollPane();
+    static JScrollPane scrollPaneonDescTab = new JScrollPane();
     static JLabel countTablesLbl = new JLabel("Count of tables: ");
     static final JTextField countTablesTxt = new JTextField();
     static final JTextPane descriptionTables = new JTextPane();
