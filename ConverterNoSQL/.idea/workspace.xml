@@ -6,25 +6,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="356c3b40-6915-46a6-9203-eb683ca5cf9f" name="Default" comment="New IDE">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="DELETED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\MainWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\PartsOfKeyforNoSQL.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\TableModel.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\Util.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\DatabaseWrapper.java" afterPath="$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ConverterNoSQL.iml" afterPath="$PROJECT_DIR$/ConverterNoSQL.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java" afterPath="$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/MainWindow.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366268828271" ignored="false" />
     <file path="/PartsOfKeyforNoSQL.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366201984707" ignored="false" />
-    <file path="/fragment.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366214083003" ignored="false" />
+    <file path="/fragment.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366269679677" ignored="false" />
     <file path="/a.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366267941587" ignored="false" />
     <file path="/a.sql" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366216437661" ignored="false" />
     <file path="/sample.java" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366267917814" ignored="false" />
-    <file path="/Dummy.txt" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366268735496" ignored="false" />
+    <file path="/Dummy.txt" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366269430553" ignored="false" />
     <file path="/Data Source" changelist="356c3b40-6915-46a6-9203-eb683ca5cf9f" time="1366264119734" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +32,9 @@
     <rightPanel />
     <splitter proportion="0.9704861" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/ConverterNoSQL$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1366269205975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -50,6 +47,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -86,7 +84,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -99,62 +96,20 @@
       <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RBDMS/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#256#283#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TableModel.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TableModel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RBDMS/TableModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="17" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RBDMS/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="275" selection-end="275" vertical-scroll-proportion="0.5067751">
+            <state line="15" column="9" selection-start="305" selection-end="305" vertical-scroll-proportion="0.288">
               <folding>
-                <element signature="e#7002#7298#0" expanded="true" />
-                <element signature="e#7287#7288#0" expanded="true" />
-                <element signature="e#7395#7662#0" expanded="true" />
-                <element signature="e#7651#7652#0" expanded="true" />
-                <element signature="e#7703#7966#0" expanded="true" />
-                <element signature="e#7955#7956#0" expanded="true" />
-                <element signature="e#8091#8445#0" expanded="true" />
-                <element signature="e#8434#8435#0" expanded="true" />
-                <element signature="e#8513#8691#0" expanded="true" />
-                <element signature="e#8680#8681#0" expanded="true" />
-                <element signature="e#8734#9157#0" expanded="true" />
-                <element signature="e#9146#9147#0" expanded="true" />
-                <element signature="e#9243#10594#0" expanded="true" />
-                <element signature="e#10583#10584#0" expanded="true" />
-                <element signature="e#16368#16604#0" expanded="true" />
-                <element signature="e#16589#16590#0" expanded="true" />
-                <element signature="e#16702#19896#0" expanded="true" />
-                <element signature="e#19881#19882#0" expanded="true" />
-                <element signature="e#19972#21502#0" expanded="true" />
-                <element signature="e#20049#20079#0" expanded="true" />
-                <element signature="e#21487#21488#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PartsOfKeyforNoSQL.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RBDMS/PartsOfKeyforNoSQL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#4202#4232#0" expanded="true" />
-                <element signature="e#5497#5527#0" expanded="true" />
-                <element signature="e#6374#6404#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,11 +118,35 @@
       <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="14" vertical-scroll-proportion="0.0">
+            <state line="18" column="35" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
               <folding>
-                <marker date="1366268363382" expanded="true" signature="1498:1662" placeholder="Select table..all_tables..." />
-                <marker date="1366268363382" expanded="true" signature="2332:2971" placeholder="select colum..user_tab_cols..." />
-                <marker date="1366268363382" expanded="true" signature="3807:4446" placeholder="select colum..user_tab_cols..." />
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+                <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+                <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PartsOfKeyforNoSQL.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RBDMS/PartsOfKeyforNoSQL.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="26" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RBDMS/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="37" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,11 +184,11 @@
         <option value="$PROJECT_DIR$/src/DatabaseWrapper.java" />
         <option value="$PROJECT_DIR$/src/PartsOfKeyforNoSQL.java" />
         <option value="db-console:/d28aacb3/ef5a602b-af06-4517-90c2-1876099436f0/" />
-        <option value="$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java" />
         <option value="$PROJECT_DIR$/src/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/RBDMS/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/RBDMS/TableModel.java" />
         <option value="$PROJECT_DIR$/src/RBDMS/Util.java" />
+        <option value="$PROJECT_DIR$/src/RBDMS/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java" />
         <option value="$PROJECT_DIR$/src/RBDMS/PartsOfKeyforNoSQL.java" />
       </list>
     </option>
@@ -262,7 +241,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -301,11 +279,26 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConverterNoSQL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConverterNoSQL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/RBDMS" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -317,12 +310,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainWindow">
     <configuration default="false" name="MainWindow" type="Application" factoryName="Application" temporary="true">
@@ -356,6 +349,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -382,19 +388,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -443,8 +436,9 @@
       <item index="0" class="java.lang.String" itemvalue="Application.MainWindow" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.MainWindow" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MainWindow" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -490,7 +484,11 @@
       <created>1366217257286</created>
       <updated>1366217257286</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="New IDE">
+      <created>1366268925628</created>
+      <updated>1366268925628</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -515,7 +513,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32767403" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -524,18 +522,19 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6700855" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3270869" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3168654" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16136363" sideWeight="0.2871795" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.6717949" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270869" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32767403" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16693678" sideWeight="0.6713533" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15984848" sideWeight="0.67291313" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31794873" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14772727" sideWeight="0.68313456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3168654" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.68313456" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -611,11 +610,42 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/RBDMS/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="20" selection-start="2294" selection-end="2294" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RBDMS/PartsOfKeyforNoSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+            <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+            <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RBDMS/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#256#283#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -624,9 +654,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="36" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1366268363382" expanded="true" signature="1498:1662" placeholder="Select table..all_tables..." />
-            <marker date="1366268363382" expanded="true" signature="2332:2971" placeholder="select colum..user_tab_cols..." />
-            <marker date="1366268363382" expanded="true" signature="3807:4446" placeholder="select colum..user_tab_cols..." />
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+            <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+            <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
           </folding>
         </state>
       </provider>
@@ -634,7 +665,9 @@
     <entry file="file://$PROJECT_DIR$/src/RBDMS/TableModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="21" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -642,9 +675,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="27" selection-start="1622" selection-end="1622" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1366268363382" expanded="true" signature="1498:1662" placeholder="Select table..all_tables..." />
-            <marker date="1366268363382" expanded="true" signature="2332:2971" placeholder="select colum..user_tab_cols..." />
-            <marker date="1366268363382" expanded="true" signature="3807:4446" placeholder="select colum..user_tab_cols..." />
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+            <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+            <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
           </folding>
         </state>
       </provider>
@@ -653,9 +687,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="53" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1366268363382" expanded="true" signature="1498:1662" placeholder="Select table..all_tables..." />
-            <marker date="1366268363382" expanded="true" signature="2332:2971" placeholder="select colum..user_tab_cols..." />
-            <marker date="1366268363382" expanded="true" signature="3807:4446" placeholder="select colum..user_tab_cols..." />
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+            <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+            <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
           </folding>
         </state>
       </provider>
@@ -670,69 +705,56 @@
         <state line="723" column="9" selection-start="27432" selection-end="27432" vertical-scroll-proportion="-0.6666667" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_13/jre/lib/rt.jar!/java/net/URLClassLoader.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="14" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1366268363382" expanded="true" signature="1498:1662" placeholder="Select table..all_tables..." />
-            <marker date="1366268363382" expanded="true" signature="2332:2971" placeholder="select colum..user_tab_cols..." />
-            <marker date="1366268363382" expanded="true" signature="3807:4446" placeholder="select colum..user_tab_cols..." />
-          </folding>
-        </state>
+        <state line="48" column="0" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.71823204" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RBDMS/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="115" selection-end="115" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#256#283#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RBDMS/DatabaseWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="35" selection-start="484" selection-end="484" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366269999426" expanded="true" signature="1483:1647" placeholder="Select table..all_tables..." />
+            <marker date="1366269999426" expanded="true" signature="2317:2956" placeholder="select colum..user_tab_cols..." />
+            <marker date="1366269999426" expanded="true" signature="3792:4431" placeholder="select colum..user_tab_cols..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RBDMS/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="37" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RBDMS/PartsOfKeyforNoSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
+        <state line="32" column="26" selection-start="1012" selection-end="1012" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#4202#4232#0" expanded="true" />
-            <element signature="e#5497#5527#0" expanded="true" />
-            <element signature="e#6374#6404#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RBDMS/TableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="17" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RBDMS/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="275" selection-end="275" vertical-scroll-proportion="0.5067751">
+        <state line="15" column="9" selection-start="305" selection-end="305" vertical-scroll-proportion="0.288">
           <folding>
-            <element signature="e#7002#7298#0" expanded="true" />
-            <element signature="e#7287#7288#0" expanded="true" />
-            <element signature="e#7395#7662#0" expanded="true" />
-            <element signature="e#7651#7652#0" expanded="true" />
-            <element signature="e#7703#7966#0" expanded="true" />
-            <element signature="e#7955#7956#0" expanded="true" />
-            <element signature="e#8091#8445#0" expanded="true" />
-            <element signature="e#8434#8435#0" expanded="true" />
-            <element signature="e#8513#8691#0" expanded="true" />
-            <element signature="e#8680#8681#0" expanded="true" />
-            <element signature="e#8734#9157#0" expanded="true" />
-            <element signature="e#9146#9147#0" expanded="true" />
-            <element signature="e#9243#10594#0" expanded="true" />
-            <element signature="e#10583#10584#0" expanded="true" />
-            <element signature="e#16368#16604#0" expanded="true" />
-            <element signature="e#16589#16590#0" expanded="true" />
-            <element signature="e#16702#19896#0" expanded="true" />
-            <element signature="e#19881#19882#0" expanded="true" />
-            <element signature="e#19972#21502#0" expanded="true" />
-            <element signature="e#20049#20079#0" expanded="true" />
-            <element signature="e#21487#21488#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

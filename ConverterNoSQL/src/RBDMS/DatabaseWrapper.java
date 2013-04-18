@@ -1,4 +1,4 @@
-package RBDMS; /**
+/**
  * Created with IntelliJ IDEA.
  * User: agavrilov
  * Date: 17.04.13
