@@ -183,18 +183,20 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener
         });
         connToNoSQLButton.addActionListener(new AbstractAction()
         {
-            private String[] args;
-
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                Process proc;
-                try {
-                    proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvlite");
-                } catch (Throwable ex) {
-                    System.out.println(ex.getMessage());
+	            dispose();
+	            NoSQL.Main var = new NoSQL.Main();
+	            var.setSize(700,600);
+	            var.setVisible(true);
+                //Process proc;
+                //try {
+                //    proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvlite");
+                //} catch (Throwable ex) {
+                 //   System.out.println(ex.getMessage());
 
-                }
+               // }
             }
         });
 
