@@ -12,7 +12,6 @@ import java.util.List;
 
 public class DatabaseWrapper
 {
-
     static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
     static Connection MyConnection;
     static final List<String> tables = new ArrayList<>();
@@ -67,6 +66,7 @@ public class DatabaseWrapper
     {
         tables.clear();
     }
+
   /*
    * Procedure that takes a description of selected table in JTable
    */
