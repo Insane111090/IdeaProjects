@@ -51,7 +51,7 @@ public class DatabaseWrapper
         PreparedStatement statementForTables =
                 MyConnection.prepareStatement("Select table_name from all_tables "
                         + "where not regexp_like(tablespace_name,'SYS.+') "
-                        + "and owner=upper('olgbel')");
+                        + "and owner=upper('andgavr')");
         ResultSet DatabaseResultSet = statementForTables.executeQuery();
 
         while (DatabaseResultSet.next()) {

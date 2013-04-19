@@ -18,7 +18,6 @@ import javax.swing.event.ListSelectionListener;
 
 public class MainWindow
 {
-
     static final JFrame mainForm = new JFrame();
     static final JPanel mainPanel = new Util.MigPanel();//Main Panel
     static final JPanel connectionSettings = new Util.MigPanel();//COnnection settings Panel
@@ -463,8 +462,8 @@ public class MainWindow
                     int port = Integer.decode("1521");//portTxt.getText().toString();//"1521";
                     String url = "jdbc:oracle:thin:@" + server + ":" + port + ":" + sid;
                     try {
-                        DatabaseWrapper.createConnection("olgbel",//usernameTxt.getText(),
-                                "olgbel",//new String(passwordTxt.getPassword()),
+                        DatabaseWrapper.createConnection("andgavr",//usernameTxt.getText(),
+                                "andgavr",//new String(passwordTxt.getPassword()),
                                 url);
                     } catch (SQLException e) {
                         JOptionPane.showMessageDialog(

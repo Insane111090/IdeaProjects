@@ -7,6 +7,8 @@ package RDBMS;
  * To change this template use File | Settings | File Templates.
  */
 
+import NoSQL.NoSQLStorage;
+
 import java.awt.event.ActionEvent;
 import java.sql.*;
 import java.util.ArrayList;
@@ -187,9 +189,9 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener
             public void actionPerformed(ActionEvent e)
             {
 	            dispose();
-	            NoSQL.Main var = new NoSQL.Main();
-	            var.setSize(700,600);
-	            var.setVisible(true);
+	            NoSQLStorage storage = new NoSQLStorage();
+	            storage.setSize(600, 600);
+	            storage.setVisible(true);
                 //Process proc;
                 //try {
                 //    proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvlite");
