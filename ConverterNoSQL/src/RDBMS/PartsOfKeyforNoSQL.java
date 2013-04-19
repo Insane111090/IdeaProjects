@@ -190,7 +190,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener
             {
 	            dispose();
 	            NoSQLStorage storage = new NoSQLStorage();
-	            storage.setSize(600, 600);
+	            storage.setSize(550, 600);
 	            storage.setVisible(true);
                 //Process proc;
                 //try {
