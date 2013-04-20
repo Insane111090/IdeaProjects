@@ -190,8 +190,8 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener
             {
 	            dispose();
 	            NoSQLStorage storage = new NoSQLStorage();
-	            storage.setSize(550, 600);
-	            storage.setVisible(true);
+	           // storage.setSize(550, 600);
+	           // storage.setVisible(true);
                 //Process proc;
                 //try {
                 //    proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvlite");

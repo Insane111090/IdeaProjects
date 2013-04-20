@@ -4,39 +4,42 @@ import oracle.kv.KVStore;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import static RDBMS.Util.MigPanel;
+import static java.lang.System.*;
 
 /**
  *
  * @author agavrilov
  */
-public class NoSQLStorage extends JDialog
+public class NoSQLStorage
 {
-  JPanel noSqlPanel = new MigPanel();
-  final JPanel noSqlConnectionInfo = new MigPanel();
-	final JPanel noSqlInfo = new MigPanel();
-	final JLabel conectedNoSqlLbl = new JLabel("Status: ");
-	final JLabel hostLbl = new JLabel("Host: ");
-	final JLabel portLbl = new JLabel("Port: ");
-	final JLabel storeLbl = new JLabel("Store: ");
-	final JButton startStorage = new JButton("Start NoSQL Storage");
-	final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
-	JTextField portTxt = new JFormattedTextField();
-	JTextField hostTxt = new JFormattedTextField();
-	JTextField storeTxt = new JFormattedTextField();
-	JTextField connNoSqlStatusTxt = new JFormattedTextField("NotConnected");
-	private Process proc;
+	static JFrame frame = new JFrame();
+  static JPanel noSqlPanel = new MigPanel();
+  static final JPanel noSqlConnectionInfo = new MigPanel();
+	static final JPanel noSqlInfo = new MigPanel();
+	static final JLabel conectedNoSqlLbl = new JLabel("Status: ");
+	static final JLabel hostLbl = new JLabel("Host: ");
+	static final JLabel portLbl = new JLabel("Port: ");
+	static final JLabel storeLbl = new JLabel("Store: ");
+	static final JButton startStorage = new JButton("Start NoSQL Storage");
+	static final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
+	static JTextField portTxt = new JFormattedTextField();
+	static JTextField hostTxt = new JFormattedTextField();
+	static JTextField storeTxt = new JFormattedTextField();
+	static JTextField connNoSqlStatusTxt = new JFormattedTextField("NotConnected");
+	private static Process proc;
 
   static String port = "5000";
   static String host = "localhost";
   static String store = "kvstore";
 
-   void CreateForm()
+   static void CreateForm()
   {
 	  noSqlPanel.setBorder(new TitledBorder("Connection to NoSQL Storage"));
 	  noSqlInfo.setBorder(new TitledBorder("Data status"));
@@ -56,25 +59,28 @@ public class NoSQLStorage extends JDialog
 
 	  noSqlPanel.add(noSqlConnectionInfo,"w 600,wrap 10");
 	  noSqlPanel.add(noSqlInfo,"w 550");
+
+	  frame.setContentPane(noSqlPanel);
+	  frame.setVisible(true);
+	  frame.setSize(700,700);
   }
-   public NoSQLStorage()
+   public static void main(String[] args)
   {
 	  CreateForm();
-	  setTitle("NoSQL Storage");
-	  setContentPane(noSqlPanel);
-	  setModal(true);
+	  //setTitle("NoSQL Storage");
+	  //setContentPane(noSqlPanel);
+	  //setModal(true);
 	  /*
 	  Start of the storage
 	   */
 	  startStorage.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  Runtime r = Runtime.getRuntime();
+			  //Runtime r = Runtime.getRuntime();
 			  //proc = null;
 			  try{
-				  proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvl");
-				  System.out.println(proc.getErrorStream().toString());
-
+				  proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar vlite");
+				  out.println(proc.getErrorStream().toString());
 
 			  } catch ( Throwable ex ) {
 				  JOptionPane.showMessageDialog(
@@ -83,9 +89,15 @@ public class NoSQLStorage extends JDialog
 								  "Error",
 								  JOptionPane.ERROR_MESSAGE);
 			  }
-			  System.out.println(proc.exitValue());
-			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
+						while(true){
+							try{
+							Thread.sleep(1000);
+							}catch(Exception ex){}
+							out.println(proc.isAlive());
+						}
 
+			  //System.out.println(proc.exitValue());
+			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
 		  }
 	  });
 
@@ -99,6 +111,6 @@ public class NoSQLStorage extends JDialog
 
 
     //myStore.close();
-    System.out.println("Store closed");
+    out.println("Store closed");
   }
 }
