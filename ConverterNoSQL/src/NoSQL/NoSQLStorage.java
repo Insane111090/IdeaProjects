@@ -1,6 +1,12 @@
 package NoSQL;
 
+import oracle.kv.KVStore;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import static RDBMS.Util.MigPanel;
@@ -49,7 +55,7 @@ public class NoSQLStorage extends JDialog
 	  noSqlConnectionInfo.add(connectToNoSqlBut,"align right");
 
 	  noSqlPanel.add(noSqlConnectionInfo,"w 600,wrap 10");
-	  noSqlPanel.add(noSqlInfo,"w 600");
+	  noSqlPanel.add(noSqlInfo,"w 550");
   }
    public NoSQLStorage()
   {
@@ -57,8 +63,40 @@ public class NoSQLStorage extends JDialog
 	  setTitle("NoSQL Storage");
 	  setContentPane(noSqlPanel);
 	  setModal(true);
-    //ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
-    //KVStore myStore = orastore.getStore();
+	  /*
+	  Start of the storage
+	   */
+	  startStorage.addActionListener(new AbstractAction() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  Runtime r = Runtime.getRuntime();
+			  //proc = null;
+			  try{
+				  proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvl");
+				  System.out.println(proc.getErrorStream().toString());
+
+
+			  } catch ( Throwable ex ) {
+				  JOptionPane.showMessageDialog(
+								  noSqlPanel,
+								  "An error accuses during start KVStore: " + ex.getMessage(),
+								  "Error",
+								  JOptionPane.ERROR_MESSAGE);
+			  }
+			  System.out.println(proc.exitValue());
+			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
+
+		  }
+	  });
+
+	  connectToNoSqlBut.addActionListener(new AbstractAction() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
+			  KVStore myStore = orastore.getStore();
+		  }
+	  });
+
 
     //myStore.close();
     System.out.println("Store closed");
