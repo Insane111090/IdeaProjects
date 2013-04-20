@@ -83,7 +83,7 @@ public class NoSQLStorage extends JDialog
 								  "Error",
 								  JOptionPane.ERROR_MESSAGE);
 			  }
-			  System.out.println(proc.exitValue());
+			  //System.out.println(proc.exitValue());
 			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
 
 		  }
@@ -92,8 +92,8 @@ public class NoSQLStorage extends JDialog
 	  connectToNoSqlBut.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
-			  KVStore myStore = orastore.getStore();
+			  //ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
+			  //KVStore myStore = orastore.getStore();
 		  }
 	  });
 
