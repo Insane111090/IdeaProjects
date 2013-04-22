@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class DatabaseWrapper
 {
@@ -128,4 +129,26 @@ public class DatabaseWrapper
         }
         return descriptionResult.toString();
     }
+	public static void getDataForMajorAndMinorKey(Set<String> majorSet,
+	                                              Set<String> minorSet,
+	                                              String selectedTableName) throws SQLException {
+		StringBuilder resMajor = new StringBuilder();
+		StringBuilder resMinor = new StringBuilder();
+		StringBuilder result = new StringBuilder();
+		for ( String token:majorSet){
+				resMajor.append(token).append("||'/'||");
+			}
+		for (String token2:minorSet){
+			resMinor.append(token2).append("||'/'||");
+		}
+		result.append(resMajor).append("'-/'||").append(resMinor);
+		result.replace(result.lastIndexOf("||"),result.length(),"");
+		  System.out.println(result + " " + selectedTableName);
+		 PreparedStatement getKey = MyConnection.prepareStatement(" select " + result.toString() + " as Keyasd from " + selectedTableName.toString());
+		 //getKey.setString(1,result.toString());
+		 ResultSet getkeyResultSet = getKey.executeQuery();
+		while (getkeyResultSet.next()){
+			System.out.println(getkeyResultSet.getString(1));
+		}
+	}
 }

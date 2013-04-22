@@ -32,7 +32,7 @@ public class MainWindow
      */
     static public JTextField connectedUrlTxt = new JTextField();
     static final ConnectionRDBMSConfigDialog connectionSetupDialog = new ConnectionRDBMSConfigDialog();
-    static JList listOfTables = new JList();//List of result tables from Database
+    public static JList listOfTables = new JList();//List of result tables from Database
     static JScrollPane scrollPaneonTableList = new JScrollPane();
     static JScrollPane scrollPaneonDescTab = new JScrollPane();
     static JLabel countTablesLbl = new JLabel("Count of tables: ");

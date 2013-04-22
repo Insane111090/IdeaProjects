@@ -1,12 +1,13 @@
 package NoSQL;
 
+import RDBMS.MainWindow;
+import RDBMS.TableModel;
 import oracle.kv.FaultException;
 import oracle.kv.KVStore;
-import oracle.kv.Key;
-import oracle.kv.Value;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import static RDBMS.Util.MigPanel;
@@ -15,9 +16,9 @@ import static RDBMS.Util.MigPanel;
  *
  * @author agavrilov
  */
-public class NoSQLStorage
+public class NoSQLStorage extends JDialog
 {
-	static JFrame frame = new JFrame();
+	//static JFrame frame = new JFrame();
   static JPanel noSqlPanel = new MigPanel();
   static final JPanel noSqlConnectionInfo = new MigPanel();
 	static final JPanel noSqlInfo = new MigPanel();
@@ -27,20 +28,22 @@ public class NoSQLStorage
 	static final JLabel storeLbl = new JLabel("Store: ");
 	static final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
 	static final JButton close = new JButton("Close");
-	static JTextField portTxt = new JTextField();
-	static JTextField hostTxt = new JTextField();
-	static JTextField storeTxt = new JTextField();
-	static JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
-	static ConnectionNoSQLStorage orastore;
-	static KVStore myStore;
+	static final JButton startProcessOfConverting = new JButton("Start process");
+	 JTextField portTxt = new JTextField();
+	 JTextField hostTxt = new JTextField();
+	 JTextField storeTxt = new JTextField();
+	 JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
+	 ConnectionNoSQLStorage orastore;
+	 KVStore myStore;
 	static JTextPane progress = new JTextPane();
 	static JScrollPane scroll = new JScrollPane();
+	String selectedTableName = MainWindow.listOfTables.getSelectedValue().toString();
 
   static String port = "5000";
   static String host = "localhost";
   static String store = "kvstore";
 
-   static void CreateForm()
+   void CreateForm()
   {
 	  noSqlPanel.setBorder(new TitledBorder("Connection to NoSQL Storage"));
 	  noSqlInfo.setBorder(new TitledBorder("Data status"));
@@ -61,22 +64,22 @@ public class NoSQLStorage
 	  scroll.getViewport().setView(progress);
 	  noSqlInfo.add(scroll,"w 500, h 500, wrap 15");
 	  noSqlInfo.add(close,"align right");
+	  noSqlInfo.add(startProcessOfConverting,"align left");
 
 	  noSqlPanel.add(noSqlConnectionInfo,"w 600,wrap 10");
 	  noSqlPanel.add(noSqlInfo,"w 550");
 
-	  frame.setContentPane(noSqlPanel);
-	  frame.setVisible(true);
-	  frame.setSize(700,700);
+	  //frame.setContentPane(noSqlPanel);
+	  //frame.setVisible(true);
+	 // frame.setSize(700,700);
   }
-   public static void main(String[] args)
+   //public static void main(String[] args)
+   public NoSQLStorage()
   {
 	  CreateForm();
-	  //setTitle("NoSQL Storage");
-	  //setContentPane(noSqlPanel);
-	  //setModal(true);
-
-
+	  setTitle("NoSQL Storage");
+	  setContentPane(noSqlPanel);
+	  setModal(true);
 	  /*
 	  Start of the storage; If need to start local storage, can be uncommented and added to form.
 	   */
@@ -96,11 +99,9 @@ public class NoSQLStorage
 								  "Error",
 								  JOptionPane.ERROR_MESSAGE);
 			  }
-<<<<<<< HEAD
 			  //System.out.println(proc.exitValue());
 			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
 
-=======
 				try{
 					 Thread.sleep(1000);
 						if (!proc.isAlive())
@@ -116,16 +117,11 @@ public class NoSQLStorage
 									"Error",
 									JOptionPane.ERROR_MESSAGE);
 				}
->>>>>>> 8fad1cb8f04d732dc6f05c4c792696d279e01ace
 		  }
 	  });*/
 	  connectToNoSqlBut.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-			  //ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
-			  //KVStore myStore = orastore.getStore();
-=======
 			  try{
 				  orastore = new ConnectionNoSQLStorage(store, host, port);
 				  myStore = orastore.getStore();
@@ -153,13 +149,32 @@ public class NoSQLStorage
 	  close.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed( ActionEvent e ) {
+			  try{
 			  myStore.close();
-			  progress.setText(progress.getText() + "\n\nStore closed");
+				progress.setText(progress.getText() + "\n\nStore closed");
+			  }catch (NullPointerException ex){
+				  JOptionPane.showMessageDialog(
+								  noSqlPanel,
+								  "Nothing to close! At first connect.",
+								  "Error",
+								  JOptionPane.ERROR_MESSAGE);
+			  }
+
 			  //System.exit(0);
->>>>>>> 8fad1cb8f04d732dc6f05c4c792696d279e01ace
 		  }
 	  });
-    //myStore.close();
-    //out.println("Store closed");
+	  startProcessOfConverting.addActionListener(new AbstractAction() {
+		  @Override
+		  public void actionPerformed(ActionEvent e) {
+			  try {
+				  RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
+								                                           TableModel.isAlreadySelectedMinor,
+								                                           selectedTableName);
+			  } catch ( SQLException e1 ) {
+				  e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			  }
+
+		  }
+	  });
   }
 }

@@ -23,12 +23,12 @@ public final class TableModel extends AbstractTableModel
     /**
      *
      */
-    public final static Set isAlreadySelectedMajor = new LinkedHashSet();
+    public static Set isAlreadySelectedMajor = new LinkedHashSet();
     /**
      *
      */
-    public final static Set isAlreadySelectedMinor = new LinkedHashSet();
-    public final static Set isAlredySelectedValues = new LinkedHashSet();
+    public static Set isAlreadySelectedMinor = new LinkedHashSet();
+    public static Set isAlredySelectedValues = new LinkedHashSet();
   /*
    *
    * @param col
