@@ -9,19 +9,24 @@ import oracle.kv.*;
 public class ConnectionNoSQLStorage
 {
 
-  private final KVStore oraStore;
-
+  private  KVStore oraStore;
+	private static boolean _isConnectedToStore;
   public ConnectionNoSQLStorage(String name,
                                 String host,
-                                String port)
+                                String port) throws FaultException, NullPointerException
   {
     KVStoreConfig kvConfig = new KVStoreConfig(name, host + ':' + port);
-    oraStore = KVStoreFactory.getStore(kvConfig);
-    System.out.println("Store opened");
+		  oraStore = KVStoreFactory.getStore(kvConfig);
+		  _isConnectedToStore = oraStore != null;
   }
 
   public KVStore getStore()
   {
     return oraStore;
   }
+
+	public static Boolean isConenctedToStore()
+	{
+		return _isConnectedToStore;
+	}
 }

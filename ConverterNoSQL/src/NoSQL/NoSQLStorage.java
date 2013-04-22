@@ -1,17 +1,15 @@
 package NoSQL;
 
+import oracle.kv.FaultException;
 import oracle.kv.KVStore;
+import oracle.kv.Key;
+import oracle.kv.Value;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.Console;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import static RDBMS.Util.MigPanel;
-import static java.lang.System.*;
 
 /**
  *
@@ -27,13 +25,16 @@ public class NoSQLStorage
 	static final JLabel hostLbl = new JLabel("Host: ");
 	static final JLabel portLbl = new JLabel("Port: ");
 	static final JLabel storeLbl = new JLabel("Store: ");
-	static final JButton startStorage = new JButton("Start NoSQL Storage");
 	static final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
-	static JTextField portTxt = new JFormattedTextField();
-	static JTextField hostTxt = new JFormattedTextField();
-	static JTextField storeTxt = new JFormattedTextField();
-	static JTextField connNoSqlStatusTxt = new JFormattedTextField("NotConnected");
-	private static Process proc;
+	static final JButton close = new JButton("Close");
+	static JTextField portTxt = new JTextField();
+	static JTextField hostTxt = new JTextField();
+	static JTextField storeTxt = new JTextField();
+	static JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
+	static ConnectionNoSQLStorage orastore;
+	static KVStore myStore;
+	static JTextPane progress = new JTextPane();
+	static JScrollPane scroll = new JScrollPane();
 
   static String port = "5000";
   static String host = "localhost";
@@ -54,8 +55,12 @@ public class NoSQLStorage
 	  noSqlConnectionInfo.add(storeTxt,"w 150, wrap 15");
 	  noSqlConnectionInfo.add(conectedNoSqlLbl);
 	  noSqlConnectionInfo.add(connNoSqlStatusTxt);
-	  noSqlConnectionInfo.add(startStorage,"align right");
 	  noSqlConnectionInfo.add(connectToNoSqlBut,"align right");
+
+	  progress.setEditable(false);
+	  scroll.getViewport().setView(progress);
+	  noSqlInfo.add(scroll,"w 500, h 500, wrap 15");
+	  noSqlInfo.add(close,"align right");
 
 	  noSqlPanel.add(noSqlConnectionInfo,"w 600,wrap 10");
 	  noSqlPanel.add(noSqlInfo,"w 550");
@@ -70,18 +75,20 @@ public class NoSQLStorage
 	  //setTitle("NoSQL Storage");
 	  //setContentPane(noSqlPanel);
 	  //setModal(true);
+
+
 	  /*
-	  Start of the storage
+	  Start of the storage; If need to start local storage, can be uncommented and added to form.
 	   */
-	  startStorage.addActionListener(new AbstractAction() {
+	  /*startStorage.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  //Runtime r = Runtime.getRuntime();
-			  //proc = null;
 			  try{
-				  proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar vlite");
-				  out.println(proc.getErrorStream().toString());
-
+				  if (proc != null){
+					throw new Exception("The KVStore is already started. Connect to it.");
+				  }
+				  else
+				  proc = Runtime.getRuntime().exec("java -jar NoSQL_Storage\\kv-ee-2.0.26\\kv-2.0.26\\lib\\kvstore.jar kvlite");
 			  } catch ( Throwable ex ) {
 				  JOptionPane.showMessageDialog(
 								  noSqlPanel,
@@ -89,28 +96,59 @@ public class NoSQLStorage
 								  "Error",
 								  JOptionPane.ERROR_MESSAGE);
 			  }
-						while(true){
-							try{
-							Thread.sleep(1000);
-							}catch(Exception ex){}
-							out.println(proc.isAlive());
+				try{
+					 Thread.sleep(1000);
+						if (!proc.isAlive())
+						{
+							isStarted = false;
+							throw new Exception("The KVStore doesn't started. Try again or sure that settings are correct.");
 						}
-
-			  //System.out.println(proc.exitValue());
-			  //if ( proc.isAlive() ) System.out.println("Process started!!!!");
+					  else isStarted = true;
+						}catch(Exception ex){
+					JOptionPane.showMessageDialog(
+									noSqlPanel,
+									"An error accuses during start KVStore: " + ex.getMessage(),
+									"Error",
+									JOptionPane.ERROR_MESSAGE);
+				}
 		  }
-	  });
-
+	  });*/
 	  connectToNoSqlBut.addActionListener(new AbstractAction() {
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
-			  ConnectionNoSQLStorage orastore = new ConnectionNoSQLStorage(store, host, port);
-			  KVStore myStore = orastore.getStore();
+			  try{
+				  orastore = new ConnectionNoSQLStorage(store, host, port);
+				  myStore = orastore.getStore();
+			  }catch(FaultException ex){
+				  JOptionPane.showMessageDialog(
+								  noSqlPanel,
+								  "An error accuses during connection to KVStore: " + ex.getMessage(),
+								  "Error",
+								  JOptionPane.ERROR_MESSAGE);
+			  }catch (NullPointerException ne){
+				  JOptionPane.showMessageDialog(
+								  noSqlPanel,
+								  "An error accuses during connection to KVStore: " + ne.getMessage(),
+								  "Error",
+								  JOptionPane.ERROR_MESSAGE);
+			  }
+			  if (ConnectionNoSQLStorage.isConenctedToStore())
+			  {
+				  connNoSqlStatusTxt.setText("Connected");
+				  connNoSqlStatusTxt.setBackground(Color.GREEN);
+				  progress.setText("Store opened");
+			  }
 		  }
 	  });
-
-
+	  close.addActionListener(new AbstractAction() {
+		  @Override
+		  public void actionPerformed( ActionEvent e ) {
+			  myStore.close();
+			  progress.setText(progress.getText() + "\n\nStore closed");
+			  //System.exit(0);
+		  }
+	  });
     //myStore.close();
-    out.println("Store closed");
+    //out.println("Store closed");
   }
 }
