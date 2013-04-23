@@ -33,7 +33,7 @@ public class NoSQLStorage extends JDialog
 	 JTextField hostTxt = new JTextField();
 	 JTextField storeTxt = new JTextField();
 	 JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
-	 ConnectionNoSQLStorage orastore;
+	 Support.ConnectionNoSQLStorage orastore;
 	 KVStore myStore;
 	static JTextPane progress = new JTextPane();
 	static JScrollPane scroll = new JScrollPane();
@@ -123,7 +123,7 @@ public class NoSQLStorage extends JDialog
 		  @Override
 		  public void actionPerformed(ActionEvent e) {
 			  try{
-				  orastore = new ConnectionNoSQLStorage(store, host, port);
+				  orastore = new Support.ConnectionNoSQLStorage(store, host, port);
 				  myStore = orastore.getStore();
 			  }catch(FaultException ex){
 				  JOptionPane.showMessageDialog(
@@ -138,7 +138,7 @@ public class NoSQLStorage extends JDialog
 								  "Error",
 								  JOptionPane.ERROR_MESSAGE);
 			  }
-			  if (ConnectionNoSQLStorage.isConenctedToStore())
+			  if ( Support.ConnectionNoSQLStorage.isConenctedToStore())
 			  {
 				  connNoSqlStatusTxt.setText("Connected");
 				  connNoSqlStatusTxt.setBackground(Color.GREEN);
