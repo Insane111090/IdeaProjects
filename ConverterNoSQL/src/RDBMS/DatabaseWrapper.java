@@ -51,11 +51,12 @@ public class DatabaseWrapper {
 										+ "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
 										+ "AND owner=upper('andgavr')");
 		ResultSet DatabaseResultSet = statementForTables.executeQuery();
-		statementForTables.close();
+
 
 		while ( DatabaseResultSet.next() ) {
 			tables.add(DatabaseResultSet.getString(1));
 		}
+		statementForTables.close();
 		DatabaseResultSet.close();
 		return tables;
 	}
@@ -85,7 +86,7 @@ public class DatabaseWrapper {
 
 		ascDescript.setString(1, selectedTableName);
 		ResultSet descResSet = ascDescript.executeQuery();
-		ascDescript.close();
+
 		int numCol = descResSet.getMetaData().getColumnCount();
 		while ( descResSet.next() ) {
 			Object[] current = new Object[numCol + 1];
@@ -95,6 +96,7 @@ public class DatabaseWrapper {
 			current[3] = new Boolean(false);
 			data.add(current);
 		}
+		ascDescript.close();
 		descResSet.close();
 		return data.toArray(new Object[data.size()][numCol]);
 	}
@@ -114,7 +116,7 @@ public class DatabaseWrapper {
 										+ "FROM user_tab_cols WHERE table_name = upper(?)");
 		ascDesc.setString(1, selectedTableName);
 		ResultSet descriptionResultSet = ascDesc.executeQuery();
-		ascDesc.close();
+
 		descriptionResult = new StringBuilder("");
 		while ( descriptionResultSet.next() ) {
 			descriptionResult.append("<tr><td>")
@@ -125,6 +127,7 @@ public class DatabaseWrapper {
 							.append(descriptionResultSet.getString(3))
 							.append("</td>");
 		}
+		ascDesc.close();
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
@@ -143,16 +146,17 @@ public class DatabaseWrapper {
 		{
 			resMinor.append(token2).append("||'/'||");
 		}
-		result.append(resMajor).append("'-/'||").append(resMinor);
+		result.append("'/'||").append(resMajor).append("'-/'||").append(resMinor);
 		result.replace(result.lastIndexOf("||"), result.length(), "");
-		//System.out.println(result);
+		System.out.println(result);
 		PreparedStatement getKey = MyConnection.prepareStatement(" SELECT "+result+" AS key FROM " + selectedTableName.toString());
 		ResultSet getkeyResultSet = getKey.executeQuery();
-		getKey.close();
+
 		while ( getkeyResultSet.next() )
 		{
 			System.out.println(getkeyResultSet.getString(1));
 		}
+		getKey.close();
 		getkeyResultSet.close();
 	}
 }
