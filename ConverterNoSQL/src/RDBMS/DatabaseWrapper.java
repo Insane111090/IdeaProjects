@@ -8,24 +8,22 @@ package RDBMS;
  */
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class DatabaseWrapper {
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
+	static List<String> key = new ArrayList<>();
 	static private boolean _isConnected;
 	static public StringBuilder descriptionResult;
 
 	/*
 	 * Function that provides a connection to DB
 	 */
-	public static Connection createConnection( String username,
-	                                           String password,
-	                                           String url ) throws ClassNotFoundException, SQLException {
+	public static Connection createConnection(String username,
+	                                          String password,
+	                                          String url) throws ClassNotFoundException, SQLException {
 		Class.forName(DRIVER_NAME);
 		MyConnection = DriverManager.getConnection(url,
 						username,
@@ -72,7 +70,7 @@ public class DatabaseWrapper {
    * Procedure that takes a description of selected table in JTable
    */
 
-	public static Object[][] descriptionTable( String selectedTableName ) throws SQLException {
+	public static Object[][] descriptionTable(String selectedTableName) throws SQLException {
 		List<Object[]> data = new LinkedList<>();
 		PreparedStatement ascDescript = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
@@ -104,7 +102,7 @@ public class DatabaseWrapper {
 	/*
 	 * Procedure that takes a description of selected table in list
 	 */
-	public static String getDescription( String selectedTableName ) throws SQLException {
+	public static String getDescription(String selectedTableName) throws SQLException {
 		PreparedStatement ascDesc = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
 										+ "data_type||'('||data_precision||','||data_scale||')' ELSE "
@@ -132,31 +130,44 @@ public class DatabaseWrapper {
 		return descriptionResult.toString();
 	}
 
-	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
-	                                               Set<String> minorSet,
-	                                               String selectedTableName ) throws SQLException {
+	public static void getDataForMajorAndMinorKey(Set<String> majorSet,
+	                                              Set<String> minorSet,
+	                                              String selectedTableName) throws SQLException {
 		StringBuilder resMajor = new StringBuilder();
-		StringBuilder resMinor = new StringBuilder();
+		String resMinor;
+		StringBuilder var2 = new StringBuilder();
 		StringBuilder result = new StringBuilder();
-		for ( String token : majorSet )
-		{
+		for ( String token : majorSet ) {
 			resMajor.append(token).append("||'/'||");
 		}
-		for ( String token2 : minorSet )
-		{
-			resMinor.append(token2).append("||'/'||");
-		}
-		result.append("'/'||").append(resMajor).append("'-/'||").append(resMinor);
-		result.replace(result.lastIndexOf("||"), result.length(), "");
-		System.out.println(result);
-		PreparedStatement getKey = MyConnection.prepareStatement(" SELECT "+result+" AS key FROM " + selectedTableName.toString());
-		ResultSet getkeyResultSet = getKey.executeQuery();
+		/*for ( String token2 : minorSet ) {
+			resMinor = resMajor.toString();
+			var2.append("|| - /").append(resMinor).append(token2);
+			//resMinor.append(token2).append("||'/'||");
+		}*/
 
-		while ( getkeyResultSet.next() )
-		{
-			System.out.println(getkeyResultSet.getString(1));
+		result.append("'/'||").append(resMajor).append("'-/'||");
+		//result.replace(result.lastIndexOf("||"), result.length(), "");
+		//System.out.println(result);
+		for ( String token2 : minorSet ) {
+			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/'" + " AS KEY FROM " + selectedTableName.toString());
+			ResultSet getkeyResultSet = getKey.executeQuery();
+			while ( getkeyResultSet.next() ) {
+				key.add(getkeyResultSet.getString(1));
+			}
+			getKey.close();
+			getkeyResultSet.close();
 		}
-		getKey.close();
-		getkeyResultSet.close();
+		Collections.sort(key, new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				String s1 = o1;
+				String s2 = o2;
+				return s1.compareTo(s2);
+			}
+		});
+		for ( String c : key ) {
+			System.out.println(c.toString());
+		}
 	}
 }
