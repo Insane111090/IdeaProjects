@@ -134,23 +134,17 @@ public class DatabaseWrapper {
 	                                              Set<String> minorSet,
 	                                              String selectedTableName) throws SQLException {
 		StringBuilder resMajor = new StringBuilder();
-		String resMinor;
-		StringBuilder var2 = new StringBuilder();
+		StringBuilder resMinor = new StringBuilder();
 		StringBuilder result = new StringBuilder();
 		for ( String token : majorSet ) {
 			resMajor.append(token).append("||'/'||");
 		}
-		/*for ( String token2 : minorSet ) {
-			resMinor = resMajor.toString();
-			var2.append("|| - /").append(resMinor).append(token2);
-			//resMinor.append(token2).append("||'/'||");
-		}*/
-
 		result.append("'/'||").append(resMajor).append("'-/'||");
-		//result.replace(result.lastIndexOf("||"), result.length(), "");
-		//System.out.println(result);
 		for ( String token2 : minorSet ) {
-			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/'" + " AS KEY FROM " + selectedTableName.toString());
+			resMinor.delete(0,resMinor.length());
+			resMinor.append(token2);
+			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/:' ||"+ resMinor +
+																															 " AS KEY FROM " + selectedTableName.toString());
 			ResultSet getkeyResultSet = getKey.executeQuery();
 			while ( getkeyResultSet.next() ) {
 				key.add(getkeyResultSet.getString(1));
@@ -158,6 +152,7 @@ public class DatabaseWrapper {
 			getKey.close();
 			getkeyResultSet.close();
 		}
+		//Sort list of keys
 		Collections.sort(key, new Comparator<String>() {
 			@Override
 			public int compare(String o1, String o2) {
@@ -166,6 +161,8 @@ public class DatabaseWrapper {
 				return s1.compareTo(s2);
 			}
 		});
+		resMajor.delete(0,resMajor.length());
+		result.delete(0,result.length());
 		for ( String c : key ) {
 			System.out.println(c.toString());
 		}
