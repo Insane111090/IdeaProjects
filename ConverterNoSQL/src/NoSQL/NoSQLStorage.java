@@ -3,15 +3,14 @@ package NoSQL;
 import RDBMS.DatabaseWrapper;
 import RDBMS.MainWindow;
 import RDBMS.TableModel;
-import oracle.kv.FaultException;
-import oracle.kv.KVStore;
+import oracle.kv.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 import static RDBMS.Util.MigPanel;
 
@@ -176,17 +175,19 @@ public class NoSQLStorage extends JDialog {
 		startProcessOfConverting.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				//ArrayList listOfKeyForParse = new ArrayList();
 				DatabaseWrapper.clearKeyList();
+				Key myKey;
 				try {
-					//listOfKeyForParse = (ArrayList)
 					RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
 					                                                 TableModel.isAlreadySelectedMinor,
 					                                                 selectedTableName);
 				} catch ( SQLException e1 ) {
 
 				}
+
 				for ( Object c : DatabaseWrapper.key ) {
+					myKey = Support.ParseKey.ParseKey(c.toString());
+					System.out.println(myKey + " "+ myKey.getMajorPath() + " " + myKey.getMinorPath());
 					progress.append(c.toString().concat("\n"));
 
 				}
