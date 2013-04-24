@@ -1,0 +1,182 @@
+2013-04-23 11:56:28.068 UTC INFO [admin1] Initializing Admin for store: MyStore
+2013-04-23 11:56:28.069 UTC INFO [admin1] Created new admin environment dir: .\kvroot\MyStore\sn1\admin1\env
+2013-04-23 11:56:28.070 UTC INFO [admin1] JVM Runtime maxMemory (bytes): 1880948736
+2013-04-23 11:56:28.071 UTC INFO [admin1] Non-default JE properties for environment: {je.evictor.criticalPercentage=105, je.log.iteratorReadSize=1048576, je.evictor.nodesPerScan=200, je.rep.vlsn.logCacheSize=128, je.txn.durability=write_no_sync,write_no_sync,simple_majority, je.log.fileMax=1073741824, je.env.runEvictor=true, je.cleaner.readSize=1048576, je.rep.replayMaxOpenDbHandles=100, je.cleaner.threads=2, je.log.fileCacheSize=2000, je.checkpointer.bytesInterval=200000000, je.rep.vlsn.distance=1000000, je.rep.txnRollbackLimit=10, je.rep.replicaAckTimeout=5 s, je.evictor.lruOnly=false, je.log.writeQueueSize=2097152, je.cleaner.lazyMigration=false, je.cleaner.minUtilization=40, je.log.faultReadSize=4096, je.rep.preHeartbeatTimeoutMs=5000000000, je.rep.consistencyPolicy=NoConsistencyRequiredPolicy, je.tree.maxDelta=10, je.nodeMaxEntries=128, je.log.numBuffers=16, je.rep.envUnknownStateTimeout=10 s}
+2013-04-23 11:56:28.277 UTC INFO [admin1] JE recovery: POPULATE_UTILIZATION_PROFILE
+2013-04-23 11:56:28.303 UTC INFO [admin1] JE recovery: REMOVE_TEMP_DBS
+2013-04-23 11:56:28.325 UTC INFO [admin1] JE recovery: CKPT
+2013-04-23 11:56:28.448 UTC INFO [admin1] JE recovery: RECOVERY_FINISHED
+2013-04-23 11:56:28.472 UTC INFO [admin1] JE: Started ServiceDispatcher. HostPort=AGavrilov-nb2:5005
+2013-04-23 11:56:28.520 UTC INFO [admin1] JE: Current group size: 0
+2013-04-23 11:56:28.520 UTC INFO [admin1] JE: New node 1(-1) unknown to rep group
+2013-04-23 11:56:28.521 UTC INFO [admin1] JE: Master changed to 1
+2013-04-23 11:56:28.522 UTC INFO [admin1] JE: Nascent group. 1 is master by virtue of being the first node.
+2013-04-23 11:56:29.193 UTC INFO [admin1] JE: Successfully added node:1(1) HostPort = AGavrilov-nb2: 5005 [ELECTABLE]
+2013-04-23 11:56:29.196 UTC INFO [admin1] JE: Refreshed 0 monitors.
+2013-04-23 11:56:29.200 UTC INFO [admin1] JE recovery: BECOME_CONSISTENT
+2013-04-23 11:56:29.201 UTC INFO [admin1] JE: Node 1 started
+2013-04-23 11:56:29.203 UTC INFO [admin1] JE: Feeder manager accepting requests.
+2013-04-23 11:56:29.204 UTC INFO [admin1] JE: Joining group as master
+2013-04-23 11:56:29.205 UTC INFO [admin1] JE: Refreshed 0 monitors.
+2013-04-23 11:56:29.206 UTC INFO [admin1] State change event: Tue Apr 23 15:56:29 MSK 2013, State: MASTER, Master: 1
+2013-04-23 11:56:29.213 UTC INFO [admin1] Initializing Admin Schema to schema version 3/NoSQL DB 11gR2.2.0.26 2013-01-28 12:19:21 UTC  Build id: 99ef986805a3
+2013-04-23 11:56:29.402 UTC FINE Closing StorewideLoggingView
+2013-04-23 11:56:29.488 UTC INFO [admin1] Initializing Admin database
+2013-04-23 11:56:29.597 UTC INFO [admin1] Admin database initialized
+2013-04-23 11:56:30.371 UTC INFO [admin1] Replicated environment handle established. Cache size: 1128569241, State: MASTER
+2013-04-23 11:56:30.372 UTC INFO [admin1] Configured Admin for store: MyStore
+2013-04-23 11:56:31.544 UTC INFO [admin1] PlanStateChange [id=1 name=Deploy KVLite state=APPROVED at 2013-04-23 11:56:31 UTC numAttempts=0 : approval requested]
+2013-04-23 11:56:32.086 UTC INFO [admin1] Plan 1[Deploy KVLite] approved
+2013-04-23 11:56:32.097 UTC INFO [admin1] PlanStateChange [id=1 name=Deploy KVLite state=RUNNING at 2013-04-23 11:56:32 UTC numAttempts=1 : Plan is starting]
+2013-04-23 11:56:32.097 UTC INFO [admin1] Plan 1[Deploy KVLite]: started, 1 tasks
+2013-04-23 11:56:33.509 UTC INFO [admin1] Plan 1[Deploy KVLite]: task 1 [DeployDatacenter datacenter=KVLite] started
+2013-04-23 11:56:33.864 UTC INFO [admin1] Plan 1[Deploy KVLite]: task 1 [DeployDatacenter datacenter=KVLite] ended, state=SUCCEEDED
+2013-04-23 11:56:33.867 UTC INFO [admin1] PlanStateChange [id=1 name=Deploy KVLite state=SUCCEEDED at 2013-04-23 11:56:33 UTC numAttempts=1 : Plan finished.]
+2013-04-23 11:56:34.326 UTC INFO [admin1] Plan 1[Deploy KVLite]: ended, state=SUCCEEDED
+2013-04-23 11:56:34.401 UTC INFO [admin1] awaitPlan of Plan 1[Deploy KVLite] finished, state=SUCCEEDED
+2013-04-23 11:56:34.943 UTC INFO [admin1] PlanStateChange [id=2 name=Deploy Storage Node state=APPROVED at 2013-04-23 11:56:34 UTC numAttempts=0 : approval requested]
+2013-04-23 11:56:35.320 UTC INFO [admin1] Plan 2[Deploy Storage Node] approved
+2013-04-23 11:56:35.323 UTC INFO [admin1] PlanStateChange [id=2 name=Deploy Storage Node state=RUNNING at 2013-04-23 11:56:35 UTC numAttempts=1 : Plan is starting]
+2013-04-23 11:56:35.323 UTC INFO [admin1] Plan 2[Deploy Storage Node]: started, 1 tasks
+2013-04-23 11:56:35.542 UTC INFO [admin1] Plan 2[Deploy Storage Node]: task 1 [DeploySN sn1(AGavrilov-nb2:5000)] started
+2013-04-23 11:56:35.965 UTC INFO [admin1] Monitor collector: adding sn1 to monitoring
+2013-04-23 11:56:35.784 UTC INFO [sn1] Starting StorageNodeAgent for MyStore
+2013-04-23 11:56:35.795 UTC INFO [sn1] Acquiring initial topology from RNs
+2013-04-23 11:56:35.799 UTC INFO [sn1] Starting MonitorAgent.  Server socket factory:<ServerSocketFactory name=monitor backlog=0 port range=0,0> Client socket factory:<ClientSocketFactory name=MyStore|sn|monitor id=42451831 connectMs=10000 readMs=5000>
+2013-04-23 11:56:35.810 UTC INFO [sn1] Rebound to registry port 5000 using name sn1
+2013-04-23 11:56:35.810 UTC INFO [sn1] Service status changed from STARTING to RUNNING
+2013-04-23 11:56:35.986 UTC INFO [admin1] [sn1] Service status: RUNNING 2013-04-23 11:56:35 UTC
+2013-04-23 11:56:35.810 UTC INFO [sn1] Started StorageNodeAgent for MyStore Server socket factory: <ServerSocketFactory name=main backlog=0 port range=0,0> Client socket factory: <ClientSocketFactory name=MyStore|sn|main id=-503783006 connectMs=10000 readMs=140000>
+2013-04-23 11:56:36.075 UTC INFO [admin1] Plan 2[Deploy Storage Node]: task 1 [DeploySN sn1(AGavrilov-nb2:5000)] ended, state=SUCCEEDED
+2013-04-23 11:56:36.077 UTC INFO [admin1] PlanStateChange [id=2 name=Deploy Storage Node state=SUCCEEDED at 2013-04-23 11:56:36 UTC numAttempts=1 : Plan finished.]
+2013-04-23 11:56:36.212 UTC INFO [admin1] Plan 2[Deploy Storage Node]: ended, state=SUCCEEDED
+2013-04-23 11:56:36.212 UTC INFO [admin1] awaitPlan of Plan 2[Deploy Storage Node] finished, state=SUCCEEDED
+2013-04-23 11:56:36.378 UTC INFO [admin1] PlanStateChange [id=3 name=Deploy Admin Service state=APPROVED at 2013-04-23 11:56:36 UTC numAttempts=0 : approval requested]
+2013-04-23 11:56:36.478 UTC INFO [admin1] Plan 3[Deploy Admin Service] approved
+2013-04-23 11:56:36.479 UTC INFO [admin1] PlanStateChange [id=3 name=Deploy Admin Service state=RUNNING at 2013-04-23 11:56:36 UTC numAttempts=1 : Plan is starting]
+2013-04-23 11:56:36.479 UTC INFO [admin1] Plan 3[Deploy Admin Service]: started, 1 tasks
+2013-04-23 11:56:36.620 UTC INFO [admin1] Plan 3[Deploy Admin Service]: task 1 [DeployAdmin AdminId[admin1] on SNId[sn1]] started
+2013-04-23 11:56:37.116 UTC INFO [admin1] newParameters called for Monitor
+2013-04-23 11:56:37.228 UTC INFO [admin1] Plan 3[Deploy Admin Service]: task 1 [DeployAdmin AdminId[admin1] on SNId[sn1]] ended, state=SUCCEEDED
+2013-04-23 11:56:37.229 UTC INFO [admin1] PlanStateChange [id=3 name=Deploy Admin Service state=SUCCEEDED at 2013-04-23 11:56:37 UTC numAttempts=1 : Plan finished.]
+2013-04-23 11:56:37.251 UTC INFO [admin1] Plan 3[Deploy Admin Service]: ended, state=SUCCEEDED
+2013-04-23 11:56:37.251 UTC INFO [admin1] awaitPlan of Plan 3[Deploy Admin Service] finished, state=SUCCEEDED
+2013-04-23 11:56:37.253 UTC INFO [admin1] Created Storage Node Pool: KVLitePool
+2013-04-23 11:56:37.340 UTC INFO [admin1] Added Storage Node sn1 to pool: KVLitePool
+2013-04-23 11:56:37.855 UTC INFO [admin1] PlanStateChange [id=4 name=Deploy KVStore state=APPROVED at 2013-04-23 11:56:37 UTC numAttempts=0 : approval requested]
+2013-04-23 11:56:38.115 UTC INFO [admin1] Plan 4[Deploy KVStore] approved
+2013-04-23 11:56:38.125 UTC INFO [admin1] Plan 4[Deploy KVStore] deploying topology candidate KVLite.
+2013-04-23 11:56:38.130 UTC INFO [admin1] Current topology: store=MyStore  numPartitions=0 sequence=2
+  dc=[dc1] name=KVLite repFactor=1
+
+  sn=[sn1]  dc=dc1 AGavrilov-nb2:5000
+
+
+2013-04-23 11:56:38.131 UTC INFO [admin1] Preview of changes to be executed by Plan 4[Deploy KVStore]:
+Topology transformation from current deployed topology to KVLite:
+Create 1 shard 
+Create 1 RN 
+Create 10 partitions 
+
+shard rg1
+  1 new RN : rg1-rn1 
+  10 new partitions 
+
+2013-04-23 11:56:38.133 UTC INFO [admin1] Target topology candidate: KVLite
+store=MyStore  numPartitions=10 sequence=14
+  dc=[dc1] name=KVLite repFactor=1
+
+  sn=[sn1]  dc=dc1 AGavrilov-nb2:5000
+    [rg1-rn1]
+
+  shard=[rg1] num partitions=10
+    [rg1-rn1] sn=sn1
+
+2013-04-23 11:56:38.134 UTC INFO [admin1] PlanStateChange [id=4 name=Deploy KVStore state=RUNNING at 2013-04-23 11:56:38 UTC numAttempts=1 : Plan is starting]
+2013-04-23 11:56:38.135 UTC INFO [admin1] Plan 4[Deploy KVStore]: started, 7 tasks
+2013-04-23 11:56:38.267 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 1 [UpdateDatacenter datacenter=dc1] started
+2013-04-23 11:56:38.424 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 1 [UpdateDatacenter datacenter=dc1] ended, state=SUCCEEDED
+2013-04-23 11:56:38.425 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 2 [DeployShard on [sn1]  dc=dc1 AGavrilov-nb2:5000 ] started
+2013-04-23 11:56:38.808 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 2 [DeployShard rg1 on [sn1]  dc=dc1 AGavrilov-nb2:5000 ] ended, state=SUCCEEDED
+2013-04-23 11:56:38.809 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 3 [DeployNewRN on sn1(AGavrilov-nb2:5000)] started
+2013-04-23 11:56:38.818 UTC INFO [admin1] Creating rg1-rn1 on sn1 haPort=AGavrilov-nb2:5 006 helpers=AGavrilov-nb2:5006 mountpoint=null heapMB=unspecified cacheSize=unspecified -XX:ParallelGCThreads=8
+2013-04-23 11:56:40.276 UTC INFO [admin1] Monitor collector: adding rg1-rn1 to monitoring
+2013-04-23 11:56:39.168 UTC INFO [rg1-rn1] RepNodeStateUpdateThread started
+2013-04-23 11:56:39.180 UTC INFO [rg1-rn1] JVM Runtime maxMemory (bytes): 1880948736
+2013-04-23 11:56:39.180 UTC INFO [rg1-rn1] Non-default JE properties for environment: {je.evictor.criticalPercentage=105, je.log.iteratorReadSize=1048576, je.evictor.nodesPerScan=200, je.rep.vlsn.logCacheSize=128, je.txn.durability=write_no_sync,write_no_sync,simple_majority, je.log.fileMax=1073741824, je.env.runEvictor=true, je.cleaner.readSize=1048576, je.rep.replayMaxOpenDbHandles=100, je.cleaner.threads=2, je.log.fileCacheSize=2000, je.checkpointer.bytesInterval=200000000, je.rep.vlsn.distance=1000000, je.rep.txnRollbackLimit=10, je.rep.replicaAckTimeout=5 s, je.evictor.lruOnly=false, je.log.writeQueueSize=2097152, je.cleaner.lazyMigration=false, je.cleaner.minUtilization=40, je.log.faultReadSize=4096, je.rep.preHeartbeatTimeoutMs=5000000000, je.rep.consistencyPolicy=NoConsistencyRequiredPolicy, je.tree.maxDelta=10, je.nodeMaxEntries=128, je.log.numBuffers=16, je.rep.envUnknownStateTimeout=10 s}
+2013-04-23 11:56:39.181 UTC INFO [rg1-rn1] Created new environment dir: .\kvroot\MyStore\sn1\rg1-rn1\env
+2013-04-23 11:56:39.184 UTC INFO [rg1-rn1] Partition database cache mode: EVICT_LN
+2013-04-23 11:56:39.201 UTC INFO [rg1-rn1] Starting RepNodeService
+2013-04-23 11:56:39.202 UTC INFO [rg1-rn1] Starting RN MonitorAgent.  Server socket factory:<ServerSocketFactory name=monitor backlog=0 port range=0,0> Client socket connect factory: <ClientSocketFactory name=MyStore|rn|monitor id=-86625888 connectMs=10000 readMs=10000>
+2013-04-23 11:56:39.210 UTC INFO [rg1-rn1] Starting MonitorAgent
+2013-04-23 11:56:39.227 UTC INFO [rg1-rn1] RepNodeAdmin registered
+2013-04-23 11:56:39.240 UTC INFO [rg1-rn1] JE recovery: POPULATE_UTILIZATION_PROFILE
+2013-04-23 11:56:39.241 UTC INFO [rg1-rn1] JE recovery: REMOVE_TEMP_DBS
+2013-04-23 11:56:39.242 UTC INFO [rg1-rn1] JE recovery: CKPT
+2013-04-23 11:56:39.376 UTC INFO [rg1-rn1] JE recovery: RECOVERY_FINISHED
+2013-04-23 11:56:39.386 UTC INFO [rg1-rn1] JE: Started ServiceDispatcher. HostPort=AGavrilov-nb2:5006
+2013-04-23 11:56:39.393 UTC INFO [rg1-rn1] JE: Current group size: 0
+2013-04-23 11:56:39.394 UTC INFO [rg1-rn1] JE: New node rg1-rn1(-1) unknown to rep group
+2013-04-23 11:56:39.394 UTC INFO [rg1-rn1] JE: Master changed to rg1-rn1
+2013-04-23 11:56:39.394 UTC INFO [rg1-rn1] JE: Nascent group. rg1-rn1 is master by virtue of being the first node.
+2013-04-23 11:56:39.650 UTC INFO [rg1-rn1] JE: Successfully added node:rg1-rn1(1) HostPort = AGavrilov-nb2: 5006 [ELECTABLE]
+2013-04-23 11:56:39.651 UTC INFO [rg1-rn1] JE: Refreshed 0 monitors.
+2013-04-23 11:56:39.652 UTC INFO [rg1-rn1] JE recovery: BECOME_CONSISTENT
+2013-04-23 11:56:39.652 UTC INFO [rg1-rn1] JE: Node rg1-rn1 started
+2013-04-23 11:56:39.652 UTC INFO [rg1-rn1] JE: Feeder manager accepting requests.
+2013-04-23 11:56:39.653 UTC INFO [rg1-rn1] JE: Joining group as master
+2013-04-23 11:56:39.653 UTC INFO [rg1-rn1] JE: Refreshed 0 monitors.
+2013-04-23 11:56:39.653 UTC INFO [rg1-rn1] Opened JE environment. JVM max heap: 1 880 948 736. JE properties: allowCreate=true
+cacheSize=1128569241
+txnNoSync=false
+txnWriteNoSync=false
+{je.log.iteratorReadSize=1048576, je.evictor.nodesPerScan=200, je.evictor.criticalPercentage=105, je.rep.vlsn.logCacheSize=128, je.txn.durability=WRITE_NO_SYNC,WRITE_NO_SYNC,SIMPLE_MAJORITY, je.log.fileMax=1073741824, je.env.runEvictor=true, je.rep.nodeHostPort=AGavrilov-nb2:5006, je.cleaner.readSize=1048576, je.rep.replayMaxOpenDbHandles=100, je.cleaner.threads=2, je.log.fileCacheSize=2000, je.maxMemory=0, je.checkpointer.bytesInterval=200000000, je.rep.helperHosts=AGavrilov-nb2:5006, je.rep.vlsn.distance=1000000, je.rep.txnRollbackLimit=10, je.rep.preserveRecordVersion=true, je.rep.replicaAckTimeout=5 s, je.evictor.lruOnly=false, je.log.writeQueueSize=2097152, je.env.isTransactional=true, je.rep.nodeName=rg1-rn1, je.rep.groupName=rg1, je.cleaner.lazyMigration=false, je.cleaner.minUtilization=40, je.log.faultReadSize=4096, je.rep.preHeartbeatTimeoutMs=5000000000, je.rep.consistencyPolicy=NoConsistencyRequiredPolicy, je.tree.maxDelta=10, je.nodeMaxEntries=128, je.log.numBuffers=16, je.rep.envUnknownStateTimeout=10 s, je.rep.nodeType=ELECTABLE}
+
+2013-04-23 11:56:39.764 UTC INFO [rg1-rn1] Local Environment version updated to: 11gR2.2.0.26 2013-01-28 12:19:21 UTC  Build id: 99ef986805a3 Previous version:  none
+2013-04-23 11:56:39.766 UTC INFO [rg1-rn1] State change event: Tue Apr 23 15:56:39 MSK 2013, State: MASTER, Master: rg1-rn1
+2013-04-23 11:56:39.768 UTC INFO [rg1-rn1] Master balance state tracker queue added:MASTER
+2013-04-23 11:56:39.768 UTC INFO [rg1-rn1] Migration manager change state to MASTER.
+2013-04-23 11:56:39.769 UTC INFO [rg1-rn1] Replicated environment handle established. Cache size: 1128569241, State: MASTER
+2013-04-23 11:56:39.769 UTC INFO [rg1-rn1] Environment does not contain topology store.
+2013-04-23 11:56:39.770 UTC INFO [rg1-rn1] Topology needs to be pushed to this node.
+2013-04-23 11:56:39.778 UTC INFO [rg1-rn1] Migration service accepting requests.
+2013-04-23 11:56:39.785 UTC INFO [rg1-rn1] Service status changed from STARTING to RUNNING
+2013-04-23 11:56:40.293 UTC INFO [admin1] [rg1-rn1] Service status: RUNNING 2013-04-23 11:56:39 UTC
+2013-04-23 11:56:39.786 UTC INFO [rg1-rn1] Started RepNodeService
+2013-04-23 11:56:40.155 UTC INFO [rg1-rn1] Topology updated from seq#: 0 to 4
+2013-04-23 11:56:40.159 UTC INFO [rg1-rn1] Establishing partition database handles, topology seq#: 4
+2013-04-23 11:56:40.160 UTC INFO [rg1-rn1] Established 0 partition database handles
+2013-04-23 11:56:40.274 UTC INFO [rg1-rn1] Topology stored seq#: 4
+2013-04-23 11:56:40.327 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 3 [DeployNewRN rg1-rn1 on sn1(AGavrilov-nb2:5000)] ended, state=SUCCEEDED
+2013-04-23 11:56:40.328 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 4 [UpdateNthRNHelperHost] started
+2013-04-23 11:56:40.384 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 4 [UpdateNthRNHelperHost] ended, state=SUCCEEDED
+2013-04-23 11:56:40.384 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 5 [NewNthRNParameters] started
+2013-04-23 11:56:40.454 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 5 [NewNthRNParameters] ended, state=SUCCEEDED
+2013-04-23 11:56:40.454 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 6 [BroadcastTopo] started
+2013-04-23 11:56:40.456 UTC INFO [admin1] Broadcasting topology seq# 4, changes for BroadcastTopo
+2013-04-23 11:56:40.498 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 6 [BroadcastTopo] ended, state=SUCCEEDED
+2013-04-23 11:56:40.499 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 7 [AddPartitions totalPartitions = 10] started
+2013-04-23 11:56:40.552 UTC INFO [admin1] Broadcasting topology seq# 14, changes for Initializing new partitions
+2013-04-23 11:56:40.690 UTC INFO [admin1] Plan 4[Deploy KVStore]: task 7 [AddPartitions totalPartitions = 10] ended, state=SUCCEEDED
+2013-04-23 11:56:40.691 UTC INFO [admin1] PlanStateChange [id=4 name=Deploy KVStore state=SUCCEEDED at 2013-04-23 11:56:40 UTC numAttempts=1 : Plan finished.]
+2013-04-23 11:56:40.747 UTC INFO [admin1] Plan 4[Deploy KVStore]: ended, state=SUCCEEDED
+2013-04-23 11:56:40.747 UTC INFO [admin1] awaitPlan of Plan 4[Deploy KVStore] finished, state=SUCCEEDED
+2013-04-23 11:56:50.321 UTC INFO [admin1] New admin web client at 172.17.0.60, session id b920b7wzirso1stxf2du02ep9
+2013-04-23 11:56:36.788 UTC INFO [sn1] admin1: Creating AdminService
+2013-04-23 11:56:37.117 UTC INFO [sn1] admin1: Created AdminService
+2013-04-23 11:56:38.894 UTC INFO [sn1] rg1-rn1: Creating RepNode
+2013-04-23 11:56:39.123 UTC INFO [sn1] rg1-rn1: Starting RepNode
+2013-04-23 11:56:39.124 UTC INFO [sn1] rg1-rn1: Started RepNode
+2013-04-23 11:56:39.124 UTC INFO [sn1] rg1-rn1: Configuring RepNode
+2013-04-23 11:56:39.786 UTC INFO [sn1] Thread returning for service rg1-rn1
+2013-04-23 11:56:40.275 UTC INFO [sn1] rg1-rn1: Created RepNode
+2013-04-23 11:56:40.787 UTC INFO [sn1] noteState called
+2013-04-23 11:56:40.787 UTC INFO [sn1] added:State RN:rg1-rn1 state: MASTER top seq num: 14
+2013-04-23 11:56:40.803 UTC INFO [sn1] Topology acquired from RN: rg1-rn1 Topo seq#: 14
+2013-04-23 11:56:40.804 UTC INFO [sn1] sn: sn1 state transition: State RN:rg1-rn1 state: MASTER top seq num: 14 active masters:[rg1-rn1] active replicas:0 replica leases:0
+2013-04-23 11:56:40.399 UTC INFO [rg1-rn1] newParameters are identical to old parameters
+2013-04-23 11:56:40.558 UTC INFO [rg1-rn1] Topology incrementally updated from seq#: 4 to 14
+2013-04-23 11:56:40.559 UTC INFO [rg1-rn1] Establishing partition database handles, topology seq#: 14
+2013-04-23 11:56:40.567 UTC INFO [rg1-rn1] Established 10 partition database handles
+2013-04-23 11:56:40.645 UTC INFO [rg1-rn1] Topology stored seq#: 14
+2013-04-23 11:56:40.784 UTC INFO [rg1-rn1] MasterBalanceStateTracker thread start rn: rg1-rn1

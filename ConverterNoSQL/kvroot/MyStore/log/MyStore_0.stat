@@ -1,0 +1,66 @@
+2013-04-23 11:57:00.323 UTC INFO [MyStore] rg1-rn1 (11:56:39.187 UTC -> 11:57:00.189 UTC)
+Cache
+	adminBytes=665
+	cacheTotalBytes=16 844 562
+	dataBytes=64 965
+	lockBytes=1 716
+	nBINsFetch=95
+	nCachedBINs=7
+	nCachedUpperINs=7
+	nINNoTarget=4
+	nINSparseTarget=8
+	nLNsFetch=25
+	nLNsFetchMiss=15
+Checkpoints
+	lastCheckpointEnd=0x0/0x427
+	lastCheckpointId=1
+	lastCheckpointStart=0x0/0x1d0
+	nCheckpoints=1
+	nFullBINFlush=2
+	nFullINFlush=4
+Cleaning
+	correctedAvgLNSize=NaN
+	totalLogSize=169 574
+I/O
+	bufferBytes=16 777 216
+	endOfLog=0x0/0x294b5
+	nFSyncRequests=5
+	nFSyncTime=623
+	nFSyncs=5
+	nFileOpens=4
+	nLogBuffers=16
+	nLogFSyncs=9
+	nNotResident=15
+	nRandomWriteBytes=38
+	nRandomWrites=1
+	nSequentialReadBytes=12 288
+	nSequentialReads=3
+	nSequentialWriteBytes=169 574
+	nSequentialWrites=19
+Locks
+	nOwners=11
+	nReadLocks=11
+	nRequests=115
+	nTotalLocks=11
+
+2013-04-23 11:57:00.325 UTC INFO [MyStore] rg1-rn1 (11:56:39.187 UTC -> 11:57:00.189 UTC)
+FeederManager
+	nMaxReplicaLag=NONE
+Replay
+	maxCommitProcessingNanos=NONE
+	minCommitProcessingNanos=NONE
+VLSNIndex
+	nBucketsCreated=1
+
+2013-04-23 11:57:00.326 UTC INFO [MyStore] rg1-rn1 (11:56:39.187 UTC -> 11:57:00.189 UTC)
+Memory
+	freeMemory=52083616
+	maxMemory=1880948736
+	totalMemory=126746624
+PS Scavenge
+	count=5
+	time=31
+PS MarkSweep
+	count=1
+	time=6
+
