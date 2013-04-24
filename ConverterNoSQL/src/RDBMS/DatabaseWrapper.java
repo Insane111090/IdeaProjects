@@ -14,20 +14,20 @@ public class DatabaseWrapper {
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
-	static List<String> key = new ArrayList<>();
+	public static List<Object> key = new ArrayList<>();
 	static private boolean _isConnected;
 	static public StringBuilder descriptionResult;
 
 	/*
 	 * Function that provides a connection to DB
 	 */
-	public static Connection createConnection(String username,
-	                                          String password,
-	                                          String url) throws ClassNotFoundException, SQLException {
+	public static Connection createConnection( String username,
+	                                           String password,
+	                                           String url ) throws ClassNotFoundException, SQLException {
 		Class.forName(DRIVER_NAME);
 		MyConnection = DriverManager.getConnection(url,
-						username,
-						password);
+		                                           username,
+		                                           password);
 
 		_isConnected = MyConnection != null ? true : false;
 		return MyConnection;
@@ -46,8 +46,8 @@ public class DatabaseWrapper {
 	public static List<String> getTableList() throws SQLException {
 		PreparedStatement statementForTables =
 						MyConnection.prepareStatement("SELECT table_name FROM all_tables "
-										+ "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
-										+ "AND owner=upper('andgavr')");
+										                              + "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
+										                              + "AND owner=upper('andgavr')");
 		ResultSet DatabaseResultSet = statementForTables.executeQuery();
 
 
@@ -70,7 +70,7 @@ public class DatabaseWrapper {
    * Procedure that takes a description of selected table in JTable
    */
 
-	public static Object[][] descriptionTable(String selectedTableName) throws SQLException {
+	public static Object[][] descriptionTable( String selectedTableName ) throws SQLException {
 		List<Object[]> data = new LinkedList<>();
 		PreparedStatement ascDescript = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
@@ -82,7 +82,8 @@ public class DatabaseWrapper {
 										+ "CASE WHEN nullable = 'N' THEN 'NOT NULL' ELSE '--' END nul "
 										+ "FROM user_tab_cols WHERE table_name = upper(?)");
 
-		ascDescript.setString(1, selectedTableName);
+		ascDescript.setString(1,
+		                      selectedTableName);
 		ResultSet descResSet = ascDescript.executeQuery();
 
 		int numCol = descResSet.getMetaData().getColumnCount();
@@ -102,7 +103,7 @@ public class DatabaseWrapper {
 	/*
 	 * Procedure that takes a description of selected table in list
 	 */
-	public static String getDescription(String selectedTableName) throws SQLException {
+	public static String getDescription( String selectedTableName ) throws SQLException {
 		PreparedStatement ascDesc = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
 										+ "data_type||'('||data_precision||','||data_scale||')' ELSE "
@@ -112,7 +113,8 @@ public class DatabaseWrapper {
 										+ "data_type||'('||char_length||' CHAR)' END END END data_type,"
 										+ "CASE WHEN nullable = 'N' THEN 'NOT NULL' ELSE '--' END nul "
 										+ "FROM user_tab_cols WHERE table_name = upper(?)");
-		ascDesc.setString(1, selectedTableName);
+		ascDesc.setString(1,
+		                  selectedTableName);
 		ResultSet descriptionResultSet = ascDesc.executeQuery();
 
 		descriptionResult = new StringBuilder("");
@@ -130,9 +132,9 @@ public class DatabaseWrapper {
 		return descriptionResult.toString();
 	}
 
-	public static void getDataForMajorAndMinorKey(Set<String> majorSet,
-	                                              Set<String> minorSet,
-	                                              String selectedTableName) throws SQLException {
+	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
+	                                                       Set<String> minorSet,
+	                                                       String selectedTableName ) throws SQLException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder result = new StringBuilder();
@@ -141,30 +143,36 @@ public class DatabaseWrapper {
 		}
 		result.append("'/'||").append(resMajor).append("'-/'||");
 		for ( String token2 : minorSet ) {
-			resMinor.delete(0,resMinor.length());
+			resMinor.delete(0,
+			                resMinor.length());
 			resMinor.append(token2);
-			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/:' ||"+ resMinor +
-																															 " AS KEY FROM " + selectedTableName.toString());
+			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/:' ||" + resMinor +
+							                                                         " AS KEY FROM " + selectedTableName.toString());
 			ResultSet getkeyResultSet = getKey.executeQuery();
 			while ( getkeyResultSet.next() ) {
-				key.add(getkeyResultSet.getString(1));
+				key.add(getkeyResultSet.getObject(1));
 			}
 			getKey.close();
 			getkeyResultSet.close();
 		}
 		//Sort list of keys
-		Collections.sort(key, new Comparator<String>() {
-			@Override
-			public int compare(String o1, String o2) {
-				String s1 = o1;
-				String s2 = o2;
-				return s1.compareTo(s2);
-			}
-		});
-		resMajor.delete(0,resMajor.length());
-		result.delete(0,result.length());
-		for ( String c : key ) {
-			System.out.println(c.toString());
-		}
+		Collections.sort(key,
+		                 ( o1, o2 ) -> {
+			                 String s1 = o1.toString();
+			                 String s2 = o2.toString();
+			                 return s1.compareTo(s2);
+		                 });
+		resMajor.delete(0,
+		                resMajor.length());
+		result.delete(0,
+		              result.length());
+		//return key;
+	}
+
+	/*
+ * Clear list of keys from DB
+ */
+	public static void clearKeyList() {
+		key.clear();
 	}
 }
