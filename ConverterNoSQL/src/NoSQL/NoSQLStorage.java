@@ -18,7 +18,6 @@ import static RDBMS.Util.MigPanel;
  * @author agavrilov
  */
 public class NoSQLStorage extends JDialog {
-	//static JFrame frame = new JFrame();
 	static JPanel noSqlPanel = new MigPanel();
 	static final JPanel noSqlConnectionInfo = new MigPanel();
 	static final JPanel noSqlInfo = new MigPanel();
@@ -34,14 +33,14 @@ public class NoSQLStorage extends JDialog {
 	JTextField storeTxt = new JTextField();
 	JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
 	Support.ConnectionNoSQLStorage orastore;
-	KVStore myStore;
+	public static KVStore myStore;
 	static JTextArea progress = new JTextArea();
 	static JScrollPane scroll = new JScrollPane();
 	String selectedTableName = MainWindow.listOfTables.getSelectedValue().toString();
 
-	static String port = "5000";
-	static String host = "localhost";
-	static String store = "kvstore";
+	String port = "5000";
+	String host = "localhost";
+	String store = "MyStore";
 
 	void CreateForm() {
 		noSqlPanel.setBorder(new TitledBorder("Connection to NoSQL Storage"));
@@ -76,10 +75,6 @@ public class NoSQLStorage extends JDialog {
 		               "w 600,wrap 10");
 		noSqlPanel.add(noSqlInfo,
 		               "w 550");
-
-		//frame.setContentPane(noSqlPanel);
-		//frame.setVisible(true);
-		// frame.setSize(700,700);
 	}
 
 	//public static void main(String[] args)
@@ -176,21 +171,21 @@ public class NoSQLStorage extends JDialog {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				DatabaseWrapper.clearKeyList();
-				Key myKey;
-				try {
-					RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
-					                                                 TableModel.isAlreadySelectedMinor,
-					                                                 selectedTableName);
+				/*try {
+					//RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
+					//                                                 TableModel.isAlreadySelectedMinor,
+					//                                                 selectedTableName);
 				} catch ( SQLException e1 ) {
 
-				}
+				}*/
+				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
+				ValueVersion vv = myStore.get(test);
+				Value v = vv.getValue();
+				String data;
+				data = new String(v.getValue());
+				System.out.println(data.toString() + " " + myStore);
 
-				for ( Object c : DatabaseWrapper.key ) {
-					myKey = Support.ParseKey.ParseKey(c.toString());
-					System.out.println(myKey + " "+ myKey.getMajorPath() + " " + myKey.getMinorPath());
-					progress.append(c.toString().concat("\n"));
 
-				}
 
 
 			}
