@@ -141,7 +141,7 @@ public class DatabaseWrapper {
 		for ( String token : majorSet ) {
 			resMajor.append(token).append("||'/'||");
 		}
-		result.append("'/'||").append(resMajor).append("'-/'||");
+		result.append(resMajor).append("'-/'||");
 		for ( String token2 : minorSet ) {
 			resMinor.delete(0,
 			                resMinor.length());
