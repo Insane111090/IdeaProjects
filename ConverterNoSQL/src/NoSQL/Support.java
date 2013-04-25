@@ -31,17 +31,19 @@ public class Support {
 
 	public static class ParseKey {
 		public static Key parsedKey;
+		public static Value parsedValue;
+		static String valueString = "";
 
-		public static Key ParseKey(String notParsedKey){
-			int endstring;
+		public static Key ParseKey( String notParsedKey ){
+			int endOfString;
 			if (notParsedKey.indexOf(":") != -1) {
-				endstring = notParsedKey.indexOf(":") - 1;
+				endOfString = notParsedKey.indexOf(":") - 1;
 			} else {
-				endstring = notParsedKey.length();
+				endOfString = notParsedKey.length();
 			}
-			String keysString = notParsedKey.substring(0, endstring);
-			List<String> majorComponents = new ArrayList<String>();
-			List<String> minorComponents = new ArrayList<String>();
+			String keysString = notParsedKey.substring(0, endOfString);
+			List<String> majorComponents = new ArrayList<>();
+			List<String> minorComponents = new ArrayList<>();
 
 			String[] keysArray = keysString.split("/");
 			boolean isMajor = true;
@@ -64,6 +66,11 @@ public class Support {
 				System.out.println("Error");
 			}
 			return parsedKey;
+		}
+		public static Value ParseValue(String noParsedValue){
+			valueString = noParsedValue.substring(noParsedValue.indexOf(":")+1);
+			parsedValue = Value.createValue(valueString.getBytes());
+			return parsedValue;
 		}
 	}
 }

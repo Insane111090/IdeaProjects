@@ -7,6 +7,11 @@ package RDBMS;
  * To change this template use File | Settings | File Templates.
  */
 
+import NoSQL.NoSQLStorage;
+import NoSQL.Support;
+import oracle.kv.Key;
+import oracle.kv.Value;
+
 import java.sql.*;
 import java.util.*;
 
@@ -14,7 +19,7 @@ public class DatabaseWrapper {
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
-	public static List<Object> key = new ArrayList<>();
+	public static List<String> key = new ArrayList<>();
 	static private boolean _isConnected;
 	static public StringBuilder descriptionResult;
 
@@ -133,8 +138,8 @@ public class DatabaseWrapper {
 	}
 
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
-	                                                       Set<String> minorSet,
-	                                                       String selectedTableName ) throws SQLException {
+	                                               Set<String> minorSet,
+	                                               String selectedTableName ) throws SQLException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder result = new StringBuilder();
@@ -147,10 +152,17 @@ public class DatabaseWrapper {
 			                resMinor.length());
 			resMinor.append(token2);
 			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/:' ||" + resMinor +
+
 							                                                         " AS KEY FROM " + selectedTableName.toString());
+			getKey.setFetchSize(50);
 			ResultSet getkeyResultSet = getKey.executeQuery();
 			while ( getkeyResultSet.next() ) {
-				key.add(getkeyResultSet.getObject(1));
+				Key myKey = Support.ParseKey.ParseKey(getkeyResultSet.getString(1));
+				Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
+				//NoSQLStorage.myStore.put(myKey,
+				//                         myValue);
+				//key.add(getkeyResultSet.getString(1));
+				//System.out.println(NoSQLStorage.myStore.get(myKey));
 			}
 			getKey.close();
 			getkeyResultSet.close();
@@ -166,7 +178,6 @@ public class DatabaseWrapper {
 		                resMajor.length());
 		result.delete(0,
 		              result.length());
-		//return key;
 	}
 
 	/*
