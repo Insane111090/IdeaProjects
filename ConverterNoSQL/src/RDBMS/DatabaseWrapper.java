@@ -12,10 +12,12 @@ import NoSQL.Support;
 import oracle.kv.Key;
 import oracle.kv.Value;
 
+import javax.swing.*;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.*;
 
-public class DatabaseWrapper {
+public class DatabaseWrapper implements Runnable{
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
@@ -139,7 +141,7 @@ public class DatabaseWrapper {
 
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
-	                                               String selectedTableName ) throws SQLException {
+	                                               String selectedTableName ) throws SQLException, NullPointerException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder result = new StringBuilder();
@@ -151,39 +153,51 @@ public class DatabaseWrapper {
 			resMinor.delete(0,
 			                resMinor.length());
 			resMinor.append(token2);
-			PreparedStatement getKey = MyConnection.prepareStatement(" SELECT " + result + "'" + token2.toString() + "/:' ||" + resMinor +
+			PreparedStatement getKey = MyConnection.prepareStatement("Select * from (SELECT " + result + "'" + token2 + "/:' ||" + resMinor +
 
-							                                                         " AS KEY FROM " + selectedTableName.toString());
+							                                                         " AS KEY FROM " + selectedTableName + ") order by 1");
 			getKey.setFetchSize(50);
 			ResultSet getkeyResultSet = getKey.executeQuery();
 			while ( getkeyResultSet.next() ) {
 				Key myKey = Support.ParseKey.ParseKey(getkeyResultSet.getString(1));
 				Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
-				//NoSQLStorage.myStore.put(myKey,
-				//                         myValue);
+				NoSQLStorage.myStore.put(myKey,
+				                         myValue);
+				NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
 				//key.add(getkeyResultSet.getString(1));
 				//System.out.println(NoSQLStorage.myStore.get(myKey));
 			}
 			getKey.close();
 			getkeyResultSet.close();
 		}
-		//Sort list of keys
-		Collections.sort(key,
-		                 ( o1, o2 ) -> {
-			                 String s1 = o1.toString();
-			                 String s2 = o2.toString();
-			                 return s1.compareTo(s2);
-		                 });
-		resMajor.delete(0,
-		                resMajor.length());
-		result.delete(0,
-		              result.length());
 	}
 
-	/*
- * Clear list of keys from DB
- */
-	public static void clearKeyList() {
-		key.clear();
+	@Override
+	public void run() {
+		try {
+			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
+							TableModel.isAlreadySelectedMinor,
+							MainWindow.listOfTables.getSelectedValue().toString());
+		} catch ( SQLException e1 ) {
+
+		} catch ( Throwable ee){
+			JOptionPane.showMessageDialog(
+							NoSQLStorage.noSqlPanel,
+							"You doesn't connected!",
+							"Error",
+							JOptionPane.ERROR_MESSAGE);
+		}
+		try {
+			SwingUtilities.invokeAndWait(new Runnable() {
+				@Override
+				public void run() {
+					NoSQLStorage.startProcessOfConverting.setEnabled(true);
+				}
+			});
+		} catch ( InterruptedException e ) {
+
+		} catch ( InvocationTargetException e ) {
+
+		}
 	}
 }

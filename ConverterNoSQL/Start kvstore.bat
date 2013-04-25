@@ -1,1 +1,1 @@
-start java -jar C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\NoSQL_Storage\kv-ee-2.0.26\kv-2.0.26\lib\kvstore.jar kvlite -store MyStore
+start java -jar C:\Users\Андрей\Documents\GitHub\IdeaProjects\ConverterNoSQL\NoSQL_Storage\kv-ee-2.0.26\kv-2.0.26\lib\kvstore.jar kvlite -store MyStore

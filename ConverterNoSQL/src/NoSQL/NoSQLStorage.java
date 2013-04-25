@@ -18,7 +18,7 @@ import static RDBMS.Util.MigPanel;
  * @author agavrilov
  */
 public class NoSQLStorage extends JDialog {
-	static JPanel noSqlPanel = new MigPanel();
+	static public JPanel noSqlPanel = new MigPanel();
 	static final JPanel noSqlConnectionInfo = new MigPanel();
 	static final JPanel noSqlInfo = new MigPanel();
 	static final JLabel conectedNoSqlLbl = new JLabel("Status: ");
@@ -27,16 +27,16 @@ public class NoSQLStorage extends JDialog {
 	static final JLabel storeLbl = new JLabel("Store: ");
 	static final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
 	static final JButton close = new JButton("Close");
-	static final JButton startProcessOfConverting = new JButton("Start process");
+	public static final JButton startProcessOfConverting = new JButton("Start process");
 	JTextField portTxt = new JTextField();
 	JTextField hostTxt = new JTextField();
 	JTextField storeTxt = new JTextField();
 	JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
 	Support.ConnectionNoSQLStorage orastore;
 	public static KVStore myStore;
-	static JTextArea progress = new JTextArea();
+	static public JTextArea progress = new JTextArea();
 	static JScrollPane scroll = new JScrollPane();
-	String selectedTableName = MainWindow.listOfTables.getSelectedValue().toString();
+
 
 	String port = "5000";
 	String host = "localhost";
@@ -76,8 +76,6 @@ public class NoSQLStorage extends JDialog {
 		noSqlPanel.add(noSqlInfo,
 		               "w 550");
 	}
-
-	//public static void main(String[] args)
 	public NoSQLStorage() {
 		CreateForm();
 		setTitle("NoSQL Storage");
@@ -170,20 +168,17 @@ public class NoSQLStorage extends JDialog {
 		startProcessOfConverting.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				DatabaseWrapper.clearKeyList();
-				/*try {
-					//RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
-					//                                                 TableModel.isAlreadySelectedMinor,
-					//                                                 selectedTableName);
-				} catch ( SQLException e1 ) {
+				progress.setText("");
+				startProcessOfConverting.setEnabled(false);
+				Thread importer = new Thread(new DatabaseWrapper());
+				importer.start();
 
-				}*/
-				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
-				ValueVersion vv = myStore.get(test);
-				Value v = vv.getValue();
-				String data;
-				data = new String(v.getValue());
-				System.out.println(data.toString() + " " + myStore);
+//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
+//				ValueVersion vv = myStore.get(test);
+//				Value v = vv.getValue();
+//				String data;
+//				data = new String(v.getValue());
+//				System.out.println(data.toString() + " " + myStore);
 
 
 
