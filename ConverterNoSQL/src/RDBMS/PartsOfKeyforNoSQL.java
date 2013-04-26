@@ -23,28 +23,38 @@ import java.util.List;
  */
 public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 
-	static JPanel tableFieldsPanel = new Util.MigPanel("fillx, flowy");
-	static final JTable fieldsTable = new JTable(new TableModel());
-	static JLabel showMajorKey = new JLabel();
-	static JLabel showMinorKey = new JLabel();
-	static JLabel showValue = new JLabel();
-	static JLabel warning = new JLabel();
-	static JButton nextToMinor = new JButton("Next");
-	static JButton nextToValue = new JButton("Next");
-	static JButton nextToFinish = new JButton("Finish");
-	static JButton connToNoSQLButton = new JButton("Finish");
-	static List<Object> colNameForMajor = new ArrayList<>();
-	static List<Object> colNameForMinor = new ArrayList<>();
-	static List<Object> colNameForValue = new ArrayList<>();
-	static String selectedTableName;
-	public static boolean nextToMinorButtonClicked, nextToValueButtonClicked;
+	 JPanel tableFieldsPanel = new Util.MigPanel("fillx, flowy");
+	 final JTable fieldsTable = new JTable(new TableModel());
 
-	private static void ClearSelection() {
+	 final JRadioButton complexMinorKey = new JRadioButton("Choose Complex Minor Key");
+	 final JRadioButton simpleMinorKey = new JRadioButton("Choose simple Minor Key");
+
+	 JLabel showMajorKey = new JLabel();
+	 JLabel showMinorKey = new JLabel();
+	 JLabel showValue = new JLabel();
+	 JLabel forMinorKey = new JLabel("Enter your key: ");
+	JTextField txtKeyMinorUser = new JTextField();
+	 JButton nextToMinor = new JButton("Next");
+	 JButton nextToValue = new JButton("Next");
+	 JButton nextToFinish = new JButton("Finish");
+	JButton connToNoSQLButton = new JButton("Finish");
+	 List<Object> colNameForMajor = new ArrayList<>();
+	 List<Object> colNameForMinor = new ArrayList<>();
+	 List<Object> colNameForValue = new ArrayList<>();
+	 String selectedTableName;
+	public boolean nextToMinorButtonClicked, nextToValueButtonClicked;
+
+	private  void ClearSelection() {
 		//Hide buttons
 		nextToMinor.setVisible(true);
 		nextToValue.setVisible(false);
 		nextToFinish.setVisible(false);
 		connToNoSQLButton.setVisible(false);
+
+		complexMinorKey.setVisible(false);
+		complexMinorKey.setSelected(false);
+		simpleMinorKey.setVisible(false);
+		simpleMinorKey.setSelected(false);
 		//Hide labels
 		showMinorKey.setVisible(false);
 		showValue.setVisible(false);
@@ -63,25 +73,30 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 		showMajorKey.setText("Your major part of key: ");
 		showMinorKey.setText("Your minor part of key: ");
 		showValue.setText("Your selected columns for value: ");
+		txtKeyMinorUser.setVisible(false);
+		forMinorKey.setVisible(false);
 		selectedTableName = MainWindow.listOfTables.getSelectedValue().toString();
 	}
 
-	static void CreateTable() {
+	 void CreateTable() {
 		tableFieldsPanel.setBorder(new TitledBorder("Select columns for MAJOR component of key for table " + selectedTableName));
-
 		tableFieldsPanel.add(fieldsTable.getTableHeader(),
 		                     "dock north");
 		tableFieldsPanel.add(fieldsTable,
 		                     "north");
+		tableFieldsPanel.add(simpleMinorKey,"align left");
+		tableFieldsPanel.add(complexMinorKey,"align left");
+		 tableFieldsPanel.add(forMinorKey);
+		 tableFieldsPanel.add(txtKeyMinorUser,"w 100");
 		tableFieldsPanel.add(showMajorKey,
 		                     "align center");
 		tableFieldsPanel.add(showMinorKey,
 		                     "align center");
 		tableFieldsPanel.add(showValue,
 		                     "align center");
-		tableFieldsPanel.add(warning,
-		                     "align center");
-		tableFieldsPanel.add(nextToMinor,
+//		tableFieldsPanel.add(warning,
+//		                     "align center");
+    tableFieldsPanel.add(nextToMinor,
 		                     "align right");
 		tableFieldsPanel.add(nextToValue,
 		                     "align right");
@@ -90,9 +105,11 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 		tableFieldsPanel.add(connToNoSQLButton,
 		                     "align right");
 	}
-
 	//main
 	PartsOfKeyforNoSQL() {
+		ButtonGroup group = new ButtonGroup();
+		group.add(complexMinorKey);
+		group.add(simpleMinorKey);
 		ClearSelection();
 		try {
 			TableModel.data = DatabaseWrapper.descriptionTable(selectedTableName);
@@ -103,8 +120,6 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 							"Error",
 							JOptionPane.ERROR_MESSAGE);
 		}
-
-
 		CreateTable();
 
 		setTitle("Prepare for converting");
@@ -116,7 +131,30 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 
 		fieldsTable.getModel().addTableModelListener(this);//Реакция на событие по изменению в таблице
 
-		//Реакция на кнопку Next
+		simpleMinorKey.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				if (simpleMinorKey.isSelected()){
+					fieldsTable.setEnabled(true);
+					fieldsTable.setVisible(true);
+					nextToFinish.setVisible(true);
+				}
+			}
+		});
+		complexMinorKey.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				if (complexMinorKey.isSelected()){
+					txtKeyMinorUser.setVisible(true);
+					forMinorKey.setVisible(true);
+					//fieldsTable.setEnabled(true);
+					//fieldsTable.setVisible(true);
+					nextToValue.setVisible(true);
+
+				}
+			}
+		});
+		//Next to Minor value button
 		nextToMinor.addActionListener(new AbstractAction() {
 			@Override
 			@SuppressWarnings("unchecked")
@@ -133,8 +171,13 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 									"Select columns for MINOR component of key for table " + selectedTableName));
 					tableFieldsPanel.remove(nextToMinor);
 					TableModel.isAlreadySelectedMajor.addAll(colNameForMajor);
-					nextToValue.setVisible(true);
-					showMinorKey.setVisible(true);
+
+					fieldsTable.setEnabled(false);
+					fieldsTable.setVisible(false);
+					complexMinorKey.setVisible(true);
+					simpleMinorKey.setVisible(true);
+					//nextToValue.setVisible(true);
+					//showMinorKey.setVisible(true);
 					nextToMinorButtonClicked = true;
 					showMajorKey.setText(
 									"Your major part of key: " + TableModel.isAlreadySelectedMajor.toString().replaceAll(
@@ -143,7 +186,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 				}
 			}
 		});
-
+		//Next to value button
 		nextToValue.addActionListener(new AbstractAction() {
 			@Override
 			@SuppressWarnings("unchecked")
@@ -151,18 +194,24 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 				tableFieldsPanel.setBorder(new TitledBorder(
 								"Select columns for VALUES of table " + selectedTableName));
 				tableFieldsPanel.remove(nextToValue);
+				if (complexMinorKey.isSelected()){
+					colNameForMinor.add(txtKeyMinorUser.getText());
+				}
 				TableModel.isAlreadySelectedMinor.addAll(colNameForMinor);
 				showMinorKey.setText(
 								"Your minor part of key: " + TableModel.isAlreadySelectedMinor.toString().replaceAll(
 												",",
 												"/"));
+				fieldsTable.setVisible(true);
+				fieldsTable.setEnabled(true);
+				showMinorKey.setVisible(true);
 				nextToMinorButtonClicked = false;
 				nextToValueButtonClicked = true;
 				nextToFinish.setVisible(true);
 			}
 		});
 
-
+		//Next to Finish button
 		nextToFinish.addActionListener(new AbstractAction() {
 			@Override
 			@SuppressWarnings("unchecked")
@@ -173,6 +222,15 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 
 				TableModel.isAlredySelectedValues.addAll(colNameForValue);
 				nextToValueButtonClicked = false;
+				if (simpleMinorKey.isSelected()){
+					TableModel.isAlreadySelectedMinor.addAll(colNameForMinor);
+					showMinorKey.setText(
+									"Your minor part of key: " + TableModel.isAlreadySelectedMinor.toString().replaceAll(
+													",",
+													"/"));
+					showMinorKey.setVisible(true);
+					showValue.setVisible(false);
+				}
 				showValue.setVisible(true);
 				showValue.setText(
 								"Your selected columns for value: " + TableModel.isAlredySelectedValues.toString().replaceAll(
@@ -188,7 +246,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 			public void actionPerformed( ActionEvent e ) {
 				dispose();
 				NoSQLStorage storage = new NoSQLStorage();
-				storage.setSize(550,
+				storage.setSize(599,
 				                600);
 				storage.setVisible(true);
 				//Process proc;

@@ -15,9 +15,12 @@ import oracle.kv.Value;
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
-public class DatabaseWrapper implements Runnable{
+public class DatabaseWrapper implements Runnable {
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
@@ -153,9 +156,8 @@ public class DatabaseWrapper implements Runnable{
 			resMinor.delete(0,
 			                resMinor.length());
 			resMinor.append(token2);
-			PreparedStatement getKey = MyConnection.prepareStatement("Select * from (SELECT " + result + "'" + token2 + "/:' ||" + resMinor +
-
-							                                                         " AS KEY FROM " + selectedTableName + ") order by 1");
+			PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + token2 + "/:' ||" + resMinor +
+							                                                         " AS KEY FROM " + selectedTableName);
 			getKey.setFetchSize(50);
 			ResultSet getkeyResultSet = getKey.executeQuery();
 			while ( getkeyResultSet.next() ) {
@@ -163,7 +165,7 @@ public class DatabaseWrapper implements Runnable{
 				Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 				NoSQLStorage.myStore.put(myKey,
 				                         myValue);
-				NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
+				NoSQLStorage.progress.setText(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");//append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
 				//key.add(getkeyResultSet.getString(1));
 				//System.out.println(NoSQLStorage.myStore.get(myKey));
 			}
@@ -176,16 +178,12 @@ public class DatabaseWrapper implements Runnable{
 	public void run() {
 		try {
 			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
-							TableModel.isAlreadySelectedMinor,
-							MainWindow.listOfTables.getSelectedValue().toString());
+			                                                 TableModel.isAlreadySelectedMinor,
+			                                                 MainWindow.listOfTables.getSelectedValue().toString());
 		} catch ( SQLException e1 ) {
 
-		} catch ( Throwable ee){
-			JOptionPane.showMessageDialog(
-							NoSQLStorage.noSqlPanel,
-							"You doesn't connected!",
-							"Error",
-							JOptionPane.ERROR_MESSAGE);
+		} catch ( Throwable ee ) {
+			NoSQLStorage.progress.setText("You doesn't connected!! At first connect.");
 		}
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {

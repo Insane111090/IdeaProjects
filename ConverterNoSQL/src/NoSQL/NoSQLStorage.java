@@ -1,16 +1,13 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import RDBMS.MainWindow;
-import RDBMS.TableModel;
-import oracle.kv.*;
+import oracle.kv.FaultException;
+import oracle.kv.KVStore;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.sql.SQLException;
-
 
 import static RDBMS.Util.MigPanel;
 
@@ -18,15 +15,17 @@ import static RDBMS.Util.MigPanel;
  * @author agavrilov
  */
 public class NoSQLStorage extends JDialog {
-	static public JPanel noSqlPanel = new MigPanel();
-	static final JPanel noSqlConnectionInfo = new MigPanel();
-	static final JPanel noSqlInfo = new MigPanel();
-	static final JLabel conectedNoSqlLbl = new JLabel("Status: ");
-	static final JLabel hostLbl = new JLabel("Host: ");
-	static final JLabel portLbl = new JLabel("Port: ");
-	static final JLabel storeLbl = new JLabel("Store: ");
-	static final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
-	static final JButton close = new JButton("Close");
+	public JPanel noSqlPanel = new MigPanel();
+	final JPanel noSqlConnectionInfo = new MigPanel();
+	final JPanel noSqlInfo = new MigPanel();
+	final JLabel conectedNoSqlLbl = new JLabel("Status: ");
+	final JLabel hostLbl = new JLabel("Host: ");
+	final JLabel portLbl = new JLabel("Port: ");
+	final JLabel storeLbl = new JLabel("Store: ");
+	final JLabel resultCount = new JLabel("Count of converted data: ");
+	final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
+	final JButton disconnectAndClose = new JButton("Disconnect and close");
+	final JButton disconnectNoSQL = new JButton("Disconnect from storage");
 	public static final JButton startProcessOfConverting = new JButton("Start process");
 	JTextField portTxt = new JTextField();
 	JTextField hostTxt = new JTextField();
@@ -34,8 +33,8 @@ public class NoSQLStorage extends JDialog {
 	JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
 	Support.ConnectionNoSQLStorage orastore;
 	public static KVStore myStore;
-	static public JTextArea progress = new JTextArea();
-	static JScrollPane scroll = new JScrollPane();
+	static public JTextPane progress = new JTextPane();
+	JScrollPane scroll = new JScrollPane();
 
 
 	String port = "5000";
@@ -43,39 +42,45 @@ public class NoSQLStorage extends JDialog {
 	String store = "MyStore";
 
 	void CreateForm() {
-		noSqlPanel.setBorder(new TitledBorder("Connection to NoSQL Storage"));
-		noSqlInfo.setBorder(new TitledBorder("Data status"));
+		noSqlConnectionInfo.setBorder(new TitledBorder("Connection to NoSQL Storage"));
 		connNoSqlStatusTxt.setEditable(false);
 		connNoSqlStatusTxt.setBackground(Color.RED);
 
-		noSqlConnectionInfo.add(portLbl);
+		noSqlConnectionInfo.add(portLbl,
+		                        "split, gapleft 20");
 		noSqlConnectionInfo.add(portTxt,
-		                        "w 150, wrap");
-		noSqlConnectionInfo.add(hostLbl);
+		                        "w 150, wrap, split");
+		noSqlConnectionInfo.add(hostLbl,
+		                        "split,gapleft 18");
 		noSqlConnectionInfo.add(hostTxt,
-		                        "w 150, wrap");
-		noSqlConnectionInfo.add(storeLbl);
+		                        "w 150, wrap, split");
+		noSqlConnectionInfo.add(storeLbl,
+		                        "split, gapleft 15");
 		noSqlConnectionInfo.add(storeTxt,
-		                        "w 150, wrap 15");
-		noSqlConnectionInfo.add(conectedNoSqlLbl);
-		noSqlConnectionInfo.add(connNoSqlStatusTxt);
+		                        "w 150, wrap 15, split");
+		noSqlConnectionInfo.add(conectedNoSqlLbl,
+		                        "split");
+		noSqlConnectionInfo.add(connNoSqlStatusTxt,
+		                        "wrap 10");
 		noSqlConnectionInfo.add(connectToNoSqlBut,
+		                        "gapleft 180");
+		noSqlConnectionInfo.add(disconnectNoSQL,
 		                        "align right");
 
+		noSqlInfo.setBorder(new TitledBorder("Data status"));
 		progress.setEditable(false);
 		scroll.getViewport().setView(progress);
 		noSqlInfo.add(scroll,
-		              "w 500, h 500, wrap 15");
-		noSqlInfo.add(close,
+		              "w 600,h 300, wrap 15");
+	  noSqlInfo.add(startProcessOfConverting,
 		              "align right");
-		noSqlInfo.add(startProcessOfConverting,
-		              "align left");
-
+		noSqlInfo.add(disconnectAndClose,
+		              "align right");
 		noSqlPanel.add(noSqlConnectionInfo,
-		               "w 600,wrap 10");
-		noSqlPanel.add(noSqlInfo,
-		               "w 550");
+		               "wrap");
+		noSqlPanel.add(noSqlInfo);
 	}
+
 	public NoSQLStorage() {
 		CreateForm();
 		setTitle("NoSQL Storage");
@@ -148,21 +153,36 @@ public class NoSQLStorage extends JDialog {
 				}
 			}
 		});
-		close.addActionListener(new AbstractAction() {
+		disconnectNoSQL.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				try {
 					myStore.close();
-					progress.setText(progress.getText() + "\n\nStore closed");
+					progress.setText("\n\nStore closed");//);append();
 				} catch ( NullPointerException ex ) {
 					JOptionPane.showMessageDialog(
 									noSqlPanel,
-									"Nothing to close! At first connect.",
+									"You are not connected. Nothing to disconnect.",
 									"Error",
 									JOptionPane.ERROR_MESSAGE);
 				}
-
-				//System.exit(0);
+				//resultCount.setText(resultCount.getText() + 5);
+			}
+		});
+		disconnectAndClose.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				try {
+					myStore.close();
+					progress.setText("\n\nStore closed");
+				} catch ( NullPointerException ex ) {
+//					JOptionPane.showMessageDialog(
+//									noSqlPanel,
+//									"Nothing to close! At first connect.",
+//									"Error",
+//									JOptionPane.ERROR_MESSAGE);
+				}
+				dispose();
 			}
 		});
 		startProcessOfConverting.addActionListener(new AbstractAction() {
@@ -172,15 +192,12 @@ public class NoSQLStorage extends JDialog {
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
-
 //				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
 //				ValueVersion vv = myStore.get(test);
 //				Value v = vv.getValue();
 //				String data;
 //				data = new String(v.getValue());
 //				System.out.println(data.toString() + " " + myStore);
-
-
 
 
 			}
