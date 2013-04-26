@@ -33,7 +33,7 @@ public class NoSQLStorage extends JDialog {
 	JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
 	Support.ConnectionNoSQLStorage orastore;
 	public static KVStore myStore;
-	static public JTextPane progress = new JTextPane();
+	static public JTextArea progress = new JTextArea();
 	JScrollPane scroll = new JScrollPane();
 
 
@@ -158,7 +158,7 @@ public class NoSQLStorage extends JDialog {
 			public void actionPerformed( ActionEvent e ) {
 				try {
 					myStore.close();
-					progress.setText("\n\nStore closed");//);append();
+					progress.append("\n\nStore closed");//);append();
 				} catch ( NullPointerException ex ) {
 					JOptionPane.showMessageDialog(
 									noSqlPanel,
@@ -174,7 +174,7 @@ public class NoSQLStorage extends JDialog {
 			public void actionPerformed( ActionEvent e ) {
 				try {
 					myStore.close();
-					progress.setText("\n\nStore closed");
+					progress.append("\n\nStore closed");
 				} catch ( NullPointerException ex ) {
 //					JOptionPane.showMessageDialog(
 //									noSqlPanel,

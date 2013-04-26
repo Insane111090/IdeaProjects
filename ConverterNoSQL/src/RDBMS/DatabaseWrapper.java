@@ -165,7 +165,7 @@ public class DatabaseWrapper implements Runnable {
 				Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 				NoSQLStorage.myStore.put(myKey,
 				                         myValue);
-				NoSQLStorage.progress.setText(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");//append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
+				NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");//append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
 				//key.add(getkeyResultSet.getString(1));
 				//System.out.println(NoSQLStorage.myStore.get(myKey));
 			}
