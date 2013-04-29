@@ -69,7 +69,7 @@ public class Support {
 		}
 		public static Value ParseValue(String noParsedValue){
 			valueString = noParsedValue.substring(noParsedValue.indexOf(":")+1);
-			parsedValue = Value.createValue(valueString.getBytes());
+			parsedValue = Value.createValue(valueString.toString().getBytes());
 			return parsedValue;
 		}
 	}

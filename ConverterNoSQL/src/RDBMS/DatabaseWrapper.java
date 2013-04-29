@@ -11,6 +11,8 @@ import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import oracle.kv.Key;
 import oracle.kv.Value;
+import org.apache.avro.data.Json;
+import sun.plugin2.util.PojoUtil;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
@@ -144,34 +146,57 @@ public class DatabaseWrapper implements Runnable {
 
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
+	                                               Set<String> valueSet,
 	                                               String selectedTableName ) throws SQLException, NullPointerException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
+		StringBuilder resValues = new StringBuilder();
 		StringBuilder result = new StringBuilder();
-		for ( String token : majorSet ) {
-			resMajor.append(token).append("||'/'||");
+		for ( String major : majorSet ) {
+			resMajor.append(major).append("||'/'||");
 		}
 		result.append(resMajor).append("'-/'||");
-		for ( String token2 : minorSet ) {
+		for ( String minor : minorSet ) {
 			resMinor.delete(0,
 			                resMinor.length());
-			resMinor.append(token2);
-			PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + token2 + "/:' ||" + resMinor +
-							                                                         " AS KEY FROM " + selectedTableName);
-			getKey.setFetchSize(50);
-			ResultSet getkeyResultSet = getKey.executeQuery();
-			while ( getkeyResultSet.next() ) {
-				Key myKey = Support.ParseKey.ParseKey(getkeyResultSet.getString(1));
-				Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
-				NoSQLStorage.myStore.put(myKey,
-				                         myValue);
-				NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");//append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
-				//key.add(getkeyResultSet.getString(1));
-				//System.out.println(NoSQLStorage.myStore.get(myKey));
+			resMinor.append(minor);
+			if ( PartsOfKeyforNoSQL.isSimple ) {
+				PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
+								                                                         " AS KEY FROM " + selectedTableName);
+				getKey.setFetchSize(50);
+				ResultSet getkeyResultSet = getKey.executeQuery();
+				while ( getkeyResultSet.next() ) {
+					Key myKey = Support.ParseKey.ParseKey(getkeyResultSet.getString(1));
+					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
+					NoSQLStorage.myStore.put(myKey,
+					                         myValue);
+					NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
+					//key.add(getkeyResultSet.getString(1));
+					//System.out.println(NoSQLStorage.myStore.get(myKey));
+				}
+
+				getKey.close();
+				getkeyResultSet.close();
+			} else if ( PartsOfKeyforNoSQL.isComplex ) {
+				for ( String value : valueSet ) {
+					resValues.append("\"").append(value).append("\":").append(" \"'||").append(value).append("||'\",\n");
+				}
+				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
+								                                                                      "'{" + resValues + "',',$','}') FROM " + selectedTableName);
+				getComplexMinorValue.setFetchSize(50);
+				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
+				//String str = "select regexp_replace(" + result + "'" + minor + "/:' ||" + "'{" + resValues + "',',$','}') from " + selectedTableName;
+				//System.out.println(str);
+				while(getComplexKeyResultSet.next()){
+					Key myKeyComplex = Support.ParseKey.ParseKey(getComplexKeyResultSet.getString(1));
+					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
+					NoSQLStorage.myStore.put(myKeyComplex,
+					                         myValueComplex);
+					NoSQLStorage.progress.append(myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + new String(myValueComplex.getValue()) + "\n");
+				}
 			}
-			getKey.close();
-			getkeyResultSet.close();
 		}
+
 	}
 
 	@Override
@@ -179,6 +204,7 @@ public class DatabaseWrapper implements Runnable {
 		try {
 			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
 			                                                 TableModel.isAlreadySelectedMinor,
+			                                                 TableModel.isAlredySelectedValues,
 			                                                 MainWindow.listOfTables.getSelectedValue().toString());
 		} catch ( SQLException e1 ) {
 

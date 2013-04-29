@@ -1,8 +1,7 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import oracle.kv.FaultException;
-import oracle.kv.KVStore;
+import oracle.kv.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -192,15 +191,21 @@ public class NoSQLStorage extends JDialog {
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
-//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
-//				ValueVersion vv = myStore.get(test);
-//				Value v = vv.getValue();
-//				String data;
-//				data = new String(v.getValue());
-//				System.out.println(data.toString() + " " + myStore);
+
+				System.out.println(importer.getState());
 
 
-			}
+
+
+				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
+				ValueVersion vv = myStore.get(test);
+				Value v = vv.getValue();
+				String data;
+				data = new String(v.getValue());
+				System.out.println(data.toString() + " " + myStore.get(test));
+				}
+
+
 		});
 	}
 }
