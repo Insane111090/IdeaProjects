@@ -30,7 +30,7 @@ public final class TableModel extends AbstractTableModel {
 	public static Set isAlreadySelectedMinor = new LinkedHashSet();
 	public static Set isAlredySelectedValues = new LinkedHashSet();
 	/*
-   *
+	 *
    * @param col
    * @return
    */

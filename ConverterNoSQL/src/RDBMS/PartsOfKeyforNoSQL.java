@@ -267,11 +267,13 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 				connToNoSQLButton.setVisible(true);
 			}
 		});
+		//To NoSQL Storage Button
 		connToNoSQLButton.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				dispose();
 				NoSQLStorage storage = new NoSQLStorage();
+				NoSQLStorage.progress.setText("");
 				storage.setSize(599,
 				                600);
 				storage.setVisible(true);

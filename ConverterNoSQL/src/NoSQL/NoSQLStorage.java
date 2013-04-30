@@ -1,7 +1,8 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import oracle.kv.*;
+import oracle.kv.FaultException;
+import oracle.kv.KVStore;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -71,7 +72,7 @@ public class NoSQLStorage extends JDialog {
 		scroll.getViewport().setView(progress);
 		noSqlInfo.add(scroll,
 		              "w 600,h 300, wrap 15");
-	  noSqlInfo.add(startProcessOfConverting,
+		noSqlInfo.add(startProcessOfConverting,
 		              "align right");
 		noSqlInfo.add(disconnectAndClose,
 		              "align right");
@@ -203,7 +204,7 @@ public class NoSQLStorage extends JDialog {
 //				String data;
 //				data = new String(v.getValue());
 //				System.out.println(data.toString() + " " + myStore.get(test));
-				}
+			}
 
 
 		});

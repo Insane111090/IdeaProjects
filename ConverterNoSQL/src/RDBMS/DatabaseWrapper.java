@@ -169,7 +169,7 @@ public class DatabaseWrapper implements Runnable {
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
-					NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
+					NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n");
 				}
 				getKey.close();
 				getkeyResultSet.close();
@@ -186,7 +186,8 @@ public class DatabaseWrapper implements Runnable {
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
-					NoSQLStorage.progress.append(myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + new String(myValueComplex.getValue()) + "\n");
+					//NoSQLStorage.progress.setFont(new Font("sanserif",Font.BOLD,15));
+					NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
 				}
 			}
 		}
