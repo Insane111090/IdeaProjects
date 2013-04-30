@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author agavrilov
  */
-public abstract class Support {
+public  class Support {
 	public static class ConnectionNoSQLStorage {
 
 		private KVStore oraStore;
