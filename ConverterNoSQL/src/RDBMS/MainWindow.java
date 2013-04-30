@@ -279,11 +279,11 @@ public class MainWindow {
 
 	public static final class ConnectionRDBMSConfigDialog extends JDialog {
 
-		final static JTextField serverTxt = new JTextField();//Field for server input
-		final static JTextField portTxt = new JTextField();//Field for port input
-		final static JTextField sidTxt = new JTextField();//Field for sid input
-		final static JTextField usernameTxt = new JTextField();//Field for username input
-		final static JPasswordField passwordTxt = new JPasswordField();//Field for password input
+		final  JTextField serverTxt = new JTextField();//Field for server input
+		final  JTextField portTxt = new JTextField();//Field for port input
+		final  JTextField sidTxt = new JTextField();//Field for sid input
+		final  JTextField usernameTxt = new JTextField();//Field for username input
+		private transient JPasswordField passwordTxt = new JPasswordField();//Field for password input
 		final static JTextField connectionStatusLabel = new JTextField();
 		final static JTextField connectionUrlLabel = new JTextField();//Field for connection url
 		final static JTextArea connectionErrorLabel = new JTextArea();//Connection error
@@ -295,7 +295,7 @@ public class MainWindow {
 		/**
 		 *
 		 */
-		public static void clearFields() {
+		public void clearFields() {
 			serverTxt.setText("");
 			portTxt.setText("");
 			sidTxt.setText("");

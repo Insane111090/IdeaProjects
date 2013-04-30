@@ -11,8 +11,7 @@ import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import oracle.kv.Key;
 import oracle.kv.Value;
-import org.apache.avro.data.Json;
-import sun.plugin2.util.PojoUtil;
+import org.json.JSONException;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
@@ -147,7 +146,7 @@ public class DatabaseWrapper implements Runnable {
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
 	                                               Set<String> valueSet,
-	                                               String selectedTableName ) throws SQLException, NullPointerException {
+	                                               String selectedTableName ) throws SQLException, NullPointerException, JSONException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
@@ -171,10 +170,7 @@ public class DatabaseWrapper implements Runnable {
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
 					NoSQLStorage.progress.append(myKey.getMajorPath() + " " + myKey.getMinorPath() + new String(myValue.getValue()) + "\n");
-					//key.add(getkeyResultSet.getString(1));
-					//System.out.println(NoSQLStorage.myStore.get(myKey));
 				}
-
 				getKey.close();
 				getkeyResultSet.close();
 			} else if ( PartsOfKeyforNoSQL.isComplex ) {
@@ -182,12 +178,10 @@ public class DatabaseWrapper implements Runnable {
 					resValues.append("\"").append(value).append("\":").append(" \"'||").append(value).append("||'\",\n");
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
-								                                                                      "'{" + resValues + "',',$','}') FROM " + selectedTableName);
+								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
 				getComplexMinorValue.setFetchSize(50);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
-				//String str = "select regexp_replace(" + result + "'" + minor + "/:' ||" + "'{" + resValues + "',',$','}') from " + selectedTableName;
-				//System.out.println(str);
-				while(getComplexKeyResultSet.next()){
+				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKeyComplex,
@@ -196,7 +190,6 @@ public class DatabaseWrapper implements Runnable {
 				}
 			}
 		}
-
 	}
 
 	@Override

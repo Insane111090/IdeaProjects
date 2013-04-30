@@ -192,17 +192,17 @@ public class NoSQLStorage extends JDialog {
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
 
-				System.out.println(importer.getState());
-
-
-
-
-				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
-				ValueVersion vv = myStore.get(test);
-				Value v = vv.getValue();
-				String data;
-				data = new String(v.getValue());
-				System.out.println(data.toString() + " " + myStore.get(test));
+//				System.out.println(importer.getState());
+//
+//
+//
+//
+//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
+//				ValueVersion vv = myStore.get(test);
+//				Value v = vv.getValue();
+//				String data;
+//				data = new String(v.getValue());
+//				System.out.println(data.toString() + " " + myStore.get(test));
 				}
 
 

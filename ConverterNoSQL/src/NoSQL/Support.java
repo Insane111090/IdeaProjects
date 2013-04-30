@@ -1,13 +1,16 @@
 package NoSQL;
 
 import oracle.kv.*;
+import org.json.JSONException;
+import org.json.JSONString;
+import org.json.JSONStringer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /** @author agavrilov */
-public class Support {
-	public static class ConnectionNoSQLStorage {
+public abstract class Support {
+	public static class ConnectionNoSQLStorage{
 
 		private KVStore oraStore;
 		private static boolean _isConnectedToStore;
