@@ -72,7 +72,7 @@ public class NoSQLStorage extends JDialog {
 		scroll.getViewport().setView(progress);
 		noSqlInfo.add(scroll,
 		              "w 600,h 300, wrap 15");
-	  noSqlInfo.add(startProcessOfConverting,
+		noSqlInfo.add(startProcessOfConverting,
 		              "align right");
 		noSqlInfo.add(disconnectAndClose,
 		              "align right");
@@ -192,15 +192,21 @@ public class NoSQLStorage extends JDialog {
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
-//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/ЗАРПЛАТА/");
+
+//				System.out.println(importer.getState());
+//
+//
+//
+//
+//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
 //				ValueVersion vv = myStore.get(test);
 //				Value v = vv.getValue();
 //				String data;
 //				data = new String(v.getValue());
-//				System.out.println(data.toString() + " " + myStore);
-
-
+//				System.out.println(data.toString() + " " + myStore.get(test));
 			}
+
+
 		});
 	}
 }

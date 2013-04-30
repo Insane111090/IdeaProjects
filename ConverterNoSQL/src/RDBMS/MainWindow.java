@@ -46,7 +46,7 @@ public class MainWindow {
 	 * @param getDdlOfSelectedTable_btn
 	 * @param handMadeConvert
 	 * @param autoConvert
-	 * @param statrConvert
+	 * @param startConvert
 	 */
 	public static void createGUI( JLabel connStatus,
 	                              JLabel urlconn,
@@ -55,9 +55,9 @@ public class MainWindow {
 	                              JButton getDdlOfSelectedTable_btn,
 	                              JRadioButton handMadeConvert,
 	                              JRadioButton autoConvert,
-	                              JButton statrConvert ) {
+	                              JButton startConvert ) {
 	  /*
-     * Adding elements on MainForm window
+	   * Adding elements on MainForm window
      */
 		connectionSettings.add(connStatus,
 		                       "split");
@@ -85,8 +85,8 @@ public class MainWindow {
 		descSelectedTable.add(handMadeConvert,
 		                      "wrap");
 		descSelectedTable.add(autoConvert,
-		                      "split, gapright 130");
-		descSelectedTable.add(statrConvert);
+		                      "split, gapright 230");
+		descSelectedTable.add(startConvert);
 		descSelectedTable.setEnabled(false);
 
 		mainPanel.add(connectionSettings,
@@ -115,15 +115,15 @@ public class MainWindow {
 	 */
 	public static void main( String[] args ) {
 		connectionSettings.setBorder(new TitledBorder(
-						"Настройка подключения к БД"));
-		resultTables.setBorder(new TitledBorder("Список таблиц"));
+						"Configure connection to RDBMS"));
+		resultTables.setBorder(new TitledBorder("List of tables"));
 		descSelectedTable.setBorder(new TitledBorder(
-						"Описание выбранной таблицы"));
-    /*
+						"Description of selected table"));
+	  /*
      * Creation of Buttons
      */
 		//Connection button
-		final JButton openConnectionSetup = new JButton("Configure connection");//Button pressed for configure connection
+		final JButton openConnectionSetup = new JButton("Configure connection to RDBMS");//Button pressed for configure connection
 		openConnectionSetup.setToolTipText("Press for enter connection setup");//ToolTip for button
 
 		//Exit button
@@ -145,9 +145,9 @@ public class MainWindow {
      * Creation ob RadioButtons
      */
 		final JRadioButton handMadeConvert = new JRadioButton(
-						"Ручная конвертация");
+						"Hand convert");
 		final JRadioButton autoConvert = new JRadioButton(
-						"Автоматическая конвертация");
+						"Auto convert");
 		handMadeConvert.setEnabled(false);
 		autoConvert.setEnabled(false);
 		ButtonGroup group = new ButtonGroup();
@@ -254,7 +254,7 @@ public class MainWindow {
 								selectedTableName = listOfTables.getSelectedValue().toString();
 
 				descSelectedTable.setBorder(new TitledBorder(
-								"Таблица " + selectedTableName));
+								"Table " + selectedTableName));
 				descSelectedTable.setEnabled(true);
 				descriptionTables.setContentType("text/html");
 				try {
@@ -279,11 +279,11 @@ public class MainWindow {
 
 	public static final class ConnectionRDBMSConfigDialog extends JDialog {
 
-		final static JTextField serverTxt = new JTextField();//Field for server input
-		final static JTextField portTxt = new JTextField();//Field for port input
-		final static JTextField sidTxt = new JTextField();//Field for sid input
-		final static JTextField usernameTxt = new JTextField();//Field for username input
-		final static JPasswordField passwordTxt = new JPasswordField();//Field for password input
+		final JTextField serverTxt = new JTextField();//Field for server input
+		final JTextField portTxt = new JTextField();//Field for port input
+		final JTextField sidTxt = new JTextField();//Field for sid input
+		final JTextField usernameTxt = new JTextField();//Field for username input
+		private transient JPasswordField passwordTxt = new JPasswordField();//Field for password input
 		final static JTextField connectionStatusLabel = new JTextField();
 		final static JTextField connectionUrlLabel = new JTextField();//Field for connection url
 		final static JTextArea connectionErrorLabel = new JTextArea();//Connection error
@@ -295,7 +295,7 @@ public class MainWindow {
 		/**
 		 *
 		 */
-		public static void clearFields() {
+		public void clearFields() {
 			serverTxt.setText("");
 			portTxt.setText("");
 			sidTxt.setText("");
@@ -438,9 +438,9 @@ public class MainWindow {
 					try {
 						DatabaseWrapper.createConnection("andgavr",
 //usernameTxt.getText(),
-"andgavr",
+                                             "andgavr",
 //new String(passwordTxt.getPassword()),
-url);
+                                             url);
 					} catch ( SQLException e ) {
 						JOptionPane.showMessageDialog(
 										mainForm,
