@@ -173,7 +173,6 @@ public class DatabaseWrapper implements Runnable {
 			getkeyResultSet.close();
 		}
 	}
-
 	@Override
 	public void run() {
 		try {
