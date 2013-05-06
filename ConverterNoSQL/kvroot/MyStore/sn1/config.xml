@@ -1,0 +1,111 @@
+<config version="1">
+  <component name="storageNodeParams" type="storageNodeParams" validate="true">
+    <property name="memoryMB" value="0" type="INT"/>
+    <property name="storageNodeId" value="1" type="INT"/>
+    <property name="snMonitorSOReadTimeout" value="5 SECONDS" type="DURATION"/>
+    <property name="snRegistrySOConnectTimeout" value="5 SECONDS" type="DURATION"/>
+    <property name="snAdminSOBacklog" value="0" type="INT"/>
+    <property name="connectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="snMonitorSOConnectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="adminCommandServiceSOBacklog" value="0" type="INT"/>
+    <property name="adminListenerSOBacklog" value="100" type="INT"/>
+    <property name="capacity" value="1" type="INT"/>
+    <property name="haPortRange" value="5005,5007" type="STRING"/>
+    <property name="haHostname" value="AGavrilov-nb2" type="STRING"/>
+    <property name="gcThreadPercent" value="62" type="INT"/>
+    <property name="snMonitorSOBacklog" value="0" type="INT"/>
+    <property name="repnodeStartWait" value="120 SECONDS" type="DURATION"/>
+    <property name="hostname" value="AGavrilov-nb2" type="STRING"/>
+    <property name="snRegistrySOBacklog" value="1024" type="INT"/>
+    <property name="serviceLogFileCount" value="20" type="INT"/>
+    <property name="masterBalance" value="true" type="BOOLEAN"/>
+    <property name="rnHeapPercent" value="85" type="INT"/>
+    <property name="useClientSocketFactories" value="true" type="BOOLEAN"/>
+    <property name="numCPUs" value="8" type="INT"/>
+    <property name="linkExecWait" value="200 SECONDS" type="DURATION"/>
+    <property name="mgmtClass" value="oracle.kv.impl.mgmt.NoOpAgent" type="STRING"/>
+    <property name="gcThreadThreshold" value="8" type="INT"/>
+    <property name="registryPort" value="5000" type="INT"/>
+    <property name="serviceStopWait" value="120 SECONDS" type="DURATION"/>
+    <property name="rootDirPath" value="./kvroot" type="STRING"/>
+    <property name="mgmtTrapPort" value="0" type="INT"/>
+    <property name="mgmtPollPort" value="0" type="INT"/>
+    <property name="readTimeout" value="140 SECONDS" type="DURATION"/>
+    <property name="serviceLogFileLimit" value="2000000" type="INT"/>
+    <property name="maxLinkCount" value="500" type="INT"/>
+  </component>
+  <component name="mountPoints" type="bootstrapParams" validate="false">
+  </component>
+  <component name="globalParams" type="globalParams" validate="true">
+    <property name="isLoopback" value="false" type="BOOLEAN"/>
+    <property name="storeName" value="MyStore" type="STRING"/>
+  </component>
+  <component name="admin1" type="adminParams" validate="true">
+    <property name="adminLogFileLimit" value="4000000" type="INT"/>
+    <property name="waitAdminFailover" value="1 MINUTES" type="DURATION"/>
+    <property name="useClientSocketFactories" value="true" type="BOOLEAN"/>
+    <property name="adminHttpPort" value="5001" type="INT"/>
+    <property name="broadcastTopoDelay" value="10 SECONDS" type="DURATION"/>
+    <property name="storageNodeId" value="1" type="INT"/>
+    <property name="adminLogFileCount" value="20" type="INT"/>
+    <property name="checkPartitionMigration" value="10 SECONDS" type="DURATION"/>
+    <property name="disabled" value="false" type="BOOLEAN"/>
+    <property name="waitUnreachableService" value="3 SECONDS" type="DURATION"/>
+    <property name="eventExpiryAge" value="30 DAYS" type="DURATION"/>
+    <property name="waitTimeout" value="5 MINUTES" type="DURATION"/>
+    <property name="adminCommandServiceSOBacklog" value="0" type="INT"/>
+    <property name="waitRNFailover" value="1 MINUTES" type="DURATION"/>
+    <property name="adminListenerSOBacklog" value="100" type="INT"/>
+    <property name="nodeHostPort" value="AGavrilov-nb2:5005" type="STRING"/>
+    <property name="loggingConfigProps" value="" type="STRING"/>
+    <property name="collectorPollPeriod" value="20 SECONDS" type="DURATION"/>
+    <property name="waitRNConsistency" value="10 MINUTES" type="DURATION"/>
+    <property name="adminId" value="1" type="INT"/>
+    <property name="createCSV" value="false" type="BOOLEAN"/>
+    <property name="broadcastTopoThreshold" value="20" type="INT"/>
+    <property name="helperHosts" value="AGavrilov-nb2:5005" type="STRING"/>
+  </component>
+  <component name="rg1-rn1" type="repNodeParams" validate="true">
+    <property name="latencyCeiling" value="0" type="INT"/>
+    <property name="rnMaxActiveRequests" value="100" type="INT"/>
+    <property name="rnPMWaitAfterError" value="30 SECONDS" type="DURATION"/>
+    <property name="storageNodeId" value="1" type="INT"/>
+    <property name="repNodeId" value="rg1-rn1" type="STRING"/>
+    <property name="rnNodeLimitPercent" value="85" type="INT"/>
+    <property name="maxTrackedLatency" value="1000 MILLISECONDS" type="DURATION"/>
+    <property name="rnRHSOConnectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="rnAdminSOBacklog" value="0" type="INT"/>
+    <property name="rnRHSOReadTimeout" value="30 SECONDS" type="DURATION"/>
+    <property name="rnRequestThresholdPercent" value="90" type="INT"/>
+    <property name="requestQuiesceTime" value="60 SECONDS" type="DURATION"/>
+    <property name="rnRHSOBacklog" value="1024" type="INT"/>
+    <property name="rnAdminSOReadTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="throughputFloor" value="0" type="INT"/>
+    <property name="loggingConfigProps" value="" type="STRING"/>
+    <property name="activeThreshold" value="2147483647" type="INT"/>
+    <property name="nodeHostPort" value="AGavrilov-nb2:5006" type="STRING"/>
+    <property name="rnNRConfigRetainLogFiles" value="false" type="BOOLEAN"/>
+    <property name="collectEnvStats" value="true" type="BOOLEAN"/>
+    <property name="statsInterval" value="60 SECONDS" type="DURATION"/>
+    <property name="rnMonitorSOBacklog" value="0" type="INT"/>
+    <property name="masterBalance" value="true" type="BOOLEAN"/>
+    <property name="useClientSocketFactories" value="true" type="BOOLEAN"/>
+    <property name="rnMonitorSOReadTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="rnMonitorSOConnectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="threadDumpInterval" value="5 MINUTES" type="DURATION"/>
+    <property name="cacheMode" value="EVICT_LN" type="CACHEMODE"/>
+    <property name="cacheSize" value="0" type="LONG"/>
+    <property name="configProperties" value="" type="STRING"/>
+    <property name="rnAdminSOConnectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="rnPMConcurrentSourceLimit" value="1" type="INT"/>
+    <property name="disabled" value="false" type="BOOLEAN"/>
+    <property name="rnCachePercent" value="70" type="INT"/>
+    <property name="rnPMSOConnectTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="javaMiscParams" value=" -XX:ParallelGCThreads=8" type="STRING"/>
+    <property name="threadDumpMax" value="10" type="INT"/>
+    <property name="rnPMConcurrentTargetLimit" value="2" type="INT"/>
+    <property name="rnPMWaitAfterBusy" value="60 SECONDS" type="DURATION"/>
+    <property name="rnPMSOReadWriteTimeout" value="10 SECONDS" type="DURATION"/>
+    <property name="helperHosts" value="AGavrilov-nb2:5006" type="STRING"/>
+  </component>
+</config>

@@ -1,0 +1,73 @@
+2013-05-06 11:14:12.439 UTC INFO [MyStore] rg1-rn1 (11:13:09.365 UTC -> 11:14:00.368 UTC)
+Cache
+	adminBytes=665
+	cacheTotalBytes=16 847 374
+	dataBytes=67 777
+	lockBytes=1 716
+	nBINsFetch=157
+	nBINsFetchMiss=7
+	nCachedBINs=8
+	nCachedUpperINs=8
+	nINCompactKey=3
+	nINNoTarget=4
+	nINSparseTarget=10
+	nLNsFetch=106
+	nLNsFetchMiss=41
+Checkpoints
+	lastCheckpointEnd=0x0/0x29f70
+	lastCheckpointId=2
+	lastCheckpointStart=0x0/0x29797
+	nCheckpoints=1
+	nFullBINFlush=8
+	nFullINFlush=16
+Cleaning
+	correctedAvgLNSize=NaN
+	totalLogSize=172 502
+I/O
+	bufferBytes=16 777 216
+	endOfLog=0x0/0x2a1d9
+	nCacheMiss=52
+	nFSyncRequests=2
+	nFSyncTime=101
+	nFSyncs=2
+	nFileOpens=7
+	nLogBuffers=16
+	nLogFSyncs=4
+	nNotResident=52
+	nOpenFiles=1
+	nRandomReadBytes=4 096
+	nRandomReads=1
+	nRepeatFaultReads=1
+	nSequentialReadBytes=7 591 189
+	nSequentialReads=66
+	nSequentialWriteBytes=2 801
+	nSequentialWrites=3
+Locks
+	nOwners=11
+	nReadLocks=11
+	nRequests=224
+	nTotalLocks=11
+Environment
+	btreeRelatchesRequired=7
+
+2013-05-06 11:14:12.440 UTC INFO [MyStore] rg1-rn1 (11:13:09.365 UTC -> 11:14:00.368 UTC)
+FeederManager
+	nMaxReplicaLag=NONE
+Replay
+	maxCommitProcessingNanos=NONE
+	minCommitProcessingNanos=NONE
+VLSNIndex
+	nBucketsCreated=1
+
+2013-05-06 11:14:12.440 UTC INFO [MyStore] rg1-rn1 (11:13:09.365 UTC -> 11:14:00.368 UTC)
+Memory
+	freeMemory=52004072
+	maxMemory=1880948736
+	totalMemory=159776768
+PS Scavenge
+	count=4
+	time=18
+PS MarkSweep
+	count=1
+	time=5
+

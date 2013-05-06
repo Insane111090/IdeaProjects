@@ -1,0 +1,39 @@
+2013-05-06 11:12:25.131 UTC INFO [sn1] Starting StorageNodeAgent for MyStore
+2013-05-06 11:12:25.147 UTC INFO [sn1] Acquiring initial topology from RNs
+2013-05-06 11:12:25.151 UTC INFO [sn1] Starting MonitorAgent.  Server socket factory:<ServerSocketFactory name=monitor backlog=0 port range=0,0> Client socket factory:<ClientSocketFactory name=MyStore|sn|monitor id=42451831 connectMs=10000 readMs=5000>
+2013-05-06 11:12:25.162 UTC INFO [sn1] Rebound to registry port 5000 using name sn1
+2013-05-06 11:12:25.162 UTC INFO [sn1] Service status changed from STARTING to RUNNING
+2013-05-06 11:12:25.162 UTC INFO [sn1] Started StorageNodeAgent for MyStore Server socket factory: <ServerSocketFactory name=main backlog=0 port range=0,0> Client socket factory: <ClientSocketFactory name=MyStore|sn|main id=-503783006 connectMs=10000 readMs=140000>
+2013-05-06 11:12:25.579 UTC INFO [sn1] admin1: Creating AdminService
+2013-05-06 11:12:25.798 UTC INFO [sn1] admin1: Created AdminService
+2013-05-06 11:12:26.973 UTC INFO [sn1] rg1-rn1: Creating RepNode
+2013-05-06 11:12:27.221 UTC INFO [sn1] rg1-rn1: Starting RepNode
+2013-05-06 11:12:27.222 UTC INFO [sn1] rg1-rn1: Started RepNode
+2013-05-06 11:12:27.222 UTC INFO [sn1] rg1-rn1: Configuring RepNode
+2013-05-06 11:12:27.748 UTC INFO [sn1] Thread returning for service rg1-rn1
+2013-05-06 11:12:28.379 UTC INFO [sn1] rg1-rn1: Created RepNode
+2013-05-06 11:12:28.738 UTC INFO [sn1] noteState called
+2013-05-06 11:12:28.738 UTC INFO [sn1] added:State RN:rg1-rn1 state: MASTER top seq num: 14
+2013-05-06 11:12:29.158 UTC INFO [sn1] Topology acquired from RN: rg1-rn1 Topo seq#: 14
+2013-05-06 11:12:29.159 UTC INFO [sn1] sn: sn1 state transition: State RN:rg1-rn1 state: MASTER top seq num: 14 active masters:[rg1-rn1] active replicas:0 replica leases:0
+2013-05-06 11:13:09.168 UTC INFO [sn1] Starting StorageNodeAgent for MyStore
+2013-05-06 11:13:09.169 UTC INFO [sn1] Creating a Registry on port AGavrilov-nb2:5000 server socket factory:<ServerSocketFactory name=registry backlog=1024 port range=0,0>
+2013-05-06 11:13:09.199 UTC INFO [sn1] Using mgmt class oracle.kv.impl.mgmt.NoOpAgent
+2013-05-06 11:13:09.214 UTC INFO [sn1] findManagedProcesses exception: Cannot run program "jps": CreateProcess error=2, ?? ??????? ????? ????????? ????
+2013-05-06 11:13:09.215 UTC INFO [sn1] findManagedProcesses exception: Cannot run program "jps": CreateProcess error=2, ?? ??????? ????? ????????? ????
+2013-05-06 11:13:09.225 UTC INFO [sn1] findManagedProcesses exception: Cannot run program "jps": CreateProcess error=2, ?? ??????? ????? ????????? ????
+2013-05-06 11:13:09.232 UTC INFO [sn1] Acquiring initial topology from RNs
+2013-05-06 11:13:09.239 UTC INFO [sn1] rg1-rn1: Starting RepNode
+2013-05-06 11:13:09.240 UTC INFO [sn1] rg1-rn1: Started RepNode
+2013-05-06 11:13:09.247 UTC INFO [sn1] admin1: Starting AdminService
+2013-05-06 11:13:09.247 UTC INFO [sn1] admin1: Started AdminService
+2013-05-06 11:13:09.248 UTC INFO [sn1] Starting MonitorAgent.  Server socket factory:<ServerSocketFactory name=monitor backlog=0 port range=0,0> Client socket factory:<ClientSocketFactory name=MyStore|sn|monitor id=42451831 connectMs=10000 readMs=5000>
+2013-05-06 11:13:09.324 UTC INFO [sn1] Rebound to registry port 5000 using name sn1
+2013-05-06 11:13:09.324 UTC INFO [sn1] Service status changed from STARTING to RUNNING
+2013-05-06 11:13:09.324 UTC INFO [sn1] Started StorageNodeAgent for MyStore Server socket factory: <ServerSocketFactory name=main backlog=0 port range=0,0> Client socket factory: <ClientSocketFactory name=MyStore|sn|main id=-503783006 connectMs=10000 readMs=140000>
+2013-05-06 11:13:12.413 UTC INFO [sn1] noteState called
+2013-05-06 11:13:12.413 UTC INFO [sn1] added:State RN:rg1-rn1 state: MASTER top seq num: 14
+2013-05-06 11:13:12.420 UTC INFO [sn1] Thread returning for service rg1-rn1
+2013-05-06 11:13:13.240 UTC INFO [sn1] Topology acquired from RN: rg1-rn1 Topo seq#: 14
+2013-05-06 11:13:13.241 UTC INFO [sn1] sn: sn1 state transition: State RN:rg1-rn1 state: MASTER top seq num: 14 active masters:[rg1-rn1] active replicas:0 replica leases:0
+2013-05-06 11:13:13.703 UTC INFO [sn1] Thread returning for service admin1

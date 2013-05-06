@@ -1,0 +1,11 @@
+130506 15:12:27:515 INFO [rg1-rn1] Started ServiceDispatcher. HostPort=AGavrilov-nb2:5006
+130506 15:12:27:518 INFO [rg1-rn1] Current group size: 0
+130506 15:12:27:518 INFO [rg1-rn1] New node rg1-rn1(-1) unknown to rep group
+130506 15:12:27:519 INFO [rg1-rn1] Master changed to rg1-rn1
+130506 15:12:27:519 INFO [rg1-rn1] Nascent group. rg1-rn1 is master by virtue of being the first node.
+130506 15:12:27:655 INFO [rg1-rn1] Successfully added node:rg1-rn1(1) HostPort = AGavrilov-nb2: 5006 [ELECTABLE]
+130506 15:12:27:656 INFO [rg1-rn1] Refreshed 0 monitors.
+130506 15:12:27:659 INFO [rg1-rn1] Node rg1-rn1 started
+130506 15:12:27:660 INFO [rg1-rn1] Feeder manager accepting requests.
+130506 15:12:27:661 INFO [rg1-rn1] Joining group as master
+130506 15:12:27:662 INFO [rg1-rn1] Refreshed 0 monitors.
