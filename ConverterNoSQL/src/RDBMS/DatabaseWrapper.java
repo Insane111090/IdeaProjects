@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 
 public class DatabaseWrapper implements Runnable {
+
 	static String DRIVER_NAME = "oracle.jdbc.driver.OracleDriver";
 	static Connection MyConnection;
 	static final List<String> tables = new ArrayList<>();
@@ -54,11 +55,13 @@ public class DatabaseWrapper implements Runnable {
 	/*
 	 * Function for getting list of tables of current scheme in Database
 	 */
-	public static List<String> getTableList() throws SQLException {
+	public static List<String> getTableList( String username ) throws SQLException {
 		PreparedStatement statementForTables =
 						MyConnection.prepareStatement("SELECT table_name FROM all_tables "
 										                              + "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
-										                              + "AND owner=upper('andgavr')");
+										                              + "AND owner=upper(?)");
+		statementForTables.setString(1,
+		                             username);
 		ResultSet DatabaseResultSet = statementForTables.executeQuery();
 
 
@@ -146,7 +149,7 @@ public class DatabaseWrapper implements Runnable {
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
 	                                               Set<String> valueSet,
-	                                               String selectedTableName ) throws SQLException, NullPointerException, JSONException {
+	                                               String selectedTableName ) throws SQLException, NullPointerException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
@@ -165,11 +168,11 @@ public class DatabaseWrapper implements Runnable {
 				getKey.setFetchSize(50);
 				ResultSet getkeyResultSet = getKey.executeQuery();
 				while ( getkeyResultSet.next() ) {
-					Key myKey = Support.ParseKey.ParseKey(getkeyResultSet.getString(1));
+					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
-					NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n");
+					NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n\n");
 				}
 				getKey.close();
 				getkeyResultSet.close();
@@ -182,20 +185,56 @@ public class DatabaseWrapper implements Runnable {
 				getComplexMinorValue.setFetchSize(50);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				while ( getComplexKeyResultSet.next() ) {
-					Key myKeyComplex = Support.ParseKey.ParseKey(getComplexKeyResultSet.getString(1));
+					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
-					//NoSQLStorage.progress.setFont(new Font("sanserif",Font.BOLD,15));
 					NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
 				}
 			}
 		}
 	}
 
+
+	public static void writeMetaDataToStorage( Set<String> majorSet,
+	                                           Set<String> minorSet,
+	                                           String selectedTableName ) {
+		StringBuilder metaInfo = new StringBuilder();
+		StringBuilder valuesForMeta = new StringBuilder();
+
+		metaInfo.append(selectedTableName).append("/-/").append("MetaData/:");
+
+		valuesForMeta.append("{\"").append("Major key\":\"");
+		for ( String valuesMaj : majorSet ) {
+			valuesForMeta.append(valuesMaj).append(";");
+		}
+		valuesForMeta.replace(valuesForMeta.length() - 1,
+		                      valuesForMeta.length(),
+		                      "\",\"");
+		valuesForMeta.append("Minor key\":\"");
+		for ( String valuesMin : minorSet ) {
+			valuesForMeta.append(valuesMin).append(";");
+		}
+		valuesForMeta.replace(valuesForMeta.length() - 1,
+		                     valuesForMeta.length(),
+		                     "\"}");
+		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString());
+		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString());
+		NoSQLStorage.myStore.put(metaKey,
+		                         metaValue);
+		//NoSQLStorage.progress.append("Meta information Key: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() + "\nMeta information Value: " + new String(metaValue.getValue()) + "\n\n");
+		System.out.println("Meta information is stored on:" + metaKey.getMajorPath() + " " + metaKey.getMinorPath()
+		+ " and values is " + new String(metaValue.getValue()));
+	}
+
 	@Override
 	public void run() {
+		double before = System.currentTimeMillis();
 		try {
+			RDBMS.DatabaseWrapper.writeMetaDataToStorage(TableModel.isAlreadySelectedMajor,
+			                                             TableModel.isAlreadySelectedMinor,
+			                                             MainWindow.listOfTables.getSelectedValue().toString());
+
 			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
 			                                                 TableModel.isAlreadySelectedMinor,
 			                                                 TableModel.isAlredySelectedValues,
@@ -205,6 +244,7 @@ public class DatabaseWrapper implements Runnable {
 		} catch ( Throwable ee ) {
 			NoSQLStorage.progress.setText("You doesn't connected!! At first connect.");
 		}
+		double after = System.currentTimeMillis();
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				@Override
@@ -217,5 +257,7 @@ public class DatabaseWrapper implements Runnable {
 		} catch ( InvocationTargetException e ) {
 
 		}
+		double diff = after - before;
+		System.out.println("Program executed for " + diff / 1000 + " Sec");
 	}
 }

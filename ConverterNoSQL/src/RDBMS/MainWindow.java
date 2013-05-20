@@ -287,6 +287,7 @@ public class MainWindow {
 		final static JTextField connectionStatusLabel = new JTextField();
 		final static JTextField connectionUrlLabel = new JTextField();//Field for connection url
 		final static JTextArea connectionErrorLabel = new JTextArea();//Connection error
+		String username;
 
     /*
      * Procedure for cleaning textFields on connection to DB form
@@ -431,13 +432,14 @@ public class MainWindow {
 			ConnectButton.addActionListener(new AbstractAction() {
 				@Override
 				public void actionPerformed( ActionEvent ae ) {
-					String server = "oracle11.avalon.ru"; //serverTxt.getText().toString();//"oracle11.avalon.ru"
+					String server = "oracle.avalon.ru"; //serverTxt.getText().toString();//"oracle11.avalon.ru"
 					String sid = "orcl";//sidTxt.getText().toUpperCase().toString();//"ORCL";
 					int port = Integer.decode("1521");//portTxt.getText().toString();//"1521";
 					String url = "jdbc:oracle:thin:@" + server + ":" + port + ":" + sid;
+					username = "andgavr"; //usernameTxt.getText(),
 					try {
-						DatabaseWrapper.createConnection("andgavr",
-//usernameTxt.getText(),
+						DatabaseWrapper.createConnection(username,
+
                                              "andgavr",
 //new String(passwordTxt.getPassword()),
                                              url);
@@ -499,7 +501,7 @@ public class MainWindow {
 						MainWindow.connectedUrlTxt.setText(connectionUrlLabel.getText());
 					}
 					try {
-						listOfTables.setListData(DatabaseWrapper.getTableList().toArray());
+						listOfTables.setListData(DatabaseWrapper.getTableList(username).toArray());
 					} catch ( SQLException | NullPointerException e ) {
 						JOptionPane.showMessageDialog(
 										MainWindow.mainForm,
