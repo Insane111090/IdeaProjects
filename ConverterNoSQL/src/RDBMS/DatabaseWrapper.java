@@ -59,7 +59,7 @@ public class DatabaseWrapper implements Runnable {
 		PreparedStatement statementForTables =
 						MyConnection.prepareStatement("SELECT table_name FROM all_tables "
 										                              + "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
-										                              + "AND owner=upper(?)");
+										                              + "AND owner=upper(?) order by table_name");
 		statementForTables.setString(1,
 		                             username);
 		ResultSet DatabaseResultSet = statementForTables.executeQuery();
@@ -146,6 +146,7 @@ public class DatabaseWrapper implements Runnable {
 		return descriptionResult.toString();
 	}
 
+	//Write data in storage
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
 	                                               Set<String> valueSet,
@@ -172,7 +173,7 @@ public class DatabaseWrapper implements Runnable {
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
-					NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n\n");
+					//NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n\n");
 				}
 				getKey.close();
 				getkeyResultSet.close();
@@ -184,18 +185,23 @@ public class DatabaseWrapper implements Runnable {
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
 				getComplexMinorValue.setFetchSize(50);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
+				int counter = 0;
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
-					NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
+					counter +=1;
+
+					//NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
+
 				}
+				NoSQLStorage.progress.append("Count of converted data is " + counter);
 			}
 		}
 	}
 
-
+	 //Write meta information for converting table in storage (fro External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
 	                                           Set<String> minorSet,
 	                                           String selectedTableName ) {
@@ -222,14 +228,19 @@ public class DatabaseWrapper implements Runnable {
 		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString());
 		NoSQLStorage.myStore.put(metaKey,
 		                         metaValue);
-		//NoSQLStorage.progress.append("Meta information Key: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() + "\nMeta information Value: " + new String(metaValue.getValue()) + "\n\n");
+		NoSQLStorage.progress.append("Meta information is stored on:\nKey: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() +  "\nand values is \n" + new String(metaValue.getValue()) + "\n");
 		System.out.println("Meta information is stored on:" + metaKey.getMajorPath() + " " + metaKey.getMinorPath()
 		+ " and values is " + new String(metaValue.getValue()));
+	}
+
+	public static void writeToFile(){
+
 	}
 
 	@Override
 	public void run() {
 		double before = System.currentTimeMillis();
+		//NoSQLStorage.progress.append("Start time: " + System.currentTimeMillis() + "\n");
 		try {
 			RDBMS.DatabaseWrapper.writeMetaDataToStorage(TableModel.isAlreadySelectedMajor,
 			                                             TableModel.isAlreadySelectedMinor,
@@ -245,6 +256,7 @@ public class DatabaseWrapper implements Runnable {
 			NoSQLStorage.progress.setText("You doesn't connected!! At first connect.");
 		}
 		double after = System.currentTimeMillis();
+		//NoSQLStorage.progress.append("\nEnd time: " + System.currentTimeMillis() + "\n");
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				@Override
@@ -258,6 +270,7 @@ public class DatabaseWrapper implements Runnable {
 
 		}
 		double diff = after - before;
-		System.out.println("Program executed for " + diff / 1000 + " Sec");
+		NoSQLStorage.progress.append("Program executed for " +  diff / 1000 + " Sec\n");
+		System.out.println("Program executed for " + diff / 1000 + " sec (" + diff/1000/60+" min)");
 	}
 }
