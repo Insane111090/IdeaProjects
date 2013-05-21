@@ -41,6 +41,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 	List<Object> colNameForMajor = new ArrayList<>();
 	List<Object> colNameForMinor = new ArrayList<>();
 	List<Object> colNameForValue = new ArrayList<>();
+	//JScrollPane scrollPaneForTable = new JScrollPane();
 	String selectedTableName;
 	public boolean nextToMinorButtonClicked, nextToValueButtonClicked;
 	public static boolean isSimple;
@@ -84,6 +85,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 
 	void CreateTable() {
 		tableFieldsPanel.setBorder(new TitledBorder("Select columns for MAJOR component of key for table " + selectedTableName));
+		//scrollPaneForTable.getViewport().setView(fieldsTable);
 		tableFieldsPanel.add(fieldsTable.getTableHeader(),
 		                     "dock north");
 		tableFieldsPanel.add(fieldsTable,

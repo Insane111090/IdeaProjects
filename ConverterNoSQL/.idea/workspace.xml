@@ -6,23 +6,45 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="a0f96c71-df0b-457b-b7e7-39aa12991828" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/ConverterNoSQL_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/ConverterNoSQL_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/00000000.jdb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/00000000.jdb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/snaboot_0.log.lck" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/security.policy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/security.policy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/snaboot_0.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" afterPath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
-=======
-    <list default="true" id="6e413250-c87c-4999-aa31-c50a6cd12f10" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ConverterNoSQL_jar.xml" />
-      <change type="DELETED" beforePath="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\META-INF\MANIFEST.MF" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Start kvstore.bat" afterPath="$PROJECT_DIR$/Start kvstore.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/Support.java" afterPath="$PROJECT_DIR$/src/NoSQL/Support.java" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/MainWindow.java" afterPath="$PROJECT_DIR$/src/RDBMS/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" afterPath="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" afterPath="$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" />
     </list>
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
-<<<<<<< HEAD
-    <file path="/Dummy.txt" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1367345073114" ignored="false" />
+    <file path="/Dummy.txt" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1369070103611" ignored="false" />
     <file path="/fragment.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366917232981" ignored="false" />
     <file path="/DatabaseWrapper.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366987280698" ignored="false" />
     <file path="/NoSQLStorage.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366987256161" ignored="false" />
@@ -150,125 +172,6 @@
     <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xinclude.xsd" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1367049285385" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/ws-eventing.xsd" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1367049285385" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/wsdl11soap12.xsd" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1367049285385" ignored="false" />
-=======
-    <file path="/Dummy.txt" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367325294211" ignored="false" />
-    <file path="/Support.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367317056738" ignored="false" />
-    <file path="/fragment.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366893006367" ignored="false" />
-    <file path="/NoSQLStorage.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367323630258" ignored="false" />
-    <file path="/DatabaseWrapper.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367323126427" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/XMLSchema.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/XMLSchema-instance.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/ws-addr.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-transitional.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xml.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/cxf-jaxws.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/cxf-soap.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xslt-2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xinclude.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/xjc.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-strict.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xhtml1-frameset.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591656" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/catalog.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/html5/xhtml5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/documentation.xsl" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/documentation.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/xpath/lib/xpath.jar!/org/intellij/lang/xpath/xslt/resources/xslt-schema.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/FlexCompilerSchema.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.2.7.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.2.6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.2.5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.2.0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.5.3.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.5.2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.5.1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/ejb-jar_2_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.1.5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application_1_4.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.7.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/connector_1_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.4.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/jsp_2_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.3.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/j2ee_1_4.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-app_3_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/flex/lib/FlexSupport.jar!/schemas/AIR_Descriptor.3.1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/persistence_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/spring.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/jsp_2_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/orm_1_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591657" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-facesconfig_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-jsptaglibrary_2_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-app_2_4.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-common_3_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/orm_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application-client_1_4.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application-client_6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/ejb-jar_3_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/spring-form.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/j2ee_web_services_client_1_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/jspxml.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/jspxml.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_web_services_client_1_3.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/relaxng.rng" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/persistence.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application-client_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/ejb-jar_3_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JBoss/lib/jbossIntegration.jar!/descriptors/jboss-deployment-structure-1_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JBoss/lib/jbossIntegration.jar!/descriptors/jboss-deployment-structure-1_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/html_basic.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_web_services_1_3.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/xml.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/html_basic_2_0.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jsf-ui.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-fragment_3_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/composite.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/ui.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/jsp_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jstl-fn.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_web_services_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/composite.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-facesconfig_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/application_6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-facesconfig_1_1.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/connector_1_6.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jsf-ui-2_0.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591658" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-jsptaglibrary_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-facesconfig_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/web-app_2_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/javaee_5.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JavaEE/lib/javaee-impl.jar!/standardSchemas/javaee_web_services_client_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jsf_core_2_0.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jstl.core.facelets.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jstl.fn.facelets.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/javaee_web_services_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/javaee_web_services_client_1_2.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-facelettaglibrary_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/mojarra_ext.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/wsdl20.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-facesuicomponent_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/wsdl12.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/html_basic.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/web-partialresponse_2_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jsf_core.tld" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/jstl-core.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/JSF/lib/jsf-support.jar!/resources/schemas/facelets_jsf_core.taglib.xml" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/lib/idea.jar!/standardSchemas/xslt-1_0.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/wsdl11.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/jersey.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/XMLSchema.xsd" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1366956591659" ignored="false" />
-    <file path="/MainWindow.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367323008326" ignored="false" />
-    <file path="/PartsOfKeyforNoSQL.java" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367320799843" ignored="false" />
-    <file path="/json.org" changelist="6e413250-c87c-4999-aa31-c50a6cd12f10" time="1367311590254" ignored="false" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,17 +186,9 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-<<<<<<< HEAD
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" line="136" class="RDBMS.PartsOfKeyforNoSQL$1" package="RDBMS">
-=======
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <field_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OracleStatement.class" line="90" class="oracle.jdbc.driver.OracleStatement" package="oracle.jdbc.driver" field_name="currentRow">
-        <option name="WATCH_MODIFICATION" value="true" />
-        <option name="WATCH_ACCESS" value="false" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" line="146" class="RDBMS.PartsOfKeyforNoSQL$1" package="RDBMS">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -304,19 +199,11 @@
         <option name="COUNT_FILTER" value="0" />
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="true" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
-        <instance_id>
-          <option name="PATTERN" value="3654" />
-          <option name="ENABLED" value="true" />
-        </instance_id>
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-<<<<<<< HEAD
     </line_breakpoints>
-=======
-    </field_breakpoints>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -332,8 +219,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -349,18 +236,10 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-<<<<<<< HEAD
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-=======
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
-      </breakpoint>
-    </breakpoint_any>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -373,8 +252,7 @@
       <file leaf-file-name="Support.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state line="8" column="13" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0">
+            <state line="51" column="26" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -383,7 +261,7 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="259" column="28" selection-start="8545" selection-end="8545" vertical-scroll-proportion="0.0">
+            <state line="261" column="28" selection-start="8597" selection-end="8597" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -392,19 +270,14 @@
       <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="64" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.021144278">
+            <state line="244" column="88" selection-start="10172" selection-end="10247" vertical-scroll-proportion="0.5771144">
               <folding>
-                <marker date="1366988523510" expanded="true" signature="1704:1901" placeholder="SELECT table..all_tables..." />
-                <marker date="1366988523510" expanded="true" signature="2546:3087" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1366988523510" expanded="true" signature="3872:4413" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1366988523510" expanded="true" signature="5687:5887" placeholder="Select * fro..missingValue..." />
-                <marker date="1366988523510" expanded="true" signature="5702:5709" placeholder="SELECT missi..." />
-                <marker date="1366988523510" expanded="true" signature="5715:5850" placeholder="SELECT missi..." />
+                <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
+                <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
+                <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
               </folding>
-=======
-            <state line="20" column="31" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
-              <folding />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
             </state>
           </provider>
         </entry>
@@ -412,7 +285,7 @@
       <file leaf-file-name="NoSQLStorage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="16" selection-start="5160" selection-end="5160" vertical-scroll-proportion="0.0">
+            <state line="183" column="25" selection-start="6242" selection-end="6242" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -421,46 +294,16 @@
       <file leaf-file-name="TableModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/TableModel.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state line="47" column="126" selection-start="937" selection-end="937" vertical-scroll-proportion="0.0">
+            <state line="47" column="126" selection-start="936" selection-end="936" vertical-scroll-proportion="0.0">
               <folding />
-=======
-            <state line="189" column="45" selection-start="7663" selection-end="7663" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1367323993154" expanded="true" signature="1735:1932" placeholder="SELECT table..all_tables..." />
-                <marker date="1367323993154" expanded="true" signature="2577:3118" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1367323993154" expanded="true" signature="3903:4444" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1367323993154" expanded="true" signature="5919:6054" placeholder="SELECT missi..." />
-                <marker date="1367323993154" expanded="true" signature="6912:7050" placeholder="SELECT regex..." />
-                <marker date="1367323993154" expanded="true" signature="6912:7083" placeholder="SELECT regex..." />
-                <marker date="1367323993154" expanded="true" signature="6912:7057" placeholder="SELECT regex..." />
-                <marker date="1367323993154" expanded="true" signature="6912:6968" placeholder="SELECT regex..." />
-                <marker date="1367323993154" expanded="true" signature="6912:7069" placeholder="SELECT regex..." />
-                <marker date="1367323993154" expanded="true" signature="6912:7088" placeholder="SELECT regex..." />
-              </folding>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="PartsOfKeyforNoSQL.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
-<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="0" selection-start="4798" selection-end="4798" vertical-scroll-proportion="0.0">
-=======
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="58" selection-start="9028" selection-end="9028" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="31" selection-start="3500" selection-end="3500" vertical-scroll-proportion="0.33333334">
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+            <state line="151" column="0" selection-start="5025" selection-end="5025" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -484,40 +327,19 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/NoSQL/JSONStringer.java" />
-        <option value="$PROJECT_DIR$/src/NoSQL/JSONWriter.java" />
-        <option value="$PROJECT_DIR$/src/NoSQL/JSONException.java" />
         <option value="$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" />
-        <option value="$PROJECT_DIR$/src/RDBMS/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" />
         <option value="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
-        <option value="$PROJECT_DIR$/src/NoSQL/Support.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1292" />
+    <option name="height" value="1000" />
   </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Abstraction issues</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -543,11 +365,7 @@
       <sortByType />
     </navigator>
     <panes>
-<<<<<<< HEAD
       <pane id="Scope" />
-=======
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -618,59 +436,173 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-<<<<<<< HEAD
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="OverrideImplement.combined" value="true" />
-=======
-    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-<<<<<<< HEAD
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-=======
-    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
-    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="converternosql" />
-    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-<<<<<<< HEAD
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
-=======
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="options.lastSelected" value="preferences.fileTypes" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\AGavrilov.ESPHERE\Documents\GitHub\IdeaProjects\ConverterNoSQL\src\NoSQL" />
-    </key>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/MainWindow.java</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/security.policy</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/00000000.jdb</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/config.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/00000000.jdb</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.lck</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/config.xml</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/security.policy</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/snaboot_0.log</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/snaboot_0.log.lck</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -806,94 +738,61 @@
       <AnalysisUIOptions />
     </option>
   </component>
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e413250-c87c-4999-aa31-c50a6cd12f10" name="Default" comment="" />
-      <created>1366867747196</created>
-      <updated>1366867747196</updated>
+      <changelist id="a0f96c71-df0b-457b-b7e7-39aa12991828" name="Default" comment="" />
+      <created>1366916964403</created>
+      <updated>1366916964403</updated>
     </task>
-    <task id="LOCAL-00001" summary="Make threads and log">
-      <created>1366896728985</created>
-      <updated>1366896728985</updated>
+    <task id="LOCAL-00001" summary="Throw">
+      <created>1366919499882</created>
+      <updated>1366919499882</updated>
     </task>
-    <task id="LOCAL-00002" summary="Resolve problem with switcher">
-      <created>1366983493410</created>
-      <updated>1366983493410</updated>
+    <task id="LOCAL-00002" summary="Throw done">
+      <created>1366922438003</created>
+      <updated>1366922438003</updated>
     </task>
-    <task id="LOCAL-00003" summary="What to do with JSON?">
-      <created>1367241351071</created>
-      <updated>1367241351071</updated>
+    <task id="LOCAL-00003" summary="do Complex switcher">
+      <created>1366987478483</created>
+      <updated>1366987478483</updated>
     </task>
-<<<<<<< HEAD
     <task id="LOCAL-00004" summary="do Complex switcher">
       <created>1367002648828</created>
       <updated>1367002648828</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
-    <servers />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1292" height="1000" extended-state="1" />
-=======
-    <task id="LOCAL-00004" summary="What to do with JSON?">
-      <created>1367320056555</created>
-      <updated>1367320056555</updated>
+    <task id="LOCAL-00005" summary="On local">
+      <created>1369069974019</created>
+      <updated>1369069974019</updated>
     </task>
-    <task id="LOCAL-00005" summary="50 % Done!">
-      <created>1367324018440</created>
-      <updated>1367324018440</updated>
-    </task>
-    <task id="LOCAL-00006" summary="50 % Done!">
-      <created>1367324289432</created>
-      <updated>1367324289432</updated>
+    <task id="LOCAL-00006" summary="On local">
+      <created>1369070094628</created>
+      <updated>1369070094628</updated>
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1292" height="1000" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39863715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976275" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35093698" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253833" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18130082" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CodeInterview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16504066" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -901,15 +800,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14393939" sideWeight="0.6746167" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35093698" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -955,7 +845,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="50 % Done!" />
+    <option name="LAST_COMMIT_MESSAGE" value="On local" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -969,289 +859,145 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Make threads and log" />
-    <MESSAGE value="Resolve problem with switcher" />
-    <MESSAGE value="What to do with JSON?" />
-    <MESSAGE value="50 % Done!" />
+    <MESSAGE value="Throw" />
+    <MESSAGE value="Throw done" />
+    <MESSAGE value="do Complex switcher" />
+    <MESSAGE value="On local" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="8" selection-start="5602" selection-end="5602" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="58" selection-start="9028" selection-end="9028" vertical-scroll-proportion="0.0">
+        <state line="118" column="28" selection-start="3901" selection-end="3901" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="162" column="42" selection-start="6011" selection-end="6068" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
+            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
+            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="74" selection-start="5537" selection-end="5537" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="118" column="28" selection-start="3901" selection-end="3901" vertical-scroll-proportion="0.0">
-=======
-        <state line="147" column="16" selection-start="5160" selection-end="5160" vertical-scroll-proportion="0.0">
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+        <state line="179" column="42" selection-start="6070" selection-end="6070" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="64" selection-start="3159" selection-end="3159" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="141" column="95" selection-start="5056" selection-end="5078" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
+            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
+            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/miglayout-4.0.jar!/net/miginfocom/swing/MigLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="14" selection-start="5363" selection-end="5363" vertical-scroll-proportion="0.5748218" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/miglayout-4.0.jar!/net/miginfocom/swing/SwingComponentWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="19" selection-start="3191" selection-end="3191" vertical-scroll-proportion="0.71868134" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/TableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="162" column="42" selection-start="6011" selection-end="6068" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1366988523510" expanded="true" signature="1704:1901" placeholder="SELECT table..all_tables..." />
-            <marker date="1366988523510" expanded="true" signature="2546:3087" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="3872:4413" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="5687:5887" placeholder="Select * fro..missingValue..." />
-            <marker date="1366988523510" expanded="true" signature="5702:5709" placeholder="SELECT missi..." />
-            <marker date="1366988523510" expanded="true" signature="5715:5850" placeholder="SELECT missi..." />
-          </folding>
-=======
-        <state line="29" column="20" selection-start="611" selection-end="611" vertical-scroll-proportion="0.047887325">
+        <state line="47" column="126" selection-start="936" selection-end="936" vertical-scroll-proportion="0.0">
           <folding />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="248" selection-end="248" vertical-scroll-proportion="0.33521128">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/PhysicalConnection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="647" column="49" selection-start="30217" selection-end="30217" vertical-scroll-proportion="-3.84" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/oracle/kv/Key.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="30" selection-start="1081" selection-end="1081" vertical-scroll-proportion="-4.36" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/oracle/kv/Value.class">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="141" column="95" selection-start="5056" selection-end="5078" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1366988523510" expanded="true" signature="1704:1901" placeholder="SELECT table..all_tables..." />
-            <marker date="1366988523510" expanded="true" signature="2546:3087" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="3872:4413" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="5687:5887" placeholder="Select * fro..missingValue..." />
-            <marker date="1366988523510" expanded="true" signature="5702:5709" placeholder="SELECT missi..." />
-            <marker date="1366988523510" expanded="true" signature="5715:5850" placeholder="SELECT missi..." />
-          </folding>
-        </state>
-=======
-        <state line="10" column="10" selection-start="296" selection-end="296" vertical-scroll-proportion="0.33112583" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/gson-2.2.3.jar!/com/google/gson/GsonBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="9" selection-start="993" selection-end="993" vertical-scroll-proportion="-4.16" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/gson-2.2.3.jar!/com/google/gson/Gson.class">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="111" column="14" selection-start="5363" selection-end="5363" vertical-scroll-proportion="0.5748218" />
-=======
-        <state line="42" column="26" selection-start="2794" selection-end="2794" vertical-scroll-proportion="-3.56" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OracleResultSetImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="90" column="19" selection-start="3191" selection-end="3191" vertical-scroll-proportion="0.71868134" />
-=======
-        <state line="87" column="26" selection-start="4026" selection-end="4026" vertical-scroll-proportion="-4.16" />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="58" selection-start="9028" selection-end="9028" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="141" column="0" selection-start="4798" selection-end="4798" vertical-scroll-proportion="0.0">
-          <folding />
-=======
-        <state line="189" column="45" selection-start="7663" selection-end="7663" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1367323993154" expanded="true" signature="1735:1932" placeholder="SELECT table..all_tables..." />
-            <marker date="1367323993154" expanded="true" signature="2577:3118" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1367323993154" expanded="true" signature="3903:4444" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1367323993154" expanded="true" signature="5919:6054" placeholder="SELECT missi..." />
-            <marker date="1367323993154" expanded="true" signature="6912:7050" placeholder="SELECT regex..." />
-            <marker date="1367323993154" expanded="true" signature="6912:7083" placeholder="SELECT regex..." />
-            <marker date="1367323993154" expanded="true" signature="6912:7057" placeholder="SELECT regex..." />
-            <marker date="1367323993154" expanded="true" signature="6912:6968" placeholder="SELECT regex..." />
-            <marker date="1367323993154" expanded="true" signature="6912:7069" placeholder="SELECT regex..." />
-            <marker date="1367323993154" expanded="true" signature="6912:7088" placeholder="SELECT regex..." />
-          </folding>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="16" selection-start="5160" selection-end="5160" vertical-scroll-proportion="0.0">
+        <state line="183" column="25" selection-start="6242" selection-end="6242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="28" selection-start="8545" selection-end="8545" vertical-scroll-proportion="0.0">
-=======
+        <state line="261" column="28" selection-start="8597" selection-end="8597" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="31" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
+        <state line="51" column="26" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="0" selection-start="5025" selection-end="5025" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state line="52" column="64" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.021144278">
+        <state line="244" column="88" selection-start="10172" selection-end="10247" vertical-scroll-proportion="0.5771144">
           <folding>
-            <marker date="1366988523510" expanded="true" signature="1704:1901" placeholder="SELECT table..all_tables..." />
-            <marker date="1366988523510" expanded="true" signature="2546:3087" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="3872:4413" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1366988523510" expanded="true" signature="5687:5887" placeholder="Select * fro..missingValue..." />
-            <marker date="1366988523510" expanded="true" signature="5702:5709" placeholder="SELECT missi..." />
-            <marker date="1366988523510" expanded="true" signature="5715:5850" placeholder="SELECT missi..." />
+            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
+            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
+            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
           </folding>
-=======
-        <state line="93" column="31" selection-start="3500" selection-end="3500" vertical-scroll-proportion="0.33333334">
-          <folding />
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <last-edited>ConverterNoSQL:jar</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.5" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>ConverterNoSQL</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-<<<<<<< HEAD
-                <option value="0.5" />
-=======
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Lib</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-<<<<<<< HEAD
-=======
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
->>>>>>> df7d5b4bdcfe967b46c75669d5559d0942196e2d
-    </states>
   </component>
 </project>
 

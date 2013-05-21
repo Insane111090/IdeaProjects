@@ -9,6 +9,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+
+
 import static RDBMS.Util.MigPanel;
 
 /**
@@ -191,13 +193,12 @@ public class NoSQLStorage extends JDialog {
 				progress.setText("");
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());
+				//long before = System.currentTimeMillis();
 				importer.start();
+				//long after = System.currentTimeMillis();
+				//long diff = before - after;
+				//System.out.println(diff);
 
-//				System.out.println(importer.getState());
-//
-//
-//
-//
 //				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
 //				ValueVersion vv = myStore.get(test);
 //				Value v = vv.getValue();
