@@ -196,7 +196,7 @@ public class DatabaseWrapper implements Runnable {
 					//NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
 
 				}
-				NoSQLStorage.progress.append("Count of converted data is " + counter);
+				NoSQLStorage.progress.append("\nCount of converted data is " + counter + " rows\n");
 			}
 		}
 	}
@@ -270,7 +270,7 @@ public class DatabaseWrapper implements Runnable {
 
 		}
 		double diff = after - before;
-		NoSQLStorage.progress.append("Program executed for " +  diff / 1000 + " Sec\n");
+		NoSQLStorage.progress.append("Program executed for " +  diff / 1000 + " sec(" + diff/1000/60+" min)\n");
 		System.out.println("Program executed for " + diff / 1000 + " sec (" + diff/1000/60+" min)");
 	}
 }
