@@ -41,6 +41,7 @@ public class DatabaseWrapper implements Runnable {
 		                                           username,
 		                                           password);
 
+
 		_isConnected = MyConnection != null ? true : false;
 		return MyConnection;
 	}
@@ -166,7 +167,7 @@ public class DatabaseWrapper implements Runnable {
 			if ( PartsOfKeyforNoSQL.isSimple ) {
 				PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
 								                                                         " AS KEY FROM " + selectedTableName);
-				getKey.setFetchSize(50);
+				getKey.setFetchSize(150);
 				ResultSet getkeyResultSet = getKey.executeQuery();
 				while ( getkeyResultSet.next() ) {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
@@ -183,7 +184,7 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(50);
+				getComplexMinorValue.setFetchSize(150);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counter = 0;
 				while ( getComplexKeyResultSet.next() ) {
@@ -192,6 +193,7 @@ public class DatabaseWrapper implements Runnable {
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
 					counter +=1;
+					System.out.println("Rows converted " + counter);
 
 					//NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
 
