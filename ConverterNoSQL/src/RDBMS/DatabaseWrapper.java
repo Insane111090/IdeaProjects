@@ -160,7 +160,7 @@ public class DatabaseWrapper implements Runnable {
 		StringBuilder result = new StringBuilder();
 		Durability myDurability = new Durability(Durability.SyncPolicy.SYNC,
 		                                         Durability.SyncPolicy.SYNC,
-		                                         Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
+		                                         Durability.ReplicaAckPolicy.NONE);
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
 		}
@@ -193,7 +193,7 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(50);
+				getComplexMinorValue.setFetchSize(2000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counterComplex = 0;
 				while ( getComplexKeyResultSet.next() ) {

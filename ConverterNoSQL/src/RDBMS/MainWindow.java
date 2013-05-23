@@ -229,6 +229,11 @@ public class MainWindow {
 		exitApplic.addActionListener(new AbstractAction() {
 			@Override
 			public void actionPerformed( ActionEvent ae ) {
+				try {
+					DatabaseWrapper.MyConnection.close();
+				} catch ( SQLException e ) {
+					System.out.print(e.getErrorCode() + e.getMessage());  //To change body of catch statement use File | Settings | File Templates.
+				}
 				System.exit(0);
 			}
 		});
