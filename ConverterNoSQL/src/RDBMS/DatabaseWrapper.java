@@ -167,15 +167,18 @@ public class DatabaseWrapper implements Runnable {
 			if ( PartsOfKeyforNoSQL.isSimple ) {
 				PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
 								                                                         " AS KEY FROM " + selectedTableName);
-				getKey.setFetchSize(150);
+				getKey.setFetchSize(1000);
 				ResultSet getkeyResultSet = getKey.executeQuery();
+				int counterSimple = 0;
 				while ( getkeyResultSet.next() ) {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
-					//NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n\n");
+					counterSimple += 1;
+					System.out.println("Rows converted " + counterSimple);
 				}
+				NoSQLStorage.progress.append("\nCount of converted data is " + counterSimple + " rows\n");
 				getKey.close();
 				getkeyResultSet.close();
 			} else if ( PartsOfKeyforNoSQL.isComplex ) {
@@ -184,26 +187,23 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(150);
+				getComplexMinorValue.setFetchSize(1000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
-				int counter = 0;
+				int counterComplex = 0;
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
-					counter +=1;
-					System.out.println("Rows converted " + counter);
-
-					//NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
-
+					counterComplex +=1;
+					System.out.println("Rows converted " + counterComplex);
 				}
-				NoSQLStorage.progress.append("\nCount of converted data is " + counter + " rows\n");
+				NoSQLStorage.progress.append("\nCount of converted data is " + counterComplex + " rows\n");
 			}
 		}
 	}
 
-	 //Write meta information for converting table in storage (fro External Tables)
+	 //Write meta information for converting table in storage (for External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
 	                                           Set<String> minorSet,
 	                                           String selectedTableName ) {
@@ -233,10 +233,6 @@ public class DatabaseWrapper implements Runnable {
 		NoSQLStorage.progress.append("Meta information is stored on:\nKey: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() +  "\nand values is \n" + new String(metaValue.getValue()) + "\n");
 		System.out.println("Meta information is stored on:" + metaKey.getMajorPath() + " " + metaKey.getMinorPath()
 		+ " and values is " + new String(metaValue.getValue()));
-	}
-
-	public static void writeToFile(){
-
 	}
 
 	@Override
