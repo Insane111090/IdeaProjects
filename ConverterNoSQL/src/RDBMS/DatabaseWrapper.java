@@ -179,8 +179,7 @@ public class DatabaseWrapper implements Runnable {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
-					                         myValue,null,myDurability,30,
-					                         TimeUnit.SECONDS);
+					                         myValue);
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
 				}
@@ -193,7 +192,7 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(2000);
+				getComplexMinorValue.setFetchSize(1000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counterComplex = 0;
 				while ( getComplexKeyResultSet.next() ) {
