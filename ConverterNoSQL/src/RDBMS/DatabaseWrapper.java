@@ -9,6 +9,7 @@ package RDBMS;
 
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
+import oracle.kv.Durability;
 import oracle.kv.Key;
 import oracle.kv.Value;
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class DatabaseWrapper implements Runnable {
 
@@ -156,6 +158,9 @@ public class DatabaseWrapper implements Runnable {
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
 		StringBuilder result = new StringBuilder();
+		Durability myDurability = new Durability(Durability.SyncPolicy.SYNC,
+		                                         Durability.SyncPolicy.SYNC,
+		                                         Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
 		}
@@ -174,7 +179,8 @@ public class DatabaseWrapper implements Runnable {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
-					                         myValue);
+					                         myValue,null,myDurability,30,
+					                         TimeUnit.SECONDS);
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
 				}
@@ -187,12 +193,13 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(1000);
+				getComplexMinorValue.setFetchSize(50);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counterComplex = 0;
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
+
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);
 					counterComplex +=1;
