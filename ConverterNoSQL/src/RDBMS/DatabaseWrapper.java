@@ -10,17 +10,24 @@ package RDBMS;
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import oracle.kv.Durability;
+import oracle.kv.KVStore;
 import oracle.kv.Key;
 import oracle.kv.Value;
 import org.json.JSONException;
 
 import javax.swing.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class DatabaseWrapper implements Runnable {
@@ -31,6 +38,8 @@ public class DatabaseWrapper implements Runnable {
 	public static List<String> key = new ArrayList<>();
 	static private boolean _isConnected;
 	static public StringBuilder descriptionResult;
+	static private Thread[] pool;
+	static private LinkedBlockingQueue<Util.KV> dataToSend;
 
 	/*
 	 * Function that provides a connection to DB
@@ -44,7 +53,7 @@ public class DatabaseWrapper implements Runnable {
 		                                           password);
 
 
-		_isConnected = MyConnection != null ? true : false;
+		_isConnected = MyConnection != null;
 		return MyConnection;
 	}
 
@@ -148,7 +157,23 @@ public class DatabaseWrapper implements Runnable {
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
+	public static String isLob(Set<String> minorSet,
+	                           Set<String> valueSet,
+	                           String selectedTableName) throws SQLException
+	{
+		StringBuilder resMinorLob = new StringBuilder();
+		StringBuilder resValuesLob = new StringBuilder();
 
+		for (String minor:minorSet)
+		{
+			PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
+							                                                              "where table_name = " + selectedTableName + " and column_name = minor" +
+							                                                              " and (data_type like 'CLOB' or data_type like 'BLOB')");
+		}
+
+
+		return null;
+	}
 	//Write data in storage
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
@@ -179,7 +204,7 @@ public class DatabaseWrapper implements Runnable {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
-					                         myValue);
+					                         myValue, null, myDurability,30,TimeUnit.MILLISECONDS);
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
 				}
@@ -195,20 +220,73 @@ public class DatabaseWrapper implements Runnable {
 				getComplexMinorValue.setFetchSize(1000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counterComplex = 0;
+				int cores = 5; //Runtime.getRuntime().availableProcessors();
+				pool = new Thread[cores];
+				dataToSend = new LinkedBlockingQueue<>(50000);
+				for(int i = 0; i < cores; i++) {
+					pool[i] = new Thread(new Pusher(NoSQLStorage.store, NoSQLStorage.host, NoSQLStorage.port ));
+				}
+
+				for ( Thread pusher : pool ) {
+					pusher.start();
+				}
+
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
+					InputStream lobStream = new ByteArrayInputStream(myValueComplex.getValue());
+					dataToSend.add(new Util.KV(myKeyComplex, myValueComplex));
+					/*NoSQLStorage.myStore.put(myKeyComplex,
+							                         myValueComplex);*/
+							                         //, null, myDurability,30,TimeUnit.MILLISECONDS);
 
+<<<<<<< HEAD
 					NoSQLStorage.myStore.put(myKeyComplex,
 					                         myValueComplex);//,null,myDurability,30,TimeUnit.MICROSECONDS);
+=======
+					// TODO Need .lob key
+					/*try {
+						NoSQLStorage.myStore.putLOB(myKeyComplex,lobStream
+										,myDurability.COMMIT_WRITE_NO_SYNC,30,TimeUnit.MILLISECONDS);
+					} catch ( IOException e ) {
+						System.out.println(e.getMessage());
+					}*/
+>>>>>>> ea0055605c7d05a746e2a9938d7f8587b2e31e92
 					counterComplex +=1;
 					System.out.println("Rows converted " + counterComplex);
 				}
 				NoSQLStorage.progress.append("\nCount of converted data is " + counterComplex + " rows\n");
+				for ( Thread pusher : pool ) {
+					pusher.interrupt();
+				}
 			}
 		}
 	}
 
+<<<<<<< HEAD
+=======
+	private static class Pusher implements Runnable {
+
+		List<Util.KV> localBuffer = new ArrayList<>();
+		final KVStore connection;
+
+		public Pusher(String name, String host, int port) {
+			 connection = Support.makeNoSQLConnection(name, host, port);
+		}
+
+		@Override
+		public void run() {
+			while(true) {
+				localBuffer.clear();
+				dataToSend.drainTo(localBuffer, 2000);
+				for ( Util.KV kv : localBuffer ) {
+					connection.put(kv.k, kv.v);
+				}
+			}
+
+		}
+	}
+>>>>>>> ea0055605c7d05a746e2a9938d7f8587b2e31e92
 
 	 //Write meta information for converting table in storage (for External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
@@ -235,6 +313,7 @@ public class DatabaseWrapper implements Runnable {
 		                     "\"}");
 		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString());
 		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString());
+
 		NoSQLStorage.myStore.put(metaKey,
 		                         metaValue);
 		NoSQLStorage.progress.append("Meta information is stored on:\nKey: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() +  "\nand values is \n" + new String(metaValue.getValue()) + "\n");
@@ -246,7 +325,6 @@ public class DatabaseWrapper implements Runnable {
 	@Override
 	public void run() {
 		double before = System.currentTimeMillis();
-		//NoSQLStorage.progress.append("Start time: " + System.currentTimeMillis() + "\n");
 		try {
 			RDBMS.DatabaseWrapper.writeMetaDataToStorage(TableModel.isAlreadySelectedMajor,
 			                                             TableModel.isAlreadySelectedMinor,
@@ -259,10 +337,10 @@ public class DatabaseWrapper implements Runnable {
 		} catch ( SQLException e1 ) {
 
 		} catch ( Throwable ee ) {
-			NoSQLStorage.progress.setText("You doesn't connected!! At first connect.");
+			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ee.getMessage());
 		}
 		double after = System.currentTimeMillis();
-		//NoSQLStorage.progress.append("\nEnd time: " + System.currentTimeMillis() + "\n");
+
 		try {
 			SwingUtilities.invokeAndWait(new Runnable() {
 				@Override
@@ -276,7 +354,7 @@ public class DatabaseWrapper implements Runnable {
 
 		}
 		double diff = after - before;
-		NoSQLStorage.progress.append("Program executed for " +  diff / 1000 + " sec(" + diff/1000/60+" min)\n");
+		NoSQLStorage.progress.append("\n\nProgram executed for " +  diff / 1000 + " sec(" + diff/1000/60+" min)\n");
 		System.out.println("Program executed for " + diff / 1000 + " sec (" + diff/1000/60+" min)");
 	}
 }

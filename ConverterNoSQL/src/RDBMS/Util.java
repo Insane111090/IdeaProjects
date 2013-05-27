@@ -8,6 +8,8 @@ package RDBMS;
  */
 
 import net.miginfocom.swing.MigLayout;
+import oracle.kv.Key;
+import oracle.kv.Value;
 
 import javax.swing.*;
 
@@ -22,7 +24,21 @@ public class Util {
 		public MigPanel( String constraints ) {
 			setLayout(new MigLayout(constraints));
 		}
+
+		public MigPanel( String constraints, String rowColConstraints ) {
+			setLayout(new MigLayout(constraints, rowColConstraints));
+		}
 	}
 
+	public static class KV {
+	  final Key k;
+		final Value v;
+
+		public KV(Key k, Value v) {
+			this.k = k;
+			this.v = v;
+		}
+
+	}
 
 }
