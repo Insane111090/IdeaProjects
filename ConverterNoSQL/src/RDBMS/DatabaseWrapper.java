@@ -9,6 +9,7 @@ package RDBMS;
 
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
+import oracle.kv.Durability;
 import oracle.kv.Key;
 import oracle.kv.Value;
 import org.json.JSONException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class DatabaseWrapper implements Runnable {
 
@@ -40,6 +42,7 @@ public class DatabaseWrapper implements Runnable {
 		MyConnection = DriverManager.getConnection(url,
 		                                           username,
 		                                           password);
+
 
 		_isConnected = MyConnection != null ? true : false;
 		return MyConnection;
@@ -155,6 +158,9 @@ public class DatabaseWrapper implements Runnable {
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
 		StringBuilder result = new StringBuilder();
+		Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
+		                                         Durability.SyncPolicy.NO_SYNC,
+		                                         Durability.ReplicaAckPolicy.NONE);
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
 		}
@@ -166,15 +172,18 @@ public class DatabaseWrapper implements Runnable {
 			if ( PartsOfKeyforNoSQL.isSimple ) {
 				PreparedStatement getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
 								                                                         " AS KEY FROM " + selectedTableName);
-				getKey.setFetchSize(50);
+				getKey.setFetchSize(1000);
 				ResultSet getkeyResultSet = getKey.executeQuery();
+				int counterSimple = 0;
 				while ( getkeyResultSet.next() ) {
 					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue);
-					//NoSQLStorage.progress.append("Key: " + myKey.getMajorPath() + " " + myKey.getMinorPath() + "\nValue: " + new String(myValue.getValue()) + "\n\n");
+					counterSimple += 1;
+					System.out.println("Rows converted " + counterSimple);
 				}
+				NoSQLStorage.progress.append("\nCount of converted data is " + counterSimple + " rows\n");
 				getKey.close();
 				getkeyResultSet.close();
 			} else if ( PartsOfKeyforNoSQL.isComplex ) {
@@ -183,28 +192,25 @@ public class DatabaseWrapper implements Runnable {
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
 								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
-				getComplexMinorValue.setFetchSize(50);
+				getComplexMinorValue.setFetchSize(1000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
-				int counter = 0;
+				int counterComplex = 0;
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
+
 					NoSQLStorage.myStore.put(myKeyComplex,
-					                         myValueComplex);
-					counter +=1;
-
-					//NoSQLStorage.progress.append("Key: " + myKeyComplex.getMajorPath() + " " + myKeyComplex.getMinorPath() + "\nValue: " + new String(myValueComplex.getValue()) + "\n");
-
+					                         myValueComplex);//,null,myDurability,30,TimeUnit.MICROSECONDS);
+					counterComplex +=1;
+					System.out.println("Rows converted " + counterComplex);
 				}
-				NoSQLStorage.progress.append("\nCount of converted data is " + counter + " rows\n");
+				NoSQLStorage.progress.append("\nCount of converted data is " + counterComplex + " rows\n");
 			}
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	 //Write meta information for converting table in storage (fro External Tables)
->>>>>>> fe2921ecf8d1464265a4d33e2627fc18dded810a
+
+	 //Write meta information for converting table in storage (for External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
 	                                           Set<String> minorSet,
 	                                           String selectedTableName ) {
@@ -236,12 +242,6 @@ public class DatabaseWrapper implements Runnable {
 		+ " and values is " + new String(metaValue.getValue()));
 	}
 
-<<<<<<< HEAD
-=======
-	public static void writeToFile(){
-
-	}
->>>>>>> fe2921ecf8d1464265a4d33e2627fc18dded810a
 
 	@Override
 	public void run() {

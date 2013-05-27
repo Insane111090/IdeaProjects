@@ -7,46 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0f96c71-df0b-457b-b7e7-39aa12991828" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/00000000.jdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/00000000.jdb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/snaboot_0.log.lck" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/config.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/config.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/security.policy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/security.policy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kvroot/snaboot_0.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" afterPath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/MainWindow.java" afterPath="$PROJECT_DIR$/src/RDBMS/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" afterPath="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" afterPath="$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1369070103611" ignored="false" />
+    <file path="/Dummy.txt" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1369664717327" ignored="false" />
     <file path="/fragment.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366917232981" ignored="false" />
-    <file path="/DatabaseWrapper.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366987280698" ignored="false" />
+    <file path="/DatabaseWrapper.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1369324543400" ignored="false" />
     <file path="/NoSQLStorage.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366987256161" ignored="false" />
     <file path="/PartsOfKeyforNoSQL.java" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1366921195917" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/WebServices/lib/WebServices.jar!/schemas/cxf-jaxws.xsd" changelist="a0f96c71-df0b-457b-b7e7-39aa12991828" time="1367049285379" ignored="false" />
@@ -186,24 +155,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" line="146" class="RDBMS.PartsOfKeyforNoSQL$1" package="RDBMS">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -240,6 +191,24 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java" line="146" class="RDBMS.PartsOfKeyforNoSQL$1" package="RDBMS">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -261,7 +230,7 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="261" column="28" selection-start="8597" selection-end="8597" vertical-scroll-proportion="0.0">
+            <state line="267" column="28" selection-start="8895" selection-end="8895" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -270,13 +239,14 @@
       <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="88" selection-start="10172" selection-end="10247" vertical-scroll-proportion="0.5771144">
+            <state line="252" column="58" selection-start="10345" selection-end="10345" vertical-scroll-proportion="1.4166666">
               <folding>
-                <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
-                <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
-                <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+                <marker date="1369324885095" expanded="true" signature="1821:2030" placeholder="SELECT table..all_tables..." />
+                <marker date="1369324885095" expanded="true" signature="2751:3292" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1369324885095" expanded="true" signature="4077:4618" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1369324885095" expanded="true" signature="6329:6464" placeholder="SELECT missi..." />
+                <marker date="1369324885095" expanded="true" signature="6581:6653" placeholder="SELECT missi..." />
+                <marker date="1369324885095" expanded="true" signature="7407:7583" placeholder="SELECT regex..." />
               </folding>
             </state>
           </provider>
@@ -285,7 +255,7 @@
       <file leaf-file-name="NoSQLStorage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="25" selection-start="6242" selection-end="6242" vertical-scroll-proportion="0.0">
+            <state line="186" column="25" selection-start="6322" selection-end="6322" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -365,6 +335,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -436,7 +407,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,162 +417,17 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
-  </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/MainWindow.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.log.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.perf.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/MyStore_0.stat.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/admin1_0.log.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/rg1-rn1_0.log.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/log/sn1_0.log.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/security.policy</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/00000000.jdb</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.1.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.info.0.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/admin1/env/je.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/config.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/00000000.jdb</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.1.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.info.0.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/MyStore/sn1/rg1-rn1/env/je.lck</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/config.xml</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/security.policy</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/snaboot_0.log</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/kvroot/snaboot_0.log.lck</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -617,6 +442,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -645,19 +483,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -719,8 +544,14 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="JProfiler">
+        <option name="WINDOW" value="false" />
+        <option name="JVMPI" value="false" />
+        <option name="INTERPRETED" value="false" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="JProfiler" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -737,6 +568,23 @@
     <option name="analysisUIOptions">
       <AnalysisUIOptions />
     </option>
+  </component>
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -768,12 +616,16 @@
       <created>1369070094628</created>
       <updated>1369070094628</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="On local">
+      <created>1369664780912</created>
+      <updated>1369664780912</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1292" height="1000" extended-state="1" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1292" height="1000" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -790,9 +642,10 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18130082" sideWeight="0.6702254" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CodeInterview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16504066" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -872,13 +725,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="8" selection-start="5602" selection-end="5602" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="118" column="28" selection-start="3901" selection-end="3901" vertical-scroll-proportion="0.0">
@@ -897,11 +743,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="162" column="42" selection-start="6011" selection-end="6068" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
-            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
-            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+            <marker date="1369324885095" expanded="true" signature="1821:2030" placeholder="SELECT table..all_tables..." />
+            <marker date="1369324885095" expanded="true" signature="2751:3292" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="4077:4618" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="6329:6464" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="6581:6653" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="7407:7583" placeholder="SELECT regex..." />
           </folding>
         </state>
       </provider>
@@ -931,11 +778,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="95" selection-start="5056" selection-end="5078" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
-            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
-            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+            <marker date="1369324885095" expanded="true" signature="1821:2030" placeholder="SELECT table..all_tables..." />
+            <marker date="1369324885095" expanded="true" signature="2751:3292" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="4077:4618" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="6329:6464" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="6581:6653" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="7407:7583" placeholder="SELECT regex..." />
           </folding>
         </state>
       </provider>
@@ -957,16 +805,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="25" selection-start="6242" selection-end="6242" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="261" column="28" selection-start="8597" selection-end="8597" vertical-scroll-proportion="0.0">
+        <state line="267" column="28" selection-start="8895" selection-end="8895" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -978,6 +819,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="25" selection-start="6322" selection-end="6322" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="151" column="0" selection-start="5025" selection-end="5025" vertical-scroll-proportion="0.0">
@@ -985,15 +833,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/oracle/kv/Durability.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="4" selection-start="2366" selection-end="2366" vertical-scroll-proportion="-22.64" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="88" selection-start="10172" selection-end="10247" vertical-scroll-proportion="0.5771144">
+        <state line="252" column="58" selection-start="10345" selection-end="10345" vertical-scroll-proportion="1.4166666">
           <folding>
-            <marker date="1369069895103" expanded="true" signature="1753:1942" placeholder="SELECT table..all_tables..." />
-            <marker date="1369069895103" expanded="true" signature="2663:3204" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="3989:4530" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1369069895103" expanded="true" signature="5990:6125" placeholder="SELECT missi..." />
-            <marker date="1369069895103" expanded="true" signature="7011:7187" placeholder="SELECT regex..." />
+            <marker date="1369324885095" expanded="true" signature="1821:2030" placeholder="SELECT table..all_tables..." />
+            <marker date="1369324885095" expanded="true" signature="2751:3292" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="4077:4618" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1369324885095" expanded="true" signature="6329:6464" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="6581:6653" placeholder="SELECT missi..." />
+            <marker date="1369324885095" expanded="true" signature="7407:7583" placeholder="SELECT regex..." />
           </folding>
         </state>
       </provider>
