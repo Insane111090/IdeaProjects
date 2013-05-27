@@ -157,7 +157,19 @@ public class DatabaseWrapper implements Runnable {
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
-	public static String isLob(){
+	public static String isLob(Set<String> minorSet,
+	                           Set<String> valueSet,
+	                           String selectedTableName) throws SQLException
+	{
+		StringBuilder resMinorLob = new StringBuilder();
+		StringBuilder resValuesLob = new StringBuilder();
+
+		for (String minor:minorSet)
+		{
+			PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
+							                                                              "where table_name = " + selectedTableName + " and column_name = minor" +
+							                                                              " and (data_type like 'CLOB' or data_type like 'BLOB')");
+		}
 
 
 		return null;
