@@ -1,8 +1,6 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import RDBMS.MainWindow;
-import RDBMS.TableModel;
 import oracle.kv.FaultException;
 import oracle.kv.KVStore;
 
@@ -10,8 +8,6 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
-
 
 import static RDBMS.Util.MigPanel;
 
@@ -35,15 +31,14 @@ public class NoSQLStorage extends JDialog {
 	JTextField hostTxt = new JTextField();
 	JTextField storeTxt = new JTextField();
 	JTextField connNoSqlStatusTxt = new JTextField("Not Connected");
-	Support.ConnectionNoSQLStorage orastore;
 	public static KVStore myStore;
 	public static JTextArea progress = new JTextArea();
 	JScrollPane scroll = new JScrollPane();
 
 
-	String port = "5000";
-	String host = "localhost";
-	String store = "MyStore";
+	public static int port = 5000;
+	public static String host = "localhost";
+	public static String store = "MyStore";
 
 	void CreateForm() {
 		noSqlConnectionInfo.setBorder(new TitledBorder("Connection to NoSQL Storage"));
@@ -133,10 +128,9 @@ public class NoSQLStorage extends JDialog {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				try {
-					orastore = new Support.ConnectionNoSQLStorage(store,
-					                                              host,
-					                                              port);
-					myStore = orastore.getStore();
+					myStore = Support.makeNoSQLConnection(store,
+					                                      host,
+					                                      port);
 				} catch ( FaultException ex ) {
 					JOptionPane.showMessageDialog(
 									noSqlPanel,
@@ -150,7 +144,7 @@ public class NoSQLStorage extends JDialog {
 									"Error",
 									JOptionPane.ERROR_MESSAGE);
 				}
-				if ( Support.ConnectionNoSQLStorage.isConenctedToStore() ) {
+				if ( myStore != null ) {
 					connNoSqlStatusTxt.setText("Connected");
 					connNoSqlStatusTxt.setBackground(Color.GREEN);
 					progress.setText("Store opened");
@@ -196,18 +190,15 @@ public class NoSQLStorage extends JDialog {
 				progress.setText("");
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());
-				//long before = System.currentTimeMillis();
 				importer.start();
-				//long after = System.currentTimeMillis();
-				//long diff = before - after;
-				//System.out.println(diff);
 
-//				Key test = Support.ParseKey.ParseKey("Костыркин/Олег/-/Test1/");
-//				ValueVersion vv = myStore.get(test);
-//				Value v = vv.getValue();
-//				String data;
-//				data = new String(v.getValue());
-//				System.out.println(data.toString() + " " + myStore.get(test));
+
+				/*Key test = Support.ParseKey.ParseKey("CHILD/1197/-/Test1/");
+				ValueVersion vv = myStore.get(test);
+				Value v = vv.getValue();
+				String data;
+				data = new String(v.getValue());
+				System.out.println(data.toString() + " " + myStore.get(test));*/
 			}
 
 

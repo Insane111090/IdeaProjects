@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 
-	JPanel tableFieldsPanel = new Util.MigPanel("fillx, flowy");
+	JPanel tableFieldsPanel = new Util.MigPanel("fillx, flowy", "grow");
 	final JTable fieldsTable = new JTable(new TableModel());
 
 	final JRadioButton complexMinorKey = new JRadioButton("Choose Complex Minor Key");
@@ -41,7 +41,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 	List<Object> colNameForMajor = new ArrayList<>();
 	List<Object> colNameForMinor = new ArrayList<>();
 	List<Object> colNameForValue = new ArrayList<>();
-	//JScrollPane scrollPaneForTable = new JScrollPane();
+	JScrollPane scrollPaneForTable = new JScrollPane();
 	String selectedTableName;
 	public boolean nextToMinorButtonClicked, nextToValueButtonClicked;
 	public static boolean isSimple;
@@ -131,7 +131,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 		CreateTable();
 
 		setTitle("Prepare for converting");
-		setContentPane(tableFieldsPanel);
+		setContentPane(new JScrollPane(tableFieldsPanel));
 		setLocation(300,
 		            100);
 		setModal(true);
