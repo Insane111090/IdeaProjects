@@ -157,22 +157,31 @@ public class DatabaseWrapper implements Runnable {
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
-	public static String isLob(Set<String> minorSet,
+	//Check for LOB object in selected values
+	public static Boolean isLob(Set<String> minorSet,
 	                           Set<String> valueSet,
 	                           String selectedTableName) throws SQLException
-	{
-		StringBuilder resMinorLob = new StringBuilder();
-		StringBuilder resValuesLob = new StringBuilder();
-
-		for (String minor:minorSet)
+	{ boolean ret = false;
+		PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
+						                                                              "where table_name = '" + selectedTableName + "'"+
+						                                                              " and (data_type like 'CLOB' or data_type like 'BLOB')");
+		ResultSet getLobObj = defineIsLob.executeQuery();
+		while(getLobObj.next())
 		{
-			PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
-							                                                              "where table_name = " + selectedTableName + " and column_name = minor" +
-							                                                              " and (data_type like 'CLOB' or data_type like 'BLOB')");
+			for (String minor:minorSet)
+			{  String str = getLobObj.getString(1);
+				 if (minor == str)
+					 ret = true;
+				continue;
+			}
+			for (String value: valueSet)
+			{ String str = getLobObj.getString(1);
+				if (value == str)
+					ret = true;
+				continue;
+			}
 		}
-
-
-		return null;
+		 return ret;
 	}
 	//Write data in storage
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
@@ -186,6 +195,7 @@ public class DatabaseWrapper implements Runnable {
 		Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
 		                                         Durability.SyncPolicy.NO_SYNC,
 		                                         Durability.ReplicaAckPolicy.NONE);
+		isLob(minorSet,valueSet,selectedTableName);
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
 		}
@@ -222,7 +232,7 @@ public class DatabaseWrapper implements Runnable {
 				int counterComplex = 0;
 				int cores = 5; //Runtime.getRuntime().availableProcessors();
 				pool = new Thread[cores];
-				dataToSend = new LinkedBlockingQueue<>(50000);
+				dataToSend = new LinkedBlockingQueue<>(5000);
 				for(int i = 0; i < cores; i++) {
 					pool[i] = new Thread(new Pusher(NoSQLStorage.store, NoSQLStorage.host, NoSQLStorage.port ));
 				}
