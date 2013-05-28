@@ -170,13 +170,13 @@ public class DatabaseWrapper implements Runnable {
 		{
 			for (String minor:minorSet)
 			{  String str = getLobObj.getString(1);
-				 if (minor == str)
+				 if (minor.equals(str))
 					 ret = true;
 				continue;
 			}
 			for (String value: valueSet)
 			{ String str = getLobObj.getString(1);
-				if (value == str)
+				if (value.equals(str))
 					ret = true;
 				continue;
 			}
