@@ -240,18 +240,13 @@ public class DatabaseWrapper implements Runnable {
 							                         myValueComplex);*/
 							                         //, null, myDurability,30,TimeUnit.MILLISECONDS);
 
-<<<<<<< HEAD
-					NoSQLStorage.myStore.put(myKeyComplex,
-					                         myValueComplex);//,null,myDurability,30,TimeUnit.MICROSECONDS);
-=======
-					// TODO Need .lob key
+		// TODO Need .lob key
 					/*try {
 						NoSQLStorage.myStore.putLOB(myKeyComplex,lobStream
 										,myDurability.COMMIT_WRITE_NO_SYNC,30,TimeUnit.MILLISECONDS);
 					} catch ( IOException e ) {
 						System.out.println(e.getMessage());
 					}*/
->>>>>>> ea0055605c7d05a746e2a9938d7f8587b2e31e92
 					counterComplex +=1;
 					System.out.println("Rows converted " + counterComplex);
 				}
@@ -263,8 +258,6 @@ public class DatabaseWrapper implements Runnable {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	private static class Pusher implements Runnable {
 
 		List<Util.KV> localBuffer = new ArrayList<>();
@@ -286,7 +279,6 @@ public class DatabaseWrapper implements Runnable {
 
 		}
 	}
->>>>>>> ea0055605c7d05a746e2a9938d7f8587b2e31e92
 
 	 //Write meta information for converting table in storage (for External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
