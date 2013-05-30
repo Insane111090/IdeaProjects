@@ -64,9 +64,15 @@ public  class Support {
 			return parsedKey;
 		}
 
-		public static Value ParseValue( String noParsedValue ) {
-			valueString = noParsedValue.substring(noParsedValue.indexOf(":") + 1);
-			parsedValue = Value.createValue(valueString.toString().getBytes());
+		public static Value ParseValue( Object noParsedValue, boolean lobFlag )
+		{
+			if (!lobFlag)
+			{
+				valueString = noParsedValue.toString().substring(noParsedValue.toString().indexOf(":") + 1);
+				parsedValue = Value.createValue(valueString.toString().getBytes());
+			}
+			else
+				parsedValue = Value.createValue(noParsedValue.toString().getBytes());
 			return parsedValue;
 		}
 	}

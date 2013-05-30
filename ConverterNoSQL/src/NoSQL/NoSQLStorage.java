@@ -22,7 +22,6 @@ public class NoSQLStorage extends JDialog {
 	final JLabel hostLbl = new JLabel("Host: ");
 	final JLabel portLbl = new JLabel("Port: ");
 	final JLabel storeLbl = new JLabel("Store: ");
-	//final JLabel resultCount = new JLabel("Count of converted data: ");
 	final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
 	final JButton disconnectAndClose = new JButton("Disconnect and close");
 	final JButton disconnectNoSQL = new JButton("Disconnect from storage");
@@ -155,6 +154,7 @@ public class NoSQLStorage extends JDialog {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				try {
+
 					myStore.close();
 					progress.invalidate();
 					progress.append("\n\nStore closed");//);append();

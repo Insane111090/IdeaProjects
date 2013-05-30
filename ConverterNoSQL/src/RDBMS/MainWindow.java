@@ -119,7 +119,7 @@ public class MainWindow {
 		resultTables.setBorder(new TitledBorder("List of tables"));
 		descSelectedTable.setBorder(new TitledBorder(
 						"Description of selected table"));
-	  /*
+		/*
      * Creation of Buttons
      */
 		//Connection button
@@ -449,9 +449,9 @@ public class MainWindow {
 					try {
 						DatabaseWrapper.createConnection(username,
 
-                                             "SCHOOL_ADM_PASS",
+						                                 "SCHOOL_ADM_PASS",
 //new String(passwordTxt.getPassword()),
-                                             url);
+						                                 url);
 					} catch ( SQLException e ) {
 						JOptionPane.showMessageDialog(
 										mainForm,
