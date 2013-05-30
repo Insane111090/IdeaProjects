@@ -21,10 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -157,21 +154,20 @@ public class DatabaseWrapper implements Runnable {
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
-	//Check for LOB object in selected values
-	public static Boolean isLob(Set<String> minorSet,
-	                           Set<String> valueSet,
-	                           String selectedTableName) throws SQLException
+/*	public static Boolean isLob(Set<String> minorSet,
+	                            Set<String> valueSet,
+	                            String selectedTableName) throws SQLException
 	{ boolean ret = false;
 		PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
-						                                                              "where table_name = '" + selectedTableName + "'"+
-						                                                              " and (data_type like 'CLOB' or data_type like 'BLOB')");
+						"where table_name = '" + selectedTableName + "'"+
+						" and (data_type like 'CLOB' or data_type like 'BLOB')");
 		ResultSet getLobObj = defineIsLob.executeQuery();
 		while(getLobObj.next())
 		{
 			for (String minor:minorSet)
-			{  String str = getLobObj.getString(1);
-				 if (minor.equals(str))
-					 ret = true;
+			{ String str = getLobObj.getString(1);
+				if (minor.equals(str))
+					ret = true;
 				continue;
 			}
 			for (String value: valueSet)
@@ -181,8 +177,28 @@ public class DatabaseWrapper implements Runnable {
 				continue;
 			}
 		}
-		 return ret;
+		return ret;
+	}*/
+
+	public static Set<String> filterLobs(Set<String> minors,
+	                                     Set<String> values,
+	                                     String tableName) throws SQLException
+	{
+		PreparedStatement lobColumnsQuery = MyConnection.prepareStatement("select column_name from user_tab_columns " +
+																															"where table_name = ? and (data_type like 'CLOB' or data_type like 'BLOB')");
+		lobColumnsQuery.setString(1, tableName);
+		ResultSet lobColumns = lobColumnsQuery.executeQuery();
+		Set<String> result = new HashSet<>();
+		while (lobColumns.next()) {
+			String columnName = lobColumns.getString(1);
+			if (minors.contains(columnName) || values.contains(columnName))
+			{
+				result.add(columnName);
+			}
+		}
+		return result;
 	}
+
 	//Write data in storage
 	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
 	                                               Set<String> minorSet,
@@ -195,11 +211,12 @@ public class DatabaseWrapper implements Runnable {
 		Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
 		                                         Durability.SyncPolicy.NO_SYNC,
 		                                         Durability.ReplicaAckPolicy.NONE);
-		isLob(minorSet,valueSet,selectedTableName);
+		boolean flag;
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
 		}
 		result.append(resMajor).append("'-/'||");
+
 		for ( String minor : minorSet ) {
 			resMinor.delete(0,
 			                resMinor.length());
@@ -211,10 +228,16 @@ public class DatabaseWrapper implements Runnable {
 				ResultSet getkeyResultSet = getKey.executeQuery();
 				int counterSimple = 0;
 				while ( getkeyResultSet.next() ) {
-					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1));
+					Set<String> lobs = filterLobs(minorSet,valueSet,selectedTableName);
+					if (lobs.contains(minor))
+					{
+					flag = true;
+					Key myKey = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1), flag);
+
 					Value myValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 					NoSQLStorage.myStore.put(myKey,
 					                         myValue, null, myDurability,30,TimeUnit.MILLISECONDS);
+					}
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
 				}
@@ -232,7 +255,7 @@ public class DatabaseWrapper implements Runnable {
 				int counterComplex = 0;
 				int cores = 5; //Runtime.getRuntime().availableProcessors();
 				pool = new Thread[cores];
-				dataToSend = new LinkedBlockingQueue<>(5000);
+				dataToSend = new LinkedBlockingQueue<>(50000);
 				for(int i = 0; i < cores; i++) {
 					pool[i] = new Thread(new Pusher(NoSQLStorage.store, NoSQLStorage.host, NoSQLStorage.port ));
 				}
@@ -242,7 +265,8 @@ public class DatabaseWrapper implements Runnable {
 				}
 
 				while ( getComplexKeyResultSet.next() ) {
-					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1));
+					flag = false;
+					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1),flag);
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					InputStream lobStream = new ByteArrayInputStream(myValueComplex.getValue());
 					dataToSend.add(new Util.KV(myKeyComplex, myValueComplex));
@@ -296,7 +320,7 @@ public class DatabaseWrapper implements Runnable {
 	                                           String selectedTableName ) {
 		StringBuilder metaInfo = new StringBuilder();
 		StringBuilder valuesForMeta = new StringBuilder();
-
+		boolean flag = false;
 		metaInfo.append(selectedTableName).append("/-/").append("MetaData/:");
 
 		valuesForMeta.append("{\"").append("Major key\":\"");
@@ -313,7 +337,7 @@ public class DatabaseWrapper implements Runnable {
 		valuesForMeta.replace(valuesForMeta.length() - 1,
 		                     valuesForMeta.length(),
 		                     "\"}");
-		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString());
+		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString(),flag);
 		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString());
 
 		NoSQLStorage.myStore.put(metaKey,

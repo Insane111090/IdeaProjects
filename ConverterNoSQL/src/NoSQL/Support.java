@@ -20,15 +20,22 @@ public  class Support {
 		public static Value parsedValue;
 		static String valueString = "";
 
-		public static Key ParseKey( String notParsedKey ) {
+		public static Key ParseKey( String notParsedKey, boolean flag ) {
+
 			int endOfString;
 			if ( notParsedKey.indexOf(":") != - 1 ) {
 				endOfString = notParsedKey.indexOf(":") - 1;
 			} else {
 				endOfString = notParsedKey.length();
 			}
-			String keysString = notParsedKey.substring(0,
-			                                           endOfString);
+
+			String keysString;
+			if (flag)
+				keysString = notParsedKey.substring(0,
+			                                        endOfString)+ ".lob";
+			else
+				 keysString = notParsedKey.substring(0,
+								endOfString);
 			List<String> majorComponents = new ArrayList<>();
 			List<String> minorComponents = new ArrayList<>();
 
@@ -53,6 +60,7 @@ public  class Support {
 			} else {
 				System.out.println("Error");
 			}
+
 			return parsedKey;
 		}
 
