@@ -34,6 +34,9 @@ public class DatabaseWrapper implements Runnable {
 	static private Thread[] pool;
 	static private LinkedBlockingQueue<Util.KV> dataToSend;
 	static private boolean lobFlag;
+	static private Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
+	                                         Durability.SyncPolicy.NO_SYNC,
+	                                         Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
 
 	/*
 	 * Function that provides a connection to DB
@@ -203,9 +206,7 @@ public class DatabaseWrapper implements Runnable {
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
 		StringBuilder result = new StringBuilder();
-		Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
-		                                         Durability.SyncPolicy.NO_SYNC,
-		                                         Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
+
 		int cores = 5; //Runtime.getRuntime().availableProcessors();    //Count of threads
 		dataToSend = new LinkedBlockingQueue<>(50000);//Size of queue
 
@@ -248,19 +249,20 @@ public class DatabaseWrapper implements Runnable {
 				while ( getkeyResultSet.next() ) {
 					Key myKeySimple = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1),
 					                                            lobFlag);
-					Value mySimpleValue;
 					if ( lobFlag ) {
 						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
 						//TODO:Queue full!!!
-						dataToSend.add(new Util.KV(myKeySimple,
-						                           simpleValueStream,
-						                           myDurability,
-						                           20,
-						                           TimeUnit.MILLISECONDS));
+						try {
+							dataToSend.put(new Util.KV<InputStream>(myKeySimple,
+							                           simpleValueStream));
+
+						} catch ( InterruptedException e ) {
+							System.out.println(e.getMessage());
+						}
 					} else {
-						mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
+						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
 						                                            lobFlag);
-						dataToSend.add(new Util.KV(myKeySimple,
+						dataToSend.add(new Util.KV<Value>(myKeySimple,
 						                           mySimpleValue));
 					}
 					counterSimple += 1;
@@ -329,20 +331,21 @@ public class DatabaseWrapper implements Runnable {
 			while ( true ) {
 				localBuffer.clear();
 				dataToSend.drainTo(localBuffer,
-				                   2000);
+				                   3000);
 				if ( ! lobFlag ) {
-					for ( Util.KV kv : localBuffer ) {
+					for ( Util.KV<Value> kv : localBuffer ) {
 						connection.put(kv.k,
 						               kv.v);
 					}
 				} else {
-					for ( Util.KV kv : localBuffer ) {
+					for ( Util.KV<InputStream> kv : localBuffer ) {
 						try {
 							connection.putLOB(kv.k,
-							                  kv.s,
-							                  kv.d,
-							                  kv.l,
-							                  kv.tu);
+							                  kv.v,
+							                  myDurability,
+							                  20,
+							                  TimeUnit.MILLISECONDS);
+
 						} catch ( IOException e ) {
 							System.out.println("Error: " + e.getMessage());
 						}
