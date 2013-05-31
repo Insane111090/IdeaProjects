@@ -178,7 +178,6 @@ public class DatabaseWrapper implements Runnable {
 	}*/
 
 	public static Set<String> filterLobs( Set<String> minors,
-	                                      Set<String> values,
 	                                      String tableName ) throws SQLException {
 		PreparedStatement lobColumnsQuery = MyConnection.prepareStatement("SELECT column_name FROM user_tab_columns " +
 						                                                                  "WHERE table_name = ? AND (data_type LIKE 'CLOB' OR data_type LIKE 'BLOB')");
@@ -188,7 +187,7 @@ public class DatabaseWrapper implements Runnable {
 		Set<String> result = new HashSet<>();
 		while ( lobColumns.next() ) {
 			String columnName = lobColumns.getString(1);
-			if ( minors.contains(columnName) || values.contains(columnName) ) {
+			if ( minors.contains(columnName) ) {
 				result.add(columnName);
 			}
 		}
@@ -221,7 +220,6 @@ public class DatabaseWrapper implements Runnable {
 			resMinor.append(minor);
 			if ( PartsOfKeyforNoSQL.isSimple ) {
 				Set<String> lobs = filterLobs(minorSet,
-				                              valueSet,
 				                              selectedTableName);
 				if ( lobs.contains(minor) )
 					lobFlag = true;
@@ -252,8 +250,8 @@ public class DatabaseWrapper implements Runnable {
 					                                            lobFlag);
 					Value mySimpleValue;
 					if ( lobFlag ) {
-						InputStream simpleValueStream = new ByteArrayInputStream(getkeyResultSet.getBytes(2));
-
+						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
+						//TODO:Queue full!!!
 						dataToSend.add(new Util.KV(myKeySimple,
 						                           simpleValueStream,
 						                           myDurability,
@@ -269,6 +267,7 @@ public class DatabaseWrapper implements Runnable {
 					System.out.println("Rows converted " + counterSimple);
 				}
 				NoSQLStorage.progress.append("\nCount of converted data is " + counterSimple + " rows\n");
+				getKey.clearBatch();
 				getKey.close();
 				getkeyResultSet.close();
 				for ( Thread pusher : pool ) {
@@ -293,29 +292,20 @@ public class DatabaseWrapper implements Runnable {
 					pusher.start();
 				}
 				while ( getComplexKeyResultSet.next() ) {
-					lobFlag = false;
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1),
 					                                             lobFlag);
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1),
 					                                                   lobFlag);
-					InputStream lobStream = new ByteArrayInputStream(myValueComplex.getValue());
 					dataToSend.add(new Util.KV(myKeyComplex,
 					                           myValueComplex));
 					/*NoSQLStorage.myStore.put(myKeyComplex,
 							                         myValueComplex);*/
-					//, null, myDurability,30,TimeUnit.MILLISECONDS);
-
-					// TODO Need .lob key
-					/*try {
-						NoSQLStorage.myStore.putLOB(myKeyComplex,lobStream
-										,myDurability.COMMIT_WRITE_NO_SYNC,30,TimeUnit.MILLISECONDS);
-					} catch ( IOException e ) {
-						System.out.println(e.getMessage());
-					}*/
 					counterComplex += 1;
 					System.out.println("Rows converted " + counterComplex);
 				}
 				NoSQLStorage.progress.append("\nCount of converted data is " + counterComplex + " rows\n");
+				getComplexMinorValue.clearBatch();
+				getComplexMinorValue.close();
 				for ( Thread pusher : pool ) {
 					pusher.interrupt();
 				}
@@ -415,9 +405,9 @@ public class DatabaseWrapper implements Runnable {
 
 		} catch ( NullPointerException ne ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ne.getMessage() + " \nYour value is NULL");
-		} /*catch ( Throwable ee ) {
+		} catch ( Throwable ee ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ee.getMessage());
-		}*/
+		}
 		double after = System.currentTimeMillis();
 
 		try {
