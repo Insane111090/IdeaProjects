@@ -20,7 +20,7 @@ public  class Support {
 		public static Value parsedValue;
 		static String valueString = "";
 
-		public static Key ParseKey( String notParsedKey, boolean flag ) {
+		public static Key ParseKey( String notParsedKey, boolean flag) {
 
 			int endOfString;
 			if ( notParsedKey.indexOf(":") != - 1 ) {

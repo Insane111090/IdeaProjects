@@ -250,8 +250,11 @@ public class DatabaseWrapper implements Runnable {
 					Key myKeySimple = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1),
 					                                            lobFlag);
 					if ( lobFlag ) {
-						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
-						//TODO:Queue full!!!
+						//TODO:Resolve problem with lobs and bytes
+						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getObject(2),
+						                                                  lobFlag);
+						InputStream simpleValueStream = new ByteArrayInputStream( mySimpleValue.getValue());
+
 						try {
 							dataToSend.put(new Util.KV<>(myKeySimple,
 							                           simpleValueStream));
@@ -315,7 +318,7 @@ public class DatabaseWrapper implements Runnable {
 		}
 	}
 
-	private static class Pusher implements Runnable {
+	 static class Pusher implements Runnable {
 
 		List<Util.KV> localBuffer = new ArrayList<>();
 		final KVStore connection;
@@ -325,7 +328,6 @@ public class DatabaseWrapper implements Runnable {
 			                                         host,
 			                                         port);
 		}
-
 		@Override
 		public void run() {
 			while ( ! Thread.currentThread().isInterrupted() ) {
@@ -410,9 +412,9 @@ public class DatabaseWrapper implements Runnable {
 
 		} catch ( NullPointerException ne ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ne.getMessage() + " \nYour value is NULL");
-		} catch ( Throwable ee ) {
+		} /*catch ( Throwable ee ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ee.getMessage());
-		}
+		}*/
 		double after = System.currentTimeMillis();
 
 		try {

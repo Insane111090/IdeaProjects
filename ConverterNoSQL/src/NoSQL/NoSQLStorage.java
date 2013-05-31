@@ -1,13 +1,19 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import oracle.kv.FaultException;
-import oracle.kv.KVStore;
+import oracle.kv.*;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
+
+import oracle.kv.lob.InputStreamVersion;
 
 import static RDBMS.Util.MigPanel;
 
@@ -154,7 +160,6 @@ public class NoSQLStorage extends JDialog {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 				try {
-
 					myStore.close();
 					progress.invalidate();
 					progress.append("\n\nStore closed");//);append();
@@ -165,7 +170,6 @@ public class NoSQLStorage extends JDialog {
 									"Error",
 									JOptionPane.ERROR_MESSAGE);
 				}
-				//resultCount.setText(resultCount.getText() + 5);
 			}
 		});
 		disconnectAndClose.addActionListener(new AbstractAction() {
@@ -192,13 +196,32 @@ public class NoSQLStorage extends JDialog {
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
 
+/*				Key test = Support.ParseKey.ParseKey("MESSAGES/2376/-/MSG_TEXT.lob/",false);
+				InputStreamVersion stream = myStore.getLOB(test,Consistency.NONE_REQUIRED,5,
+				                                           TimeUnit.SECONDS);
+				InputStream is = stream.getInputStream();
+				BufferedInputStream bis = new BufferedInputStream(is);
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				try {
+					int result = bis.read();
+					while (bis.read()!= -1)
+					{
+						byte b = (byte)result;
+						 baos.write(b);
+						result = bis.read();
+					}
+				} catch ( IOException e1 ) {
+					System.out.println(e1.getMessage());
+				}
+				System.out.println(baos.toString());*/
 
-				/*Key test = Support.ParseKey.ParseKey("CHILD/1197/-/Test1/");
+
+				/*Key test = Support.ParseKey.ParseKey("MESSAGES/2376/-/MSG_DATE/",false);
 				ValueVersion vv = myStore.get(test);
 				Value v = vv.getValue();
 				String data;
 				data = new String(v.getValue());
-				System.out.println(data.toString() + " " + myStore.get(test));*/
+				System.out.println(data.toString() );//+ " " + myStore.get(test));*/
 			}
 
 
