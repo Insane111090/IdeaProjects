@@ -207,8 +207,8 @@ public class DatabaseWrapper implements Runnable {
 		StringBuilder resValues = new StringBuilder();
 		StringBuilder result = new StringBuilder();
 
-		int cores = 5; //Runtime.getRuntime().availableProcessors();    //Count of threads
-		dataToSend = new LinkedBlockingQueue<>(50000);//Size of queue
+		int cores = 8; //Runtime.getRuntime().availableProcessors();    //Count of threads
+		dataToSend = new LinkedBlockingQueue<>(500000);//Size of queue
 
 		for ( String major : majorSet ) {
 			resMajor.append(major).append("||'/'||");
@@ -253,7 +253,7 @@ public class DatabaseWrapper implements Runnable {
 						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
 						//TODO:Queue full!!!
 						try {
-							dataToSend.put(new Util.KV<InputStream>(myKeySimple,
+							dataToSend.put(new Util.KV<>(myKeySimple,
 							                           simpleValueStream));
 
 						} catch ( InterruptedException e ) {
@@ -262,7 +262,7 @@ public class DatabaseWrapper implements Runnable {
 					} else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
 						                                            lobFlag);
-						dataToSend.add(new Util.KV<Value>(myKeySimple,
+						dataToSend.add(new Util.KV<>(myKeySimple,
 						                           mySimpleValue));
 					}
 					counterSimple += 1;
@@ -328,7 +328,7 @@ public class DatabaseWrapper implements Runnable {
 
 		@Override
 		public void run() {
-			while ( true ) {
+			while ( ! Thread.currentThread().isInterrupted() ) {
 				localBuffer.clear();
 				dataToSend.drainTo(localBuffer,
 				                   3000);
@@ -352,19 +352,18 @@ public class DatabaseWrapper implements Runnable {
 					}
 				}
 			}
-
 		}
 	}
 
 	//Write meta information for converting table in storage (for External Tables)
 	public static void writeMetaDataToStorage( Set<String> majorSet,
 	                                           Set<String> minorSet,
-	                                           String selectedTableName ) {
+	                                           String selectedTableName ) throws SQLException {
 		StringBuilder metaInfo = new StringBuilder();
 		StringBuilder valuesForMeta = new StringBuilder();
 		boolean flag = false;
 		metaInfo.append(selectedTableName).append("/-/").append("MetaData/:");
-
+		Set<String> lobs = filterLobs(minorSet,selectedTableName);
 		valuesForMeta.append("{\"").append("Major key\":\"");
 		for ( String valuesMaj : majorSet ) {
 			valuesForMeta.append(valuesMaj).append(";");
@@ -374,7 +373,10 @@ public class DatabaseWrapper implements Runnable {
 		                      "\",\"");
 		valuesForMeta.append("Minor key\":\"");
 		for ( String valuesMin : minorSet ) {
-			valuesForMeta.append(valuesMin).append(";");
+			if (lobs.contains(valuesMin))
+				valuesForMeta.append(valuesMin).append("(.lob);");
+			else
+				valuesForMeta.append(valuesMin).append(";");
 		}
 		valuesForMeta.replace(valuesForMeta.length() - 1,
 		                      valuesForMeta.length(),
