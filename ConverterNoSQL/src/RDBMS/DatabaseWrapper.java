@@ -9,15 +9,15 @@ package RDBMS;
 
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
+import RDBMS.Util.KV;
+import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import oracle.kv.Durability;
 import oracle.kv.KVStore;
 import oracle.kv.Key;
 import oracle.kv.Value;
 
 import javax.swing.*;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.*;
@@ -183,7 +183,7 @@ public class DatabaseWrapper implements Runnable {
 	public static Set<String> filterLobs( Set<String> minors,
 	                                      String tableName ) throws SQLException {
 		PreparedStatement lobColumnsQuery = MyConnection.prepareStatement("SELECT column_name FROM user_tab_columns " +
-						                                                                  "WHERE table_name = ? AND (data_type LIKE 'CLOB' OR data_type LIKE 'BLOB')");
+						                                                                  "WHERE table_name = ? AND (data_type LIKE '%LOB')");
 		lobColumnsQuery.setString(1,
 		                          tableName);
 		ResultSet lobColumns = lobColumnsQuery.executeQuery();
@@ -251,13 +251,21 @@ public class DatabaseWrapper implements Runnable {
 					                                            lobFlag);
 					if ( lobFlag ) {
 						//TODO:Resolve problem with lobs and bytes
-						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getObject(2),
-						                                                  lobFlag);
-						InputStream simpleValueStream = new ByteArrayInputStream( mySimpleValue.getValue());
-
+						InputStream simpleValueStream;
+						/*String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
+						if (type.equals("BLOB"))
+						{
+							Blob blob = getkeyResultSet.getBlob(2);
+							simpleValueStream = blob.getBinaryStream();
+						} else
+						{
+							Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(2), lobFlag);
+							simpleValueStream = new ByteArrayInputStream(mySimpleValue.getValue());
+						}*/
+						simpleValueStream = getkeyResultSet.getBinaryStream(2);
 						try {
-							dataToSend.put(new Util.KV<>(myKeySimple,
-							                           simpleValueStream));
+							dataToSend.put(new KV<InputStream>(myKeySimple,
+											simpleValueStream));
 
 						} catch ( InterruptedException e ) {
 							System.out.println(e.getMessage());
@@ -265,7 +273,7 @@ public class DatabaseWrapper implements Runnable {
 					} else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
 						                                            lobFlag);
-						dataToSend.add(new Util.KV<>(myKeySimple,
+						dataToSend.add(new Util.KV<Value>(myKeySimple,
 						                           mySimpleValue));
 					}
 					counterSimple += 1;
@@ -301,10 +309,8 @@ public class DatabaseWrapper implements Runnable {
 					                                             lobFlag);
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1),
 					                                                   lobFlag);
-					dataToSend.add(new Util.KV(myKeyComplex,
+					dataToSend.add(new Util.KV<Value>(myKeyComplex,
 					                           myValueComplex));
-					/*NoSQLStorage.myStore.put(myKeyComplex,
-							                         myValueComplex);*/
 					counterComplex += 1;
 					System.out.println("Rows converted " + counterComplex);
 				}
@@ -340,7 +346,7 @@ public class DatabaseWrapper implements Runnable {
 						               kv.v);
 					}
 				} else {
-					for ( Util.KV<InputStream> kv : localBuffer ) {
+					for ( KV<InputStream> kv : localBuffer ) {
 						try {
 							connection.putLOB(kv.k,
 							                  kv.v,
@@ -424,9 +430,7 @@ public class DatabaseWrapper implements Runnable {
 					NoSQLStorage.startProcessOfConverting.setEnabled(true);
 				}
 			});
-		} catch ( InterruptedException e ) {
-
-		} catch ( InvocationTargetException e ) {
+		} catch ( InterruptedException | InvocationTargetException e ) {
 
 		}
 		double diff = after - before;

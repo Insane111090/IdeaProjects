@@ -7,10 +7,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 import oracle.kv.lob.InputStreamVersion;
@@ -196,25 +193,25 @@ public class NoSQLStorage extends JDialog {
 				Thread importer = new Thread(new DatabaseWrapper());
 				importer.start();
 
-/*				Key test = Support.ParseKey.ParseKey("MESSAGES/2376/-/MSG_TEXT.lob/",false);
+			/*Key test = Support.ParseKey.ParseKey("MESSAGES/2364/-/MSG_TEXT.lob/",false);
 				InputStreamVersion stream = myStore.getLOB(test,Consistency.NONE_REQUIRED,5,
 				                                           TimeUnit.SECONDS);
-				InputStream is = stream.getInputStream();
-				BufferedInputStream bis = new BufferedInputStream(is);
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				BufferedReader br;
+				String line;
+				InputStreamReader isr;
+				isr = new InputStreamReader(stream.getInputStream());
+				System.out.println(isr.getEncoding());
+				br = new BufferedReader(isr);
 				try {
-					int result = bis.read();
-					while (bis.read()!= -1)
+					while ((line = br.readLine()) != null)
 					{
-						byte b = (byte)result;
-						 baos.write(b);
-						result = bis.read();
+						byte[] b  = line.getBytes("UTF-8");
+						String line2 =  new String(b,"UTF-8");
+						System.out.println(line2);
 					}
-				} catch ( IOException e1 ) {
-					System.out.println(e1.getMessage());
-				}
-				System.out.println(baos.toString());*/
-
+				} catch ( IOException e2 ) {
+					System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
+				}*/
 
 				/*Key test = Support.ParseKey.ParseKey("MESSAGES/2376/-/MSG_DATE/",false);
 				ValueVersion vv = myStore.get(test);
