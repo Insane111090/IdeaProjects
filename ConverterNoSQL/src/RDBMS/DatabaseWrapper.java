@@ -19,6 +19,7 @@ import oracle.kv.Value;
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -251,7 +252,7 @@ public class DatabaseWrapper implements Runnable {
 					                                            lobFlag);
 					if ( lobFlag ) {
 						//TODO:Resolve problem with lobs and bytes
-						InputStream simpleValueStream;
+
 						/*String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
 						if (type.equals("BLOB"))
 						{
@@ -262,7 +263,26 @@ public class DatabaseWrapper implements Runnable {
 							Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(2), lobFlag);
 							simpleValueStream = new ByteArrayInputStream(mySimpleValue.getValue());
 						}*/
-						simpleValueStream = getkeyResultSet.getBinaryStream(2);
+						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
+
+						BufferedReader br;
+						String line;
+						InputStreamReader isr;
+						isr = new InputStreamReader(simpleValueStream);
+						System.out.println(isr.getEncoding());
+						br = new BufferedReader(isr);
+						try {
+							while ((line = br.readLine()) != null)
+							{
+								byte[] b  = line.getBytes("windows-1251");
+								String line2 =  new String(b,"UTF-8");
+								System.out.println(line2 + System.getProperty("file.encoding"));
+
+							}
+						} catch ( IOException e2 ) {
+							System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
+						}
+
 						try {
 							dataToSend.put(new KV<InputStream>(myKeySimple,
 											simpleValueStream));
