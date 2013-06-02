@@ -213,7 +213,7 @@ public class NoSQLStorage extends JDialog {
 					System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
 				}*/
 
-				/*Key test = Support.ParseKey.ParseKey("MESSAGES/2376/-/MSG_DATE/",false);
+				/*Key test = Support.ParseKey.ParseKey("CHILD/1194/Грудкин Антон Борисович/-/PersonalData/",false);
 				ValueVersion vv = myStore.get(test);
 				Value v = vv.getValue();
 				String data;

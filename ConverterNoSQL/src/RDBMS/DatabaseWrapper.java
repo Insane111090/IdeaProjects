@@ -10,6 +10,7 @@ package RDBMS;
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import RDBMS.Util.KV;
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import oracle.kv.Durability;
 import oracle.kv.KVStore;
@@ -267,17 +268,20 @@ public class DatabaseWrapper implements Runnable {
 
 						BufferedReader br;
 						String line;
-						InputStreamReader isr;
-						isr = new InputStreamReader(simpleValueStream);
-						System.out.println(isr.getEncoding());
+						InputStreamReader isr = null;
+						try {
+							isr = new InputStreamReader(simpleValueStream,"Cp1251");
+						} catch ( UnsupportedEncodingException e ) {
+							e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+						}
 						br = new BufferedReader(isr);
 						try {
 							while ((line = br.readLine()) != null)
 							{
-								byte[] b  = line.getBytes("windows-1251");
+								byte[] b  = line.getBytes();
+								System.out.println(HexBin.encode(b));
 								String line2 =  new String(b,"UTF-8");
-								System.out.println(line2 + System.getProperty("file.encoding"));
-
+								System.out.println(line2);
 							}
 						} catch ( IOException e2 ) {
 							System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
