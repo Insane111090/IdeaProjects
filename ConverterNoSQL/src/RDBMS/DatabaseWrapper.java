@@ -36,19 +36,19 @@ public class DatabaseWrapper implements Runnable {
 	static private LinkedBlockingQueue<Util.KV> dataToSend;
 	static private boolean lobFlag;
 	static private Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
-	                                         Durability.SyncPolicy.NO_SYNC,
-	                                         Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
+					Durability.SyncPolicy.NO_SYNC,
+					Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
 
 	/*
 	 * Function that provides a connection to DB
 	 */
-	public static Connection createConnection( String username,
-	                                           String password,
-	                                           String url ) throws ClassNotFoundException, SQLException {
+	public static Connection createConnection(String username,
+	                                          String password,
+	                                          String url) throws ClassNotFoundException, SQLException {
 		Class.forName(DRIVER_NAME);
 		MyConnection = DriverManager.getConnection(url,
-		                                           username,
-		                                           password);
+						username,
+						password);
 
 
 		_isConnected = MyConnection != null;
@@ -65,13 +65,13 @@ public class DatabaseWrapper implements Runnable {
 	/*
 	 * Function for getting list of tables of current scheme in Database
 	 */
-	public static List<String> getTableList( String username ) throws SQLException {
+	public static List<String> getTableList(String username) throws SQLException {
 		PreparedStatement statementForTables =
 						MyConnection.prepareStatement("SELECT table_name FROM all_tables "
-										                              + "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
-										                              + "AND owner=upper(?) ORDER BY table_name");
+										+ "WHERE NOT regexp_like(tablespace_name,'SYS.+') "
+										+ "AND owner=upper(?) ORDER BY table_name");
 		statementForTables.setString(1,
-		                             username);
+						username);
 		ResultSet DatabaseResultSet = statementForTables.executeQuery();
 
 
@@ -94,7 +94,7 @@ public class DatabaseWrapper implements Runnable {
    * Procedure that takes a description of selected table in JTable
    */
 
-	public static Object[][] descriptionTable( String selectedTableName ) throws SQLException {
+	public static Object[][] descriptionTable(String selectedTableName) throws SQLException {
 		List<Object[]> data = new LinkedList<>();
 		PreparedStatement ascDescript = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
@@ -107,7 +107,7 @@ public class DatabaseWrapper implements Runnable {
 										+ "FROM user_tab_cols WHERE table_name = upper(?)");
 
 		ascDescript.setString(1,
-		                      selectedTableName);
+						selectedTableName);
 		ResultSet descResSet = ascDescript.executeQuery();
 
 		int numCol = descResSet.getMetaData().getColumnCount();
@@ -127,7 +127,7 @@ public class DatabaseWrapper implements Runnable {
 	/*
 	 * Procedure that takes a description of selected table in list
 	 */
-	public static String getDescription( String selectedTableName ) throws SQLException {
+	public static String getDescription(String selectedTableName) throws SQLException {
 		PreparedStatement ascDesc = MyConnection.prepareStatement(
 						"SELECT column_name, CASE WHEN data_precision IS NOT null THEN "
 										+ "data_type||'('||data_precision||','||data_scale||')' ELSE "
@@ -138,7 +138,7 @@ public class DatabaseWrapper implements Runnable {
 										+ "CASE WHEN nullable = 'N' THEN 'NOT NULL' ELSE '--' END nul "
 										+ "FROM user_tab_cols WHERE table_name = upper(?)");
 		ascDesc.setString(1,
-		                  selectedTableName);
+						selectedTableName);
 		ResultSet descriptionResultSet = ascDesc.executeQuery();
 
 		descriptionResult = new StringBuilder("");
@@ -181,12 +181,12 @@ public class DatabaseWrapper implements Runnable {
 		return ret;
 	}*/
 
-	public static Set<String> filterLobs( Set<String> minors,
-	                                      String tableName ) throws SQLException {
+	public static Set<String> filterLobs(Set<String> minors,
+	                                     String tableName) throws SQLException {
 		PreparedStatement lobColumnsQuery = MyConnection.prepareStatement("SELECT column_name FROM user_tab_columns " +
-						                                                                  "WHERE table_name = ? AND (data_type LIKE '%LOB')");
+						"WHERE table_name = ? AND (data_type LIKE '%LOB')");
 		lobColumnsQuery.setString(1,
-		                          tableName);
+						tableName);
 		ResultSet lobColumns = lobColumnsQuery.executeQuery();
 		Set<String> result = new HashSet<>();
 		while ( lobColumns.next() ) {
@@ -199,10 +199,10 @@ public class DatabaseWrapper implements Runnable {
 	}
 
 	//Write data in storage
-	public static void getDataForMajorAndMinorKey( Set<String> majorSet,
-	                                               Set<String> minorSet,
-	                                               Set<String> valueSet,
-	                                               String selectedTableName ) throws SQLException, NullPointerException {
+	public static void getDataForMajorAndMinorKey(Set<String> majorSet,
+	                                              Set<String> minorSet,
+	                                              Set<String> valueSet,
+	                                              String selectedTableName) throws SQLException, NullPointerException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
@@ -218,20 +218,21 @@ public class DatabaseWrapper implements Runnable {
 
 		for ( String minor : minorSet ) {
 			resMinor.delete(0,
-			                resMinor.length());
+							resMinor.length());
 			resMinor.append(minor);
 			if ( PartsOfKeyforNoSQL.isSimple ) {
 				Set<String> lobs = filterLobs(minorSet,
-				                              selectedTableName);
+								selectedTableName);
 				if ( lobs.contains(minor) )
 					lobFlag = true;
 				PreparedStatement getKey;
 				if ( lobFlag ) {
 					getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:', " + resMinor +
-									                                       " FROM " + selectedTableName + " where " + resMinor + " is not null");
-				} else {
+									" FROM " + selectedTableName + " where " + resMinor + " is not null");
+				}
+				else {
 					getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
-									                                       " AS KEY FROM " + selectedTableName);
+									" AS KEY FROM " + selectedTableName);
 				}
 				;
 
@@ -241,38 +242,34 @@ public class DatabaseWrapper implements Runnable {
 				pool = new Thread[cores];
 				for ( int i = 0; i < cores; i++ ) {
 					pool[i] = new Thread(new Pusher(NoSQLStorage.store,
-					                                NoSQLStorage.host,
-					                                NoSQLStorage.port));
+									NoSQLStorage.host,
+									NoSQLStorage.port));
 				}
 				for ( Thread pusher : pool ) {
 					pusher.start();
 				}
 				while ( getkeyResultSet.next() ) {
 					Key myKeySimple = Support.ParseKey.ParseKey(selectedTableName + "/" + getkeyResultSet.getString(1),
-					                                            lobFlag);
+									lobFlag);
 					if ( lobFlag ) {
-						//TODO:Resolve problem with lobs and bytes
-
 						String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
 						InputStream simpleValueStream;
-						//ReaderInputStream ris = null;
-						if (type.equals("BLOB"))
-						{
+						if ( type.equals("BLOB") ) {
 							Blob blob = getkeyResultSet.getBlob(2);
 							simpleValueStream = blob.getBinaryStream();
 							try {
 								dataToSend.put(new KV<InputStream>(myKeySimple,
-								                                   simpleValueStream));
+												simpleValueStream));
 
 							} catch ( InterruptedException e ) {
 								System.out.println(e.getMessage());
 							}
-						} else
-						{
+						}
+						else {
 							simpleValueStream = new ReaderInputStream(getkeyResultSet.getCharacterStream(2));
-							try{
+							try {
 								dataToSend.put(new KV<InputStream>(myKeySimple,
-								                                   simpleValueStream));
+												simpleValueStream));
 
 							} catch ( InterruptedException e ) {
 								System.out.println(e.getMessage());
@@ -298,11 +295,12 @@ public class DatabaseWrapper implements Runnable {
 						}*/
 
 
-					} else {
+					}
+					else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
-						                                            lobFlag);
+										lobFlag);
 						dataToSend.add(new Util.KV<Value>(myKeySimple,
-						                                  mySimpleValue));
+										mySimpleValue));
 					}
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
@@ -314,31 +312,32 @@ public class DatabaseWrapper implements Runnable {
 				for ( Thread pusher : pool ) {
 					pusher.interrupt();
 				}
-			} else if ( PartsOfKeyforNoSQL.isComplex ) {
+			}
+			else if ( PartsOfKeyforNoSQL.isComplex ) {
 				for ( String value : valueSet ) {
 					resValues.append("\"").append(value).append("\":").append(" \"'||").append(value).append("||'\",\n");
 				}
 				PreparedStatement getComplexMinorValue = MyConnection.prepareStatement("SELECT regexp_replace(" + result + "'" + minor + "/:' ||" +
-								                                                                       "'{" + resValues + "',',$','}') FROM " + selectedTableName);
+								"'{" + resValues + "',',$','}') FROM " + selectedTableName);
 				getComplexMinorValue.setFetchSize(1000);
 				ResultSet getComplexKeyResultSet = getComplexMinorValue.executeQuery();
 				int counterComplex = 0;
 				pool = new Thread[cores];
 				for ( int i = 0; i < cores; i++ ) {
 					pool[i] = new Thread(new Pusher(NoSQLStorage.store,
-					                                NoSQLStorage.host,
-					                                NoSQLStorage.port));
+									NoSQLStorage.host,
+									NoSQLStorage.port));
 				}
 				for ( Thread pusher : pool ) {
 					pusher.start();
 				}
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1),
-					                                             lobFlag);
+									lobFlag);
 					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1),
-					                                                   lobFlag);
+									lobFlag);
 					dataToSend.add(new Util.KV<Value>(myKeyComplex,
-					                           myValueComplex));
+									myValueComplex));
 					counterComplex += 1;
 					System.out.println("Rows converted " + counterComplex);
 				}
@@ -352,35 +351,37 @@ public class DatabaseWrapper implements Runnable {
 		}
 	}
 
-	 static class Pusher implements Runnable {
+	static class Pusher implements Runnable {
 
 		List<Util.KV> localBuffer = new ArrayList<>();
 		final KVStore connection;
 
-		public Pusher( String name, String host, int port ) {
+		public Pusher(String name, String host, int port) {
 			connection = Support.makeNoSQLConnection(name,
-			                                         host,
-			                                         port);
+							host,
+							port);
 		}
+
 		@Override
 		public void run() {
 			while ( ! Thread.currentThread().isInterrupted() ) {
 				localBuffer.clear();
 				dataToSend.drainTo(localBuffer,
-				                   3000);
+								3000);
 				if ( ! lobFlag ) {
 					for ( Util.KV<Value> kv : localBuffer ) {
 						connection.put(kv.k,
-						               kv.v);
+										kv.v);
 					}
-				} else {
+				}
+				else {
 					for ( KV<InputStream> kv : localBuffer ) {
 						try {
 							connection.putLOB(kv.k,
-							                  kv.v,
-							                  myDurability,
-							                  20,
-							                  TimeUnit.MILLISECONDS);
+											kv.v,
+											myDurability,
+											20,
+											TimeUnit.MILLISECONDS);
 
 						} catch ( IOException e ) {
 							System.out.println("Error: " + e.getMessage());
@@ -392,41 +393,41 @@ public class DatabaseWrapper implements Runnable {
 	}
 
 	//Write meta information for converting table in storage (for External Tables)
-	public static void writeMetaDataToStorage( Set<String> majorSet,
-	                                           Set<String> minorSet,
-	                                           String selectedTableName ) throws SQLException {
+	public static void writeMetaDataToStorage(Set<String> majorSet,
+	                                          Set<String> minorSet,
+	                                          String selectedTableName) throws SQLException {
 		StringBuilder metaInfo = new StringBuilder();
 		StringBuilder valuesForMeta = new StringBuilder();
 		boolean flag = false;
 		metaInfo.append(selectedTableName).append("/-/").append("MetaData/:");
-		Set<String> lobs = filterLobs(minorSet,selectedTableName);
+		Set<String> lobs = filterLobs(minorSet, selectedTableName);
 		valuesForMeta.append("{\"").append("Major key\":\"");
 		for ( String valuesMaj : majorSet ) {
 			valuesForMeta.append(valuesMaj).append(";");
 		}
 		valuesForMeta.replace(valuesForMeta.length() - 1,
-		                      valuesForMeta.length(),
-		                      "\",\"");
+						valuesForMeta.length(),
+						"\",\"");
 		valuesForMeta.append("Minor key\":\"");
 		for ( String valuesMin : minorSet ) {
-			if (lobs.contains(valuesMin))
+			if ( lobs.contains(valuesMin) )
 				valuesForMeta.append(valuesMin).append("(.lob);");
 			else
 				valuesForMeta.append(valuesMin).append(";");
 		}
 		valuesForMeta.replace(valuesForMeta.length() - 1,
-		                      valuesForMeta.length(),
-		                      "\"}");
+						valuesForMeta.length(),
+						"\"}");
 		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString(),
-		                                        flag);
+						flag);
 		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString(),
-		                                              flag);
+						flag);
 
 		NoSQLStorage.myStore.put(metaKey,
-		                         metaValue);
+						metaValue);
 		NoSQLStorage.progress.append("Meta information is stored on:\nKey: " + metaKey.getMajorPath() + " " + metaKey.getMinorPath() + "\nand values is \n" + new String(metaValue.getValue()) + "\n");
 		System.out.println("Meta information is stored on:" + metaKey.getMajorPath() + " " + metaKey.getMinorPath()
-						                   + " and values is " + new String(metaValue.getValue()));
+						+ " and values is " + new String(metaValue.getValue()));
 	}
 
 
@@ -435,13 +436,13 @@ public class DatabaseWrapper implements Runnable {
 		double before = System.currentTimeMillis();
 		try {
 			RDBMS.DatabaseWrapper.writeMetaDataToStorage(TableModel.isAlreadySelectedMajor,
-			                                             TableModel.isAlreadySelectedMinor,
-			                                             MainWindow.listOfTables.getSelectedValue().toString());
+							TableModel.isAlreadySelectedMinor,
+							MainWindow.listOfTables.getSelectedValue().toString());
 
 			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
-			                                                 TableModel.isAlreadySelectedMinor,
-			                                                 TableModel.isAlredySelectedValues,
-			                                                 MainWindow.listOfTables.getSelectedValue().toString());
+							TableModel.isAlreadySelectedMinor,
+							TableModel.isAlredySelectedValues,
+							MainWindow.listOfTables.getSelectedValue().toString());
 		} catch ( SQLException e1 ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + e1.getMessage());
 		} catch ( NullPointerException ne ) {
