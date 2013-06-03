@@ -205,8 +205,8 @@ public class NoSQLStorage extends JDialog {
 				try {
 					while ((line = br.readLine()) != null)
 					{
-						byte[] b  = line.getBytes("UTF-8");
-						String line2 =  new String(b,"UTF-8");
+						byte[] b  = line.getBytes();
+						String line2 =  new String(b);
 						System.out.println(line2);
 					}
 				} catch ( IOException e2 ) {

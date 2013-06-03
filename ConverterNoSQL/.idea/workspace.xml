@@ -9,12 +9,11 @@
     <list id="e8568eb2-0fbb-4886-b606-22e083f8c737" name="Failed commit: Default" comment=" done lob" />
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370165053056" ignored="false" />
-    <file path="/DatabaseWrapper.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370182541179" ignored="false" />
-    <file path="/Support.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370174459500" ignored="false" />
+    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370236770008" ignored="false" />
+    <file path="/DatabaseWrapper.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370252855226" ignored="false" />
+    <file path="/Support.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1369998295888" ignored="false" />
     <file path="/Util.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1369993179908" ignored="false" />
-    <file path="/fragment.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370175338873" ignored="false" />
-    <file path="/NoSQLStorage.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370182509147" ignored="false" />
+    <file path="/NoSQLStorage.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370005309224" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,23 +28,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" line="195" class="NoSQL.NoSQLStorage$4" package="NoSQL">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -82,6 +64,38 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" line="218" class="NoSQL.NoSQLStorage$4" package="NoSQL">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" line="195" class="NoSQL.NoSQLStorage$4" package="NoSQL">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
@@ -92,56 +106,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Support.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="55" selection-start="9947" selection-end="9947" vertical-scroll-proportion="0.0">
+            <state line="338" column="32" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.5477707">
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1370181922856" expanded="true" signature="2190:2399" placeholder="SELECT table..all_tables..." />
-                <marker date="1370181922856" expanded="true" signature="3120:3661" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1370181922856" expanded="true" signature="4446:4987" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1370181922856" expanded="true" signature="6591:6757" placeholder="SELECT colum..user_tab_columns..." />
-                <marker date="1370181922856" expanded="true" signature="8345:8514" placeholder="SELECT missi..." />
-                <marker date="1370181922856" expanded="true" signature="8576:8694" placeholder="SELECT missi..." />
-                <marker date="1370181922856" expanded="true" signature="11025:11201" placeholder="SELECT regex..." />
+                <element signature="e#17762#17888#0" expanded="true" />
+                <element signature="e#17882#17883#0" expanded="true" />
+                <marker date="1370252869015" expanded="true" signature="2217:2426" placeholder="SELECT table..all_tables..." />
+                <marker date="1370252869015" expanded="true" signature="3147:3688" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1370252869015" expanded="true" signature="4473:5014" placeholder="SELECT colum..user_tab_cols..." />
+                <marker date="1370252869015" expanded="true" signature="6618:6784" placeholder="SELECT colum..user_tab_columns..." />
+                <marker date="1370252869015" expanded="true" signature="8372:8542" placeholder="SELECT missi..." />
+                <marker date="1370252869015" expanded="true" signature="8604:8722" placeholder="SELECT missi..." />
+                <marker date="1370252869015" expanded="true" signature="12079:12255" placeholder="SELECT regex..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoSQLStorage.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NoSQLStorage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="198" column="29" selection-start="6714" selection-end="6714" vertical-scroll-proportion="0.5800416">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="444" column="32" selection-start="14773" selection-end="14781" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RDBMS/Util.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="195" column="8" selection-start="6466" selection-end="7224" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,7 +145,6 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitLogSettings">
@@ -167,16 +157,17 @@
       <list>
         <option value="$PROJECT_DIR$/src/RDBMS/Util.java" />
         <option value="$PROJECT_DIR$/src/NoSQL/Support.java" />
-        <option value="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
+        <option value="$PROJECT_DIR$/src/RDBMS/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java" />
+        <option value="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -204,6 +195,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -258,15 +251,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConverterNoSQL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConverterNoSQL" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
@@ -277,9 +281,9 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="Application.MainWindow">
     <configuration default="false" name="MainWindow" type="Application" factoryName="Application" temporary="true">
@@ -324,6 +328,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -350,19 +367,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -463,7 +467,15 @@
       <created>1369994127835</created>
       <updated>1369994127835</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="LOBS DONE">
+      <created>1369996416115</created>
+      <updated>1369996416115</updated>
+    </task>
+    <task id="LOCAL-00007" summary="LOBS DONE, need to retrieve LOB">
+      <created>1370006905514</created>
+      <updated>1370006905514</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -487,7 +499,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -495,27 +507,27 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3985765" sideWeight="0.81361425" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39863715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3985765" sideWeight="0.18638574" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262159" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969698" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16126418" sideWeight="0.6014235" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32740214" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16060606" sideWeight="0.6013629" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CodeInterview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781065" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -561,7 +573,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="QUEUE FULL" />
+    <option name="LAST_COMMIT_MESSAGE" value="LOBS DONE, need to retrieve LOB" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -578,6 +590,8 @@
     <MESSAGE value="do lob" />
     <MESSAGE value=" done lob" />
     <MESSAGE value="QUEUE FULL" />
+    <MESSAGE value="LOBS DONE" />
+    <MESSAGE value="LOBS DONE, need to retrieve LOB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -587,118 +601,128 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/internal/OracleStatement.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="36" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0">
+        <state line="51" column="19" selection-start="1505" selection-end="1505" vertical-scroll-proportion="-5.8">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/build.xml">
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CTTIrxd.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="436" column="9" selection-start="18202" selection-end="18202" vertical-scroll-proportion="0.33268481" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/oracle/kv/Key.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="30" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0/src.zip!/java/sql/ResultSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="507" column="24" selection-start="22875" selection-end="22875" vertical-scroll-proportion="1.3057325" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/sql/DatumWithConnection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="9" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0">
+        <state line="25" column="7" selection-start="810" selection-end="810" vertical-scroll-proportion="-3.56">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/sql/CLOB.class">
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4C8Oall.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="206" column="14" selection-start="8609" selection-end="8609" vertical-scroll-proportion="0.0">
+        <state line="87" column="7" selection-start="3111" selection-end="3111" vertical-scroll-proportion="-3.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CTTIMsg.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="7" selection-start="2997" selection-end="2997" vertical-scroll-proportion="-5.12">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CSocketOutputStreamWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="14" selection-start="478" selection-end="478" vertical-scroll-proportion="-3.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CMAREngine.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="13" selection-start="2163" selection-end="2163" vertical-scroll-proportion="-3.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CTTIfun.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="7" selection-start="3976" selection-end="3976" vertical-scroll-proportion="-3.76">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/T4CPreparedStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="7" selection-start="2401" selection-end="2401" vertical-scroll-proportion="-5.96">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OracleStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="539" column="7" selection-start="21396" selection-end="21396" vertical-scroll-proportion="-3.56">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OraclePreparedStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="748" column="28" selection-start="38985" selection-end="38985" vertical-scroll-proportion="-3.88">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="702" column="0" selection-start="26312" selection-end="26312" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/ClobAccessor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="22" selection-start="1717" selection-end="1717" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/sql/BLOB.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="29" selection-start="5280" selection-end="5280" vertical-scroll-proportion="-5.96">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/kvstore.jar!/oracle/kv/Value.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="32" selection-start="1074" selection-end="1074" vertical-scroll-proportion="-6.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.0">
+        <state line="32" column="17" selection-start="1615" selection-end="1615" vertical-scroll-proportion="-4.16">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OracleResultSetImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="1055" selection-end="1055" vertical-scroll-proportion="-5.88">
+        <state line="149" column="24" selection-start="7246" selection-end="7246" vertical-scroll-proportion="-3.84">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/.idea/Lib/ojdbc6.jar!/oracle/jdbc/driver/OracleResultSetMetaData.class">
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="26" selection-start="3289" selection-end="3289" vertical-scroll-proportion="-6.32">
+        <state line="289" column="0" selection-start="9757" selection-end="9757" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="444" column="32" selection-start="14773" selection-end="14781" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="55" selection-start="9947" selection-end="9947" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1370181922856" expanded="true" signature="2190:2399" placeholder="SELECT table..all_tables..." />
-            <marker date="1370181922856" expanded="true" signature="3120:3661" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1370181922856" expanded="true" signature="4446:4987" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1370181922856" expanded="true" signature="6591:6757" placeholder="SELECT colum..user_tab_columns..." />
-            <marker date="1370181922856" expanded="true" signature="8345:8514" placeholder="SELECT missi..." />
-            <marker date="1370181922856" expanded="true" signature="8576:8694" placeholder="SELECT missi..." />
-            <marker date="1370181922856" expanded="true" signature="11025:11201" placeholder="SELECT regex..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/NoSQLStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="29" selection-start="6714" selection-end="6714" vertical-scroll-proportion="0.5800416">
-          <folding />
+        <state line="195" column="8" selection-start="6466" selection-end="7224" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="338" column="32" selection-start="12736" selection-end="12736" vertical-scroll-proportion="0.5477707">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#17762#17888#0" expanded="true" />
+            <element signature="e#17882#17883#0" expanded="true" />
+            <marker date="1370252869015" expanded="true" signature="2217:2426" placeholder="SELECT table..all_tables..." />
+            <marker date="1370252869015" expanded="true" signature="3147:3688" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1370252869015" expanded="true" signature="4473:5014" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1370252869015" expanded="true" signature="6618:6784" placeholder="SELECT colum..user_tab_columns..." />
+            <marker date="1370252869015" expanded="true" signature="8372:8542" placeholder="SELECT missi..." />
+            <marker date="1370252869015" expanded="true" signature="8604:8722" placeholder="SELECT missi..." />
+            <marker date="1370252869015" expanded="true" signature="12079:12255" placeholder="SELECT regex..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -10,17 +10,16 @@ package RDBMS;
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import RDBMS.Util.KV;
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-import com.sun.xml.internal.messaging.saaj.util.ByteInputStream;
 import oracle.kv.Durability;
 import oracle.kv.KVStore;
 import oracle.kv.Key;
 import oracle.kv.Value;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.input.ReaderInputStream;
 
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.Charset;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -228,7 +227,7 @@ public class DatabaseWrapper implements Runnable {
 					lobFlag = true;
 				PreparedStatement getKey;
 				if ( lobFlag ) {
-					getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:'," + resMinor +
+					getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:', " + resMinor +
 									                                       " FROM " + selectedTableName + " where " + resMinor + " is not null");
 				} else {
 					getKey = MyConnection.prepareStatement("SELECT " + result + "'" + minor + "/:' ||" + resMinor +
@@ -254,51 +253,61 @@ public class DatabaseWrapper implements Runnable {
 					if ( lobFlag ) {
 						//TODO:Resolve problem with lobs and bytes
 
-						/*String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
+						String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
+						InputStream simpleValueStream;
+						ReaderInputStream ris = null;
 						if (type.equals("BLOB"))
 						{
 							Blob blob = getkeyResultSet.getBlob(2);
 							simpleValueStream = blob.getBinaryStream();
+							try {
+								dataToSend.put(new KV<InputStream>(myKeySimple,
+								                                   simpleValueStream));
+
+							} catch ( InterruptedException e ) {
+								System.out.println(e.getMessage());
+							}
 						} else
 						{
-							Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(2), lobFlag);
-							simpleValueStream = new ByteArrayInputStream(mySimpleValue.getValue());
-						}*/
-						InputStream simpleValueStream = getkeyResultSet.getBinaryStream(2);
+							/*Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(2), lobFlag);
+							simpleValueStream = new ByteArrayInputStream(mySimpleValue.getValue());*/
+							simpleValueStream = getkeyResultSet.getAsciiStream(2);
+							ris = new ReaderInputStream(getkeyResultSet.getCharacterStream(2));
+							//Reader r =  getkeyResultSet.getCharacterStream(2);
+							//simpleValueStream = getkeyResultSet.getBinaryStream(2);
+							/*try{
+								dataToSend.put(new KV<InputStream>(myKeySimple,
+								                                   ris));
+
+							} catch ( InterruptedException e ) {
+								System.out.println(e.getMessage());
+							}*/
+						}
 
 						BufferedReader br;
 						String line;
 						InputStreamReader isr = null;
-						try {
-							isr = new InputStreamReader(simpleValueStream,"Cp1251");
-						} catch ( UnsupportedEncodingException e ) {
-							e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-						}
+
+							isr = new InputStreamReader(simpleValueStream);
+
 						br = new BufferedReader(isr);
 						try {
 							while ((line = br.readLine()) != null)
 							{
 								byte[] b  = line.getBytes();
-								System.out.println(HexBin.encode(b));
-								String line2 =  new String(b,"UTF-8");
+								String line2 =  new String(b);
 								System.out.println(line2);
 							}
 						} catch ( IOException e2 ) {
 							System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
 						}
 
-						try {
-							dataToSend.put(new KV<InputStream>(myKeySimple,
-											simpleValueStream));
 
-						} catch ( InterruptedException e ) {
-							System.out.println(e.getMessage());
-						}
 					} else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
 						                                            lobFlag);
 						dataToSend.add(new Util.KV<Value>(myKeySimple,
-						                           mySimpleValue));
+						                                  mySimpleValue));
 					}
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
@@ -439,7 +448,7 @@ public class DatabaseWrapper implements Runnable {
 			                                                 TableModel.isAlredySelectedValues,
 			                                                 MainWindow.listOfTables.getSelectedValue().toString());
 		} catch ( SQLException e1 ) {
-
+			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + e1.getMessage());
 		} catch ( NullPointerException ne ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + ne.getMessage() + " \nYour value is NULL");
 		} /*catch ( Throwable ee ) {
