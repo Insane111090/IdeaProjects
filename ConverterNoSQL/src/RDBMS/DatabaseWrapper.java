@@ -255,7 +255,7 @@ public class DatabaseWrapper implements Runnable {
 
 						String type = String.valueOf(getkeyResultSet.getMetaData().getColumnTypeName(2));
 						InputStream simpleValueStream;
-						ReaderInputStream ris = null;
+						//ReaderInputStream ris = null;
 						if (type.equals("BLOB"))
 						{
 							Blob blob = getkeyResultSet.getBlob(2);
@@ -269,22 +269,17 @@ public class DatabaseWrapper implements Runnable {
 							}
 						} else
 						{
-							/*Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(2), lobFlag);
-							simpleValueStream = new ByteArrayInputStream(mySimpleValue.getValue());*/
-							simpleValueStream = getkeyResultSet.getAsciiStream(2);
-							ris = new ReaderInputStream(getkeyResultSet.getCharacterStream(2));
-							//Reader r =  getkeyResultSet.getCharacterStream(2);
-							//simpleValueStream = getkeyResultSet.getBinaryStream(2);
-							/*try{
+							simpleValueStream = new ReaderInputStream(getkeyResultSet.getCharacterStream(2));
+							try{
 								dataToSend.put(new KV<InputStream>(myKeySimple,
-								                                   ris));
+								                                   simpleValueStream));
 
 							} catch ( InterruptedException e ) {
 								System.out.println(e.getMessage());
-							}*/
+							}
 						}
 
-						BufferedReader br;
+						/*BufferedReader br;
 						String line;
 						InputStreamReader isr = null;
 
@@ -300,7 +295,7 @@ public class DatabaseWrapper implements Runnable {
 							}
 						} catch ( IOException e2 ) {
 							System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
-						}
+						}*/
 
 
 					} else {
