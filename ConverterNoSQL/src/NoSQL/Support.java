@@ -5,13 +5,11 @@ import oracle.kv.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author agavrilov
- */
-public  class Support {
+/** @author agavrilov */
+public class Support {
 	public static KVStore makeNoSQLConnection(String name, String host, int port) {
 		KVStoreConfig kvConfig = new KVStoreConfig(name,
-		                                           host + ':' + port);
+						host + ':' + port);
 		return KVStoreFactory.getStore(kvConfig);
 	}
 
@@ -20,21 +18,22 @@ public  class Support {
 		public static Value parsedValue;
 		static String valueString = "";
 
-		public static Key ParseKey( String notParsedKey, boolean flag) {
+		public static Key ParseKey(String notParsedKey, boolean flag) {
 
 			int endOfString;
 			if ( notParsedKey.indexOf(":") != - 1 ) {
 				endOfString = notParsedKey.indexOf(":") - 1;
-			} else {
+			}
+			else {
 				endOfString = notParsedKey.length();
 			}
 
 			String keysString;
-			if (flag)
+			if ( flag )
 				keysString = notParsedKey.substring(0,
-			                                        endOfString)+ ".lob";
+								endOfString) + ".lob";
 			else
-				 keysString = notParsedKey.substring(0,
+				keysString = notParsedKey.substring(0,
 								endOfString);
 			List<String> majorComponents = new ArrayList<>();
 			List<String> minorComponents = new ArrayList<>();
@@ -48,31 +47,29 @@ public  class Support {
 				}
 				if ( isMajor ) {
 					majorComponents.add(keysArray[i]);
-				} else {
+				}
+				else {
 					minorComponents.add(keysArray[i]);
 				}
 			}
-			if ( ( majorComponents.size() > 0 ) && ( minorComponents.size() > 0 ) ) {
+			if ( (majorComponents.size() > 0) && (minorComponents.size() > 0) ) {
 				parsedKey = Key.createKey(majorComponents,
-				                          minorComponents);
-			} else if ( ( majorComponents.size() > 0 ) & ( minorComponents.size() <= 0 ) ) {
+								minorComponents);
+			}
+			else if ( (majorComponents.size() > 0) & (minorComponents.size() <= 0) ) {
 				parsedKey = Key.createKey(majorComponents);
-			} else {
+			}
+			else {
 				System.out.println("Error");
 			}
 
 			return parsedKey;
 		}
 
-		public static Value ParseValue( Object noParsedValue, boolean lobFlag )
-		{
-			if (!lobFlag)
-			{
+		public static Value ParseValue(Object noParsedValue) {
 				valueString = noParsedValue.toString().substring(noParsedValue.toString().indexOf(":") + 1);
 				parsedValue = Value.createValue(valueString.toString().getBytes());
-			}
-			else
-				parsedValue = Value.createValue(noParsedValue.toString().getBytes());
+
 			return parsedValue;
 		}
 	}

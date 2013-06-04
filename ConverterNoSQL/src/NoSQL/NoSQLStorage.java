@@ -1,22 +1,17 @@
 package NoSQL;
 
 import RDBMS.DatabaseWrapper;
-import oracle.kv.*;
+import oracle.kv.FaultException;
+import oracle.kv.KVStore;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.*;
-import java.util.concurrent.TimeUnit;
-
-import oracle.kv.lob.InputStreamVersion;
 
 import static RDBMS.Util.MigPanel;
 
-/**
- * @author agavrilov
- */
+/** @author agavrilov */
 public class NoSQLStorage extends JDialog {
 	public JPanel noSqlPanel = new MigPanel();
 	final JPanel noSqlConnectionInfo = new MigPanel();
@@ -48,37 +43,37 @@ public class NoSQLStorage extends JDialog {
 		connNoSqlStatusTxt.setBackground(Color.RED);
 
 		noSqlConnectionInfo.add(portLbl,
-		                        "split, gapleft 20");
+						"split, gapleft 20");
 		noSqlConnectionInfo.add(portTxt,
-		                        "w 150, wrap, split");
+						"w 150, wrap, split");
 		noSqlConnectionInfo.add(hostLbl,
-		                        "split,gapleft 18");
+						"split,gapleft 18");
 		noSqlConnectionInfo.add(hostTxt,
-		                        "w 150, wrap, split");
+						"w 150, wrap, split");
 		noSqlConnectionInfo.add(storeLbl,
-		                        "split, gapleft 15");
+						"split, gapleft 15");
 		noSqlConnectionInfo.add(storeTxt,
-		                        "w 150, wrap 15, split");
+						"w 150, wrap 15, split");
 		noSqlConnectionInfo.add(conectedNoSqlLbl,
-		                        "split");
+						"split");
 		noSqlConnectionInfo.add(connNoSqlStatusTxt,
-		                        "wrap 10");
+						"wrap 10");
 		noSqlConnectionInfo.add(connectToNoSqlBut,
-		                        "gapleft 180");
+						"gapleft 180");
 		noSqlConnectionInfo.add(disconnectNoSQL,
-		                        "align right");
+						"align right");
 
 		noSqlInfo.setBorder(new TitledBorder("Data status"));
 		progress.setEditable(false);
 		scroll.getViewport().setView(progress);
 		noSqlInfo.add(scroll,
-		              "w 600,h 300, wrap 15");
+						"w 600,h 300, wrap 15");
 		noSqlInfo.add(startProcessOfConverting,
-		              "align right");
+						"align right");
 		noSqlInfo.add(disconnectAndClose,
-		              "align right");
+						"align right");
 		noSqlPanel.add(noSqlConnectionInfo,
-		               "wrap");
+						"wrap");
 		noSqlPanel.add(noSqlInfo);
 	}
 
@@ -128,11 +123,11 @@ public class NoSQLStorage extends JDialog {
 	  });*/
 		connectToNoSqlBut.addActionListener(new AbstractAction() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				try {
 					myStore = Support.makeNoSQLConnection(store,
-					                                      host,
-					                                      port);
+									host,
+									port);
 				} catch ( FaultException ex ) {
 					JOptionPane.showMessageDialog(
 									noSqlPanel,
@@ -155,7 +150,7 @@ public class NoSQLStorage extends JDialog {
 		});
 		disconnectNoSQL.addActionListener(new AbstractAction() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				try {
 					myStore.close();
 					progress.invalidate();
@@ -171,7 +166,7 @@ public class NoSQLStorage extends JDialog {
 		});
 		disconnectAndClose.addActionListener(new AbstractAction() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				try {
 					myStore.close();
 					progress.append("\n\nStore closed");
@@ -187,7 +182,7 @@ public class NoSQLStorage extends JDialog {
 		});
 		startProcessOfConverting.addActionListener(new AbstractAction() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				progress.setText("");
 				startProcessOfConverting.setEnabled(false);
 				Thread importer = new Thread(new DatabaseWrapper());

@@ -10,11 +10,7 @@ package RDBMS;
 import NoSQL.NoSQLStorage;
 import NoSQL.Support;
 import RDBMS.Util.KV;
-import oracle.kv.Durability;
-import oracle.kv.KVStore;
-import oracle.kv.Key;
-import oracle.kv.Value;
-import org.apache.commons.io.IOUtils;
+import oracle.kv.*;
 import org.apache.commons.io.input.ReaderInputStream;
 
 import javax.swing.*;
@@ -91,7 +87,7 @@ public class DatabaseWrapper implements Runnable {
 	}
 
   /*
-   * Procedure that takes a description of selected table in JTable
+   * Function that takes a description of selected table in JTable
    */
 
 	public static Object[][] descriptionTable(String selectedTableName) throws SQLException {
@@ -155,31 +151,6 @@ public class DatabaseWrapper implements Runnable {
 		descriptionResultSet.close();
 		return descriptionResult.toString();
 	}
-/*	public static Boolean isLob(Set<String> minorSet,
-	                            Set<String> valueSet,
-	                            String selectedTableName) throws SQLException
-	{ boolean ret = false;
-		PreparedStatement defineIsLob = MyConnection.prepareStatement("select column_name from user_tab_columns " +
-						"where table_name = '" + selectedTableName + "'"+
-						" and (data_type like 'CLOB' or data_type like 'BLOB')");
-		ResultSet getLobObj = defineIsLob.executeQuery();
-		while(getLobObj.next())
-		{
-			for (String minor:minorSet)
-			{ String str = getLobObj.getString(1);
-				if (minor.equals(str))
-					ret = true;
-				continue;
-			}
-			for (String value: valueSet)
-			{ String str = getLobObj.getString(1);
-				if (value.equals(str))
-					ret = true;
-				continue;
-			}
-		}
-		return ret;
-	}*/
 
 	public static Set<String> filterLobs(Set<String> minors,
 	                                     String tableName) throws SQLException {
@@ -199,10 +170,10 @@ public class DatabaseWrapper implements Runnable {
 	}
 
 	//Write data in storage
-	public static void getDataForMajorAndMinorKey(Set<String> majorSet,
-	                                              Set<String> minorSet,
-	                                              Set<String> valueSet,
-	                                              String selectedTableName) throws SQLException, NullPointerException {
+	public static void putDataToNoSQL(Set<String> majorSet,
+	                                  Set<String> minorSet,
+	                                  Set<String> valueSet,
+	                                  String selectedTableName) throws SQLException, NullPointerException {
 		StringBuilder resMajor = new StringBuilder();
 		StringBuilder resMinor = new StringBuilder();
 		StringBuilder resValues = new StringBuilder();
@@ -297,8 +268,7 @@ public class DatabaseWrapper implements Runnable {
 
 					}
 					else {
-						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1),
-										lobFlag);
+						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
 						dataToSend.add(new Util.KV<Value>(myKeySimple,
 										mySimpleValue));
 					}
@@ -334,8 +304,7 @@ public class DatabaseWrapper implements Runnable {
 				while ( getComplexKeyResultSet.next() ) {
 					Key myKeyComplex = Support.ParseKey.ParseKey(selectedTableName + "/" + getComplexKeyResultSet.getString(1),
 									lobFlag);
-					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1),
-									lobFlag);
+					Value myValueComplex = Support.ParseKey.ParseValue(getComplexKeyResultSet.getString(1));
 					dataToSend.add(new Util.KV<Value>(myKeyComplex,
 									myValueComplex));
 					counterComplex += 1;
@@ -420,8 +389,7 @@ public class DatabaseWrapper implements Runnable {
 						"\"}");
 		Key metaKey = Support.ParseKey.ParseKey(metaInfo.toString(),
 						flag);
-		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString(),
-						flag);
+		Value metaValue = Support.ParseKey.ParseValue("Meta:" + valuesForMeta.toString());
 
 		NoSQLStorage.myStore.put(metaKey,
 						metaValue);
@@ -439,7 +407,7 @@ public class DatabaseWrapper implements Runnable {
 							TableModel.isAlreadySelectedMinor,
 							MainWindow.listOfTables.getSelectedValue().toString());
 
-			RDBMS.DatabaseWrapper.getDataForMajorAndMinorKey(TableModel.isAlreadySelectedMajor,
+			RDBMS.DatabaseWrapper.putDataToNoSQL(TableModel.isAlreadySelectedMajor,
 							TableModel.isAlreadySelectedMinor,
 							TableModel.isAlredySelectedValues,
 							MainWindow.listOfTables.getSelectedValue().toString());
