@@ -269,8 +269,12 @@ public class DatabaseWrapper implements Runnable {
 					}
 					else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
-						dataToSend.add(new Util.KV<Value>(myKeySimple,
-										mySimpleValue));
+						try {
+							dataToSend.put(new KV<Value>(myKeySimple,
+							                             mySimpleValue));
+						} catch ( InterruptedException e ) {
+							System.out.println(e.getMessage());
+						}
 					}
 					counterSimple += 1;
 					System.out.println("Rows converted " + counterSimple);
