@@ -1,11 +1,15 @@
 package NoSQL;
 
+import oracle.kv.FaultException;
+import oracle.kv.KVStore;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class ConnectionToNoSQL extends JDialog {
 	private JPanel contentPane;
-	private JButton buttonOK;
+	public JButton buttonOK;
 	private JButton buttonCancel;
 	private JPanel NoSQLConnPanel;
 	private JPanel ButtonPanel;
@@ -14,11 +18,13 @@ public class ConnectionToNoSQL extends JDialog {
 	private JTextField txtPort;
 	private JButton connectButton;
 	private JLabel connectedlbl;
+	public static KVStore myStore;
 
 	public ConnectionToNoSQL() {
 		setContentPane(contentPane);
 		setModal(true);
 		getRootPane().setDefaultButton(buttonOK);
+
 
 		buttonOK.addActionListener(new ActionListener() {
 			public void actionPerformed( ActionEvent e ) {
@@ -54,16 +60,58 @@ public class ConnectionToNoSQL extends JDialog {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 
-				txtHost.getText();
+				try {
+					myStore = Support.makeNoSQLConnection("MyStore",//txtStorageName.getText(),
+									"localhost",//txtHost.getText(),
+									5000);//Integer.decode(txtPort.getText().toString()));
+				} catch ( FaultException ex ) {
+					JOptionPane.showMessageDialog(
+									contentPane,
+									"An error accuses during connection to KVStore: " + ex.getMessage(),
+									"Error",
+									JOptionPane.ERROR_MESSAGE);
+				} catch ( NullPointerException ne ) {
+					JOptionPane.showMessageDialog(
+									contentPane,
+									"An error accuses during connection to KVStore: " + ne.getMessage(),
+									"Error",
+									JOptionPane.ERROR_MESSAGE);
+				} catch ( NumberFormatException nume ){
+					JOptionPane.showMessageDialog(
+									contentPane,
+									"An error accuses during connection to KVStore: " + nume.getMessage(),
+									"Error",
+									JOptionPane.ERROR_MESSAGE);
+				} catch (Throwable ee){
+					JOptionPane.showMessageDialog(
+									contentPane,
+									"An error accuses during connection to KVStore: " + ee.getMessage(),
+									"Error",
+									JOptionPane.ERROR_MESSAGE);
+				}
+				if (myStore != null){
+					connectedlbl.setText("Connected");
+					connectedlbl.setForeground(Color.GREEN);
+				}
+				else
+				{
+					connectedlbl.setForeground(Color.RED);
+					connectedlbl.setText("Not connected");
+				}
+
 			}
 		});
 	}
 
 	private void onOK() {
 // add your code here
+		//onConnect();
 		dispose();
 	}
 
+	public void onConnect(){
+
+	}
 	private void onCancel() {
 // add your code here if necessary
 		dispose();

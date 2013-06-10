@@ -440,15 +440,15 @@ public class MainWindowForConverting {
 			ConnectButton.addActionListener(new AbstractAction() {
 				@Override
 				public void actionPerformed( ActionEvent ae ) {
-					String server = "172.17.252.3"; //serverTxt.getText().toString();//"oracle11.avalon.ru"
-					String sid = "schooldb";//sidTxt.getText().toUpperCase().toString();//"ORCL";
-					int port = Integer.decode("1522");//portTxt.getText().toString();//"1521";
+					String server = "oracle11.avalon.ru";//"172.17.252.3"; //serverTxt.getText().toString();//"oracle11.avalon.ru"
+					String sid = "orcl";//"schooldb";//sidTxt.getText().toUpperCase().toString();//"ORCL";
+					int port = Integer.decode("1521");//portTxt.getText().toString();//"1521";
 					String url = "jdbc:oracle:thin:@" + server + ":" + port + ":" + sid;
-					username = "SCHOOL_ADM"; //usernameTxt.getText(),
+					username = "andgavr"; //usernameTxt.getText(),
 					try {
 						DatabaseWrapper.createConnection(username,
 
-						                                 "SCHOOL_ADM_PASS",
+						                                 "andgavr",
 //new String(passwordTxt.getPassword()),
 						                                 url);
 					} catch ( SQLException e ) {

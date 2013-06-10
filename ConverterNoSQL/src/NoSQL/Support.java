@@ -66,6 +66,20 @@ public class Support {
 			return parsedKey;
 		}
 
+		public static String ParseMetaDataForMajor(String data, String what){
+			String majorKey;
+			String minorKey;
+
+			majorKey = data.substring(data.indexOf(":")+1,data.indexOf(","));
+			String str = data.replace(data.substring(0, data.indexOf(":") + 1), "");
+			minorKey = str.substring(str.indexOf(":")+1,str.length()-1);
+			if (what == "major")
+				return majorKey;
+			else
+				return minorKey;
+		}
+
+
 		public static Value ParseValue(Object noParsedValue) {
 				valueString = noParsedValue.toString().substring(noParsedValue.toString().indexOf(":") + 1);
 				parsedValue = Value.createValue(valueString.toString().getBytes());

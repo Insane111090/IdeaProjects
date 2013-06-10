@@ -344,7 +344,7 @@ public class DatabaseWrapper implements Runnable {
 				if ( ! lobFlag ) {
 					for ( Util.KV<Value> kv : localBuffer ) {
 						connection.put(kv.k,
-										kv.v);
+										kv.v,null,myDurability,20,TimeUnit.MILLISECONDS);
 					}
 				}
 				else {

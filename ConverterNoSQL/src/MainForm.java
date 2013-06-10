@@ -21,7 +21,8 @@ public class MainForm {
 		convertDataToNoSQLButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				new	MainWindowForConverting().main();
+				MainWindowForConverting m = new	MainWindowForConverting();
+				m.main();
 			}
 		});
 		getDataFromNoSQLButton.addActionListener(new ActionListener() {
