@@ -104,16 +104,15 @@ public class MainWindowForConverting {
 		mainForm.setSize(650,
 		                 600);
 		mainForm.setContentPane(mainPanel);
-		mainForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		mainForm.setLocationRelativeTo(null);//Appears on the screen center
 
 		connectionSetupDialog.setModal(true);//Makes window modal
 	}
 
 	/**
-	 * @param args
 	 */
-	public static void main( String[] args ) {
+	public void main() {
 		connectionSettings.setBorder(new TitledBorder(
 						"Configure connection to RDBMS"));
 		resultTables.setBorder(new TitledBorder("List of tables"));
@@ -416,7 +415,7 @@ public class MainWindowForConverting {
 		}
 
 		//main
-		ConnectionRDBMSConfigDialog() {
+		public ConnectionRDBMSConfigDialog() {
 			super(mainForm);//calls mainForm constructor
 			final JButton ConnectButton = new JButton("Connect");//Button for connection
 			final JButton OkButton = new JButton("Ok");
