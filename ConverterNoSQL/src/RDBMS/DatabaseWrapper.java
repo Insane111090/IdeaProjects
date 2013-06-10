@@ -409,12 +409,12 @@ public class DatabaseWrapper implements Runnable {
 		try {
 			RDBMS.DatabaseWrapper.writeMetaDataToStorage(TableModel.isAlreadySelectedMajor,
 							TableModel.isAlreadySelectedMinor,
-							MainWindow.listOfTables.getSelectedValue().toString());
+							MainWindowForConverting.listOfTables.getSelectedValue().toString());
 
 			RDBMS.DatabaseWrapper.putDataToNoSQL(TableModel.isAlreadySelectedMajor,
 							TableModel.isAlreadySelectedMinor,
 							TableModel.isAlredySelectedValues,
-							MainWindow.listOfTables.getSelectedValue().toString());
+							MainWindowForConverting.listOfTables.getSelectedValue().toString());
 		} catch ( SQLException e1 ) {
 			NoSQLStorage.progress.setText("\n\nAn error occurred during the convertation." + e1.getMessage());
 		} catch ( NullPointerException ne ) {

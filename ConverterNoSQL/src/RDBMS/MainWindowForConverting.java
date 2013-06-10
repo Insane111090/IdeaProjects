@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class MainWindow {
+public class MainWindowForConverting {
 	static final JFrame mainForm = new JFrame();
 	static final JPanel mainPanel = new Util.MigPanel();//Main Panel
 	static final JPanel connectionSettings = new Util.MigPanel();//COnnection settings Panel
@@ -500,20 +500,20 @@ public class MainWindow {
 				@SuppressWarnings("unchecked")
 				public void actionPerformed( ActionEvent ae ) {
 					if ( DatabaseWrapper.isConnected() ) {
-						MainWindow.statusTxt.setText("Connected");
-						MainWindow.statusTxt.setBackground(Color.green);
-						MainWindow.connectedUrlTxt.setText(
+						MainWindowForConverting.statusTxt.setText("Connected");
+						MainWindowForConverting.statusTxt.setBackground(Color.green);
+						MainWindowForConverting.connectedUrlTxt.setText(
 										connectionUrlLabel.getText());
 					} else {
-						MainWindow.statusTxt.setText("Not connected");
-						MainWindow.statusTxt.setBackground(Color.red);
-						MainWindow.connectedUrlTxt.setText(connectionUrlLabel.getText());
+						MainWindowForConverting.statusTxt.setText("Not connected");
+						MainWindowForConverting.statusTxt.setBackground(Color.red);
+						MainWindowForConverting.connectedUrlTxt.setText(connectionUrlLabel.getText());
 					}
 					try {
 						listOfTables.setListData(DatabaseWrapper.getTableList(username).toArray());
 					} catch ( SQLException | NullPointerException e ) {
 						JOptionPane.showMessageDialog(
-										MainWindow.mainForm,
+										MainWindowForConverting.mainForm,
 										"Ошибка: " + e.getMessage(),
 										"Error",
 										JOptionPane.ERROR_MESSAGE);

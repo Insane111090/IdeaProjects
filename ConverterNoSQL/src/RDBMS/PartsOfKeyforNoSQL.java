@@ -81,7 +81,7 @@ public class PartsOfKeyforNoSQL extends JDialog implements TableModelListener {
 		showValue.setText("Your selected columns for value: ");
 		txtKeyMinorUser.setVisible(false);
 		forMinorKey.setVisible(false);
-		selectedTableName = MainWindow.listOfTables.getSelectedValue().toString();
+		selectedTableName = MainWindowForConverting.listOfTables.getSelectedValue().toString();
 	}
 
 	void CreateTable() {
