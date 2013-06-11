@@ -27,26 +27,29 @@ public class ExternalTable {
 	private JButton exitButton;
 	public JLabel lblTableName;
 
-	public void onConnect(){
+	public void onConnect() {
 	}
 
-	public List<String> getMetaInfoForTableName(String tableNameText, boolean flag){
-		List<String> majorPart , minorPart;
-		Key metaKey = Support.ParseKey.ParseKey(tableNameText + "/-/MetaData/",false);
+	public List<String> getMetaInfoForTableName(String tableNameText, boolean flag)
+					throws NullPointerException, IllegalArgumentException,StringIndexOutOfBoundsException {
+		List<String> majorPart, minorPart;
+		Key metaKey = Support.ParseKey.ParseKey(tableNameText + "/-/MetaData/", false);
 		ValueVersion vv = ConnectionToNoSQL.myStore.get(metaKey);
 		Value v = vv.getValue();
+
 		String data = new String(v.getValue());
+
 		List<String> parts = new LinkedList<>();
-		if (flag){
+		if ( flag ) {
 			majorPart = Support.ParseKey.ParseMetaData(data,
-		                                           "major");
+							"major");
 			return majorPart;
-		}  else{
+		}
+		else {
 			minorPart = Support.ParseKey.ParseMetaData(data,
-		                                           "minor");
+							"minor");
 			return minorPart;
 		}
-
 	}
 
 
@@ -60,10 +63,9 @@ public class ExternalTable {
 		frame.setLocationRelativeTo(null);
 
 
-
 		connectToNoSQLButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				ConnectionToNoSQL connectionToNoSQL = new ConnectionToNoSQL();
 				connectionToNoSQL.main();
 				onConnect();
@@ -72,13 +74,13 @@ public class ExternalTable {
 
 		conenctToRDBMSButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
 		exitButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 			}
 		});
@@ -86,27 +88,38 @@ public class ExternalTable {
 
 		startButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed( ActionEvent e ) {
+			public void actionPerformed(ActionEvent e) {
 				StringBuilder nameofColumns = new StringBuilder();
-				List<String> majorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(),true);
-				List<String> minorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(),false);
-				for(String str: majorPartForTable){
-					nameofColumns.append(str).append("|");
-				}
-				for (String str: minorPartForTable){
-					nameofColumns.append(str).append("|");
-				}
-				System.out.println(nameofColumns.replace(nameofColumns.length() -1,nameofColumns.length(),""));
-				//Support.ParseKey.SelectAll(ConnectionToNoSQL.myStore);
-				Key major = Support.ParseKey.ParseKey(tableNameText.getText().toUpperCase(),
-				                                      false);
-				Iterator<KeyValueVersion> keyValueVersionIterator = ConnectionToNoSQL.myStore.storeIterator(Direction.UNORDERED, 0, major, null, Depth.PARENT_AND_DESCENDANTS);
-				while (keyValueVersionIterator.hasNext()){
-					MyFormatter formatter = new MyFormatter();
-					String res = formatter.toOracleLoaderFormat(keyValueVersionIterator.next(),ConnectionToNoSQL.myStore);
-					System.out.println(res);
+				List<String> majorPartForTable;
+				List<String> minorPartForTable;
+				try {
+					majorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(), true);
+					minorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(), false);
 
+					for ( String str : majorPartForTable ) {
+						nameofColumns.append(str).append("|");
+					}
+					for ( String str : minorPartForTable ) {
+						nameofColumns.append(str).append("|");
+					}
+					System.out.println(nameofColumns.replace(nameofColumns.length() - 1, nameofColumns.length(), ""));
+					Key major = Support.ParseKey.ParseKey(tableNameText.getText().toUpperCase(),
+									false);
+					Iterator<KeyValueVersion> keyValueVersionIterator = ConnectionToNoSQL.myStore.storeIterator(Direction.UNORDERED, 0, major, null, Depth.PARENT_AND_DESCENDANTS);
+					while ( keyValueVersionIterator.hasNext() ) {
+						MyFormatter formatter = new MyFormatter();
+						String res = formatter.toOracleLoaderFormat(keyValueVersionIterator.next(), ConnectionToNoSQL.myStore);
+						System.out.println(res);
+					}
+				} catch ( NullPointerException ne ) {
+					JOptionPane.showMessageDialog(frame, "Don't have such key in storage!", "Error", JOptionPane.ERROR_MESSAGE);
+				} catch ( StringIndexOutOfBoundsException se ) {
+					JOptionPane.showMessageDialog(frame, "Error: " + se.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				} catch ( IllegalArgumentException ie ){
+					JOptionPane.showMessageDialog(frame, "Error: " + ie.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
+				//Support.ParseKey.SelectAll(ConnectionToNoSQL.myStore);
+
 			}
 		});
 	}
