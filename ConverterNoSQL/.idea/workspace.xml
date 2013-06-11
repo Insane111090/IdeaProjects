@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/ExternalTable.java" afterPath="$PROJECT_DIR$/src/NoSQL/ExternalTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" afterPath="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e8568eb2-0fbb-4886-b606-22e083f8c737" name="Failed commit: Default" comment=" done lob" />
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370953866006" ignored="false" />
+    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370954534641" ignored="false" />
     <file path="/DatabaseWrapper.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370951429833" ignored="false" />
     <file path="/Support.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370953668881" ignored="false" />
     <file path="/Util.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1369993179908" ignored="false" />
@@ -574,7 +573,11 @@
       <created>1370953877168</created>
       <updated>1370953877168</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="String to ExternalTables">
+      <created>1370954539184</created>
+      <updated>1370954539184</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
