@@ -3,9 +3,11 @@ package NoSQL;
 import oracle.kv.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,9 +28,6 @@ public class ExternalTable {
 	private JButton startButton;
 	private JButton exitButton;
 	public JLabel lblTableName;
-
-	public void onConnect() {
-	}
 
 	public List<String> getMetaInfoForTableName(String tableNameText, boolean flag)
 					throws NullPointerException, IllegalArgumentException,StringIndexOutOfBoundsException {
@@ -67,8 +66,15 @@ public class ExternalTable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ConnectionToNoSQL connectionToNoSQL = new ConnectionToNoSQL();
+
+				connectionToNoSQL.buttonOK.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						lblNoSQLConnected.setText("Connected");
+						lblNoSQLConnected.setForeground(Color.GREEN);
+					}
+				});
 				connectionToNoSQL.main();
-				onConnect();
 			}
 		});
 

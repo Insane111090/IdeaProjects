@@ -9,14 +9,14 @@ import java.awt.event.*;
 
 public class ConnectionToNoSQL extends JDialog {
 	private JPanel contentPane;
-	public JButton buttonOK;
+	JButton buttonOK;
 	private JButton buttonCancel;
 	private JPanel NoSQLConnPanel;
 	private JPanel ButtonPanel;
 	private JTextField txtStorageName;
 	private JTextField txtHost;
 	private JTextField txtPort;
-	private JButton connectButton;
+  private JButton connectButton;
 	private JLabel connectedlbl;
 	public static KVStore myStore;
 
@@ -64,24 +64,6 @@ public class ConnectionToNoSQL extends JDialog {
 					myStore = Support.makeNoSQLConnection("MyStore",//txtStorageName.getText(),
 									"localhost",//txtHost.getText(),
 									5000);//Integer.decode(txtPort.getText().toString()));
-				} catch ( FaultException ex ) {
-					JOptionPane.showMessageDialog(
-									contentPane,
-									"An error accuses during connection to KVStore: " + ex.getMessage(),
-									"Error",
-									JOptionPane.ERROR_MESSAGE);
-				} catch ( NullPointerException ne ) {
-					JOptionPane.showMessageDialog(
-									contentPane,
-									"An error accuses during connection to KVStore: " + ne.getMessage(),
-									"Error",
-									JOptionPane.ERROR_MESSAGE);
-				} catch ( NumberFormatException nume ){
-					JOptionPane.showMessageDialog(
-									contentPane,
-									"An error accuses during connection to KVStore: " + nume.getMessage(),
-									"Error",
-									JOptionPane.ERROR_MESSAGE);
 				} catch (Throwable ee){
 					JOptionPane.showMessageDialog(
 									contentPane,
@@ -105,11 +87,6 @@ public class ConnectionToNoSQL extends JDialog {
 
 	private void onOK() {
 // add your code here
-		//onConnect();
-		dispose();
-	}
-
-	public void onConnect(){
 
 	}
 	private void onCancel() {
