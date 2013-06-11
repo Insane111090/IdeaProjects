@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" afterPath="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/ExternalTable.java" afterPath="$PROJECT_DIR$/src/NoSQL/ExternalTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java" afterPath="$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java" afterPath="$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" afterPath="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NoSQL/Support.java" afterPath="$PROJECT_DIR$/src/NoSQL/Support.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e8568eb2-0fbb-4886-b606-22e083f8c737" name="Failed commit: Default" comment=" done lob" />
     <ignored path="ConverterNoSQL.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370938631663" ignored="false" />
+    <file path="/Dummy.txt" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370953866006" ignored="false" />
     <file path="/DatabaseWrapper.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370951429833" ignored="false" />
     <file path="/Support.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370953668881" ignored="false" />
     <file path="/Util.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1369993179908" ignored="false" />
@@ -24,7 +20,7 @@
     <file path="/MainWindowForConverting.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370864204034" ignored="false" />
     <file path="/MainForm.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370866132405" ignored="false" />
     <file path="/ExternalTables.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370872254496" ignored="false" />
-    <file path="/ExternalTable.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370953711401" ignored="false" />
+    <file path="/ExternalTable.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370954409087" ignored="false" />
     <file path="/ConnectionToNoSQL.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370872808049" ignored="false" />
     <file path="/MyFormatter.java" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370950701542" ignored="false" />
     <file path="$PROJECT_DIR$/kvroot/config.xml" changelist="ef1ec2dc-e195-4ace-85c1-7c8a5a848cb6" time="1370931953985" ignored="false" />
@@ -148,41 +144,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DatabaseWrapper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="345" column="0" selection-start="11792" selection-end="11792" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1370951461552" expanded="true" signature="1940:2089" placeholder="SELECT table..all_tables..." />
-                <marker date="1370951461552" expanded="true" signature="2782:3323" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1370951461552" expanded="true" signature="4088:4629" placeholder="SELECT colum..user_tab_cols..." />
-                <marker date="1370951461552" expanded="true" signature="5405:5505" placeholder="SELECT colum..user_tab_columns..." />
-                <marker date="1370951461552" expanded="true" signature="6980:7111" placeholder="SELECT missi..." />
-                <marker date="1370951461552" expanded="true" signature="7177:7256" placeholder="SELECT missi..." />
-                <marker date="1370951461552" expanded="true" signature="10074:10179" placeholder="SELECT regex..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindowForConverting.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="455" column="39" selection-start="15325" selection-end="15325" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Support.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="37" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PartsOfKeyforNoSQL.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -195,20 +156,11 @@
       <file leaf-file-name="ExternalTable.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/ExternalTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="26" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.47678018">
+            <state line="99" column="41" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.39825583">
               <folding>
-                <element signature="e#2230#3409#0" expanded="true" />
-                <element signature="e#3404#3405#0" expanded="true" />
+                <element signature="e#2230#3469#0" expanded="true" />
+                <element signature="e#3464#3465#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionToNoSQL.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -216,20 +168,8 @@
       <file leaf-file-name="MyFormatter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NoSQL/MyFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="3" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
+            <state line="37" column="6" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyFormatter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="29" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#2789#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -263,10 +203,10 @@
         <option value="$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.form" />
         <option value="$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.java" />
         <option value="$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java" />
-        <option value="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" />
         <option value="$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java" />
         <option value="$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java" />
         <option value="$PROJECT_DIR$/src/NoSQL/Support.java" />
+        <option value="$PROJECT_DIR$/src/NoSQL/MyFormatter.java" />
         <option value="$PROJECT_DIR$/src/NoSQL/ExternalTable.java" />
       </list>
     </option>
@@ -630,7 +570,11 @@
       <created>1370872942814</created>
       <updated>1370872942814</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="String to ExternalTables">
+      <created>1370953877168</created>
+      <updated>1370953877168</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -729,7 +673,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="External GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="String to ExternalTables" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -750,6 +694,7 @@
     <MESSAGE value="LOBS DONE, need to retrieve LOB" />
     <MESSAGE value="lobs done." />
     <MESSAGE value="External GUI" />
+    <MESSAGE value="String to ExternalTables" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -796,13 +741,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="4" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
@@ -815,52 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="29" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#2789#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NoSQL/MyFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="3" selection-start="629" selection-end="629" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="345" column="0" selection-start="11792" selection-end="11792" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1370951461552" expanded="true" signature="1940:2089" placeholder="SELECT table..all_tables..." />
-            <marker date="1370951461552" expanded="true" signature="2782:3323" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1370951461552" expanded="true" signature="4088:4629" placeholder="SELECT colum..user_tab_cols..." />
-            <marker date="1370951461552" expanded="true" signature="5405:5505" placeholder="SELECT colum..user_tab_columns..." />
-            <marker date="1370951461552" expanded="true" signature="6980:7111" placeholder="SELECT missi..." />
-            <marker date="1370951461552" expanded="true" signature="7177:7256" placeholder="SELECT missi..." />
-            <marker date="1370951461552" expanded="true" signature="10074:10179" placeholder="SELECT regex..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="455" column="39" selection-start="15325" selection-end="15325" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/Support.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="37" selection-start="2652" selection-end="2652" vertical-scroll-proportion="0.0">
@@ -868,12 +760,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NoSQL_Storage/kv-ee-2.0.26/kv-2.0.26/examples/externaltables/MyFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="29" selection-start="2706" selection-end="2706" vertical-scroll-proportion="4.8065476">
+          <folding>
+            <element signature="e#0#2789#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/MyFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="6" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NoSQL/ConnectionToNoSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.6666667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/MainWindowForConverting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="455" column="39" selection-start="15325" selection-end="15325" vertical-scroll-proportion="-2.0644257">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/DatabaseWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="345" column="0" selection-start="11792" selection-end="11792" vertical-scroll-proportion="2.5348837">
+          <folding>
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT table..all_tables..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT colum..user_tab_cols..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT colum..user_tab_columns..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT missi..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT missi..." />
+            <marker date="1370951461552" expanded="true" signature="-1:-1" placeholder="SELECT regex..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RDBMS/PartsOfKeyforNoSQL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="4" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NoSQL/ExternalTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="26" selection-start="2968" selection-end="2968" vertical-scroll-proportion="0.47678018">
+        <state line="99" column="41" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.39825583">
           <folding>
-            <element signature="e#2230#3409#0" expanded="true" />
-            <element signature="e#3404#3405#0" expanded="true" />
+            <element signature="e#2230#3469#0" expanded="true" />
+            <element signature="e#3464#3465#0" expanded="true" />
           </folding>
         </state>
       </provider>

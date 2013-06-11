@@ -96,7 +96,7 @@ public class ExternalTable {
 				for (String str: minorPartForTable){
 					nameofColumns.append(str).append("|");
 				}
-				System.out.println(nameofColumns);
+				System.out.println(nameofColumns.replace(nameofColumns.length() -1,nameofColumns.length(),""));
 				//Support.ParseKey.SelectAll(ConnectionToNoSQL.myStore);
 				Key major = Support.ParseKey.ParseKey(tableNameText.getText().toUpperCase(),
 				                                      false);
@@ -104,7 +104,6 @@ public class ExternalTable {
 				while (keyValueVersionIterator.hasNext()){
 					MyFormatter formatter = new MyFormatter();
 					String res = formatter.toOracleLoaderFormat(keyValueVersionIterator.next(),ConnectionToNoSQL.myStore);
-
 					System.out.println(res);
 
 				}

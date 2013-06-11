@@ -32,10 +32,10 @@ public class MyFormatter implements Formatter {
 		final String stringValue = new String(ValueFromStorage.getValue());
 
 		final List<String> majorPath = KeyFromStorage.getMajorPath();
-		final List<String> minorPath = KeyFromStorage.getMinorPath();
+		//final List<String> minorPath = KeyFromStorage.getMinorPath();
 		//final String objectType = majorPath.get(0);
 		StringBuilder majorSB = new StringBuilder();
-		StringBuilder minrSB = new StringBuilder();
+		//StringBuilder minrSB = new StringBuilder();
 		String majorValue, minorValue;
 
 		for (int i = 1; i < majorPath.size();i++)
@@ -43,10 +43,6 @@ public class MyFormatter implements Formatter {
 			 majorValue = majorPath.get(i);
 			majorSB.append(majorValue).append("|");
 		}
-		/*for (int i = 0; i<minorPath.size();i++){
-			 minorValue = minorPath.get(i);
-			 minrSB.append(minorValue).append("|");
-		}*/
 		final StringBuilder result = new StringBuilder();
 
 		result.append(majorSB).append(stringValue);
