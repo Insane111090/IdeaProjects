@@ -17,26 +17,26 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class MainWindowForConverting {
-	static final JFrame mainForm = new JFrame();
-	static final JPanel mainPanel = new Util.MigPanel();//Main Panel
-	static final JPanel connectionSettings = new Util.MigPanel();//COnnection settings Panel
-	static final JPanel resultTables = new Util.MigPanel();//Panel for list of tables of your Scheme
-	static final JPanel descSelectedTable = new Util.MigPanel();//Panel for selected table DESC
+	 final JFrame mainForm = new JFrame();
+	 final JPanel mainPanel = new Util.MigPanel();//Main Panel
+	 final JPanel connectionSettings = new Util.MigPanel();//Connection settings Panel
+	 final JPanel resultTables = new Util.MigPanel();//Panel for list of tables of your Scheme
+	 final JPanel descSelectedTable = new Util.MigPanel();//Panel for selected table DESC
 	/**
 	 *
 	 */
-	static public JTextField statusTxt = new JTextField("Not connected");
+	 public JTextField statusTxt = new JTextField("Not connected");
 	/**
 	 *
 	 */
-	static public JTextField connectedUrlTxt = new JTextField();
-	static final ConnectionRDBMSConfigDialog connectionSetupDialog = new ConnectionRDBMSConfigDialog();
+	public JTextField connectedUrlTxt = new JTextField();
+	final ConnectionRDBMSConfigDialog connectionSetupDialog = new ConnectionRDBMSConfigDialog();
 	public static JList listOfTables = new JList();//List of result tables from Database
-	static JScrollPane scrollPaneonTableList = new JScrollPane();
-	static JScrollPane scrollPaneonDescTab = new JScrollPane();
-	static JLabel countTablesLbl = new JLabel("Count of tables: ");
-	static final JTextField countTablesTxt = new JTextField();
-	static final JTextPane descriptionTables = new JTextPane();
+	 JScrollPane scrollPaneonTableList = new JScrollPane();
+	 JScrollPane scrollPaneonDescTab = new JScrollPane();
+	 JLabel countTablesLbl = new JLabel("Count of tables: ");
+	 final JTextField countTablesTxt = new JTextField();
+	 final JTextPane descriptionTables = new JTextPane();
 
 	/**
 	 * @param connStatus
@@ -48,7 +48,7 @@ public class MainWindowForConverting {
 	 * @param autoConvert
 	 * @param startConvert
 	 */
-	public static void createGUI( JLabel connStatus,
+	public  void createGUI( JLabel connStatus,
 	                              JLabel urlconn,
 	                              JButton openConnectionSetup,
 	                              JButton exitApplic,
@@ -59,6 +59,7 @@ public class MainWindowForConverting {
 	  /*
 	   * Adding elements on MainForm window
      */
+		listOfTables.setListData(new Object[0]);
 		connectionSettings.add(connStatus,
 		                       "split");
 		connectionSettings.add(statusTxt,
@@ -172,7 +173,6 @@ public class MainWindowForConverting {
 
 		statusTxt.setEditable(false);
 		statusTxt.setBackground(Color.red);
-
 		//Creation a UI procedure
 		createGUI(connStatus,
 		          urlconn,
@@ -285,16 +285,16 @@ public class MainWindowForConverting {
 
 	}
 
-	public static final class ConnectionRDBMSConfigDialog extends JDialog {
+	public  final class ConnectionRDBMSConfigDialog extends JDialog {
 
 		final JTextField serverTxt = new JTextField();//Field for server input
 		final JTextField portTxt = new JTextField();//Field for port input
 		final JTextField sidTxt = new JTextField();//Field for sid input
 		final JTextField usernameTxt = new JTextField();//Field for username input
 		private transient JPasswordField passwordTxt = new JPasswordField();//Field for password input
-		final static JTextField connectionStatusLabel = new JTextField();
-		final static JTextField connectionUrlLabel = new JTextField();//Field for connection url
-		final static JTextArea connectionErrorLabel = new JTextArea();//Connection error
+		final  JTextField connectionStatusLabel = new JTextField();
+		final  JTextField connectionUrlLabel = new JTextField();//Field for connection url
+		final  JTextArea connectionErrorLabel = new JTextArea();//Connection error
 		String username;
 
     /*
@@ -457,13 +457,13 @@ public class MainWindowForConverting {
 										"Ошибка: " + e.getMessage(),
 										"Error",
 										JOptionPane.ERROR_MESSAGE);
-						ConnectionRDBMSConfigDialog.connectionErrorLabel.setText(
+						connectionErrorLabel.setText(
 										"SQL Error: " + e.getMessage());
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setBackground(
+						connectionStatusLabel.setBackground(
 										Color.RED);
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setText(
+						connectionStatusLabel.setText(
 										"Failed");
-						ConnectionRDBMSConfigDialog.connectionUrlLabel.setText("");
+						connectionUrlLabel.setText("");
 					} catch ( ClassNotFoundException e ) {
 						JOptionPane.showMessageDialog(
 										mainForm,
@@ -477,19 +477,19 @@ public class MainWindowForConverting {
 						connectionUrlLabel.setText("");
 					}
 					if ( DatabaseWrapper.isConnected() ) {
-						ConnectionRDBMSConfigDialog.connectionErrorLabel.setText("");
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setBackground(
+						connectionErrorLabel.setText("");
+						connectionStatusLabel.setBackground(
 										Color.GREEN);
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setText(
+						connectionStatusLabel.setText(
 										"Succeed");
-						ConnectionRDBMSConfigDialog.connectionUrlLabel.setText(
+						connectionUrlLabel.setText(
 										"Connected to: " + url);
 					} else {
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setBackground(
+						connectionStatusLabel.setBackground(
 										Color.RED);
-						ConnectionRDBMSConfigDialog.connectionStatusLabel.setText(
+						connectionStatusLabel.setText(
 										"Failed");
-						ConnectionRDBMSConfigDialog.connectionUrlLabel.setText("");
+						connectionUrlLabel.setText("");
 					}
 				}
 			});
@@ -499,20 +499,20 @@ public class MainWindowForConverting {
 				@SuppressWarnings("unchecked")
 				public void actionPerformed( ActionEvent ae ) {
 					if ( DatabaseWrapper.isConnected() ) {
-						MainWindowForConverting.statusTxt.setText("Connected");
-						MainWindowForConverting.statusTxt.setBackground(Color.green);
-						MainWindowForConverting.connectedUrlTxt.setText(
+						statusTxt.setText("Connected");
+						statusTxt.setBackground(Color.green);
+						connectedUrlTxt.setText(
 										connectionUrlLabel.getText());
 					} else {
-						MainWindowForConverting.statusTxt.setText("Not connected");
-						MainWindowForConverting.statusTxt.setBackground(Color.red);
-						MainWindowForConverting.connectedUrlTxt.setText(connectionUrlLabel.getText());
+						statusTxt.setText("Not connected");
+						statusTxt.setBackground(Color.red);
+						connectedUrlTxt.setText(connectionUrlLabel.getText());
 					}
 					try {
 						listOfTables.setListData(DatabaseWrapper.getTableList(username).toArray());
 					} catch ( SQLException | NullPointerException e ) {
 						JOptionPane.showMessageDialog(
-										MainWindowForConverting.mainForm,
+										mainForm,
 										"Ошибка: " + e.getMessage(),
 										"Error",
 										JOptionPane.ERROR_MESSAGE);

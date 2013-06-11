@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ConnectionToNoSQL extends JDialog {
+public  class ConnectionToNoSQL extends JDialog {
 	private JPanel contentPane;
 	JButton buttonOK;
 	private JButton buttonCancel;
@@ -19,6 +19,7 @@ public class ConnectionToNoSQL extends JDialog {
   private JButton connectButton;
 	private JLabel connectedlbl;
 	public static KVStore myStore;
+
 
 	public ConnectionToNoSQL() {
 		setContentPane(contentPane);
@@ -72,35 +73,32 @@ public class ConnectionToNoSQL extends JDialog {
 									JOptionPane.ERROR_MESSAGE);
 				}
 				if (myStore != null){
-					connectedlbl.setText("Connected");
-					connectedlbl.setForeground(Color.GREEN);
+					   onConnected();
 				}
 				else
 				{
-					connectedlbl.setForeground(Color.RED);
-					connectedlbl.setText("Not connected");
+					  onFailedConnect();
 				}
 
 			}
 		});
 	}
 
-	private void onOK() {
-// add your code here
+	protected void onOK() {
+	 dispose();
+	}
 
+	protected void onConnected(){
+		connectedlbl.setText("Connected");
+		connectedlbl.setForeground(Color.GREEN);
+	}
+	protected void onFailedConnect(){
+		connectedlbl.setForeground(Color.RED);
+		connectedlbl.setText("Not connected");
 	}
 	private void onCancel() {
 // add your code here if necessary
 		dispose();
 	}
 
-	public void main() {
-		ConnectionToNoSQL dialog = new ConnectionToNoSQL();
-		dialog.setLocationRelativeTo(null);
-		dialog.pack();
-		dialog.setVisible(true);
-		dialog.setSize(300,
-		               400);
-
-	}
 }

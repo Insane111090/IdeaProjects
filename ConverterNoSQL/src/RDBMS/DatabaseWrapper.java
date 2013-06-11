@@ -34,7 +34,6 @@ public class DatabaseWrapper implements Runnable {
 	static private Durability myDurability = new Durability(Durability.SyncPolicy.NO_SYNC,
 					Durability.SyncPolicy.NO_SYNC,
 					Durability.ReplicaAckPolicy.SIMPLE_MAJORITY);
-
 	/*
 	 * Function that provides a connection to DB
 	 */

@@ -51,7 +51,6 @@ public class ExternalTable {
 		}
 	}
 
-
 	public ExternalTable() {
 		JFrame frame = new JFrame();
 		frame.add(ExternalPanel);
@@ -62,19 +61,29 @@ public class ExternalTable {
 		frame.setLocationRelativeTo(null);
 
 
+
 		connectToNoSQLButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ConnectionToNoSQL connectionToNoSQL = new ConnectionToNoSQL();
-
-				connectionToNoSQL.buttonOK.addActionListener(new ActionListener() {
+				ConnectionToNoSQL connectionToNoSQL = new ConnectionToNoSQL(){
 					@Override
-					public void actionPerformed(ActionEvent e) {
+					protected void onFailedConnect() {
+						super.onFailedConnect();
+						lblNoSQLConnected.setText("Not connected");
+						lblNoSQLConnected.setForeground(Color.RED);
+					}
+					@Override
+					protected void onConnected() {
+						super.onConnected();
 						lblNoSQLConnected.setText("Connected");
 						lblNoSQLConnected.setForeground(Color.GREEN);
 					}
-				});
-				connectionToNoSQL.main();
+				};
+				connectionToNoSQL.setLocationRelativeTo(null);
+				connectionToNoSQL.pack();
+				connectionToNoSQL.setVisible(true);
+				connectionToNoSQL.setSize(300,
+								400);
 			}
 		});
 
