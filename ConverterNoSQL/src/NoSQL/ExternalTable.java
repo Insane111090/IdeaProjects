@@ -5,9 +5,7 @@ import oracle.kv.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +22,7 @@ public class ExternalTable {
 	private JLabel lblConnectToRDBMS;
 	public JLabel lblNoSQLConnected;
 	private JLabel lblRDBMSConnected;
-	public static JTextField tableNameText;
+	public JTextField tableNameText;
 	private JButton startButton;
 	private JButton exitButton;
 	public JLabel lblTableName;
@@ -32,19 +30,23 @@ public class ExternalTable {
 	public void onConnect(){
 	}
 
-	public Set<String> getMetaInfoForTableName(String tableNameText){
-		String majorPart , minorPart;
+	public List<String> getMetaInfoForTableName(String tableNameText, boolean flag){
+		List<String> majorPart , minorPart;
 		Key metaKey = Support.ParseKey.ParseKey(tableNameText + "/-/MetaData/",false);
 		ValueVersion vv = ConnectionToNoSQL.myStore.get(metaKey);
 		Value v = vv.getValue();
 		String data = new String(v.getValue());
-		Set<String> parts = new HashSet<>();
-		majorPart = Support.ParseKey.ParseMetaDataForMajor(data,"major");
-		minorPart = Support.ParseKey.ParseMetaDataForMajor(data,"minor");
-		parts.add(majorPart);
-		parts.add(minorPart);
+		List<String> parts = new LinkedList<>();
+		if (flag){
+			majorPart = Support.ParseKey.ParseMetaData(data,
+		                                           "major");
+			return majorPart;
+		}  else{
+			minorPart = Support.ParseKey.ParseMetaData(data,
+		                                           "minor");
+			return minorPart;
+		}
 
-		return parts;
 	}
 
 
@@ -85,12 +87,24 @@ public class ExternalTable {
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				Set<String> partsOfKeyForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase());
-				Key major = Support.ParseKey.ParseKey("EMPLOYEES/",false);
+				StringBuilder nameofColumns = new StringBuilder();
+				List<String> majorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(),true);
+				List<String> minorPartForTable = getMetaInfoForTableName(tableNameText.getText().toUpperCase(),false);
+				for(String str: majorPartForTable){
+					nameofColumns.append(str).append("|");
+				}
+				for (String str: minorPartForTable){
+					nameofColumns.append(str).append("|");
+				}
+				System.out.println(nameofColumns);
+				//Support.ParseKey.SelectAll(ConnectionToNoSQL.myStore);
+				Key major = Support.ParseKey.ParseKey(tableNameText.getText().toUpperCase(),
+				                                      false);
 				Iterator<KeyValueVersion> keyValueVersionIterator = ConnectionToNoSQL.myStore.storeIterator(Direction.UNORDERED, 0, major, null, Depth.PARENT_AND_DESCENDANTS);
 				while (keyValueVersionIterator.hasNext()){
 					MyFormatter formatter = new MyFormatter();
 					String res = formatter.toOracleLoaderFormat(keyValueVersionIterator.next(),ConnectionToNoSQL.myStore);
+
 					System.out.println(res);
 
 				}

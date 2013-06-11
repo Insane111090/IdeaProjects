@@ -21,8 +21,10 @@ import oracle.kv.exttab.Formatter;
  */
 public class MyFormatter implements Formatter {
 
-	private static final String USER_OBJECT_TYPE = ExternalTable.tableNameText.getText();
+	//private static final String USER_OBJECT_TYPE = new ExternalTable().tableNameText.getText();
 
+	public MyFormatter() {
+	}
 	@Override
 	public String toOracleLoaderFormat(KeyValueVersion kvv, KVStore kvStore) {
 		final Key KeyFromStorage = kvv.getKey();
@@ -31,11 +33,24 @@ public class MyFormatter implements Formatter {
 
 		final List<String> majorPath = KeyFromStorage.getMajorPath();
 		final List<String> minorPath = KeyFromStorage.getMinorPath();
-		final String objectType = majorPath.get(0);
+		//final String objectType = majorPath.get(0);
+		StringBuilder majorSB = new StringBuilder();
+		StringBuilder minrSB = new StringBuilder();
+		String majorValue, minorValue;
 
+		for (int i = 1; i < majorPath.size();i++)
+		{
+			 majorValue = majorPath.get(i);
+			majorSB.append(majorValue).append("|");
+		}
+		/*for (int i = 0; i<minorPath.size();i++){
+			 minorValue = minorPath.get(i);
+			 minrSB.append(minorValue).append("|");
+		}*/
+		final StringBuilder result = new StringBuilder();
 
+		result.append(majorSB).append(stringValue);
 
-
-		return null;
+		return result.toString();
 	}
 }

@@ -344,7 +344,7 @@ public class DatabaseWrapper implements Runnable {
 				if ( ! lobFlag ) {
 					for ( Util.KV<Value> kv : localBuffer ) {
 						connection.put(kv.k,
-										kv.v,null,myDurability,20,TimeUnit.MILLISECONDS);
+										kv.v);
 					}
 				}
 				else {
@@ -354,7 +354,7 @@ public class DatabaseWrapper implements Runnable {
 											kv.v,
 											myDurability,
 											20,
-											TimeUnit.MILLISECONDS);
+											TimeUnit.SECONDS);
 
 						} catch ( IOException e ) {
 							System.out.println("Error: " + e.getMessage());

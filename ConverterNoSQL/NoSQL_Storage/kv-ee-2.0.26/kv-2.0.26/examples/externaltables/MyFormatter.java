@@ -28,65 +28,78 @@ import oracle.kv.exttab.Formatter;
  * the ACCESS PARAMETERS of the External Table definition.
  */
 public class MyFormatter implements Formatter {
-    private static final String USER_OBJECT_TYPE = "user";
-    private static final String INFO_PROPERTY_NAME = "info";
+	private static final String USER_OBJECT_TYPE = "user";
+	private static final String INFO_PROPERTY_NAME = "info";
 
-    /**
-     * @hidden
-     */
-    public MyFormatter() {}
+	/**
+	 * @hidden
+	 */
+	public MyFormatter() {
+	}
 
-    @Override
-    public String toOracleLoaderFormat(final KeyValueVersion kvv,
-                                       final KVStore kvStore) {
-        final Key key = kvv.getKey();
-        final Value value = kvv.getValue();
+	@Override
+	public String toOracleLoaderFormat( final KeyValueVersion kvv,
+	                                    final KVStore kvStore ) {
+		final Key key = kvv.getKey();
+		final Value value = kvv.getValue();
 
-        final List<String> majorPath = key.getMajorPath();
-        final List<String> minorPath = key.getMinorPath();
-        final String objectType = majorPath.get(0);
+		final List<String> majorPath = key.getMajorPath();
+		final List<String> minorPath = key.getMinorPath();
+		final String objectType = majorPath.get(0);
 
-        if (!USER_OBJECT_TYPE.equals(objectType)) {
-            throw new IllegalArgumentException("Unknown object type: " + key);
-        }
+		if ( ! USER_OBJECT_TYPE.equals(objectType) ) {
+			throw new IllegalArgumentException("Unknown object type: " + key);
+		}
 
-        final String email = majorPath.get(1);
-        final String propertyName =
-            (minorPath.size() > 0) ? minorPath.get(0) : null;
+		final String email = majorPath.get(1);
+		final String propertyName =
+						( minorPath.size() > 0 ) ? minorPath.get(0) : null;
 
-        if (INFO_PROPERTY_NAME.equals(propertyName)) {
-            final ByteArrayInputStream bais =
-                new ByteArrayInputStream(value.getValue());
-            final DataInputStream dis = new DataInputStream(bais);
+		if ( INFO_PROPERTY_NAME.equals(propertyName) ) {
+			final ByteArrayInputStream bais =
+							new ByteArrayInputStream(value.getValue());
+			final DataInputStream dis = new DataInputStream(bais);
 
-            try {
+			try {
 
                 /* Name is not used. */
-                /* final String name = */ readString(dis);
-                final char gender = dis.readChar();
-                final String address = readString(dis);
-                final String phone = readString(dis);
-                final StringBuilder sb = new StringBuilder();
-                sb.append(email).append("|");
-                sb.append(gender).append("|");
-                sb.append(address).append("|");
-                sb.append(phone);
-                return sb.toString();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+                /* final String name = */
+				readString(dis);
+				final char gender = dis.readChar();
+				final String address = readString(dis);
+				final String phone = readString(dis);
+				final StringBuilder sb = new StringBuilder();
+				sb.append(email).append("|");
+				sb.append(gender).append("|");
+				sb.append(address).append("|");
+				sb.append(phone);
+				return sb.toString();
+			} catch ( IOException e ) {
+				throw new RuntimeException(e);
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    private String readString(final DataInput in)
-        throws IOException {
+	private String readString( final DataInput in )
+					throws IOException {
 
-        if (!in.readBoolean()) {
-            return null;
-        }
+		if ( ! in.readBoolean() ) {
+			return null;
+		}
 
-        return in.readUTF();
-    }
+		return in.readUTF();
+	}
+
+	private String readString( final DataInput in )
+					throws IOException {
+
+		if ( ! in.readBoolean() ) {
+			return null;
+		}
+
+		return in.readUTF();
+	}
+
 }
