@@ -21,7 +21,7 @@
     <clientProperties>
       <html.disable class="java.lang.Boolean" value="false"/>
     </clientProperties>
-    <border type="none" title="Ralational to NoSQL Data converter">
+    <border type="none" title="Relational to NoSQL Data converter">
       <font name="Times New Roman" size="18" style="1"/>
       <title-color color="-16777216"/>
     </border>

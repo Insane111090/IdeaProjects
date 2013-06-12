@@ -20,14 +20,14 @@ IMPORTS
         FROM SNMPv2-TC;
 
     nosql MODULE-IDENTITY
-        LAST-UPDATED "201207310000Z"
+        LAST-UPDATED "201301090000Z"
         ORGANIZATION "Oracle Corporation"
         CONTACT-INFO "support@sleepycat.com"
         DESCRIPTION
             "This MIB defines SNMP data and trap objects reported by
              Oracle Nosql Database's Storage Node Agent."
-        REVISION "201207310000Z"
-        DESCRIPTION "Oracle NoSQL Database 2.0 early access release"
+        REVISION "201301090000Z"
+        DESCRIPTION "Oracle NoSQL Database 2.1"
     ::= { oracle 42 }
 
 -- External OIDs
@@ -385,6 +385,7 @@ ServiceStatusTC ::= TEXTUAL-CONVENTION
                 repNodeMultiIntervalEnd                 DateAndTime,
                 repNodeMultiIntervalPeriod              TimeInterval,
                 repNodeMultiIntervalTotalOps            INTEGER,
+                repNodeMultiIntervalTotalRequests       INTEGER,
                 repNodeMultiIntervalThroughput          Unsigned32,
                 repNodeMultiIntervalLatMin              INTEGER,
                 repNodeMultiIntervalLatMax              INTEGER,
@@ -398,6 +399,7 @@ ServiceStatusTC ::= TEXTUAL-CONVENTION
                 repNodeMultiCumulativeStart             DateAndTime,
                 repNodeMultiCumulativeEnd               DateAndTime,
                 repNodeMultiCumulativeTotalOps          INTEGER,
+                repNodeMultiCumulativeTotalRequests     INTEGER,
                 repNodeMultiCumulativeThroughput        Unsigned32,
                 repNodeMultiCumulativeLatMin            INTEGER,
                 repNodeMultiCumulativeLatMax            INTEGER,
@@ -700,8 +702,8 @@ ServiceStatusTC ::= TEXTUAL-CONVENTION
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION
-            "The total number of multi-operation sequences
-             during a measured interval."
+            "The total number of single operations performed in
+	     multi-operation sequences during a measured interval."
     ::= { repNodeTableEntry 30 }
 
 -- repNodeMultiIntervalThroughput: nosql.3.2.1.31
@@ -812,8 +814,8 @@ ServiceStatusTC ::= TEXTUAL-CONVENTION
         MAX-ACCESS      read-only
         STATUS          current
         DESCRIPTION
-            "The total number of multi operation sequences
-             since service startup."
+            "The total number of single operations performed in
+	     multi-operation sequences since service startup."
     ::= { repNodeTableEntry 41 }
 
 -- repNodeMultiCumulativeThroughput: nosql.3.2.1.42
@@ -1001,6 +1003,26 @@ ServiceStatusTC ::= TEXTUAL-CONVENTION
                          repNodeThroughputFloorExceeded notification
                          to be sent."
     ::= { repNodeTableEntry 110 }
+
+-- repNodeMultiIntervalTotalRequests: nosql.3.2.1.111
+    repNodeMultiIntervalTotalRequests OBJECT-TYPE
+        SYNTAX          INTEGER
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The total number of multi-operation sequences
+             during a measured interval."
+    ::= { repNodeTableEntry 111 }
+
+-- repNodeMultiCumulativeTotalRequests: nosql.3.2.1.112
+    repNodeMultiCumulativeTotalRequests OBJECT-TYPE
+        SYNTAX          INTEGER
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The total number of multi operation sequences
+             since service startup."
+    ::= { repNodeTableEntry 113 }
 
 -- group for the Admin, if present
 

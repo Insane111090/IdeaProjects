@@ -21,9 +21,7 @@ public class ExternalTable {
 	public JPanel ExternalPanel;
 	private JButton conenctToRDBMSButton;
 	private JLabel lblConnectToNoSQL;
-	private JLabel lblConnectToRDBMS;
 	public JLabel lblNoSQLConnected;
-	private JLabel lblRDBMSConnected;
 	public JTextField tableNameText;
 	private JButton startButton;
 	private JButton exitButton;
@@ -87,12 +85,6 @@ public class ExternalTable {
 			}
 		});
 
-		conenctToRDBMSButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
 		exitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

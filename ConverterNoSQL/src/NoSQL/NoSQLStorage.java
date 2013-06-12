@@ -9,7 +9,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-import static RDBMS.Util.MigPanel;
+import  RDBMS.Util.MigPanel;
 
 /** @author agavrilov */
 public class NoSQLStorage extends JDialog {

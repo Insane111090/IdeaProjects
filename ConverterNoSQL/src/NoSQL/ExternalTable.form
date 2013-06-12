@@ -3,8 +3,6 @@
   <grid id="27dc6" binding="ExternalPanel" layout-manager="FormLayout">
     <rowspec value="center:48px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:62px:noGrow"/>
-    <rowspec value="top:34dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
@@ -30,15 +28,6 @@
           <text value="Connect to NoSQL"/>
         </properties>
       </component>
-      <component id="9bb6b" class="javax.swing.JButton" binding="conenctToRDBMSButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <text value="Conenct to RDBMS"/>
-        </properties>
-      </component>
       <component id="c5d60" class="javax.swing.JLabel" binding="lblConnectToNoSQL">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -48,18 +37,9 @@
           <text value="Status:"/>
         </properties>
       </component>
-      <component id="6dede" class="javax.swing.JLabel" binding="lblConnectToRDBMS">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <text value="Status:"/>
-        </properties>
-      </component>
       <component id="8924c" class="javax.swing.JLabel" binding="lblTableName">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
@@ -77,20 +57,9 @@
           <text value="Not Connected"/>
         </properties>
       </component>
-      <component id="816f3" class="javax.swing.JLabel" binding="lblRDBMSConnected">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <background color="-65536"/>
-          <foreground color="-65536"/>
-          <text value="Not Connected"/>
-        </properties>
-      </component>
       <component id="609ee" class="javax.swing.JTextField" binding="tableNameText">
         <constraints>
-          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <forms defaultalign-horz="false"/>
@@ -104,7 +73,7 @@
       </component>
       <component id="a8459" class="javax.swing.JButton" binding="startButton" default-binding="true">
         <constraints>
-          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
@@ -113,7 +82,7 @@
       </component>
       <component id="6ee4f" class="javax.swing.JButton" binding="exitButton" default-binding="true">
         <constraints>
-          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
