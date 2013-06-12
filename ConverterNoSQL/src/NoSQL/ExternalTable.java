@@ -19,7 +19,6 @@ import java.util.List;
 public class ExternalTable {
 	private JButton connectToNoSQLButton;
 	public JPanel ExternalPanel;
-	private JButton conenctToRDBMSButton;
 	private JLabel lblConnectToNoSQL;
 	public JLabel lblNoSQLConnected;
 	public JTextField tableNameText;
