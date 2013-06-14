@@ -23,6 +23,7 @@ public class NoSQLStorage extends JDialog {
 	final JButton connectToNoSqlBut = new JButton("Connect to NoSQL Storage");
 	final JButton disconnectAndClose = new JButton("Disconnect and close");
 	final JButton disconnectNoSQL = new JButton("Disconnect from storage");
+	final JButton showValues = new JButton("Show values");
 	public static final JButton startProcessOfConverting = new JButton("Start process");
 	JTextField portTxt = new JTextField();
 	JTextField hostTxt = new JTextField();
@@ -67,7 +68,8 @@ public class NoSQLStorage extends JDialog {
 		progress.setEditable(false);
 		scroll.getViewport().setView(progress);
 		noSqlInfo.add(scroll,
-						"w 600,h 300, wrap 15");
+		              "w 600,h 300");
+		noSqlInfo.add(showValues,"split, wrap 15");
 		noSqlInfo.add(startProcessOfConverting,
 						"align right");
 		noSqlInfo.add(disconnectAndClose,
@@ -121,13 +123,23 @@ public class NoSQLStorage extends JDialog {
 				}
 		  }
 	  });*/
+		showValues.addActionListener(new AbstractAction() {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				ShowValues dialog = new ShowValues();
+				dialog.pack();
+				dialog.setLocationRelativeTo(null);
+				dialog.setVisible(true);
+			}
+		});
+
 		connectToNoSqlBut.addActionListener(new AbstractAction() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed( ActionEvent e ) {
 				try {
 					myStore = Support.makeNoSQLConnection(store,
-									host,
-									port);
+					                                      host,
+					                                      port);
 				} catch ( FaultException ex ) {
 					JOptionPane.showMessageDialog(
 									noSqlPanel,

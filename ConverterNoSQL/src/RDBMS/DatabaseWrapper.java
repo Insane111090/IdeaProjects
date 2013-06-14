@@ -187,6 +187,8 @@ public class DatabaseWrapper implements Runnable {
 		result.append(resMajor).append("'-/'||");
 
 		for ( String minor : minorSet ) {
+			if(minorSet.size() == 0)
+				continue;
 			resMinor.delete(0,
 							resMinor.length());
 			resMinor.append(minor);
@@ -245,26 +247,6 @@ public class DatabaseWrapper implements Runnable {
 								System.out.println(e.getMessage());
 							}
 						}
-
-						/*BufferedReader br;
-						String line;
-						InputStreamReader isr = null;
-
-							isr = new InputStreamReader(simpleValueStream);
-
-						br = new BufferedReader(isr);
-						try {
-							while ((line = br.readLine()) != null)
-							{
-								byte[] b  = line.getBytes();
-								String line2 =  new String(b);
-								System.out.println(line2);
-							}
-						} catch ( IOException e2 ) {
-							System.out.println(e2.getMessage());  //To change body of catch statement use File | Settings | File Templates.
-						}*/
-
-
 					}
 					else {
 						Value mySimpleValue = Support.ParseKey.ParseValue(getkeyResultSet.getString(1));
