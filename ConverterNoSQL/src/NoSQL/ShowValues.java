@@ -43,6 +43,7 @@ public class ShowValues extends JDialog {
 				showValueTextArea.removeAll();
 				showValueTextArea.setText("");
 				try {
+					double before = System.currentTimeMillis();
 					if ( ShowValueKeyTxt.getText().equals("") ) {
 						Key showKey = Support.ParseKey.ParseKey(showValueTableNameText.getText().toUpperCase(),
 						                                        false);
@@ -80,6 +81,9 @@ public class ShowValues extends JDialog {
 							showValueTextArea.append(majorPath1 + " - " + minorPath1 + ":" + data + "\n");
 						}
 					}
+					double after = System.currentTimeMillis();
+					double diff = after - before;
+					System.out.println(diff);
 				} catch ( NullPointerException ne ) {
 				 showValueTextArea.append("Error: " + ne.getMessage());
 				}catch (FaultException fe){
